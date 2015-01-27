@@ -416,6 +416,7 @@
 				F718BCC41A6CE86D001C3E1D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F718BCC51A6CE86D001C3E1D /* Build configuration list for PBXNativeTarget "goMeetTests" */ = {
 			isa = XCConfigurationList;
@@ -424,6 +425,7 @@
 				F718BCC71A6CE86D001C3E1D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
