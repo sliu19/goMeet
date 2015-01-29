@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="mQL-oD-RDM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="mQL-oD-RDM">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
@@ -7,45 +7,92 @@
         <!--Event-->
         <scene sceneID="HVf-4x-shd">
             <objects>
-                <viewController id="wjl-RO-qk8" sceneMemberID="viewController">
+                <viewController id="wjl-RO-qk8" customClass="eventViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="eow-IJ-HLh"/>
                         <viewControllerLayoutGuide type="bottom" id="S7R-6C-Kfv"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="d5p-zG-FGG">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tqB-Gm-KHp">
-                                <rect key="frame" x="127" y="175" width="97" height="30"/>
+                                <rect key="frame" x="112" y="178" width="97" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <searchBar contentMode="redraw" fixedFrame="YES" placeholder="搜索活动" translatesAutoresizingMaskIntoConstraints="NO" id="N2G-pU-W24">
+                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vaG-Df-Cts">
+                                <rect key="frame" x="264" y="64" width="56" height="53"/>
+                                <state key="normal" image="添加">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="cOC-iW-CIq" kind="push" id="uLF-Em-zEY"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Event" image="event" id="lKk-iU-1J6"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="hQW-ki-Gaj" id="5yb-sc-wXS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ttx-dT-b7W" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="hQW-ki-Gaj">
+                    <connections>
+                        <outlet property="delegate" destination="wjl-RO-qk8" id="yWO-Xl-Xme"/>
+                        <outlet property="searchContentsController" destination="wjl-RO-qk8" id="hB0-UC-kiC"/>
+                        <outlet property="searchResultsDataSource" destination="wjl-RO-qk8" id="OJf-mT-ri1"/>
+                        <outlet property="searchResultsDelegate" destination="wjl-RO-qk8" id="db4-Lq-R8c"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="484" y="417"/>
+            <point key="canvasLocation" x="258.13333333333333" y="453.45333333333332"/>
+        </scene>
+        <!--creatEvent-->
+        <scene sceneID="CYj-hh-BgJ">
+            <objects>
+                <viewController title="creatEvent" id="cOC-iW-CIq" customClass="creatEventViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="NeA-z1-7eV"/>
+                        <viewControllerLayoutGuide type="bottom" id="K4o-yo-fQk"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="afx-iA-3Gj">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="0fh-q5-2FT"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zpb-l6-dcY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="904" y="299"/>
         </scene>
         <!--People-->
         <scene sceneID="ymA-5l-VXf">
             <objects>
-                <viewController id="thf-lJ-zoZ" sceneMemberID="viewController">
+                <viewController id="thf-lJ-zoZ" customClass="peopleViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="is3-Wq-7lz"/>
                         <viewControllerLayoutGuide type="bottom" id="8gn-tu-96S"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="bLF-mU-dYQ">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="iTn-bm-JPx">
                                 <rect key="frame" x="53" y="210" width="118" height="31"/>
                             </slider>
+                            <searchBar contentMode="redraw" fixedFrame="YES" placeholder="搜索联系人" translatesAutoresizingMaskIntoConstraints="NO" id="pLU-bj-Zd2">
+                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -53,18 +100,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BiQ-dn-bsu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="484" y="-269"/>
+            <point key="canvasLocation" x="258.13333333333333" y="-254.65333333333334"/>
         </scene>
         <!--News Feed-->
         <scene sceneID="Hz5-PU-g0u">
             <objects>
-                <viewController id="Z8U-7h-830" sceneMemberID="viewController">
+                <viewController id="Z8U-7h-830" customClass="newsfeedViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="t48-yP-Rhz"/>
                         <viewControllerLayoutGuide type="bottom" id="DFI-Aj-tDh"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="clO-Pw-xBL">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="23Q-Sr-m0X">
@@ -77,7 +124,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ydV-Gm-a1Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="356" y="-1013"/>
+            <point key="canvasLocation" x="258" y="-959"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="CaA-ei-qjA">
@@ -97,12 +144,18 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cvJ-no-fsH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-377" y="-269"/>
+            <point key="canvasLocation" x="-201.06666666666666" y="-254.65333333333334"/>
         </scene>
     </scenes>
     <resources>
-        <image name="event" width="50" height="50"/>
+        <image name="event" width="40" height="40"/>
         <image name="newsFeed" width="50" height="50"/>
-        <image name="people" width="50" height="50"/>
+        <image name="people" width="40" height="40"/>
+        <image name="添加" width="117" height="107"/>
     </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
 </document>

@@ -10,11 +10,14 @@
 		F718BCA21A6CE86D001C3E1D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F718BCA11A6CE86D001C3E1D /* main.m */; };
 		F718BCA51A6CE86D001C3E1D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F718BCA41A6CE86D001C3E1D /* AppDelegate.m */; };
 		F718BCA81A6CE86D001C3E1D /* goMeet.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F718BCA61A6CE86D001C3E1D /* goMeet.xcdatamodeld */; };
-		F718BCAB1A6CE86D001C3E1D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F718BCAA1A6CE86D001C3E1D /* ViewController.m */; };
 		F718BCAE1A6CE86D001C3E1D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F718BCAC1A6CE86D001C3E1D /* Main.storyboard */; };
 		F718BCB01A6CE86D001C3E1D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F718BCAF1A6CE86D001C3E1D /* Images.xcassets */; };
 		F718BCB31A6CE86D001C3E1D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F718BCB11A6CE86D001C3E1D /* LaunchScreen.xib */; };
 		F718BCBF1A6CE86D001C3E1D /* goMeetTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F718BCBE1A6CE86D001C3E1D /* goMeetTests.m */; };
+		F789699F1A79C2DB00798573 /* eventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F789699E1A79C2DB00798573 /* eventViewController.m */; };
+		F78969A21A79C55C00798573 /* peopleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F78969A11A79C55C00798573 /* peopleViewController.m */; };
+		F78969A51A79C5A900798573 /* newsfeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F78969A41A79C5A900798573 /* newsfeedViewController.m */; };
+		F78969A81A79C9EE00798573 /* creatEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F78969A71A79C9EE00798573 /* creatEventViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,14 +37,20 @@
 		F718BCA31A6CE86D001C3E1D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F718BCA41A6CE86D001C3E1D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		F718BCA71A6CE86D001C3E1D /* goMeet.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = goMeet.xcdatamodel; sourceTree = "<group>"; };
-		F718BCA91A6CE86D001C3E1D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		F718BCAA1A6CE86D001C3E1D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		F718BCAD1A6CE86D001C3E1D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F718BCAF1A6CE86D001C3E1D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F718BCB21A6CE86D001C3E1D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		F718BCB81A6CE86D001C3E1D /* goMeetTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = goMeetTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F718BCBD1A6CE86D001C3E1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F718BCBE1A6CE86D001C3E1D /* goMeetTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = goMeetTests.m; sourceTree = "<group>"; };
+		F789699D1A79C2DB00798573 /* eventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = eventViewController.h; sourceTree = "<group>"; };
+		F789699E1A79C2DB00798573 /* eventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = eventViewController.m; sourceTree = "<group>"; };
+		F78969A01A79C55C00798573 /* peopleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = peopleViewController.h; sourceTree = "<group>"; };
+		F78969A11A79C55C00798573 /* peopleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = peopleViewController.m; sourceTree = "<group>"; };
+		F78969A31A79C5A900798573 /* newsfeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = newsfeedViewController.h; sourceTree = "<group>"; };
+		F78969A41A79C5A900798573 /* newsfeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = newsfeedViewController.m; sourceTree = "<group>"; };
+		F78969A61A79C9EE00798573 /* creatEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = creatEventViewController.h; sourceTree = "<group>"; };
+		F78969A71A79C9EE00798573 /* creatEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = creatEventViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,9 +94,8 @@
 			children = (
 				F718BCA31A6CE86D001C3E1D /* AppDelegate.h */,
 				F718BCA41A6CE86D001C3E1D /* AppDelegate.m */,
-				F718BCA91A6CE86D001C3E1D /* ViewController.h */,
-				F718BCAA1A6CE86D001C3E1D /* ViewController.m */,
 				F718BCAC1A6CE86D001C3E1D /* Main.storyboard */,
+				F75E51981A79489E008353E2 /* ViewController */,
 				F718BCAF1A6CE86D001C3E1D /* Images.xcassets */,
 				F718BCB11A6CE86D001C3E1D /* LaunchScreen.xib */,
 				F718BCA61A6CE86D001C3E1D /* goMeet.xcdatamodeld */,
@@ -120,6 +128,21 @@
 				F718BCBD1A6CE86D001C3E1D /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F75E51981A79489E008353E2 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F78969A61A79C9EE00798573 /* creatEventViewController.h */,
+				F78969A71A79C9EE00798573 /* creatEventViewController.m */,
+				F789699D1A79C2DB00798573 /* eventViewController.h */,
+				F789699E1A79C2DB00798573 /* eventViewController.m */,
+				F78969A01A79C55C00798573 /* peopleViewController.h */,
+				F78969A11A79C55C00798573 /* peopleViewController.m */,
+				F78969A31A79C5A900798573 /* newsfeedViewController.h */,
+				F78969A41A79C5A900798573 /* newsfeedViewController.m */,
+			);
+			name = ViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -222,10 +245,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F78969A81A79C9EE00798573 /* creatEventViewController.m in Sources */,
+				F789699F1A79C2DB00798573 /* eventViewController.m in Sources */,
 				F718BCA51A6CE86D001C3E1D /* AppDelegate.m in Sources */,
 				F718BCA81A6CE86D001C3E1D /* goMeet.xcdatamodeld in Sources */,
-				F718BCAB1A6CE86D001C3E1D /* ViewController.m in Sources */,
+				F78969A21A79C55C00798573 /* peopleViewController.m in Sources */,
 				F718BCA21A6CE86D001C3E1D /* main.m in Sources */,
+				F78969A51A79C5A900798573 /* newsfeedViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
