@@ -9,6 +9,7 @@
 #import "peopleViewController.h"
 
 @interface peopleViewController ()
+@property (strong, nonatomic) IBOutlet UISlider *testing;
 
 @end
 

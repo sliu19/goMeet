@@ -18,6 +18,9 @@
 		F78969A21A79C55C00798573 /* peopleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F78969A11A79C55C00798573 /* peopleViewController.m */; };
 		F78969A51A79C5A900798573 /* newsfeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F78969A41A79C5A900798573 /* newsfeedViewController.m */; };
 		F78969A81A79C9EE00798573 /* creatEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F78969A71A79C9EE00798573 /* creatEventViewController.m */; };
+		F78969E11A7AF8A600798573 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F78969DF1A7AF8A600798573 /* AddressBook.framework */; };
+		F78969E21A7AF8A700798573 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F78969E01A7AF8A600798573 /* AddressBookUI.framework */; };
+		F78969E51A7AFA0C00798573 /* newContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F78969E41A7AFA0C00798573 /* newContactViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +54,10 @@
 		F78969A41A79C5A900798573 /* newsfeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = newsfeedViewController.m; sourceTree = "<group>"; };
 		F78969A61A79C9EE00798573 /* creatEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = creatEventViewController.h; sourceTree = "<group>"; };
 		F78969A71A79C9EE00798573 /* creatEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = creatEventViewController.m; sourceTree = "<group>"; };
+		F78969DF1A7AF8A600798573 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		F78969E01A7AF8A600798573 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
+		F78969E31A7AFA0C00798573 /* newContactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = newContactViewController.h; sourceTree = "<group>"; };
+		F78969E41A7AFA0C00798573 /* newContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = newContactViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +65,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F78969E11A7AF8A600798573 /* AddressBook.framework in Frameworks */,
+				F78969E21A7AF8A700798573 /* AddressBookUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +83,8 @@
 		F718BC931A6CE86D001C3E1D = {
 			isa = PBXGroup;
 			children = (
+				F78969DF1A7AF8A600798573 /* AddressBook.framework */,
+				F78969E01A7AF8A600798573 /* AddressBookUI.framework */,
 				F718BC9E1A6CE86D001C3E1D /* goMeet */,
 				F718BCBB1A6CE86D001C3E1D /* goMeetTests */,
 				F718BC9D1A6CE86D001C3E1D /* Products */,
@@ -95,6 +106,7 @@
 				F718BCA31A6CE86D001C3E1D /* AppDelegate.h */,
 				F718BCA41A6CE86D001C3E1D /* AppDelegate.m */,
 				F718BCAC1A6CE86D001C3E1D /* Main.storyboard */,
+				F78969A91A79CAC400798573 /* model */,
 				F75E51981A79489E008353E2 /* ViewController */,
 				F718BCAF1A6CE86D001C3E1D /* Images.xcassets */,
 				F718BCB11A6CE86D001C3E1D /* LaunchScreen.xib */,
@@ -141,8 +153,17 @@
 				F78969A11A79C55C00798573 /* peopleViewController.m */,
 				F78969A31A79C5A900798573 /* newsfeedViewController.h */,
 				F78969A41A79C5A900798573 /* newsfeedViewController.m */,
+				F78969E31A7AFA0C00798573 /* newContactViewController.h */,
+				F78969E41A7AFA0C00798573 /* newContactViewController.m */,
 			);
 			name = ViewController;
+			sourceTree = "<group>";
+		};
+		F78969A91A79CAC400798573 /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -247,6 +268,7 @@
 			files = (
 				F78969A81A79C9EE00798573 /* creatEventViewController.m in Sources */,
 				F789699F1A79C2DB00798573 /* eventViewController.m in Sources */,
+				F78969E51A7AFA0C00798573 /* newContactViewController.m in Sources */,
 				F718BCA51A6CE86D001C3E1D /* AppDelegate.m in Sources */,
 				F718BCA81A6CE86D001C3E1D /* goMeet.xcdatamodeld in Sources */,
 				F78969A21A79C55C00798573 /* peopleViewController.m in Sources */,
@@ -374,6 +396,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = goMeet/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -384,6 +407,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = goMeet/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
