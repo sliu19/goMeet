@@ -7,13 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Lib.h"
 
 @interface SignUpViewController : UIViewController<NSStreamDelegate>
 
+
 @end
-
-NSInputStream *inputStream;
-NSOutputStream *outputStream;
-
-
-

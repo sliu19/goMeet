@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ChatClientViewController.h"
+#import "InitPage.h"
 
-@interface JoinViewController : UIViewController<NSStreamDelegate, UITableViewDelegate, UITableViewDataSource,NSStreamDelegate>
-@property (weak, nonatomic) IBOutlet UITextField *inputMessageField;
+@interface PeopleViewController : UIViewController<NSStreamDelegate, UITableViewDelegate, UITableViewDataSource>
+//@property (weak, nonatomic) IBOutlet UITextField *inputMessageField;
 - (IBAction)sendMessage:(id)sender;
 
 @property (weak, nonatomic) IBOutlet UITableView *tView;

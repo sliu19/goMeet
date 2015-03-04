@@ -7,12 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "JoinViewController.h"
+#import "Communication.h"
 
-@interface ChatClientViewController : UIViewController<NSStreamDelegate>
+@interface InitPage : UIViewController<NSStreamDelegate>
 
 
 @end
-
-NSInputStream *inputStream;
-NSOutputStream *outputStream;

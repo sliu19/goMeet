@@ -6,14 +6,16 @@
 //  Copyright (c) 2015年 LPP. All rights reserved.
 //
 
-#import "JoinViewController.h"
+#import "PeopleViewController.h"
 
 
-@interface JoinViewController ()
+@interface PeopleViewController ()
+
+@property (weak, nonatomic) IBOutlet UITextField *inputMessageField;
 
 @end
 
-@implementation JoinViewController
+@implementation PeopleViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -59,60 +61,9 @@
 - (IBAction)sendMessage:(id)sender {
     NSString *response  = [NSString stringWithFormat:@"msg:%@", _inputMessageField.text];
     NSData *data = [[NSData alloc] initWithData:[response dataUsingEncoding:NSASCIIStringEncoding]];
-    [outputStream write:[data bytes] maxLength:[data length]];
+    //[Lib send:data];
 }
 
--(void)stream:(NSStream *)theStream handleEvent:(NSStreamEvent)streamEvent {
-    typedef enum {
-        NSStreamEventNone = 0,
-        NSStreamEventOpenCompleted = 1 << 0,
-        NSStreamEventHasBytesAvailable = 1 << 1,
-        NSStreamEventHasSpaceAvailable = 1 << 2,
-        NSStreamEventErrorOccurred = 1 << 3,
-        NSStreamEventEndEncountered = 1 << 4
-    }NSStringEvent;
-    
-    switch (streamEvent) {
-            
-        case NSStreamEventOpenCompleted:
-            NSLog(@"Stream opened");
-           
-            break;
-            
-        case NSStreamEventHasBytesAvailable:
-            
-            if (theStream == inputStream) {
-                
-                uint8_t buffer[1024];
-                int len;
-                
-                while ([inputStream hasBytesAvailable]) {
-                    len = [inputStream read:buffer maxLength:sizeof(buffer)];
-                    if (len > 0) {
-                        
-                        NSString *output = [[NSString alloc] initWithBytes:buffer length:len encoding:NSASCIIStringEncoding];
-                        
-                        if (nil != output) {
-                            [self messageReceived:output];
-                            NSLog(@"server said: %@", output);
-                        }
-                    }
-                }
-            }
-            break;
-            
-        case NSStreamEventErrorOccurred:
-            NSLog(@"Can not connect to the host!");
-            break;
-            
-        case NSStreamEventEndEncountered:
-            break;
-            
-        default:
-            NSLog(@"Unknown event");
-    }
-    
-}
 - (void) messageReceived:(NSString *)message {
     
     [messages addObject:message];

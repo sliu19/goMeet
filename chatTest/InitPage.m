@@ -1,14 +1,13 @@
 //
-//  ChatClientViewController.m
+//  InitPage.m
 //  chatTest
 //
-//  Created by Luyao Huang on 15/2/4.
 //  Copyright (c) 2015年 LPP. All rights reserved.
 //
 
-#import "ChatClientViewController.h"
+#import "InitPage.h"
 
-@interface ChatClientViewController ()
+@interface InitPage ()
 
 @property (weak, nonatomic) IBOutlet UIButton *joinView;
 @property (weak, nonatomic) IBOutlet UITextField *phoneNum;
@@ -20,42 +19,73 @@
 
 @end
 
-@implementation ChatClientViewController
+@implementation InitPage
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self initNetworkCommunication];
-    self.phoneNum.delegate = self;
-    self.passCode.delegate = self;
-    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(resignOnTap:)];
-    [singleTap setNumberOfTapsRequired:1];
-    [singleTap setNumberOfTouchesRequired:1];
-    [self.view addGestureRecognizer:singleTap];
+    [Communication initNetworkCommunication];
+    [inputStream setDelegate:self];
+    [outputStream setDelegate:self];
+    NSLog(@"InitPage");
+    _phoneNum.delegate = self;
+    _passCode.delegate = self;
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(receiveLogInNotification:)
+                                                 name:@"LogInNotification"
+                                               object:nil];
 
+    
     // Do any additional setup after loading the view from its nib.
 }
 
+- (void) receiveLogInNotification:(NSNotification *) notification
+{
+    // [notification name] should always be @"TestNotification"
+    // unless you use this method for observation of other notifications
+    // as well.
+    
+    if ([[notification name] isEqualToString:@"LogInNotification"])
+        NSLog (@"Successfully received the login notification!");
+        [self performSegueWithIdentifier:@"login" sender:nil];
+}
+
+
+
+
 - (IBAction)logIn:(id)sender {
+    
     NSString *response  = [NSString stringWithFormat:@"log:%@;%@" , _phoneNum.text,_passCode.text];
+    //NSString *imageHead = @"img:";
+    //NSMutableData *imageHeadData =[[NSMutableData alloc] initWithData:[imageHead dataUsingEncoding:NSASCIIStringEncoding]];
+    //UIImage *testImage = [UIImage imageNamed:@"testImage.jpeg"];
+    //NSData * testImageData = UIImageJPEGRepresentation(testImage,testImage.scale);
     NSData *data = [[NSData alloc] initWithData:[response dataUsingEncoding:NSASCIIStringEncoding]];
-    [outputStream write:[data bytes] maxLength:[data length]];
+    //[imageHeadData appendData:testImageData];
+    [Communication send:data];
+    //[outputStream write:[imageHeadData bytes] maxLength:[imageHeadData length]];
 }
 
 
-- (void)initNetworkCommunication {
-    CFReadStreamRef readStream;
-    CFWriteStreamRef writeStream;
-    CFStreamCreatePairWithSocketToHost(NULL, (CFStringRef)@"54.69.204.42", 80, &readStream, &writeStream);
-    inputStream = (__bridge NSInputStream *)readStream;
-    outputStream = (__bridge NSOutputStream *)writeStream;
-    [inputStream setDelegate:self];
-    [outputStream setDelegate:self];
-    [inputStream scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
-    [outputStream scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
-    [inputStream open];
-    [outputStream open];
+-(BOOL) textFieldShouldReturn: (UITextField *) textField {
+    [textField resignFirstResponder];
+    return YES;
 }
 
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    self.currentResponder = textField;
+}
+- (void)resignOnTap:(id)iSender {
+    [self.currentResponder resignFirstResponder];
+}
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
 - (void)stream:(NSStream *)theStream handleEvent:(NSStreamEvent)streamEvent {
     
     typedef enum {
@@ -90,12 +120,14 @@
                             switch (output.intValue) {
                                 case 1:
                                     NSLog(@"trigger segue");
+                                    //[[NSNotificationCenter defaultCenter] postNotificationName:@"LogInNotification" object:self];
                                     [self performSegueWithIdentifier:@"login" sender:nil];
+                                    
                                     break;
                                     
                                 default:
                                     NSLog(@"output int val %@", output.intValue);
-                                break;
+                                    break;
                             }
                             NSLog(@"server said: %@", output);
                             
@@ -118,28 +150,6 @@
     
 }
 
--(BOOL) textFieldShouldReturn: (UITextField *) textField {
-    [textField resignFirstResponder];
-    return YES;
-}
 
-- (void)textFieldDidBeginEditing:(UITextField *)textField {
-    self.currentResponder = textField;
-}
-
-//Implement resignOnTap:
-
-- (void)resignOnTap:(id)iSender {
-    [self.currentResponder resignFirstResponder];
-}
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
