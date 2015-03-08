@@ -10,7 +10,6 @@
 		EB4B60CC1A82EC040061CCD8 /* PeopleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB4B60CB1A82EC040061CCD8 /* PeopleViewController.m */; };
 		EB8BD4191A886E3400851D28 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB8BD4181A886E3400851D28 /* SignUpViewController.m */; };
 		EBD0D8AD1A82E1F700B76C79 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EBD0D8AC1A82E1F700B76C79 /* main.m */; };
-		EBD0D8B01A82E1F700B76C79 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EBD0D8AF1A82E1F700B76C79 /* AppDelegate.m */; };
 		EBD0D8B61A82E1F700B76C79 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBD0D8B41A82E1F700B76C79 /* Main.storyboard */; };
 		EBD0D8B81A82E1F700B76C79 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBD0D8B71A82E1F700B76C79 /* Images.xcassets */; };
 		EBD0D8BB1A82E1F700B76C79 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBD0D8B91A82E1F700B76C79 /* LaunchScreen.xib */; };
@@ -21,10 +20,15 @@
 		F77C900B1AA3C0950005EC2F /* NewsFeedView.m in Sources */ = {isa = PBXBuildFile; fileRef = F77C900A1AA3C0950005EC2F /* NewsFeedView.m */; };
 		F77C900D1AA3C16F0005EC2F /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = F77C900C1AA3C16F0005EC2F /* User.m */; };
 		F77C90101AA3F4A60005EC2F /* Lib.m in Sources */ = {isa = PBXBuildFile; fileRef = F77C900F1AA3F4A60005EC2F /* Lib.m */; };
-		F77C90131AA3FDA50005EC2F /* testImage.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F77C90121AA3FDA50005EC2F /* testImage.jpeg */; };
+		F791A6951AAC1A040025365A /* testImage.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F791A6941AAC1A040025365A /* testImage.jpeg */; };
+		F791A6971AAC1A090025365A /* nightLife.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F791A6961AAC1A090025365A /* nightLife.jpeg */; };
+		F791A69A1AAC1A7B0025365A /* CoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F791A6991AAC1A7B0025365A /* CoreDataTableViewController.m */; };
+		F791A69D1AAC1AB30025365A /* PeopleList.m in Sources */ = {isa = PBXBuildFile; fileRef = F791A69C1AAC1AB30025365A /* PeopleList.m */; };
+		F791A6A11AAC1AEA0025365A /* GoMeet.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F791A69F1AAC1AEA0025365A /* GoMeet.xcdatamodeld */; };
+		F791A6A41AAC1B180025365A /* Friend.m in Sources */ = {isa = PBXBuildFile; fileRef = F791A6A31AAC1B180025365A /* Friend.m */; };
+		F791A6AB1AAC1DDA0025365A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F791A6AA1AAC1DDA0025365A /* AppDelegate.m */; };
 		F7A443941AA4913100E9ADFC /* Communication.m in Sources */ = {isa = PBXBuildFile; fileRef = F7A443931AA4913100E9ADFC /* Communication.m */; };
 		F7A443961AA49B1A00E9ADFC /* NewsFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = F7A443951AA49B1A00E9ADFC /* NewsFeed.m */; };
-		F7A443991AA4A50100E9ADFC /* nightLife.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F7A443981AA4A50100E9ADFC /* nightLife.jpeg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,8 +49,6 @@
 		EBD0D8A71A82E1F700B76C79 /* chatTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = chatTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBD0D8AB1A82E1F700B76C79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EBD0D8AC1A82E1F700B76C79 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		EBD0D8AE1A82E1F700B76C79 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		EBD0D8AF1A82E1F700B76C79 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		EBD0D8B51A82E1F700B76C79 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EBD0D8B71A82E1F700B76C79 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		EBD0D8BA1A82E1F700B76C79 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -65,12 +67,21 @@
 		F77C900E1AA3C18E0005EC2F /* User.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		F77C900F1AA3F4A60005EC2F /* Lib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Lib.m; sourceTree = "<group>"; };
 		F77C90111AA3F4B50005EC2F /* Lib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Lib.h; sourceTree = "<group>"; };
-		F77C90121AA3FDA50005EC2F /* testImage.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = testImage.jpeg; path = ../../../../testImage.jpeg; sourceTree = "<group>"; };
+		F791A6941AAC1A040025365A /* testImage.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = testImage.jpeg; sourceTree = "<group>"; };
+		F791A6961AAC1A090025365A /* nightLife.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nightLife.jpeg; sourceTree = "<group>"; };
+		F791A6981AAC1A750025365A /* CoreDataTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreDataTableViewController.h; sourceTree = "<group>"; };
+		F791A6991AAC1A7B0025365A /* CoreDataTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataTableViewController.m; sourceTree = "<group>"; };
+		F791A69B1AAC1AAF0025365A /* PeopleList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PeopleList.h; sourceTree = "<group>"; };
+		F791A69C1AAC1AB30025365A /* PeopleList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeopleList.m; sourceTree = "<group>"; };
+		F791A6A01AAC1AEA0025365A /* GoMeet.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GoMeet.xcdatamodel; sourceTree = "<group>"; };
+		F791A6A21AAC1B180025365A /* Friend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Friend.h; sourceTree = "<group>"; };
+		F791A6A31AAC1B180025365A /* Friend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Friend.m; sourceTree = "<group>"; };
+		F791A6A91AAC1DD70025365A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		F791A6AA1AAC1DDA0025365A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		F7A443921AA4913100E9ADFC /* Communication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Communication.h; sourceTree = "<group>"; };
 		F7A443931AA4913100E9ADFC /* Communication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Communication.m; sourceTree = "<group>"; };
 		F7A443951AA49B1A00E9ADFC /* NewsFeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsFeed.m; sourceTree = "<group>"; };
 		F7A443971AA49B2D00E9ADFC /* NewsFeed.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewsFeed.h; sourceTree = "<group>"; };
-		F7A443981AA4A50100E9ADFC /* nightLife.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = nightLife.jpeg; path = ../../../../nightLife.jpeg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +105,8 @@
 		EB4B60C91A82EB960061CCD8 /* ViewControll */ = {
 			isa = PBXGroup;
 			children = (
+				F791A69B1AAC1AAF0025365A /* PeopleList.h */,
+				F791A69C1AAC1AB30025365A /* PeopleList.m */,
 				F7A443921AA4913100E9ADFC /* Communication.h */,
 				F7A443931AA4913100E9ADFC /* Communication.m */,
 				EBD0D8D61A82E30500B76C79 /* InitPage.h */,
@@ -133,13 +146,16 @@
 		EBD0D8A91A82E1F700B76C79 /* chatTest */ = {
 			isa = PBXGroup;
 			children = (
-				EBD0D8AE1A82E1F700B76C79 /* AppDelegate.h */,
-				EBD0D8AF1A82E1F700B76C79 /* AppDelegate.m */,
+				F791A6A91AAC1DD70025365A /* AppDelegate.h */,
+				F791A6AA1AAC1DDA0025365A /* AppDelegate.m */,
 				EBD0D8B41A82E1F700B76C79 /* Main.storyboard */,
+				F791A69F1AAC1AEA0025365A /* GoMeet.xcdatamodeld */,
+				F791A6A51AAC1B200025365A /* CoreData */,
 				F77C900E1AA3C18E0005EC2F /* User.h */,
 				F77C900C1AA3C16F0005EC2F /* User.m */,
 				F77C90111AA3F4B50005EC2F /* Lib.h */,
 				F77C900F1AA3F4A60005EC2F /* Lib.m */,
+				F791A69E1AAC1AC00025365A /* CoreDataTableViewController */,
 				F77C90141AA3FDB20005EC2F /* UserImage */,
 				F77C90091AA3C0950005EC2F /* NewsFeedView.h */,
 				F77C900A1AA3C0950005EC2F /* NewsFeedView.m */,
@@ -180,10 +196,28 @@
 		F77C90141AA3FDB20005EC2F /* UserImage */ = {
 			isa = PBXGroup;
 			children = (
-				F77C90121AA3FDA50005EC2F /* testImage.jpeg */,
-				F7A443981AA4A50100E9ADFC /* nightLife.jpeg */,
+				F791A6961AAC1A090025365A /* nightLife.jpeg */,
+				F791A6941AAC1A040025365A /* testImage.jpeg */,
 			);
 			name = UserImage;
+			sourceTree = "<group>";
+		};
+		F791A69E1AAC1AC00025365A /* CoreDataTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F791A6981AAC1A750025365A /* CoreDataTableViewController.h */,
+				F791A6991AAC1A7B0025365A /* CoreDataTableViewController.m */,
+			);
+			name = CoreDataTableViewController;
+			sourceTree = "<group>";
+		};
+		F791A6A51AAC1B200025365A /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				F791A6A21AAC1B180025365A /* Friend.h */,
+				F791A6A31AAC1B180025365A /* Friend.m */,
+			);
+			name = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -267,9 +301,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F7A443991AA4A50100E9ADFC /* nightLife.jpeg in Resources */,
-				F77C90131AA3FDA50005EC2F /* testImage.jpeg in Resources */,
+				F791A6971AAC1A090025365A /* nightLife.jpeg in Resources */,
 				EBD0D8B61A82E1F700B76C79 /* Main.storyboard in Resources */,
+				F791A6951AAC1A040025365A /* testImage.jpeg in Resources */,
 				EBD0D8BB1A82E1F700B76C79 /* LaunchScreen.xib in Resources */,
 				EBD0D8B81A82E1F700B76C79 /* Images.xcassets in Resources */,
 			);
@@ -293,12 +327,16 @@
 				EB8BD4191A886E3400851D28 /* SignUpViewController.m in Sources */,
 				F7A443941AA4913100E9ADFC /* Communication.m in Sources */,
 				F77C900D1AA3C16F0005EC2F /* User.m in Sources */,
-				EBD0D8B01A82E1F700B76C79 /* AppDelegate.m in Sources */,
+				F791A6AB1AAC1DDA0025365A /* AppDelegate.m in Sources */,
+				F791A69D1AAC1AB30025365A /* PeopleList.m in Sources */,
 				F7159A9F1A9478C900846566 /* EventViewController.m in Sources */,
 				F7A443961AA49B1A00E9ADFC /* NewsFeed.m in Sources */,
 				EB4B60CC1A82EC040061CCD8 /* PeopleViewController.m in Sources */,
+				F791A69A1AAC1A7B0025365A /* CoreDataTableViewController.m in Sources */,
 				F77C900B1AA3C0950005EC2F /* NewsFeedView.m in Sources */,
+				F791A6A41AAC1B180025365A /* Friend.m in Sources */,
 				F77C90101AA3F4A60005EC2F /* Lib.m in Sources */,
+				F791A6A11AAC1AEA0025365A /* GoMeet.xcdatamodeld in Sources */,
 				EBD0D8AD1A82E1F700B76C79 /* main.m in Sources */,
 				F7159A9C1A9478B600846566 /* NewsFeedViewController.m in Sources */,
 			);
@@ -509,6 +547,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F791A69F1AAC1AEA0025365A /* GoMeet.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F791A6A01AAC1AEA0025365A /* GoMeet.xcdatamodel */,
+			);
+			currentVersion = F791A6A01AAC1AEA0025365A /* GoMeet.xcdatamodel */;
+			path = GoMeet.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = EBD0D89F1A82E1F700B76C79 /* Project object */;
 }
