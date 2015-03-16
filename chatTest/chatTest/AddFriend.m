@@ -1,28 +1,32 @@
 //
-//  EventViewController.m
+//  AddFriend.m
 //  chatTest
 //
-//  Created by Simin Liu on 2/18/15.
+//  Created by Simin Liu on 3/16/15.
 //  Copyright (c) 2015 LPP. All rights reserved.
 //
 
-#import "EventViewController.h"
+#import "AddFriend.h"
 
-@interface EventViewController ()
-@property (strong, nonatomic) IBOutlet UIView *Pull;
-@property (weak, nonatomic) IBOutlet UIButton *Send;
-@property (weak, nonatomic) IBOutlet UIButton *friendRequest;
+@interface AddFriend ()
+@property (weak, nonatomic) IBOutlet UITextField *addFriendTextField;
+@property (weak, nonatomic) IBOutlet UIButton *addFriendButton;
+@property (nonatomic, assign) id currentResponder;
 
 @end
 
-@implementation EventViewController
+@implementation AddFriend
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [Communication initNetworkCommunication];
     [inputStream setDelegate:self];
     [outputStream setDelegate:self];
-    NSLog(@"ViewEventPage");
+     NSLog(@"AddFriendPage");
+    _addFriendTextField.delegate = self;
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(resignOnTap:)];
+    singleTap.numberOfTapsRequired = 1;
+    //[self setUserInteractionEnabled:YES];
+    //[iv addGestureRecognizer:singleTap];
 
     // Do any additional setup after loading the view.
 }
@@ -31,50 +35,22 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-- (IBAction)SendNewsFeed:(id)sender {
-    //[UIImage imageNamed:@"testImage"].
-    NSData *imageData = UIImageJPEGRepresentation([UIImage imageNamed:@"testImage.jpeg"],0.0);
-    NSString* testId = @"2174180160";
-    NSString* testBody = @"This is a test content";
-    //NSLog(@"This is test image before encode %@",imageData);
-    //NSString* testImage = [UIImageJPEGRepresentation([UIImage imageNamed:@"testImage.jpeg"],0.0) base64EncodedStringWithOptions:NSDataBase64Encoding76CharacterLineLength];
-  // NSString *imageOne = [ encodeBase64WithData:imageData];
-   // NSString *base64Encoded = [nsdata base64EncodedStringWithOptions:0];
-    //NSString* testImage = [Communication base64forData:imageData];
-    //NSLog(@"This is test image %@",testImage);
-    NSString *response  = [NSString stringWithFormat:@"newstatus:{\"id\":%@,\"body\":\"%@\",\"photo\":\"", testId,testBody];
-    //NSString *response  = [NSString stringWithFormat:@"newstatus:{\"id\":%@,\"body\":\"%@\"}",testId,testBody];
-    //NSLog(@"This is format string %@",response);
-        //NSString *imageHead = @"img:";
-    //NSMutableData *imageHeadData =[[NSMutableData alloc] initWithData:[imageHead dataUsingEncoding:NSASCIIStringEncoding]];
-    //UIImage *testImage = [UIImage imageNamed:@"testImage.jpeg"];
-    //NSData * testImageData = UIImageJPEGRepresentation(testImage,testImage.scale);
-    NSMutableData *data = [[NSMutableData alloc] initWithData:[response dataUsingEncoding:NSUTF8StringEncoding]];
-    //NSLog(@"This is format string %@",data);
-    //[imageHeadData appendData:testImageData];
-    [data appendData:imageData];
-    NSString* secondPart = @"\"}";
-    NSMutableData *seconddata = [[NSMutableData alloc] initWithData:[secondPart dataUsingEncoding:NSUTF8StringEncoding]];
-    [data appendData:seconddata];
 
-    [Communication send:data];
-
-    
-    
-}
-- (IBAction)PullNews:(id)sender {
-    NSString* testUser = @"2174180160";
-    NSLog(@"lengh of testuser %lu", (unsigned long)[testUser length]);
-    NSString* response = [NSString stringWithFormat:@"pollnews:%@",testUser];
-    NSData *data = [[NSData alloc] initWithData:[response dataUsingEncoding:NSUTF8StringEncoding]];
-    [Communication send:data];
-}
-- (IBAction)sendFriendRequest:(id)sender {
+- (IBAction)sendRequest:(id)sender {
     NSString* testUserId = @"2174180160";
-    NSString* testFriendId = @"1111";
-    NSString* response = [NSString stringWithFormat:@"addfriend:%@#%@",testUserId,testFriendId];
+    NSString* response = [NSString stringWithFormat:@"addfriend:%@#%@",testUserId,_addFriendTextField.text];
     NSData *data = [[NSData alloc] initWithData:[response dataUsingEncoding:NSUTF8StringEncoding]];
     [Communication send:data];
+    Friend* people = nil;
+    people = [NSEntityDescription insertNewObjectForEntityForName:@"Friend" inManagedObjectContext:[(AppDelegate*) [[UIApplication sharedApplication]delegate] managedObjectContext]];
+    //people.userName =[key obje]
+    //people.unique = unique;
+    [people setValue: _addFriendTextField.text forKey :@"userName"];
+    NSData *imageData = UIImageJPEGRepresentation([UIImage imageNamed:@"testImageApple.jpeg"],0.0);
+    [people setValue: imageData forKey :@"userPic"];
+    _addFriendTextField.text =@"";
+    
+    
     
 }
 
@@ -112,7 +88,7 @@
                         if (nil != output) {
                             switch (output.intValue) {
                                 case 1:
-                                   // NSLog(@"trigger segue");
+                                    // NSLog(@"trigger segue");
                                     //[[NSNotificationCenter defaultCenter] postNotificationName:@"LogInNotification" object:self];
                                     //[self performSegueWithIdentifier:@"login" sender:nil];
                                     
@@ -142,6 +118,20 @@
     }
     
 }
+
+
+-(BOOL) textFieldShouldReturn: (UITextField *) textField {
+    [textField resignFirstResponder];
+    return YES;
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    self.currentResponder = textField;
+}
+- (void)resignOnTap:(id)iSender {
+    [self.currentResponder resignFirstResponder];
+}
+
 
 /*
 #pragma mark - Navigation

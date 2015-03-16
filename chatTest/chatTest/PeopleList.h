@@ -10,6 +10,7 @@
 
 @interface PeopleList : CoreDataTableViewController
 
+
 @property(nonatomic,strong) NSManagedObjectContext *managedObjectContent;
 
 @end

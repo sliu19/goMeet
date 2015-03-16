@@ -17,6 +17,7 @@
 		EBD0D8D91A82E30500B76C79 /* InitPage.m in Sources */ = {isa = PBXBuildFile; fileRef = EBD0D8D71A82E30500B76C79 /* InitPage.m */; };
 		F7159A9C1A9478B600846566 /* NewsFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7159A9B1A9478B600846566 /* NewsFeedViewController.m */; };
 		F7159A9F1A9478C900846566 /* EventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7159A9E1A9478C900846566 /* EventViewController.m */; };
+		F75C0F7C1AB53766004E838A /* test.txt in Resources */ = {isa = PBXBuildFile; fileRef = F75C0F7B1AB53765004E838A /* test.txt */; };
 		F77C900B1AA3C0950005EC2F /* NewsFeedView.m in Sources */ = {isa = PBXBuildFile; fileRef = F77C900A1AA3C0950005EC2F /* NewsFeedView.m */; };
 		F77C900D1AA3C16F0005EC2F /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = F77C900C1AA3C16F0005EC2F /* User.m */; };
 		F77C90101AA3F4A60005EC2F /* Lib.m in Sources */ = {isa = PBXBuildFile; fileRef = F77C900F1AA3F4A60005EC2F /* Lib.m */; };
@@ -29,6 +30,9 @@
 		F791A6AB1AAC1DDA0025365A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F791A6AA1AAC1DDA0025365A /* AppDelegate.m */; };
 		F7A443941AA4913100E9ADFC /* Communication.m in Sources */ = {isa = PBXBuildFile; fileRef = F7A443931AA4913100E9ADFC /* Communication.m */; };
 		F7A443961AA49B1A00E9ADFC /* NewsFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = F7A443951AA49B1A00E9ADFC /* NewsFeed.m */; };
+		F7B0E5CF1AB69CE8000C1E82 /* forest.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F7B0E5CE1AB69CE8000C1E82 /* forest.jpeg */; };
+		F7B0E5D11AB69D47000C1E82 /* testImageApple.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F7B0E5D01AB69D47000C1E82 /* testImageApple.jpeg */; };
+		F7B0E5D41AB6A2AA000C1E82 /* AddFriend.m in Sources */ = {isa = PBXBuildFile; fileRef = F7B0E5D31AB6A2AA000C1E82 /* AddFriend.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +65,7 @@
 		F7159A9B1A9478B600846566 /* NewsFeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsFeedViewController.m; sourceTree = "<group>"; };
 		F7159A9D1A9478C900846566 /* EventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventViewController.h; path = ../EventViewController.h; sourceTree = "<group>"; };
 		F7159A9E1A9478C900846566 /* EventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventViewController.m; path = ../EventViewController.m; sourceTree = "<group>"; };
+		F75C0F7B1AB53765004E838A /* test.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.txt; sourceTree = "<group>"; };
 		F77C90091AA3C0950005EC2F /* NewsFeedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsFeedView.h; sourceTree = "<group>"; };
 		F77C900A1AA3C0950005EC2F /* NewsFeedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsFeedView.m; sourceTree = "<group>"; };
 		F77C900C1AA3C16F0005EC2F /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
@@ -82,6 +87,10 @@
 		F7A443931AA4913100E9ADFC /* Communication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Communication.m; sourceTree = "<group>"; };
 		F7A443951AA49B1A00E9ADFC /* NewsFeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsFeed.m; sourceTree = "<group>"; };
 		F7A443971AA49B2D00E9ADFC /* NewsFeed.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewsFeed.h; sourceTree = "<group>"; };
+		F7B0E5CE1AB69CE8000C1E82 /* forest.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = forest.jpeg; sourceTree = "<group>"; };
+		F7B0E5D01AB69D47000C1E82 /* testImageApple.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = testImageApple.jpeg; sourceTree = "<group>"; };
+		F7B0E5D21AB6A2AA000C1E82 /* AddFriend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddFriend.h; sourceTree = "<group>"; };
+		F7B0E5D31AB6A2AA000C1E82 /* AddFriend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddFriend.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +116,8 @@
 			children = (
 				F791A69B1AAC1AAF0025365A /* PeopleList.h */,
 				F791A69C1AAC1AB30025365A /* PeopleList.m */,
+				F7B0E5D21AB6A2AA000C1E82 /* AddFriend.h */,
+				F7B0E5D31AB6A2AA000C1E82 /* AddFriend.m */,
 				F7A443921AA4913100E9ADFC /* Communication.h */,
 				F7A443931AA4913100E9ADFC /* Communication.m */,
 				EBD0D8D61A82E30500B76C79 /* InitPage.h */,
@@ -146,6 +157,7 @@
 		EBD0D8A91A82E1F700B76C79 /* chatTest */ = {
 			isa = PBXGroup;
 			children = (
+				F75C0F7B1AB53765004E838A /* test.txt */,
 				F791A6A91AAC1DD70025365A /* AppDelegate.h */,
 				F791A6AA1AAC1DDA0025365A /* AppDelegate.m */,
 				EBD0D8B41A82E1F700B76C79 /* Main.storyboard */,
@@ -197,6 +209,8 @@
 			isa = PBXGroup;
 			children = (
 				F791A6961AAC1A090025365A /* nightLife.jpeg */,
+				F7B0E5CE1AB69CE8000C1E82 /* forest.jpeg */,
+				F7B0E5D01AB69D47000C1E82 /* testImageApple.jpeg */,
 				F791A6941AAC1A040025365A /* testImage.jpeg */,
 			);
 			name = UserImage;
@@ -305,6 +319,9 @@
 				EBD0D8B61A82E1F700B76C79 /* Main.storyboard in Resources */,
 				F791A6951AAC1A040025365A /* testImage.jpeg in Resources */,
 				EBD0D8BB1A82E1F700B76C79 /* LaunchScreen.xib in Resources */,
+				F7B0E5D11AB69D47000C1E82 /* testImageApple.jpeg in Resources */,
+				F7B0E5CF1AB69CE8000C1E82 /* forest.jpeg in Resources */,
+				F75C0F7C1AB53766004E838A /* test.txt in Resources */,
 				EBD0D8B81A82E1F700B76C79 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -333,6 +350,7 @@
 				F7A443961AA49B1A00E9ADFC /* NewsFeed.m in Sources */,
 				EB4B60CC1A82EC040061CCD8 /* PeopleViewController.m in Sources */,
 				F791A69A1AAC1A7B0025365A /* CoreDataTableViewController.m in Sources */,
+				F7B0E5D41AB6A2AA000C1E82 /* AddFriend.m in Sources */,
 				F77C900B1AA3C0950005EC2F /* NewsFeedView.m in Sources */,
 				F791A6A41AAC1B180025365A /* Friend.m in Sources */,
 				F77C90101AA3F4A60005EC2F /* Lib.m in Sources */,

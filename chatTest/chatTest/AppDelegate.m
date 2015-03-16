@@ -17,13 +17,22 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [CoreDataTableViewController deleteAllObjectsWithEntityName:@"Friend" inContext:[(AppDelegate*) [[UIApplication sharedApplication]delegate] managedObjectContext]];
     Friend* people = nil;
+    Friend* people2 = nil;
     people = [NSEntityDescription insertNewObjectForEntityForName:@"Friend" inManagedObjectContext:[(AppDelegate*) [[UIApplication sharedApplication]delegate] managedObjectContext]];
     //people.userName =[key obje]
     //people.unique = unique;
     [people setValue: @"testUserName" forKey :@"userName"];
     NSData *imageData = UIImageJPEGRepresentation([UIImage imageNamed:@"testImage"],0.0);
     [people setValue: imageData forKey :@"userPic"];
+    //NSLog(@"This is debug for people list %@",people.userName);
+    people2 = [NSEntityDescription insertNewObjectForEntityForName:@"Friend" inManagedObjectContext:[(AppDelegate*) [[UIApplication sharedApplication]delegate] managedObjectContext]];
+    //people.userName =[key obje]
+    //people.unique = unique;
+    [people2 setValue: @"testUserName222" forKey :@"userName"];
+    [people2 setValue: imageData forKey :@"userPic"];
+
 
     return YES;
 }

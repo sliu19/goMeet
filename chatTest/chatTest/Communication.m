@@ -23,6 +23,7 @@
 }
 
 + (void)send:(NSData *)myData{
+    NSLog(@"The length of input %lu",(unsigned long)[myData length]);
     [outputStream write:[myData bytes] maxLength:[myData length]];
 }
 
@@ -55,8 +56,6 @@
 +(CGFloat)cornerOffset:(UIView*) thisView{
     return [Communication cornerRadius:thisView]/3.0;
 }
-
-
 
 
 

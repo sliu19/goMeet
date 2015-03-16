@@ -24,6 +24,13 @@
 // The controller (this class fetches nothing if this is not set).
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 
++(void)deleteAllObjectsInContext:(NSManagedObjectContext *)context
+                       usingModel:(NSManagedObjectModel *)model;
++(void)deleteAllObjectsWithEntityName:(NSString *)entityName
+                             inContext:(NSManagedObjectContext *)context;
+
+
+
 // Causes the fetchedResultsController to refetch the data.
 // You almost certainly never need to call this.
 // The NSFetchedResultsController class observes the context

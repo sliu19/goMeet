@@ -8,7 +8,7 @@
 
 #import "NewsFeedViewController.h"
 #define OFFSET_FROM_FRAME  10
-#define OFFSET_FROM_TOP 80
+#define OFFSET_FROM_TOP 20
 #define OFFSET_BETWEEN_CARD 30
 
 @interface NewsFeedViewController ()
@@ -20,6 +20,7 @@
 @property (nonatomic) CGPoint startPoint;
 
 @property (strong,nonatomic) UIView* lastView;
+//@property (weak, nonatomic) IBOutlet UIBarButtonItem *myBarButtonItem;
 
 
 @end
@@ -30,18 +31,19 @@ UIScrollView* window;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    //[[self navigationItem] setRightBarButtonItem:_myBarButtonItem];
     // Do any additional setup after loading the view.
     [inputStream setDelegate:self];
     [outputStream setDelegate:self];
     NSLog(@"InitPage");
     _NewsFeedList = [[NSMutableArray alloc] init];
     NewsFeed* testNewsFeed =[[NewsFeed alloc]init];
-    UIImage *testImage = [UIImage imageNamed:@"testImage.jpeg"];
+    UIImage *testImage = [UIImage imageNamed:@"testImageApple.jpeg"];
     NSData * testImageData = UIImageJPEGRepresentation(testImage,testImage.scale);
     [testNewsFeed SampleInit:testImageData];
     //Make 10 sample newsFeed
     [_NewsFeedList addObject:testNewsFeed];
-    _BackGroundView.BackgroundColor = [UIColor colorWithPatternImage:[Communication imageWithImage: [UIImage imageNamed:@"nightLife.jpeg"] scaledToSize:_BackGroundView.bounds.size]];
+    _BackGroundView.BackgroundColor = [UIColor colorWithPatternImage:[Communication imageWithImage: [UIImage imageNamed:@"forest.jpeg"] scaledToSize:_BackGroundView.bounds.size]];
     _startPoint = _BackGroundView.bounds.origin;
     _startPoint.x += OFFSET_FROM_FRAME;
     _startPoint.y += OFFSET_FROM_TOP;
@@ -72,6 +74,10 @@ UIScrollView* window;
     contentImage = [Communication imageWithImage:contentImage scaledToSize:CGSizeMake(newView.bounds.size.width-2*OFFSET_FROM_FRAME,newView.bounds.size.width-2*OFFSET_FROM_FRAME)];
     UIImageView *iv = [[UIImageView alloc] initWithFrame:CGRectMake(OFFSET_FROM_FRAME, OFFSET_FROM_FRAME, contentImage.size.width,contentImage.size.height )];
     [iv setImage:contentImage];
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(resignOnTap:)];
+    singleTap.numberOfTapsRequired = 1;
+    [iv setUserInteractionEnabled:YES];
+    [iv addGestureRecognizer:singleTap];
     innerPoint.x = OFFSET_FROM_FRAME;
     innerPoint.y = OFFSET_FROM_FRAME +contentImage.size.height;
     UILabel* contentString = [[UILabel alloc]initWithFrame:CGRectMake(innerPoint.x, innerPoint.y, newView.bounds.size.width-2*OFFSET_FROM_FRAME,20)];
@@ -110,8 +116,27 @@ UIScrollView* window;
 }
 
 
+- (IBAction)addNewsFeed:(id)sender {
+}
 
-
+- (void)resignOnTap:(id)sender {
+    //[self.currentResponder resignFirstResponder];
+    NSLog(@"Single Tab detacted");
+   // [iSender.imageView setFrame:CGRectMake(0, 0, self.view.frame.size.width, 80)];
+    if ([sender isKindOfClass:[UIImageView class]]) {
+        [sender setFrame:CGRectMake(0, 0, self.view.frame.size.width, 80)];
+    }
+    else {
+        NSLog(@"This is not a imageView");
+        NSLog(@"Sender is a %@",NSStringFromClass([sender class]));
+        //NSLog(@"Sender is a %@",NSStringFromClass([sender class]));
+        //[UIView animateWithDuration:0.25 animations:^{
+          //      self.imageView.center = CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds));
+            //    self.imageView.transform = CGAffineTransformIdentity;
+       // }];
+        
+    }
+}
 /*
 #pragma mark - Navigation
 

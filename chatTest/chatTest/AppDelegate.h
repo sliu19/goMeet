@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
 #import "Friend.h"
+#import "CoreDataTableViewController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

@@ -8,7 +8,27 @@
 
 #import "PeopleList.h"
 #import "Friend.h"
+#import "AppDelegate.h"
+@interface PeopleList()
+
+@property (strong, nonatomic) IBOutlet UITableView *peopleListTableView;
+
+
+@end
+
+
 @implementation PeopleList
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    NSLog(@"FriendListPage");
+
+    [self setManagedObjectContent:[(AppDelegate*) [[UIApplication sharedApplication]delegate] managedObjectContext]];
+    CGFloat topLayoutGuide = self.topLayoutGuide.length;
+    _peopleListTableView.contentInset = UIEdgeInsetsMake(topLayoutGuide, 0, 0, 0);
+    
+}
 -(void)setManagedObjectContent:(NSManagedObjectContext *)managedObjectContent
 {
     _managedObjectContent = managedObjectContent;
@@ -32,10 +52,10 @@
     
     cell.textLabel.text = people.userName;
     cell.detailTextLabel.text = @"This is a text detailed text label";
+    cell.imageView.image = [UIImage imageNamed:@"testImage.jpeg"];
     
     return cell;
 }
-
 
 
 @end

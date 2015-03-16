@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EventViewController : UIViewController<NSStreamDelegate, UITableViewDelegate, UITableViewDataSource>
+#import "Communication.h"
+@interface EventViewController : UIViewController<NSStreamDelegate>
 
 @end

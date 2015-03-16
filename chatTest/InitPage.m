@@ -17,6 +17,7 @@
 
 
 
+
 @end
 
 @implementation InitPage
@@ -76,6 +77,7 @@
 }
 - (void)resignOnTap:(id)iSender {
     [self.currentResponder resignFirstResponder];
+    // self.becomeFirstResponder();
 }
 /*
 #pragma mark - Navigation
