@@ -33,6 +33,13 @@
 		F7B0E5CF1AB69CE8000C1E82 /* forest.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F7B0E5CE1AB69CE8000C1E82 /* forest.jpeg */; };
 		F7B0E5D11AB69D47000C1E82 /* testImageApple.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F7B0E5D01AB69D47000C1E82 /* testImageApple.jpeg */; };
 		F7B0E5D41AB6A2AA000C1E82 /* AddFriend.m in Sources */ = {isa = PBXBuildFile; fileRef = F7B0E5D31AB6A2AA000C1E82 /* AddFriend.m */; };
+		F7F2BEF41AB9EDA300C810E5 /* Personalprofile.m in Sources */ = {isa = PBXBuildFile; fileRef = F7F2BEF31AB9EDA300C810E5 /* Personalprofile.m */; };
+		F7F2BEF71ABA965200C810E5 /* addNewsFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7F2BEF61ABA965200C810E5 /* addNewsFeedViewController.m */; };
+		F7F2BF081ABB39C000C810E5 /* CGGeometry+RSKImageCropper.m in Sources */ = {isa = PBXBuildFile; fileRef = F7F2BEFE1ABB39C000C810E5 /* CGGeometry+RSKImageCropper.m */; };
+		F7F2BF091ABB39C000C810E5 /* RSKImageCropViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7F2BF011ABB39C000C810E5 /* RSKImageCropViewController.m */; };
+		F7F2BF0A1ABB39C000C810E5 /* RSKImageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7F2BF031ABB39C000C810E5 /* RSKImageScrollView.m */; };
+		F7F2BF0B1ABB39C000C810E5 /* RSKTouchView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7F2BF051ABB39C000C810E5 /* RSKTouchView.m */; };
+		F7F2BF0C1ABB39C000C810E5 /* UIImage+RSKImageCropper.m in Sources */ = {isa = PBXBuildFile; fileRef = F7F2BF071ABB39C000C810E5 /* UIImage+RSKImageCropper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +98,21 @@
 		F7B0E5D01AB69D47000C1E82 /* testImageApple.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = testImageApple.jpeg; sourceTree = "<group>"; };
 		F7B0E5D21AB6A2AA000C1E82 /* AddFriend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddFriend.h; sourceTree = "<group>"; };
 		F7B0E5D31AB6A2AA000C1E82 /* AddFriend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddFriend.m; sourceTree = "<group>"; };
+		F7F2BEF21AB9EDA300C810E5 /* Personalprofile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Personalprofile.h; sourceTree = "<group>"; };
+		F7F2BEF31AB9EDA300C810E5 /* Personalprofile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Personalprofile.m; sourceTree = "<group>"; };
+		F7F2BEF51ABA965200C810E5 /* addNewsFeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = addNewsFeedViewController.h; sourceTree = "<group>"; };
+		F7F2BEF61ABA965200C810E5 /* addNewsFeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = addNewsFeedViewController.m; sourceTree = "<group>"; };
+		F7F2BEFD1ABB39C000C810E5 /* CGGeometry+RSKImageCropper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CGGeometry+RSKImageCropper.h"; path = "chatTest/Base.lproj/RSKImageCropper/CGGeometry+RSKImageCropper.h"; sourceTree = "<group>"; };
+		F7F2BEFE1ABB39C000C810E5 /* CGGeometry+RSKImageCropper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CGGeometry+RSKImageCropper.m"; path = "chatTest/Base.lproj/RSKImageCropper/CGGeometry+RSKImageCropper.m"; sourceTree = "<group>"; };
+		F7F2BEFF1ABB39C000C810E5 /* RSKImageCropper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RSKImageCropper.h; path = chatTest/Base.lproj/RSKImageCropper/RSKImageCropper.h; sourceTree = "<group>"; };
+		F7F2BF001ABB39C000C810E5 /* RSKImageCropViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RSKImageCropViewController.h; path = chatTest/Base.lproj/RSKImageCropper/RSKImageCropViewController.h; sourceTree = "<group>"; };
+		F7F2BF011ABB39C000C810E5 /* RSKImageCropViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RSKImageCropViewController.m; path = chatTest/Base.lproj/RSKImageCropper/RSKImageCropViewController.m; sourceTree = "<group>"; };
+		F7F2BF021ABB39C000C810E5 /* RSKImageScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RSKImageScrollView.h; path = chatTest/Base.lproj/RSKImageCropper/RSKImageScrollView.h; sourceTree = "<group>"; };
+		F7F2BF031ABB39C000C810E5 /* RSKImageScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RSKImageScrollView.m; path = chatTest/Base.lproj/RSKImageCropper/RSKImageScrollView.m; sourceTree = "<group>"; };
+		F7F2BF041ABB39C000C810E5 /* RSKTouchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RSKTouchView.h; path = chatTest/Base.lproj/RSKImageCropper/RSKTouchView.h; sourceTree = "<group>"; };
+		F7F2BF051ABB39C000C810E5 /* RSKTouchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RSKTouchView.m; path = chatTest/Base.lproj/RSKImageCropper/RSKTouchView.m; sourceTree = "<group>"; };
+		F7F2BF061ABB39C000C810E5 /* UIImage+RSKImageCropper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+RSKImageCropper.h"; path = "chatTest/Base.lproj/RSKImageCropper/UIImage+RSKImageCropper.h"; sourceTree = "<group>"; };
+		F7F2BF071ABB39C000C810E5 /* UIImage+RSKImageCropper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+RSKImageCropper.m"; path = "chatTest/Base.lproj/RSKImageCropper/UIImage+RSKImageCropper.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,10 +136,9 @@
 		EB4B60C91A82EB960061CCD8 /* ViewControll */ = {
 			isa = PBXGroup;
 			children = (
-				F791A69B1AAC1AAF0025365A /* PeopleList.h */,
-				F791A69C1AAC1AB30025365A /* PeopleList.m */,
-				F7B0E5D21AB6A2AA000C1E82 /* AddFriend.h */,
-				F7B0E5D31AB6A2AA000C1E82 /* AddFriend.m */,
+				F7F2BEFA1ABA967500C810E5 /* Event */,
+				F7F2BEF91ABA966D00C810E5 /* NewsFeed */,
+				F7F2BEF81ABA966100C810E5 /* FriendList */,
 				F7A443921AA4913100E9ADFC /* Communication.h */,
 				F7A443931AA4913100E9ADFC /* Communication.m */,
 				EBD0D8D61A82E30500B76C79 /* InitPage.h */,
@@ -126,12 +147,6 @@
 				EB8BD4181A886E3400851D28 /* SignUpViewController.m */,
 				EB4B60CA1A82EC040061CCD8 /* PeopleViewController.h */,
 				EB4B60CB1A82EC040061CCD8 /* PeopleViewController.m */,
-				F7159A9A1A9478B600846566 /* NewsFeedViewController.h */,
-				F7159A9B1A9478B600846566 /* NewsFeedViewController.m */,
-				F7A443971AA49B2D00E9ADFC /* NewsFeed.h */,
-				F7A443951AA49B1A00E9ADFC /* NewsFeed.m */,
-				F7159A9D1A9478C900846566 /* EventViewController.h */,
-				F7159A9E1A9478C900846566 /* EventViewController.m */,
 			);
 			name = ViewControll;
 			sourceTree = "<group>";
@@ -167,6 +182,7 @@
 				F77C900C1AA3C16F0005EC2F /* User.m */,
 				F77C90111AA3F4B50005EC2F /* Lib.h */,
 				F77C900F1AA3F4A60005EC2F /* Lib.m */,
+				F7F2BF0D1ABB39C500C810E5 /* RSKImageCrop */,
 				F791A69E1AAC1AC00025365A /* CoreDataTableViewController */,
 				F77C90141AA3FDB20005EC2F /* UserImage */,
 				F77C90091AA3C0950005EC2F /* NewsFeedView.h */,
@@ -232,6 +248,60 @@
 				F791A6A31AAC1B180025365A /* Friend.m */,
 			);
 			name = CoreData;
+			sourceTree = "<group>";
+		};
+		F7F2BEF81ABA966100C810E5 /* FriendList */ = {
+			isa = PBXGroup;
+			children = (
+				F7B0E5D21AB6A2AA000C1E82 /* AddFriend.h */,
+				F7B0E5D31AB6A2AA000C1E82 /* AddFriend.m */,
+				F791A69B1AAC1AAF0025365A /* PeopleList.h */,
+				F791A69C1AAC1AB30025365A /* PeopleList.m */,
+				F7F2BEF21AB9EDA300C810E5 /* Personalprofile.h */,
+				F7F2BEF31AB9EDA300C810E5 /* Personalprofile.m */,
+			);
+			name = FriendList;
+			sourceTree = "<group>";
+		};
+		F7F2BEF91ABA966D00C810E5 /* NewsFeed */ = {
+			isa = PBXGroup;
+			children = (
+				F7A443971AA49B2D00E9ADFC /* NewsFeed.h */,
+				F7A443951AA49B1A00E9ADFC /* NewsFeed.m */,
+				F7159A9A1A9478B600846566 /* NewsFeedViewController.h */,
+				F7159A9B1A9478B600846566 /* NewsFeedViewController.m */,
+				F7F2BEF51ABA965200C810E5 /* addNewsFeedViewController.h */,
+				F7F2BEF61ABA965200C810E5 /* addNewsFeedViewController.m */,
+			);
+			name = NewsFeed;
+			sourceTree = "<group>";
+		};
+		F7F2BEFA1ABA967500C810E5 /* Event */ = {
+			isa = PBXGroup;
+			children = (
+				F7159A9D1A9478C900846566 /* EventViewController.h */,
+				F7159A9E1A9478C900846566 /* EventViewController.m */,
+			);
+			name = Event;
+			sourceTree = "<group>";
+		};
+		F7F2BF0D1ABB39C500C810E5 /* RSKImageCrop */ = {
+			isa = PBXGroup;
+			children = (
+				F7F2BEFD1ABB39C000C810E5 /* CGGeometry+RSKImageCropper.h */,
+				F7F2BEFE1ABB39C000C810E5 /* CGGeometry+RSKImageCropper.m */,
+				F7F2BEFF1ABB39C000C810E5 /* RSKImageCropper.h */,
+				F7F2BF001ABB39C000C810E5 /* RSKImageCropViewController.h */,
+				F7F2BF011ABB39C000C810E5 /* RSKImageCropViewController.m */,
+				F7F2BF021ABB39C000C810E5 /* RSKImageScrollView.h */,
+				F7F2BF031ABB39C000C810E5 /* RSKImageScrollView.m */,
+				F7F2BF041ABB39C000C810E5 /* RSKTouchView.h */,
+				F7F2BF051ABB39C000C810E5 /* RSKTouchView.m */,
+				F7F2BF061ABB39C000C810E5 /* UIImage+RSKImageCropper.h */,
+				F7F2BF071ABB39C000C810E5 /* UIImage+RSKImageCropper.m */,
+			);
+			name = RSKImageCrop;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -343,20 +413,27 @@
 				EBD0D8D91A82E30500B76C79 /* InitPage.m in Sources */,
 				EB8BD4191A886E3400851D28 /* SignUpViewController.m in Sources */,
 				F7A443941AA4913100E9ADFC /* Communication.m in Sources */,
+				F7F2BF0B1ABB39C000C810E5 /* RSKTouchView.m in Sources */,
 				F77C900D1AA3C16F0005EC2F /* User.m in Sources */,
+				F7F2BF0A1ABB39C000C810E5 /* RSKImageScrollView.m in Sources */,
 				F791A6AB1AAC1DDA0025365A /* AppDelegate.m in Sources */,
 				F791A69D1AAC1AB30025365A /* PeopleList.m in Sources */,
+				F7F2BF081ABB39C000C810E5 /* CGGeometry+RSKImageCropper.m in Sources */,
 				F7159A9F1A9478C900846566 /* EventViewController.m in Sources */,
 				F7A443961AA49B1A00E9ADFC /* NewsFeed.m in Sources */,
 				EB4B60CC1A82EC040061CCD8 /* PeopleViewController.m in Sources */,
 				F791A69A1AAC1A7B0025365A /* CoreDataTableViewController.m in Sources */,
 				F7B0E5D41AB6A2AA000C1E82 /* AddFriend.m in Sources */,
+				F7F2BF091ABB39C000C810E5 /* RSKImageCropViewController.m in Sources */,
+				F7F2BEF41AB9EDA300C810E5 /* Personalprofile.m in Sources */,
 				F77C900B1AA3C0950005EC2F /* NewsFeedView.m in Sources */,
 				F791A6A41AAC1B180025365A /* Friend.m in Sources */,
 				F77C90101AA3F4A60005EC2F /* Lib.m in Sources */,
 				F791A6A11AAC1AEA0025365A /* GoMeet.xcdatamodeld in Sources */,
 				EBD0D8AD1A82E1F700B76C79 /* main.m in Sources */,
 				F7159A9C1A9478B600846566 /* NewsFeedViewController.m in Sources */,
+				F7F2BF0C1ABB39C000C810E5 /* UIImage+RSKImageCropper.m in Sources */,
+				F7F2BEF71ABA965200C810E5 /* addNewsFeedViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

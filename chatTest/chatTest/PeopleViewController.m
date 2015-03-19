@@ -7,6 +7,7 @@
 //
 
 #import "PeopleViewController.h"
+#import "Personalprofile.h"
 
 
 @interface PeopleViewController ()
@@ -70,6 +71,7 @@
     [self.tView reloadData];
     
 }
+
 
 
 @end

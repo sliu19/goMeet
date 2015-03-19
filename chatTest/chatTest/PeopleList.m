@@ -9,6 +9,7 @@
 #import "PeopleList.h"
 #import "Friend.h"
 #import "AppDelegate.h"
+#import "Personalprofile.h"
 @interface PeopleList()
 
 @property (strong, nonatomic) IBOutlet UITableView *peopleListTableView;
@@ -56,6 +57,15 @@
     
     return cell;
 }
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if([[segue identifier] isEqualToString:@"Personal Profile"])
+    {
+        Personalprofile *vc = [segue destinationViewController];
+        Friend *people = [self.fetchedResultsController objectAtIndexPath:[self.tableView indexPathForSelectedRow]];
+       vc.friend = people;
+    }
+}
+
 
 
 @end

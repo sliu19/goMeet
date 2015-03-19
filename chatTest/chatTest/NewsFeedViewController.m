@@ -21,11 +21,12 @@
 
 @property (strong,nonatomic) UIView* lastView;
 //@property (weak, nonatomic) IBOutlet UIBarButtonItem *myBarButtonItem;
+@property (weak, nonatomic) IBOutlet UIScrollView *window;
 
 
 @end
 
-UIScrollView* window;
+//UIScrollView* window;
 
 @implementation NewsFeedViewController
 
@@ -47,8 +48,8 @@ UIScrollView* window;
     _startPoint = _BackGroundView.bounds.origin;
     _startPoint.x += OFFSET_FROM_FRAME;
     _startPoint.y += OFFSET_FROM_TOP;
-    window = [[UIScrollView alloc] initWithFrame:self.view.bounds];
-    [self.view addSubview:window];
+    //window = [[UIScrollView alloc] initWithFrame:self.view.bounds];
+    [self.view addSubview:_window];
     [self drawNewsFeed:_startPoint newsfeed:testNewsFeed];
     [self drawNewsFeed:_startPoint newsfeed:testNewsFeed];
     [self drawNewsFeed:_startPoint newsfeed:testNewsFeed];
@@ -87,8 +88,8 @@ UIScrollView* window;
     contentString.backgroundColor=[UIColor clearColor];
     [newView addSubview:contentString];
     [newView addSubview:iv];
-    [window addSubview:newView];
-    [window setContentSize:CGSizeMake(window.bounds.size.width, _startPoint.y)];
+    [_window addSubview:newView];
+    [_window setContentSize:CGSizeMake(_window.bounds.size.width, _startPoint.y)];
     
     
 }
