@@ -28,6 +28,8 @@
 		F791A6A11AAC1AEA0025365A /* GoMeet.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F791A69F1AAC1AEA0025365A /* GoMeet.xcdatamodeld */; };
 		F791A6A41AAC1B180025365A /* Friend.m in Sources */ = {isa = PBXBuildFile; fileRef = F791A6A31AAC1B180025365A /* Friend.m */; };
 		F791A6AB1AAC1DDA0025365A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F791A6AA1AAC1DDA0025365A /* AppDelegate.m */; };
+		F7A11D8D1ABD0C7900DF9AEB /* testLargeImage.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F7A11D8C1ABD0C7800DF9AEB /* testLargeImage.jpeg */; };
+		F7A11D8F1ABD1BBD00DF9AEB /* testSmallImage.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F7A11D8E1ABD1BBD00DF9AEB /* testSmallImage.jpeg */; };
 		F7A443941AA4913100E9ADFC /* Communication.m in Sources */ = {isa = PBXBuildFile; fileRef = F7A443931AA4913100E9ADFC /* Communication.m */; };
 		F7A443961AA49B1A00E9ADFC /* NewsFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = F7A443951AA49B1A00E9ADFC /* NewsFeed.m */; };
 		F7B0E5CF1AB69CE8000C1E82 /* forest.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F7B0E5CE1AB69CE8000C1E82 /* forest.jpeg */; };
@@ -90,6 +92,8 @@
 		F791A6A31AAC1B180025365A /* Friend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Friend.m; sourceTree = "<group>"; };
 		F791A6A91AAC1DD70025365A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F791A6AA1AAC1DDA0025365A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		F7A11D8C1ABD0C7800DF9AEB /* testLargeImage.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = testLargeImage.jpeg; sourceTree = "<group>"; };
+		F7A11D8E1ABD1BBD00DF9AEB /* testSmallImage.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = testSmallImage.jpeg; sourceTree = "<group>"; };
 		F7A443921AA4913100E9ADFC /* Communication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Communication.h; sourceTree = "<group>"; };
 		F7A443931AA4913100E9ADFC /* Communication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Communication.m; sourceTree = "<group>"; };
 		F7A443951AA49B1A00E9ADFC /* NewsFeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsFeed.m; sourceTree = "<group>"; };
@@ -228,6 +232,8 @@
 				F7B0E5CE1AB69CE8000C1E82 /* forest.jpeg */,
 				F7B0E5D01AB69D47000C1E82 /* testImageApple.jpeg */,
 				F791A6941AAC1A040025365A /* testImage.jpeg */,
+				F7A11D8E1ABD1BBD00DF9AEB /* testSmallImage.jpeg */,
+				F7A11D8C1ABD0C7800DF9AEB /* testLargeImage.jpeg */,
 			);
 			name = UserImage;
 			sourceTree = "<group>";
@@ -392,6 +398,8 @@
 				F7B0E5D11AB69D47000C1E82 /* testImageApple.jpeg in Resources */,
 				F7B0E5CF1AB69CE8000C1E82 /* forest.jpeg in Resources */,
 				F75C0F7C1AB53766004E838A /* test.txt in Resources */,
+				F7A11D8F1ABD1BBD00DF9AEB /* testSmallImage.jpeg in Resources */,
+				F7A11D8D1ABD0C7900DF9AEB /* testLargeImage.jpeg in Resources */,
 				EBD0D8B81A82E1F700B76C79 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

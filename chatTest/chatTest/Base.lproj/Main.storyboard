@@ -429,7 +429,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="sendFriendRequest:" destination="NLI-vG-vuI" eventType="touchUpInside" id="ylw-GJ-OzQ"/>
+                                    <action selector="sendFriendRequest:" destination="NLI-vG-vuI" eventType="touchUpInside" id="pzm-wi-tMU"/>
                                 </connections>
                             </button>
                         </subviews>

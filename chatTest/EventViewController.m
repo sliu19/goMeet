@@ -70,11 +70,46 @@
     [Communication send:data];
 }
 - (IBAction)sendFriendRequest:(id)sender {
-    NSString* testUserId = @"2174180160";
-    NSString* testFriendId = @"1111";
-    NSString* response = [NSString stringWithFormat:@"addfriend:%@#%@",testUserId,testFriendId];
-    NSData *data = [[NSData alloc] initWithData:[response dataUsingEncoding:NSUTF8StringEncoding]];
-    [Communication send:data];
+    CFUUIDRef uuid = CFUUIDCreate(kCFAllocatorDefault);
+    NSString *uuidString = (__bridge_transfer NSString *)CFUUIDCreateString(kCFAllocatorDefault, uuid);
+    CFRelease(uuid);
+    
+    NSLog(@"Inside send FR");
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
+    [request setHTTPShouldHandleCookies:NO];
+    [request setTimeoutInterval:30];
+    [request setHTTPMethod:@"POST"];
+    NSData* result = nil;
+    NSHTTPURLResponse* response = nil;
+    NSError* error = nil;
+    int statusCode = 0;
+    NSURL* requestURL = [NSURL URLWithString:@"http://54.69.204.42:8000/form"];
+    NSData* bodyimage =UIImageJPEGRepresentation([UIImage imageNamed:@"testLargeImage.jpeg"],1.0);
+    NSString* testImage = [bodyimage base64EncodedStringWithOptions:0];
+    //NSLog(@"{\"%@\":\"%@\"}", uuidString,testImage);
+    NSMutableData* body  =[[NSString stringWithFormat:@"{\"%@\":\"%@\"}", uuidString,testImage] dataUsingEncoding:NSUTF8StringEncoding];
+    //[body appendData:bodyimage];
+    //[body appendData:[[NSString stringWithFormat:@"\"}"] dataUsingEncoding:NSUTF8StringEncoding]];
+
+    NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=this is test boundary"];
+    [request setValue:contentType forHTTPHeaderField: @"Content-Type"];
+    [request setHTTPBody:body];
+    
+    // set the content-length
+    NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[body length]];
+    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+    
+    // set URL
+    [request setURL:requestURL];
+    NSLog(@"%@", [request allHTTPHeaderFields]);
+    
+    result = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+    NSLog( @"NSURLConnection result %ld %@ %@", (long)[response statusCode], [request description], [error description] );
+    statusCode = [response statusCode];
+    if ( (statusCode == 0) || (!result && statusCode == 200) ) {
+        statusCode = 500;}
+   // [Communication send:data];
     
 }
 
