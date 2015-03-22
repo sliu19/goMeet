@@ -24,6 +24,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    //Send through NSStrem
     [Communication initNetworkCommunication];
     [inputStream setDelegate:self];
     [outputStream setDelegate:self];
@@ -34,11 +35,26 @@
                                              selector:@selector(receiveLogInNotification:)
                                                  name:@"LogInNotification"
                                                object:nil];
+    
+    
 
     
     // Do any additional setup after loading the view from its nib.
 }
 
+
+-(void) viewDidAppear:(BOOL)animated{
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    NSString* userId = [prefs stringForKey:@"userID"];
+    NSLog(@"UserDefault data userID is %@",userId);
+
+    if (userId!=nil) {
+        [self performSegueWithIdentifier:@"login" sender:nil];
+    }
+    
+
+    
+}
 - (void) receiveLogInNotification:(NSNotification *) notification
 {
     // [notification name] should always be @"TestNotification"
@@ -56,14 +72,35 @@
 - (IBAction)logIn:(id)sender {
     
     NSString *response  = [NSString stringWithFormat:@"log:%@;%@" , _phoneNum.text,_passCode.text];
-    //NSString *imageHead = @"img:";
-    //NSMutableData *imageHeadData =[[NSMutableData alloc] initWithData:[imageHead dataUsingEncoding:NSASCIIStringEncoding]];
-    //UIImage *testImage = [UIImage imageNamed:@"testImage.jpeg"];
-    //NSData * testImageData = UIImageJPEGRepresentation(testImage,testImage.scale);
     NSData *data = [[NSData alloc] initWithData:[response dataUsingEncoding:NSASCIIStringEncoding]];
-    //[imageHeadData appendData:testImageData];
     [Communication send:data];
-    //[outputStream write:[imageHeadData bytes] maxLength:[imageHeadData length]];
+        // Hide the keyboard
+        [_phoneNum resignFirstResponder];
+        [_passCode resignFirstResponder];
+        //[ageTextField resignFirstResponder];
+        
+        // Create strings and integer to store the text info
+        NSString *userID = [_phoneNum text];
+        NSString *userPassCode  = [_passCode text];
+        //int age = [[ageTextField text] integerValue];
+        
+        // Create instances of NSData
+        UIImage *contactImage = [UIImage imageNamed:@"testImage.jpeg"];
+        NSData *imageData = UIImageJPEGRepresentation(contactImage, 100);
+        
+        
+        // Store the data
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        
+        [defaults setObject:userID forKey:@"userID"];
+        [defaults setObject:userPassCode forKey:@"passCode"];
+        //[defaults setInteger:age forKey:@"age"];
+        [defaults setObject:imageData forKey:@"userPic"];
+        [defaults synchronize];
+    
+    
+        
+    NSLog(@"Data saved");
 }
 
 
@@ -122,7 +159,6 @@
                             switch (output.intValue) {
                                 case 1:
                                     NSLog(@"trigger segue");
-                                    //[[NSNotificationCenter defaultCenter] postNotificationName:@"LogInNotification" object:self];
                                     [self performSegueWithIdentifier:@"login" sender:nil];
                                     
                                     break;

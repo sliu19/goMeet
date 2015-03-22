@@ -57,8 +57,14 @@
     return [Communication cornerRadius:thisView]/3.0;
 }
 
-
-
++(UIImage*)compressToSmallSquare:(UIImage*)oldImage{
+    CGSize newSize = CGSizeMake(30.0f, 30.0f);
+    UIGraphicsBeginImageContext(newSize);
+    [oldImage drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
+    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newImage;
+}
 //Test HTTP Request
 
 

@@ -14,6 +14,10 @@
 
 @implementation AppDelegate
 
+@synthesize managedObjectContext = _managedObjectContext;
+@synthesize managedObjectModel = _managedObjectModel;
+@synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
+
 - (void)application:(UIApplication*)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData*)deviceToken
 {
     NSLog(@"My token is: %@", deviceToken);
@@ -41,6 +45,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    NSLog(@"Start App");
     [CoreDataTableViewController deleteAllObjectsWithEntityName:@"Friend" inContext:[(AppDelegate*) [[UIApplication sharedApplication]delegate] managedObjectContext]];
     Friend* people = nil;
     Friend* people2 = nil;
@@ -50,12 +55,15 @@
     [people setValue: @"testUserName" forKey :@"userName"];
     NSData *imageData = UIImageJPEGRepresentation([UIImage imageNamed:@"testImage"],0.0);
     [people setValue: imageData forKey :@"userPic"];
+    [people setValue:@"111111" forKey:@"userImageUUID"];
     //NSLog(@"This is debug for people list %@",people.userName);
     people2 = [NSEntityDescription insertNewObjectForEntityForName:@"Friend" inManagedObjectContext:[(AppDelegate*) [[UIApplication sharedApplication]delegate] managedObjectContext]];
     //people.userName =[key obje]
     //people.unique = unique;
     [people2 setValue: @"testUserName222" forKey :@"userName"];
     [people2 setValue: imageData forKey :@"userPic"];
+    [people2 setValue:@"111111" forKey:@"userImageUUID"];
+    
 
     return YES;
 }
@@ -86,9 +94,6 @@
 
 #pragma mark - Core Data stack
 
-@synthesize managedObjectContext = _managedObjectContext;
-@synthesize managedObjectModel = _managedObjectModel;
-@synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 
 - (NSURL *)applicationDocumentsDirectory {
     // The directory the application uses to store the Core Data store file. This code uses a directory named "SiminLiu.GoMeet" in the application's documents directory.
@@ -119,6 +124,16 @@
     NSString *failureReason = @"There was an error creating or loading the application's saved data.";
     if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
         // Report any error we got.
+        
+        NSMutableDictionary *options = [NSMutableDictionary dictionary];
+        [options setValue:[NSNumber numberWithBool:YES]
+                   forKey:NSMigratePersistentStoresAutomaticallyOption];
+        [options setValue:[NSNumber numberWithBool:YES]
+                   forKey:NSInferMappingModelAutomaticallyOption];
+        _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
+        if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:options error:&error]) {
+            
+        }
         NSMutableDictionary *dict = [NSMutableDictionary dictionary];
         dict[NSLocalizedDescriptionKey] = @"Failed to initialize the application's saved data";
         dict[NSLocalizedFailureReasonErrorKey] = failureReason;

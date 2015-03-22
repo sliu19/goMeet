@@ -52,11 +52,12 @@
     NSLog(@"This is debug for people list %@",people.userName);
     
     cell.textLabel.text = people.userName;
-    cell.detailTextLabel.text = @"This is a text detailed text label";
-    cell.imageView.image = [UIImage imageNamed:@"testImage.jpeg"];
-    
+    cell.detailTextLabel.text = @"This is a text detailed text label,future use as distance";
+    cell.imageView.image = [[UIImage alloc] initWithData:people.userPic];
     return cell;
 }
+
+
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if([[segue identifier] isEqualToString:@"Personal Profile"])
     {

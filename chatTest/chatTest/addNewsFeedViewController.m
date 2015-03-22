@@ -8,13 +8,23 @@
 
 #import "addNewsFeedViewController.h"
 #import "RSKImageCropViewController.h"
+#import "Communication.h"
+#import "OwnerNewsFeed.h"
+#import "NewsFeedList.h"
+#import "AppDelegate.h"
 
 @interface addNewsFeedViewController ()
-@property (weak, nonatomic) IBOutlet UIButton *upLoadImageButton;
+@property (weak, nonatomic) IBOutlet UIButton *addImage;
 //@property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (strong, nonatomic) IBOutlet UIView *uiView;
 
 @property (nonatomic, weak) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UIButton *SendNewsFeed;
+@property (weak, nonatomic) IBOutlet UITextField *BodyTextField;
+
+@property (strong, nonatomic) NSString* uuidString;
+
+@property (nonatomic, assign) id currentResponder;
 
 @property (nonatomic, weak) IBOutlet UIToolbar *toolBar;
 
@@ -38,6 +48,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [inputStream setDelegate:self];
+    [outputStream setDelegate:self];
     
     self.capturedImages = [[NSMutableArray alloc] init];
     
@@ -49,10 +61,10 @@
         [self.toolBar setItems:toolbarItems animated:NO];
     }
     
-    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(resignOnTap:)];
-    singleTap.numberOfTapsRequired = 1;
+    UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(resignOnTap:)];
+    doubleTap.numberOfTapsRequired = 2;
     [_imageView setUserInteractionEnabled:YES];
-    [_imageView addGestureRecognizer:singleTap];
+    [_imageView addGestureRecognizer:doubleTap];
 
 }
 
@@ -62,6 +74,7 @@
 
 - (void)resignOnTap:(id)sender {
     NSLog(@"Single Tab detacted");
+    [self.currentResponder resignFirstResponder];
     UIImage* image = _imageView.image;
     RSKImageCropViewController *imageCropVC = [[RSKImageCropViewController alloc] initWithImage:image];
     imageCropVC.delegate = self;
@@ -285,6 +298,169 @@
 {
     // Use when `applyMaskToCroppedImage` set to YES.
     //[SVProgressHUD show];
+}
+
+- (IBAction)SendNewsFeedToServer:(id)sender {
+    NSLog(@"Inside send FR");
+    //If user upload Image
+    CFUUIDRef uuid = CFUUIDCreate(kCFAllocatorDefault);
+    _uuidString = (__bridge_transfer NSString *)CFUUIDCreateString(kCFAllocatorDefault, uuid);
+    CFRelease(uuid);
+    
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    
+    //Send through NSStrem
+    NSString* testId = [prefs stringForKey:@"userID"];
+    NSString* Body = _BodyTextField.text;
+    NSString *newsFeedBody  = [NSString stringWithFormat:@"newstatus:{\"uuid\":%@,\"userID\":\"%@\",\"body\":\"%@\"}",_uuidString,testId,Body];
+    NSMutableData *data = [[NSMutableData alloc] initWithData:[newsFeedBody dataUsingEncoding:NSUTF8StringEncoding]];
+    [Communication send:data];
+    
+    if (_imageView.image!=nil) {
+        NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+        [request setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
+        [request setHTTPShouldHandleCookies:NO];
+        [request setTimeoutInterval:30];
+        [request setHTTPMethod:@"POST"];
+        NSData* result = nil;
+        NSHTTPURLResponse* response = nil;
+        NSError* error = nil;
+        int statusCode = 0;
+        NSURL* requestURL = [NSURL URLWithString:@"http://54.69.204.42:8000/form"];
+        NSData* bodyimage =UIImageJPEGRepresentation(_imageView.image,1.0);
+        NSString* testImage = [bodyimage base64EncodedStringWithOptions:0];
+        NSMutableData* body  =[[NSString stringWithFormat:@"{\"%@\":\"%@\"}", _uuidString,testImage] dataUsingEncoding:NSUTF8StringEncoding];
+        
+        NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=this is test boundary"];
+        [request setValue:contentType forHTTPHeaderField: @"Content-Type"];
+        [request setHTTPBody:body];
+        
+        // set the content-length
+        NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[body length]];
+        [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+        
+        // set URL
+        [request setURL:requestURL];
+        NSLog(@"%@", [request allHTTPHeaderFields]);
+        
+        result = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+        NSLog( @"NSURLConnection result %ld %@ %@", (long)[response statusCode], [request description], [error description] );
+        statusCode = [response statusCode];
+        if ( (statusCode == 0) || (!result && statusCode == 200) ) {
+            statusCode = 500;}
+    }
+}
+
+
+- (void)stream:(NSStream *)theStream handleEvent:(NSStreamEvent)streamEvent {
+    
+    typedef enum {
+        NSStreamEventNone = 0,
+        NSStreamEventOpenCompleted = 1 << 0,
+        NSStreamEventHasBytesAvailable = 1 << 1,
+        NSStreamEventHasSpaceAvailable = 1 << 2,
+        NSStreamEventErrorOccurred = 1 << 3,
+        NSStreamEventEndEncountered = 1 << 4
+    }NSStringEvent;
+    
+    switch (streamEvent) {
+            
+        case NSStreamEventOpenCompleted:
+            NSLog(@"Stream opened");
+            break;
+            
+        case NSStreamEventHasBytesAvailable:
+            
+            if (theStream == inputStream) {
+                
+                uint8_t buffer[1024];
+                int len;
+                
+                while ([inputStream hasBytesAvailable]) {
+                    len = [inputStream read:buffer maxLength:sizeof(buffer)];
+                    if (len > 0) {
+                        
+                        NSString *output = [[NSString alloc] initWithBytes:buffer length:len encoding:NSUTF8StringEncoding];
+                        NSLog(@"This return string from server %@",output);
+                        
+                        if (nil != output) {
+                            switch (output.intValue) {
+                                case 1:
+                                {
+                                    //If secceed set ownerNewsFeed item
+                                    OwnerNewsFeed* news = nil;
+                                    news = [NSEntityDescription insertNewObjectForEntityForName:@"OwnerNewsFeed" inManagedObjectContext:[(AppDelegate*) [[UIApplication sharedApplication]delegate] managedObjectContext]];
+                                    
+                                    [news setValue: _BodyTextField.text forKey :@"bodyTextField"];
+                                    NSData *imageData = UIImageJPEGRepresentation([Communication compressToSmallSquare:_imageView.image],0.0);
+                                    [news setValue: imageData forKey :@"image"];
+                                    [news setValue:_uuidString forKey:@"uuid"];
+                                    NSDate *now = [NSDate date];
+                                    [news setValue:now forKey:@"date"];
+                                    
+                                    NewsFeedList* newList = nil;
+                                    newList = [NSEntityDescription insertNewObjectForEntityForName:@"NewsFeedList" inManagedObjectContext:[(AppDelegate*) [[UIApplication sharedApplication]delegate] managedObjectContext]];
+                                    [newList setValue: _BodyTextField.text forKey :@"bodyTextField"];
+                                    [newList setValue: imageData forKey :@"image"];
+                                    [newList setValue:_uuidString forKey:@"uuid"];
+                                    [newList setValue:now forKey:@"date"];
+                                    
+                                    
+                                    
+                                    //If failed
+                                    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"My Alert"
+                                                                                                   message:@"This is an alert."
+                                                                                            preferredStyle:UIAlertControllerStyleAlert];
+                                    
+                                    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                                                          handler:^(UIAlertAction * action) {}];
+                                    
+                                    UIAlertAction* reSendAction = [UIAlertAction actionWithTitle:@"Resend" style:UIAlertActionStyleDefault
+                                                                                         handler:^(UIAlertAction * action) {[self SendNewsFeedToServer:nil];}];
+                                    
+                                    [alert addAction:defaultAction];
+                                    [alert addAction:reSendAction];
+                                    [self presentViewController:alert animated:YES completion:nil];
+                                    // NSLog(@"trigger segue");
+                                    //[[NSNotificationCenter defaultCenter] postNotificationName:@"LogInNotification" object:self];
+                                    //[self performSegueWithIdentifier:@"login" sender:nil];
+                                    
+                                    break;}
+                                    
+                                default:
+                                    NSLog(@"output int val %d", output.intValue);
+                                    break;
+                            }
+                            NSLog(@"server said: %@", output);
+                            
+                        }
+                    }
+                }
+            }
+            break;
+            
+        case NSStreamEventErrorOccurred:
+            NSLog(@"Can not connect to the host!");
+            break;
+            
+        case NSStreamEventEndEncountered:
+            break;
+            
+        default:
+            NSLog(@"Unknown event");
+    }
+    
+}
+
+
+
+-(BOOL) textFieldShouldReturn: (UITextField *) textField {
+    [textField resignFirstResponder];
+    return YES;
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    self.currentResponder = textField;
 }
 
 @end

@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-@interface addNewsFeedViewController : UIViewController<UIImagePickerControllerDelegate,UIPopoverControllerDelegate,UINavigationControllerDelegate>
+#import "NewsFeed.h"
+#import "NewsFeedViewController.h"
+
+@interface addNewsFeedViewController : UIViewController<UIImagePickerControllerDelegate,UIPopoverControllerDelegate,UINavigationControllerDelegate,UIAlertViewDelegate>
 
 @property (nonatomic, weak) IBOutlet UIImageView *outImageView;
 @end

@@ -20,10 +20,6 @@
 @implementation NewsFeedView
 
 //Display everytime set new user
--(void)setUser:(User*)user{
-    _myUser = user;
-    [self setNeedsDisplay];
-}
 
 /*
 // Only override drawRect: if you perform custom drawing.

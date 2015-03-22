@@ -7,6 +7,7 @@
 //
 
 #import "SignUpViewController.h"
+#import "Communication.h"
 
 @interface SignUpViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *phoneNum;
@@ -48,7 +49,7 @@
         if ([_passCodeConfirm.text isEqualToString:_passCode.text]){
             NSString *response  = [NSString stringWithFormat:@"reg:%@;%@" , _phoneNum.text,_passCode.text];
             NSData *data = [[NSData alloc] initWithData:[response dataUsingEncoding:NSASCIIStringEncoding]];
-            //[Lib send:data];
+            [Communication send:data];
         }
         else{
             
@@ -84,5 +85,93 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (void)stream:(NSStream *)theStream handleEvent:(NSStreamEvent)streamEvent {
+    
+    typedef enum {
+        NSStreamEventNone = 0,
+        NSStreamEventOpenCompleted = 1 << 0,
+        NSStreamEventHasBytesAvailable = 1 << 1,
+        NSStreamEventHasSpaceAvailable = 1 << 2,
+        NSStreamEventErrorOccurred = 1 << 3,
+        NSStreamEventEndEncountered = 1 << 4
+    }NSStringEvent;
+    
+    switch (streamEvent) {
+            
+        case NSStreamEventOpenCompleted:
+            NSLog(@"Stream opened");
+            break;
+            
+        case NSStreamEventHasBytesAvailable:
+            
+            if (theStream == inputStream) {
+                
+                uint8_t buffer[1024];
+                int len;
+                
+                while ([inputStream hasBytesAvailable]) {
+                    len = [inputStream read:buffer maxLength:sizeof(buffer)];
+                    if (len > 0) {
+                        
+                        NSString *output = [[NSString alloc] initWithBytes:buffer length:len encoding:NSASCIIStringEncoding];
+                        
+                        if (nil != output) {
+                            switch (output.intValue) {
+                                case 1:
+                                {
+                                    NSLog(@"trigger segue");
+                                    [self performSegueWithIdentifier:@"loginFromSignUp" sender:nil];
+                                    [_phoneNum resignFirstResponder];
+                                    [_passCode resignFirstResponder];
+                                    //[ageTextField resignFirstResponder];
+                                    
+                                    // Create strings and integer to store the text info
+                                    NSString *userID = [_phoneNum text];
+                                    NSString *userPassCode  = [_passCode text];
+                                    //int age = [[ageTextField text] integerValue];
+                                    
+                                    // Create instances of NSData
+                                    UIImage *contactImage = [UIImage imageNamed:@"testImage.jpeg"];
+                                    NSData *imageData = UIImageJPEGRepresentation(contactImage, 100);
+                                    
+                                    
+                                    // Store the data
+                                    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                                    
+                                    [defaults setObject:userID forKey:@"userID"];
+                                    [defaults setObject:userPassCode forKey:@"passCode"];
+                                    //[defaults setInteger:age forKey:@"age"];
+                                    [defaults setObject:imageData forKey:@"userPic"];
+                                    [defaults synchronize];
+                                    
+                                    break;
+                                }
+                                    
+                                default:
+                                    NSLog(@"output int val %@", output.intValue);
+                                    break;
+                            }
+                            NSLog(@"server said: %@", output);
+                            
+                        }
+                    }
+                }
+            }
+            break;
+            
+        case NSStreamEventErrorOccurred:
+            NSLog(@"Can not connect to the host!");
+            break;
+            
+        case NSStreamEventEndEncountered:
+            break;
+            
+        default:
+            NSLog(@"Unknown event");
+    }
+    
+}
+
 
 @end

@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "User.h"
+
 
 @interface NewsFeedView : UIView
 
-@property (strong,nonatomic) User* myUser;
+//@property (strong,nonatomic) User* myUser;
 
 @end

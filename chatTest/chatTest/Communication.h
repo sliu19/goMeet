@@ -17,7 +17,7 @@
 +(CGFloat)cornerScaleFactor:(UIView*) thisView;
 +(CGFloat)cornerRadius:(UIView*) thisView;
 +(CGFloat)cornerOffset:(UIView*) thisView;
-
++(UIImage*)compressToSmallSquare:(UIImage*)oldImage;
 @end
 NSInputStream* inputStream;
 NSOutputStream* outputStream;
