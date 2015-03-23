@@ -22,7 +22,7 @@
     
     //Send through NSStrem
     NSString* userId = [prefs stringForKey:@"userID"];
-    NSDate * userPic = [prefs stringForKey:@"userPic"];
+    NSData * userPic = [prefs dataForKey:@"userPic"];
     _PersonalnfoTextView.text = userId;
     _PersonalPicImageView.image=[[UIImage alloc]initWithData:userPic];
 

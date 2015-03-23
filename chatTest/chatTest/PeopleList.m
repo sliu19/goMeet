@@ -50,10 +50,10 @@
     
     Friend *people = [self.fetchedResultsController objectAtIndexPath:indexPath];
     NSLog(@"This is debug for people list %@",people.userName);
-    
+    NSData* userPic = people.userPic;
     cell.textLabel.text = people.userName;
     cell.detailTextLabel.text = @"This is a text detailed text label,future use as distance";
-    cell.imageView.image = [[UIImage alloc] initWithData:people.userPic];
+    cell.imageView.image = [[UIImage alloc] initWithData:userPic];
     return cell;
 }
 

@@ -253,25 +253,16 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="38o-Ll-SdO">
                                 <rect key="frame" x="0.0" y="64" width="320" height="460"/>
                             </scrollView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YP5-nj-gwE">
-                                <rect key="frame" x="170" y="72" width="134" height="30"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="Near By">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SJo-KV-QoZ">
-                                <rect key="frame" x="16" y="72" width="134" height="30"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="Friend Moment">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.9515978209694852" blue="0.83898017153510496" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="NewsFeed" id="OnX-9E-QgE">
+                        <barButtonItem key="leftBarButtonItem" title="Refresh" id="JVe-6r-k9M">
+                            <connections>
+                                <action selector="PullNews:" destination="KAn-kv-WmG" id="Nyk-wd-9Yg"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="add new" id="svn-lG-FVC">
                             <connections>
                                 <segue destination="hS2-hm-v98" kind="push" id="XcL-tP-4Ra"/>
@@ -281,6 +272,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="BackGroundView" destination="Lhz-YF-qeO" id="GEV-V7-v4J"/>
+                        <outlet property="Refresh" destination="JVe-6r-k9M" id="agZ-VQ-IAq"/>
                         <outlet property="window" destination="38o-Ll-SdO" id="Uu1-iB-cSs"/>
                     </connections>
                 </viewController>
@@ -676,7 +668,7 @@
         <scene sceneID="GAz-2E-3aC">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gHN-Mn-55t" userLabel="Me" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="1mO-Si-qLj" userLabel="Me"/>
+                    <tabBarItem key="tabBarItem" title="Me" id="1mO-Si-qLj" userLabel="Me"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="y8X-te-Ftu">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

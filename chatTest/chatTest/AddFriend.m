@@ -37,8 +37,11 @@
 }
 
 - (IBAction)sendRequest:(id)sender {
-    NSString* testUserId = @"2174180160";
-    NSString* response = [NSString stringWithFormat:@"addfriend:%@#%@",testUserId,_addFriendTextField.text];
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    
+    //Send through NSStrem
+    NSString* userId = [prefs stringForKey:@"userID"];
+    NSString* response = [NSString stringWithFormat:@"addfriend:%@#%@",userId,_addFriendTextField.text];
     NSData *data = [[NSData alloc] initWithData:[response dataUsingEncoding:NSUTF8StringEncoding]];
     [Communication send:data];
     Friend* people = nil;

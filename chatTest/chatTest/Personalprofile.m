@@ -19,6 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _InformationTextField.text = _friend.userName;
+    _ProfilePic.image = [[UIImage alloc]initWithData:_friend.userPic];
     // Do any additional setup after loading the view.
 }
 

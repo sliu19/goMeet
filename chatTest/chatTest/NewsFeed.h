@@ -10,6 +10,12 @@
 #define chatTest_NewsFeed_h
 @interface NewsFeed: NSObject
 
+@property(strong,nonatomic)NSString* userID;
+@property(strong,nonatomic)NSString* contentText;
+@property(strong,nonatomic)NSData* contentImage;
+@property(strong,nonatomic)NSString* newsFeedUUID;
+@property(strong,nonatomic)NSMutableArray* comments;
+
 
 -(void)SampleInit:(NSData*) testImage;
 

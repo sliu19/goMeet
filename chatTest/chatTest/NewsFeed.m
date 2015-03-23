@@ -10,56 +10,58 @@
 #import "NewsFeed.h"
 @interface NewsFeed()
 
-@property(strong,nonatomic)NSString* userID;
-@property(strong,nonatomic)NSString* contentText;
-@property(strong,nonatomic)NSData* contentImage;
-@property(strong,nonatomic)NSMutableArray* comments;
 
 @end
 
 @implementation NewsFeed
 
+@synthesize userID;
+@synthesize contentText;
+@synthesize contentImage;
+@synthesize newsFeedUUID;
+@synthesize comments;
+
 -(void)SampleInit:(NSData*) testImage{
     
-    _userID = @"Simin Liu";
-    _contentText=@"This is a Test Content String Test";
-    _contentImage = testImage;
-    _comments = [[NSMutableArray alloc]init];
-    [_comments  addObject:@"this is a good test commet"];
-    [_comments  addObject:@"this is a bad test commet"];
+    userID = @"Simin Liu";
+    contentText=@"This is a Test Content String Test";
+    contentImage = testImage;
+    comments = [[NSMutableArray alloc]init];
+    [comments  addObject:@"this is a good test commet"];
+    [comments  addObject:@"this is a bad test commet"];
 }
 
 #pragma mark -getter&setter
 -(NSString*)getUserID:(NewsFeed*)myNewsFeed{
-    return _userID;
+    return userID;
 }
 -(void)setUserID:(NewsFeed*)myNewsFeed :(NSString*) myUserID{
-    _userID = myUserID;
+    userID = myUserID;
 }
 
 -(NSString*)getContentText:(NewsFeed*)myNewsFeed{
-    return _contentText;
+    return contentText;
     
 }
 -(void)setContentText:(NewsFeed*)myNewsFeed :(NSString*) myContentText{
-    _contentText = myContentText;
+    contentText = myContentText;
 }
 
 -(NSData*)getContentImage:(NewsFeed*)myNewsFeed{
-    return _contentImage;
+    return contentImage;
 }
 -(void)setContentImage:(NewsFeed*)myNewsFeed :(NSData*) myContentImage{
-    _contentImage = myContentImage;
+    contentImage = myContentImage;
 }
 
 -(NSMutableArray*)getComment:(NewsFeed*)myNewsFeed{
-    return _comments;
+    return comments;
 }
 -(void)addComment:(NewsFeed*)myNewsFeed :(NSString*) newComment{
-    if (_comments==nil) {
-        _comments = [[NSMutableArray alloc] init];
+    if (comments==nil) {
+        comments = [[NSMutableArray alloc] init];
     }
-    [_comments addObject:newComment];
+    [comments addObject:newComment];
 }
 
 

@@ -53,7 +53,7 @@
     //people.userName =[key obje]
     //people.unique = unique;
     [people setValue: @"testUserName" forKey :@"userName"];
-    NSData *imageData = UIImageJPEGRepresentation([UIImage imageNamed:@"testImage"],0.0);
+    NSData *imageData = UIImageJPEGRepresentation([UIImage imageNamed:@"testImage.jpeg"],0.0);
     [people setValue: imageData forKey :@"userPic"];
     [people setValue:@"111111" forKey:@"userImageUUID"];
     //NSLog(@"This is debug for people list %@",people.userName);
