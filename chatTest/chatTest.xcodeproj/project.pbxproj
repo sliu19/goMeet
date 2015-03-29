@@ -184,7 +184,11 @@
 		F7FA88FD1AC7094600F88F94 /* XMPPMessage+XEP_0308.m in Sources */ = {isa = PBXBuildFile; fileRef = F7FA88971AC7094600F88F94 /* XMPPMessage+XEP_0308.m */; };
 		F7FA88FE1AC7094600F88F94 /* XMPPMessage+XEP_0333.m in Sources */ = {isa = PBXBuildFile; fileRef = F7FA889A1AC7094600F88F94 /* XMPPMessage+XEP_0333.m */; };
 		F7FA88FF1AC7094600F88F94 /* NSXMLElement+XEP_0335.m in Sources */ = {isa = PBXBuildFile; fileRef = F7FA889D1AC7094600F88F94 /* NSXMLElement+XEP_0335.m */; };
-		F7FA89051AC715A200F88F94 /* EventTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7FA89041AC715A200F88F94 /* EventTableViewController.m */; };
+		F7FA8BD61AC7A07400F88F94 /* EventTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7FA8BD51AC7A07400F88F94 /* EventTableViewController.m */; };
+		F7FA8BDC1AC7A55500F88F94 /* CreateNewEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7FA8BDB1AC7A55500F88F94 /* CreateNewEventViewController.m */; };
+		F7FA8BDF1AC7AA0200F88F94 /* EventList+transformatAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = F7FA8BDE1AC7AA0200F88F94 /* EventList+transformatAttribute.m */; };
+		F7FA8BE21AC7AF1800F88F94 /* EventList.m in Sources */ = {isa = PBXBuildFile; fileRef = F7FA8BE11AC7AF1800F88F94 /* EventList.m */; };
+		F7FA8BE51AC7BF7800F88F94 /* GroupChatVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F7FA8BE41AC7BF7800F88F94 /* GroupChatVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -554,8 +558,16 @@
 		F7FA889A1AC7094600F88F94 /* XMPPMessage+XEP_0333.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XMPPMessage+XEP_0333.m"; sourceTree = "<group>"; };
 		F7FA889C1AC7094600F88F94 /* NSXMLElement+XEP_0335.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSXMLElement+XEP_0335.h"; sourceTree = "<group>"; };
 		F7FA889D1AC7094600F88F94 /* NSXMLElement+XEP_0335.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSXMLElement+XEP_0335.m"; sourceTree = "<group>"; };
-		F7FA89031AC715A200F88F94 /* EventTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventTableViewController.h; path = ../EventTableViewController.h; sourceTree = "<group>"; };
-		F7FA89041AC715A200F88F94 /* EventTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventTableViewController.m; path = ../EventTableViewController.m; sourceTree = "<group>"; };
+		F7FA8BD41AC7A07400F88F94 /* EventTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventTableViewController.h; sourceTree = "<group>"; };
+		F7FA8BD51AC7A07400F88F94 /* EventTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventTableViewController.m; sourceTree = "<group>"; };
+		F7FA8BDA1AC7A55500F88F94 /* CreateNewEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateNewEventViewController.h; sourceTree = "<group>"; };
+		F7FA8BDB1AC7A55500F88F94 /* CreateNewEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateNewEventViewController.m; sourceTree = "<group>"; };
+		F7FA8BDD1AC7AA0200F88F94 /* EventList+transformatAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EventList+transformatAttribute.h"; sourceTree = "<group>"; };
+		F7FA8BDE1AC7AA0200F88F94 /* EventList+transformatAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EventList+transformatAttribute.m"; sourceTree = "<group>"; };
+		F7FA8BE01AC7AF1800F88F94 /* EventList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventList.h; sourceTree = "<group>"; };
+		F7FA8BE11AC7AF1800F88F94 /* EventList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventList.m; sourceTree = "<group>"; };
+		F7FA8BE31AC7BF7800F88F94 /* GroupChatVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupChatVC.h; sourceTree = "<group>"; };
+		F7FA8BE41AC7BF7800F88F94 /* GroupChatVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupChatVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -618,9 +630,6 @@
 		EBD0D8A91A82E1F700B76C79 /* chatTest */ = {
 			isa = PBXGroup;
 			children = (
-				F791A6A91AAC1DD70025365A /* AppDelegate.h */,
-				F791A6AA1AAC1DDA0025365A /* AppDelegate.m */,
-				F7FA879F1AC7061E00F88F94 /* XMPPFramework.h */,
 				F7A11E2F1ABE20D700DF9AEB /* external-support */,
 				EBD0D8B41A82E1F700B76C79 /* Main.storyboard */,
 				F791A6A51AAC1B200025365A /* CoreData */,
@@ -630,6 +639,9 @@
 				F77C90091AA3C0950005EC2F /* NewsFeedView.h */,
 				F77C900A1AA3C0950005EC2F /* NewsFeedView.m */,
 				EB4B60C91A82EB960061CCD8 /* ViewControll */,
+				F791A6A91AAC1DD70025365A /* AppDelegate.h */,
+				F791A6AA1AAC1DDA0025365A /* AppDelegate.m */,
+				F7FA879F1AC7061E00F88F94 /* XMPPFramework.h */,
 				EBD0D8B71A82E1F700B76C79 /* Images.xcassets */,
 				EBD0D8B91A82E1F700B76C79 /* LaunchScreen.xib */,
 				EBD0D8AA1A82E1F700B76C79 /* Supporting Files */,
@@ -689,6 +701,10 @@
 			isa = PBXGroup;
 			children = (
 				F791A69F1AAC1AEA0025365A /* GoMeet.xcdatamodeld */,
+				F7FA8BE01AC7AF1800F88F94 /* EventList.h */,
+				F7FA8BE11AC7AF1800F88F94 /* EventList.m */,
+				F7FA8BDD1AC7AA0200F88F94 /* EventList+transformatAttribute.h */,
+				F7FA8BDE1AC7AA0200F88F94 /* EventList+transformatAttribute.m */,
 				F7A11E4C1ABF655000DF9AEB /* OwnerNewsFeed.h */,
 				F7A11E4D1ABF655000DF9AEB /* OwnerNewsFeed.m */,
 				F7A11E3C1ABE392800DF9AEB /* Friend.h */,
@@ -1008,8 +1024,12 @@
 		F7F2BEFA1ABA967500C810E5 /* Event */ = {
 			isa = PBXGroup;
 			children = (
-				F7FA89031AC715A200F88F94 /* EventTableViewController.h */,
-				F7FA89041AC715A200F88F94 /* EventTableViewController.m */,
+				F7FA8BE31AC7BF7800F88F94 /* GroupChatVC.h */,
+				F7FA8BE41AC7BF7800F88F94 /* GroupChatVC.m */,
+				F7FA8BD41AC7A07400F88F94 /* EventTableViewController.h */,
+				F7FA8BD51AC7A07400F88F94 /* EventTableViewController.m */,
+				F7FA8BDA1AC7A55500F88F94 /* CreateNewEventViewController.h */,
+				F7FA8BDB1AC7A55500F88F94 /* CreateNewEventViewController.m */,
 			);
 			name = Event;
 			sourceTree = "<group>";
@@ -1747,17 +1767,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7FA8BDC1AC7A55500F88F94 /* CreateNewEventViewController.m in Sources */,
 				F7FA88D31AC7094600F88F94 /* XMPPIQ+XEP_0060.m in Sources */,
 				F7FA88F71AC7094600F88F94 /* XEP_0223.m in Sources */,
 				F7A11DA61ABD314100DF9AEB /* DDLog.m in Sources */,
 				F7FA88C81AC7094600F88F94 /* XMPPvCardTempCoreDataStorageObject.m in Sources */,
 				F7FA88D11AC7094600F88F94 /* NSXMLElement+XEP_0059.m in Sources */,
+				F7FA8BE51AC7BF7800F88F94 /* GroupChatVC.m in Sources */,
 				F7FA88A41AC7094600F88F94 /* XMPPProcessOne.m in Sources */,
 				F7FA88EE1AC7094600F88F94 /* XMPPBlocking.m in Sources */,
 				F7A11E3E1ABE392800DF9AEB /* Friend.m in Sources */,
 				EBD0D8D91A82E30500B76C79 /* InitPage.m in Sources */,
 				F7FA88F61AC7094600F88F94 /* NSXMLElement+XEP_0203.m in Sources */,
 				EB8BD4191A886E3400851D28 /* SignUpViewController.m in Sources */,
+				F7FA8BE21AC7AF1800F88F94 /* EventList.m in Sources */,
 				F7A11E161ABD376200DF9AEB /* XMPPPlainAuthentication.m in Sources */,
 				F7FA88FF1AC7094600F88F94 /* NSXMLElement+XEP_0335.m in Sources */,
 				F7FA88E21AC7094600F88F94 /* XMPPCapsResourceCoreDataStorageObject.m in Sources */,
@@ -1778,7 +1801,6 @@
 				F7FA88D01AC7094600F88F94 /* XMPPvCardTempTel.m in Sources */,
 				F7FA88BA1AC7094600F88F94 /* XMPPRoomHybrid.xcdatamodeld in Sources */,
 				F7FA88AF1AC7094600F88F94 /* XMPPSystemInputActivityMonitor.m in Sources */,
-				F7FA89051AC715A200F88F94 /* EventTableViewController.m in Sources */,
 				F7A11E261ABD376200DF9AEB /* DDList.m in Sources */,
 				F7A11E251ABD376200DF9AEB /* XMPPStream.m in Sources */,
 				F7FA88C41AC7094600F88F94 /* XMPPvCard.xcdatamodeld in Sources */,
@@ -1881,12 +1903,14 @@
 				F7A11E4E1ABF655000DF9AEB /* OwnerNewsFeed.m in Sources */,
 				F7FA88DD1AC7094600F88F94 /* XMPPTransports.m in Sources */,
 				F7FA88BF1AC7094600F88F94 /* XMPPRoomMessageMemoryStorageObject.m in Sources */,
+				F7FA8BDF1AC7AA0200F88F94 /* EventList+transformatAttribute.m in Sources */,
 				F7A11E241ABD376200DF9AEB /* XMPPPresence.m in Sources */,
 				F7FA88A51AC7094600F88F94 /* XMPPReconnect.m in Sources */,
 				F7FA88E31AC7094600F88F94 /* XMPPCapabilities.m in Sources */,
 				F7FA88D41AC7094600F88F94 /* XMPPPubSub.m in Sources */,
 				F7A11E131ABD376200DF9AEB /* XMPPDeprecatedDigestAuthentication.m in Sources */,
 				F7FA88C61AC7094600F88F94 /* XMPPvCardCoreDataStorage.m in Sources */,
+				F7FA8BD61AC7A07400F88F94 /* EventTableViewController.m in Sources */,
 				F7FA88B01AC7094600F88F94 /* XMPPIQ+JabberRPC.m in Sources */,
 				F7FA88F21AC7094600F88F94 /* XMPPAutoPing.m in Sources */,
 				F77C900B1AA3C0950005EC2F /* NewsFeedView.m in Sources */,
