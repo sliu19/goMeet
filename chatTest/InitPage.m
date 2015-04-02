@@ -29,12 +29,15 @@
     [inputStream setDelegate:self];
     [outputStream setDelegate:self];
     NSLog(@"InitPage");
-    _phoneNum.delegate = self;
-    _passCode.delegate = self;
+    [self phoneNum].delegate= self;
+    [self passCode].delegate = self;
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(receiveLogInNotification:)
                                                  name:@"LogInNotification"
                                                object:nil];
+    
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(resignOnTap:)];
+    singleTap.numberOfTapsRequired = 1;
     
     
 

@@ -7,6 +7,7 @@
 //
 
 #import "NewsFeedViewController.h"
+#import "NewsFeedCardView.h"
 #define OFFSET_FROM_FRAME  10
 #define OFFSET_FROM_TOP 20
 #define OFFSET_BETWEEN_CARD 30
@@ -19,9 +20,7 @@
 
 @property (nonatomic) CGPoint startPoint;
 
-@property (strong,nonatomic) UIView* lastView;
-//@property (weak, nonatomic) IBOutlet UIBarButtonItem *myBarButtonItem;
-@property (weak, nonatomic) IBOutlet UIScrollView *window;
+@property (strong,nonatomic)UIScrollView *window;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *Refresh;
 
 
@@ -49,7 +48,7 @@
     _startPoint = _BackGroundView.bounds.origin;
     _startPoint.x += OFFSET_FROM_FRAME;
     _startPoint.y += OFFSET_FROM_TOP;
-    //window = [[UIScrollView alloc] initWithFrame:self.view.bounds];
+    _window = [[UIScrollView alloc] initWithFrame:self.view.bounds];
     [self.view addSubview:_window];
     [self drawNewsFeed:_startPoint newsfeed:testNewsFeed];
     [self drawNewsFeed:_startPoint newsfeed:testNewsFeed];
@@ -78,6 +77,7 @@
     [iv setImage:contentImage];
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(resignOnTap:)];
     singleTap.numberOfTapsRequired = 1;
+    [iv setTag:1];
     [iv setUserInteractionEnabled:YES];
     [iv addGestureRecognizer:singleTap];
     innerPoint.x = OFFSET_FROM_FRAME;
@@ -121,12 +121,11 @@
 - (IBAction)addNewsFeed:(id)sender {
 }
 
-- (void)resignOnTap:(id)sender {
+- (void)resignOnTap:(UITapGestureRecognizer *)sender{
     //[self.currentResponder resignFirstResponder];
     NSLog(@"Single Tab detacted");
-   // [iSender.imageView setFrame:CGRectMake(0, 0, self.view.frame.size.width, 80)];
-    if ([sender isKindOfClass:[UIImageView class]]) {
-        [sender setFrame:CGRectMake(0, 0, self.view.frame.size.width, 80)];
+    if ([(UIImageView *)sender.view isKindOfClass:[UIImageView class]]) {
+        [sender.view setFrame:CGRectMake(0, 0, self.view.frame.size.width, 80)];
     }
     else {
         NSLog(@"This is not a imageView");

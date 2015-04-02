@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Communication.h"
 
-@interface InitPage : UIViewController<NSStreamDelegate>
+@interface InitPage : UIViewController<NSStreamDelegate,UITextFieldDelegate>
 
 
 @end

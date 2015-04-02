@@ -615,9 +615,7 @@ extern const NSTimeInterval XMPPStreamTimeoutNone;
  * 
  * Even if you close the xmpp stream after this point, the OS will still do everything it can to send the data.
 **/
-- (void)sendElement:(NSXMLElement *)element andGetReceipt:(XMPPElementReceipt **)receiptPtr;
-
-/**
+- (void)sendElement:(NSXMLElement *)element andGetReceipt:(XMPPElementReceipt **)receiptPtr;/**
  * Fetches and resends the myPresence element (if available) in a single atomic operation.
  * 
  * There are various xmpp extensions that hook into the xmpp stream and append information to outgoing presence stanzas.

@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
 #import "AppDelegate.h"
+#import "XMPPRoom.h"
+#import "XMPPMUC.h"
 
-@interface CreateNewEventViewController : UIViewController
+@interface CreateNewEventViewController : UIViewController<UITextFieldDelegate>
 
 @end

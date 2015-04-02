@@ -10,7 +10,11 @@
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
 #import "EventList.h"
-@interface GroupChatVC :UIViewController<NSFetchedResultsControllerDelegate>
+#import "XMPPRoom.h"
+#import "XMPPMUC.h"
+#import "XMPPFramework.h"
+
+@interface GroupChatVC :UIViewController<NSFetchedResultsControllerDelegate,XMPPMUCDelegate,XMPPRoomDelegate,UITextFieldDelegate>
 {
     NSFetchedResultsController *fetchedResultsController;
 }
@@ -19,5 +23,11 @@
 
 @property(nonatomic,strong) NSManagedObjectContext *managedObjectContent;
 @property (nonatomic,strong) EventList* eventElement;
+
+
+@property (nonatomic, strong, readonly) XMPPRoomCoreDataStorage * xmppRoomStorage;
+@property (nonatomic, strong, readonly) XMPPRoom * xmppRoom;
+@property (nonatomic, strong, readonly) XMPPStream* xmppStream;
+//@property (nonatomic, strong, readonly)
 
 @end

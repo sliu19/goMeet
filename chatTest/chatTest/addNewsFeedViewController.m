@@ -7,7 +7,6 @@
 //
 
 #import "addNewsFeedViewController.h"
-#import "RSKImageCropViewController.h"
 #import "Communication.h"
 #import "OwnerNewsFeed.h"
 #import "NewsFeedList.h"
@@ -329,7 +328,7 @@
         NSURL* requestURL = [NSURL URLWithString:@"http://54.69.204.42:8000/form"];
         NSData* bodyimage =UIImageJPEGRepresentation(_imageView.image,1.0);
         NSString* testImage = [bodyimage base64EncodedStringWithOptions:0];
-        NSMutableData* body  =[[NSString stringWithFormat:@"{\"%@\":\"%@\"}", _uuidString,testImage] dataUsingEncoding:NSUTF8StringEncoding];
+        NSData* body  =[[NSString stringWithFormat:@"{\"%@\":\"%@\"}", _uuidString,testImage] dataUsingEncoding:NSUTF8StringEncoding];
         
         NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=this is test boundary"];
         [request setValue:contentType forHTTPHeaderField: @"Content-Type"];

@@ -217,7 +217,7 @@
         <!--GoMeet-->
         <scene sceneID="J36-D5-NhF">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="MPP-3A-W2u" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="GoMeet" automaticallyAdjustsScrollViewInsets="NO" id="MPP-3A-W2u" customClass="MainTabBarViewController" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="GoMeet" id="20C-nn-l19">
                         <barButtonItem key="backBarButtonItem" title="返回" id="Ag0-qE-Met"/>
@@ -241,6 +241,7 @@
         <!--NewsFeed-->
         <scene sceneID="i1o-5N-ScU">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zZY-3K-3tH" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="KAn-kv-WmG" customClass="NewsFeedViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="aKr-Ga-665"/>
@@ -249,11 +250,6 @@
                     <view key="view" contentMode="scaleToFill" id="Lhz-YF-qeO">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="38o-Ll-SdO">
-                                <rect key="frame" x="0.0" y="64" width="320" height="460"/>
-                            </scrollView>
-                        </subviews>
                         <color key="backgroundColor" red="0.6174597691" green="0.77775983979999996" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <toolbarItems/>
@@ -273,10 +269,8 @@
                     <connections>
                         <outlet property="BackGroundView" destination="Lhz-YF-qeO" id="GEV-V7-v4J"/>
                         <outlet property="Refresh" destination="JVe-6r-k9M" id="agZ-VQ-IAq"/>
-                        <outlet property="window" destination="38o-Ll-SdO" id="Uu1-iB-cSs"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zZY-3K-3tH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2994" y="1031"/>
         </scene>
@@ -464,6 +458,9 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="sendPress:" destination="92y-bh-dv8" eventType="touchUpInside" id="eJb-6y-Ihz"/>
+                                </connections>
                             </button>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m2Y-4J-tlO">
                                 <rect key="frame" x="0.0" y="20" width="320" height="44"/>
@@ -471,7 +468,7 @@
                                     <navigationItem title="ChatRoom" id="kyR-5G-j1w">
                                         <barButtonItem key="leftBarButtonItem" title="Back" id="bf8-uk-oOM">
                                             <connections>
-                                                <segue destination="rlz-o4-3uV" kind="modal" id="zPb-jb-8vx"/>
+                                                <action selector="clickBack:" destination="92y-bh-dv8" id="l4n-GP-lgV"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -483,6 +480,7 @@
                     <connections>
                         <outlet property="Title" destination="kyR-5G-j1w" id="k28-sU-MMf"/>
                         <outlet property="groupChatTableView" destination="p7Z-fG-Gr8" id="YqZ-su-FOh"/>
+                        <outlet property="inputTextField" destination="swH-K3-44z" id="Nj3-6U-VeA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zWm-De-yhW" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -705,7 +703,7 @@
         <!--Event-->
         <scene sceneID="TSV-0O-68f">
             <objects>
-                <tableViewController id="kQH-gr-QhF" customClass="EventTableViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="EventView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="kQH-gr-QhF" customClass="EventTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="77" sectionHeaderHeight="22" sectionFooterHeight="22" id="Rdh-1D-HbX">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -732,7 +730,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="92y-bh-dv8" kind="modal" identifier="EventChat" id="S36-sp-m1T"/>
+                                    <segue destination="92y-bh-dv8" kind="modal" identifier="EventChat" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="S36-sp-m1T"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -769,14 +767,30 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Page for new event creation" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Raa-lg-Hit">
-                                <rect key="frame" x="16" y="124" width="298" height="101"/>
+                                <rect key="frame" x="27" y="124" width="267" height="101"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add Event Description" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ifF-oy-9iS">
+                                <rect key="frame" x="27" y="306" width="267" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jQ4-Cq-baC">
+                                <rect key="frame" x="27" y="435" width="96" height="30"/>
+                                <color key="backgroundColor" red="0.10830835649999999" green="0.40630934190000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelButton:" destination="hOY-Jk-LUr" eventType="touchUpInside" id="NIW-3N-Uhe"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="boZ-CJ-oi8">
-                                <rect key="frame" x="206" y="435" width="92" height="30"/>
+                                <rect key="frame" x="202" y="435" width="92" height="30"/>
                                 <color key="backgroundColor" red="0.10830835649999999" green="0.40630934190000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Add Event">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -786,11 +800,6 @@
                                     <action selector="AddEvent:" destination="hOY-Jk-LUr" eventType="touchUpInside" id="vG2-fr-zt9"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add Event Description" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ifF-oy-9iS">
-                                <rect key="frame" x="27" y="306" width="267" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="0.6174597691" green="0.77775983979999996" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -806,7 +815,7 @@
         <!--Event-->
         <scene sceneID="ygU-w0-7C8">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rlz-o4-3uV" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="EventNaviagtion" automaticallyAdjustsScrollViewInsets="NO" id="rlz-o4-3uV" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Event" id="5vj-0d-Q1M"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="hMt-Te-rRa"/>
@@ -836,6 +845,5 @@
     <inferredMetricsTieBreakers>
         <segue reference="E1P-Zn-AXI"/>
         <segue reference="BI6-Ek-LYT"/>
-        <segue reference="zPb-jb-8vx"/>
     </inferredMetricsTieBreakers>
 </document>

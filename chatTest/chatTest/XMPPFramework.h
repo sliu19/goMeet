@@ -47,3 +47,5 @@
 
 #import "XMPPMUC.h"
 #import "XMPPRoomCoreDataStorage.h"
+
+#import "XMPPPing.h"

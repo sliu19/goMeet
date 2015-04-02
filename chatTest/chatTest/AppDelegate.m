@@ -17,6 +17,7 @@
 #import "XMPPvCardAvatarModule.h"
 #import "XMPPvCardCoreDataStorage.h"
 
+
 #import "DDLog.h"
 #import "DDTTYLogger.h"
 
@@ -48,6 +49,7 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 @synthesize xmppvCardAvatarModule;
 @synthesize xmppCapabilities;
 @synthesize xmppCapabilitiesStorage;
+@synthesize xmppPing;
 
 @synthesize window;
 
@@ -331,6 +333,10 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
     xmppCapabilities.autoFetchHashedCapabilities = YES;
     xmppCapabilities.autoFetchNonHashedCapabilities = NO;
     
+    xmppPing = [[XMPPPing alloc]init];
+    xmppPing.respondsToQueries = YES;
+    
+    
     // Activate xmpp modules
     
     [xmppReconnect         activate:xmppStream];
@@ -338,6 +344,7 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
     [xmppvCardTempModule   activate:xmppStream];
     [xmppvCardAvatarModule activate:xmppStream];
     [xmppCapabilities      activate:xmppStream];
+    [xmppPing activate:xmppStream];
     
     // Add ourself as a delegate to anything we may be interested in
     
@@ -653,6 +660,7 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
                                                        managedObjectContext:[self managedObjectContext_roster]];
         
         NSString *body = [[message elementForName:@"body"] stringValue];
+        NSLog(@"receive message body string %@",body);
         NSString *displayName = [user displayName];
         
         if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive)

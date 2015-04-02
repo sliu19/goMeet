@@ -79,6 +79,8 @@
 		F7B0E5CF1AB69CE8000C1E82 /* forest.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F7B0E5CE1AB69CE8000C1E82 /* forest.jpeg */; };
 		F7B0E5D11AB69D47000C1E82 /* testImageApple.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F7B0E5D01AB69D47000C1E82 /* testImageApple.jpeg */; };
 		F7B0E5D41AB6A2AA000C1E82 /* AddFriend.m in Sources */ = {isa = PBXBuildFile; fileRef = F7B0E5D31AB6A2AA000C1E82 /* AddFriend.m */; };
+		F7EA54111ACDE6E600B9FC1E /* MainTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7EA54101ACDE6E600B9FC1E /* MainTabBarViewController.m */; };
+		F7EA54141ACDEEDC00B9FC1E /* NewsFeedCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7EA54131ACDEEDC00B9FC1E /* NewsFeedCardView.m */; };
 		F7F2BEF41AB9EDA300C810E5 /* Personalprofile.m in Sources */ = {isa = PBXBuildFile; fileRef = F7F2BEF31AB9EDA300C810E5 /* Personalprofile.m */; };
 		F7F2BEF71ABA965200C810E5 /* addNewsFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7F2BEF61ABA965200C810E5 /* addNewsFeedViewController.m */; };
 		F7F2BF081ABB39C000C810E5 /* CGGeometry+RSKImageCropper.m in Sources */ = {isa = PBXBuildFile; fileRef = F7F2BEFE1ABB39C000C810E5 /* CGGeometry+RSKImageCropper.m */; };
@@ -343,6 +345,10 @@
 		F7B0E5D01AB69D47000C1E82 /* testImageApple.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = testImageApple.jpeg; sourceTree = "<group>"; };
 		F7B0E5D21AB6A2AA000C1E82 /* AddFriend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddFriend.h; sourceTree = "<group>"; };
 		F7B0E5D31AB6A2AA000C1E82 /* AddFriend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddFriend.m; sourceTree = "<group>"; };
+		F7EA540F1ACDE6E600B9FC1E /* MainTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabBarViewController.h; sourceTree = "<group>"; };
+		F7EA54101ACDE6E600B9FC1E /* MainTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabBarViewController.m; sourceTree = "<group>"; };
+		F7EA54121ACDEEDC00B9FC1E /* NewsFeedCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsFeedCardView.h; sourceTree = "<group>"; };
+		F7EA54131ACDEEDC00B9FC1E /* NewsFeedCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsFeedCardView.m; sourceTree = "<group>"; };
 		F7F2BEF21AB9EDA300C810E5 /* Personalprofile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Personalprofile.h; sourceTree = "<group>"; };
 		F7F2BEF31AB9EDA300C810E5 /* Personalprofile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Personalprofile.m; sourceTree = "<group>"; };
 		F7F2BEF51ABA965200C810E5 /* addNewsFeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = addNewsFeedViewController.h; sourceTree = "<group>"; };
@@ -982,6 +988,8 @@
 				EBD0D8D71A82E30500B76C79 /* InitPage.m */,
 				EB8BD4171A886E3400851D28 /* SignUpViewController.h */,
 				EB8BD4181A886E3400851D28 /* SignUpViewController.m */,
+				F7EA540F1ACDE6E600B9FC1E /* MainTabBarViewController.h */,
+				F7EA54101ACDE6E600B9FC1E /* MainTabBarViewController.m */,
 			);
 			name = Welcome/SignIn;
 			sourceTree = "<group>";
@@ -1013,6 +1021,8 @@
 			children = (
 				F7A443971AA49B2D00E9ADFC /* NewsFeed.h */,
 				F7A443951AA49B1A00E9ADFC /* NewsFeed.m */,
+				F7EA54121ACDEEDC00B9FC1E /* NewsFeedCardView.h */,
+				F7EA54131ACDEEDC00B9FC1E /* NewsFeedCardView.m */,
 				F7159A9A1A9478B600846566 /* NewsFeedViewController.h */,
 				F7159A9B1A9478B600846566 /* NewsFeedViewController.m */,
 				F7F2BEF51ABA965200C810E5 /* addNewsFeedViewController.h */,
@@ -1788,6 +1798,7 @@
 				F7A11E1B1ABD376200DF9AEB /* NSNumber+XMPP.m in Sources */,
 				F7FA88E71AC7094600F88F94 /* XMPPMessageArchivingCoreDataStorage.m in Sources */,
 				F7A443941AA4913100E9ADFC /* Communication.m in Sources */,
+				F7EA54111ACDE6E600B9FC1E /* MainTabBarViewController.m in Sources */,
 				F7F2BF0B1ABB39C000C810E5 /* RSKTouchView.m in Sources */,
 				F7A11E271ABD376200DF9AEB /* GCDMulticastDelegate.m in Sources */,
 				F7A11E551ABF780A00DF9AEB /* MeViewController.m in Sources */,
@@ -1930,6 +1941,7 @@
 				F7FA88D61AC7094600F88F94 /* XMPPIQ+XEP_0066.m in Sources */,
 				F7159A9C1A9478B600846566 /* NewsFeedViewController.m in Sources */,
 				F7F2BF0C1ABB39C000C810E5 /* UIImage+RSKImageCropper.m in Sources */,
+				F7EA54141ACDEEDC00B9FC1E /* NewsFeedCardView.m in Sources */,
 				F7F2BEF71ABA965200C810E5 /* addNewsFeedViewController.m in Sources */,
 				F7FA88E51AC7094600F88F94 /* XMPPMessageArchiving_Contact_CoreDataObject.m in Sources */,
 				F7FA88E91AC7094600F88F94 /* XMPPvCardAvatarModule.m in Sources */,

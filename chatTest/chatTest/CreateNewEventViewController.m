@@ -8,7 +8,7 @@
 
 #import "CreateNewEventViewController.h"
 #import "EventList.h"
-
+#import "MainTabBarViewController.h"
 
 @interface CreateNewEventViewController()
 
@@ -23,7 +23,8 @@
 {
     [super viewDidLoad];
     [_EventDescription setDelegate:self];
-    
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(resignOnTap:)];
+    singleTap.numberOfTapsRequired = 1;
 }
 
 - (IBAction)AddEvent:(id)sender {
@@ -45,8 +46,11 @@
     NSLog(@"GroupMember when set is %@",[[NSString alloc] initWithData:event.groupMember_data encoding:NSUTF8StringEncoding]);
     _EventDescription.text = @"";
 
-
-}
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    MainTabBarViewController *viewController = (MainTabBarViewController *)[storyboard instantiateViewControllerWithIdentifier:@"GoMeet"];
+    [viewController setSelectedIndex:3];
+    [self presentViewController:viewController animated:YES completion:nil];
+   }
 
 -(BOOL) textFieldShouldReturn: (UITextField *) textField {
     [textField resignFirstResponder];
@@ -57,6 +61,17 @@
     self.currentResponder = textField;
 }
 
+- (void)resignOnTap:(id)iSender {
+    [self.currentResponder resignFirstResponder];
+    // self.becomeFirstResponder();
+}
+- (IBAction)cancelButton:(UIButton *)sender {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    MainTabBarViewController *viewController = (MainTabBarViewController *)[storyboard instantiateViewControllerWithIdentifier:@"GoMeet"];
+    [viewController setSelectedIndex:3];
+    [self presentViewController:viewController animated:YES completion:nil];
+
+}
 
 
 @end

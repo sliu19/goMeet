@@ -68,7 +68,7 @@
     textBounds.origin = CGPointMake([self cornerOffset], [self cornerOffset]);
     textBounds.size = [contentText size];
     [contentText drawInRect:textBounds];
-    UIImage *testImage = [UIImage imageNamed:@"testImage.jpeg"];
+    //UIImage *testImage = [UIImage imageNamed:@"testImage.jpeg"];
     //test = UIImageJPEGRepresentation(testImage,testImage.scale);
     
     
