@@ -380,6 +380,7 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
     [xmppvCardTempModule   deactivate];
     [xmppvCardAvatarModule deactivate];
     [xmppCapabilities      deactivate];
+    [xmppPing              deactivate];
     
     [xmppStream disconnect];
     
@@ -392,6 +393,7 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
     xmppvCardAvatarModule = nil;
     xmppCapabilities = nil;
     xmppCapabilitiesStorage = nil;
+    xmppPing = nil;
 }
 
 // It's easy to create XML elments to send and to read received XML elements.

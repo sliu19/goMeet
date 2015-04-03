@@ -11,6 +11,7 @@
 #import "OwnerNewsFeed.h"
 #import "NewsFeedList.h"
 #import "AppDelegate.h"
+#import "MainTabBarViewController.h"
 
 @interface addNewsFeedViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *addImage;
@@ -49,6 +50,7 @@
     [super viewDidLoad];
     [inputStream setDelegate:self];
     [outputStream setDelegate:self];
+    [self BodyTextField].delegate = self;
     
     self.capturedImages = [[NSMutableArray alloc] init];
     
@@ -348,6 +350,23 @@
         if ( (statusCode == 0) || (!result && statusCode == 200) ) {
             statusCode = 500;}
     }
+    OwnerNewsFeed* news = nil;
+    news = [NSEntityDescription insertNewObjectForEntityForName:@"OwnerNewsFeed" inManagedObjectContext:[(AppDelegate*) [[UIApplication sharedApplication]delegate] managedObjectContext]];
+    
+    [news setValue: _BodyTextField.text forKey :@"bodyTextField"];
+    NSData *imageData = UIImageJPEGRepresentation([Communication compressToSmallSquare:_imageView.image],0.0);
+    [news setValue: imageData forKey :@"image"];
+    [news setValue:_uuidString forKey:@"uuid"];
+    NSDate *now = [NSDate date];
+    [news setValue:now forKey:@"date"];
+    
+    NewsFeedList* newList = nil;
+    newList = [NSEntityDescription insertNewObjectForEntityForName:@"NewsFeedList" inManagedObjectContext:[(AppDelegate*) [[UIApplication sharedApplication]delegate] managedObjectContext]];
+    [newList setValue: _BodyTextField.text forKey :@"bodyTextField"];
+    [newList setValue: imageData forKey :@"image"];
+    [newList setValue:_uuidString forKey:@"uuid"];
+    [newList setValue:now forKey:@"date"];
+
 }
 
 
@@ -454,12 +473,19 @@
 
 
 -(BOOL) textFieldShouldReturn: (UITextField *) textField {
-    [textField resignFirstResponder];
+    [[self currentResponder] resignFirstResponder];
     return YES;
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
     self.currentResponder = textField;
+}
+- (IBAction)CancelBack:(UIBarButtonItem *)sender {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    MainTabBarViewController *viewController = (MainTabBarViewController *)[storyboard instantiateViewControllerWithIdentifier:@"GoMeet"];
+    [viewController setSelectedIndex:3];
+    [self presentViewController:viewController animated:YES completion:nil];
+    
 }
 
 @end

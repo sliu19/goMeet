@@ -219,7 +219,7 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 - (IBAction)clickBack:(UIBarButtonItem *)sender {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     MainTabBarViewController *viewController = (MainTabBarViewController *)[storyboard instantiateViewControllerWithIdentifier:@"GoMeet"];
-    [viewController setSelectedIndex:3];
+    [viewController setSelectedIndex:2];
     [self presentViewController:viewController animated:YES completion:nil];
 }
 

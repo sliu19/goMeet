@@ -7,10 +7,12 @@
 //
 
 #import "MeViewController.h"
+#import "NewsFeedCardView.h"
 
 @interface MeViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *PersonalPicImageView;
 @property (weak, nonatomic) IBOutlet UITextView *PersonalnfoTextView;
+@property (weak, nonatomic) IBOutlet UIScrollView *window;
 
 @end
 
@@ -42,6 +44,10 @@
     //[defaults setInteger:age forKey:@"age"];
     [defaults setObject:nil forKey:@"userPic"];
     [defaults synchronize];
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UINavigationController *viewController = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"InitPage"];
+    [self presentViewController:viewController animated:YES completion:nil];
 }
 
 /*

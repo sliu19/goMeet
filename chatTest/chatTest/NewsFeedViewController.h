@@ -11,5 +11,5 @@
 #import "NewsFeed.h"
 
 @interface NewsFeedViewController : UIViewController<NSStreamDelegate>
-
+@property (strong,nonatomic) NSMutableArray* newsList;
 @end
