@@ -20,6 +20,7 @@
 @synthesize contentImage;
 @synthesize newsFeedUUID;
 @synthesize comments;
+@synthesize date;
 
 -(void)SampleInit:(NSData*) testImage{
     
@@ -30,6 +31,33 @@
     [comments  addObject:@"this is a good test commet"];
     [comments  addObject:@"this is a bad test commet"];
 }
+
+
+-(NewsFeed*)initWithOwnerNewsFeed:(OwnerNewsFeed*) ownerNewsFeed{
+    self = [super init];
+    if(!self) return nil;
+    userID = ownerNewsFeed.userID;
+    contentText = ownerNewsFeed.bodyTextField;
+    contentImage = ownerNewsFeed.image;
+    newsFeedUUID = ownerNewsFeed.uuid;
+    comments = [[NSMutableArray alloc]initWithArray:@[@"test comment 1 ",@"test commment 2"]];
+    date = ownerNewsFeed.date;
+    return self;
+}
+
+
+-(NewsFeed*)initWithNewsFeedList:(NewsFeedList*) newsFeedList{
+    self = [super init];
+    if(!self) return nil;
+    userID = newsFeedList.userID;
+    contentText = newsFeedList.bodyTextField;
+    contentImage = newsFeedList.image;
+    newsFeedUUID = newsFeedList.uuid;
+    comments = [[NSMutableArray alloc]initWithArray:@[@"test comment 1 ",@"test commment 2"]];
+    date = newsFeedList.date;
+    return self;
+}
+
 
 #pragma mark -getter&setter
 -(NSString*)getUserID:(NewsFeed*)myNewsFeed{

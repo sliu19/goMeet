@@ -66,7 +66,6 @@
     doubleTap.numberOfTapsRequired = 2;
     [_imageView setUserInteractionEnabled:YES];
     [_imageView addGestureRecognizer:doubleTap];
-
 }
 
 -(void)awakeFromNib{
@@ -74,7 +73,7 @@
 }
 
 - (void)resignOnTap:(id)sender {
-    NSLog(@"Single Tab detacted");
+    NSLog(@"Double Tab detacted");
     [self.currentResponder resignFirstResponder];
     UIImage* image = _imageView.image;
     RSKImageCropViewController *imageCropVC = [[RSKImageCropViewController alloc] initWithImage:image];
@@ -91,7 +90,9 @@
 
 - (IBAction)showImagePickerForPhotoPicker:(id)sender
 {
+    NSLog(@"start pick pics");
     [self showImagePickerForSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+
 }
 
 
@@ -242,20 +243,22 @@
 // This method is called when an image has been chosen from the library or taken from the camera.
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
+    NSLog(@"didFinishPicking pic");
     UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
-    
+    //_imageView.image = image;
     [self.capturedImages addObject:image];
     
     if ([self.cameraTimer isValid])
     {
+        NSLog(@"return here");
         return;
     }
     
     [self finishAndUpdate];
     //UIImage *image = _imageView.image;
-    RSKImageCropViewController *imageCropVC = [[RSKImageCropViewController alloc] initWithImage:image];
-    imageCropVC.delegate = self;
-    [self.navigationController pushViewController:imageCropVC animated:NO];
+    //RSKImageCropViewController *imageCropVC = [[RSKImageCropViewController alloc] initWithImage:image];
+   // imageCropVC.delegate = self;
+   // [self.navigationController pushViewController:imageCropVC animated:NO];
 
 }
 
@@ -354,7 +357,7 @@
     news = [NSEntityDescription insertNewObjectForEntityForName:@"OwnerNewsFeed" inManagedObjectContext:[(AppDelegate*) [[UIApplication sharedApplication]delegate] managedObjectContext]];
     
     [news setValue: _BodyTextField.text forKey :@"bodyTextField"];
-    NSData *imageData = UIImageJPEGRepresentation([Communication compressToSmallSquare:_imageView.image],0.0);
+    NSData *imageData = UIImageJPEGRepresentation(_imageView.image,0.0);
     [news setValue: imageData forKey :@"image"];
     [news setValue:_uuidString forKey:@"uuid"];
     NSDate *now = [NSDate date];
@@ -366,6 +369,11 @@
     [newList setValue: imageData forKey :@"image"];
     [newList setValue:_uuidString forKey:@"uuid"];
     [newList setValue:now forKey:@"date"];
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    MainTabBarViewController *viewController = (MainTabBarViewController *)[storyboard instantiateViewControllerWithIdentifier:@"GoMeet"];
+    [viewController setSelectedIndex:3];
+    [self presentViewController:viewController animated:YES completion:nil];
 
 }
 
@@ -410,8 +418,9 @@
                                     news = [NSEntityDescription insertNewObjectForEntityForName:@"OwnerNewsFeed" inManagedObjectContext:[(AppDelegate*) [[UIApplication sharedApplication]delegate] managedObjectContext]];
                                     
                                     [news setValue: _BodyTextField.text forKey :@"bodyTextField"];
-                                    NSData *imageData = UIImageJPEGRepresentation([Communication compressToSmallSquare:_imageView.image],0.0);
+                                    NSData *imageData = UIImageJPEGRepresentation(_imageView.image,0.0);
                                     [news setValue: imageData forKey :@"image"];
+                                
                                     [news setValue:_uuidString forKey:@"uuid"];
                                     NSDate *now = [NSDate date];
                                     [news setValue:now forKey:@"date"];

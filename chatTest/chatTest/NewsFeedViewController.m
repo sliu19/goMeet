@@ -90,9 +90,9 @@
 
 - (void)resignOnTap:(UITapGestureRecognizer *)sender{
     //[self.currentResponder resignFirstResponder];
-    NSLog(@"Single Tab detacted");
-    if ([(UIImageView *)sender.view isKindOfClass:[UIImageView class]]) {
-         NSLog(@"This is a imageView,TO DO:Push a new navi view");
+    NSLog(@"Double Tab detacted");
+    if ([(NewsFeedCardView *)sender.view isKindOfClass:[NewsFeedCardView class]]) {
+         NSLog(@"This is a newsFeedCardView,TO DO:Push a new navi view");
         //[sender.view setFrame:CGRectMake(0, 0, self.view.frame.size.width, 80)];
     }
     else {
@@ -124,7 +124,7 @@
 }
 - (IBAction)AddNews:(UIBarButtonItem *)sender {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    addNewsFeedViewController *viewController = (addNewsFeedViewController *)[storyboard instantiateViewControllerWithIdentifier:@"addNews"];
+    UINavigationController *viewController = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"AddNewsFeedNavi"];
     [self presentViewController:viewController animated:YES completion:nil];
     
 }

@@ -89,20 +89,30 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 -(void)initxmpproom{
     //TO DO: Get response from server
     //[self getrooms];
+    //NSString* roomJIDString = [NSString stringWithFormat:@"%@@54.69.204.42",eventElement.jid];
+    //NSLog(@"roomJIDString is %@",roomJIDString);
     xmppRoomStorage  = [XMPPRoomCoreDataStorage sharedInstance];
-    XMPPJID *roomJID = [XMPPJID jidWithString:eventElement.jid];
-    xmppRoom = [[XMPPRoom alloc] initWithRoomStorage:xmppRoomStorage jid:roomJID];
-    [xmppRoom activate:xmppStream];
-    [xmppRoom addDelegate:self delegateQueue:dispatch_get_main_queue()];
-    //加入房间
+    XMPPJID *roomJID = [XMPPJID jidWithString:@"room4@conference.ip-172-31-20-117"];
+    xmppRoom = [[XMPPRoom alloc] initWithRoomStorage:xmppRoomStorage jid:roomJID  dispatchQueue:dispatch_get_main_queue()];
+    XMPPStream *stream = [self xmppStream];
+    
+    [xmppRoom activate:stream];
+    //[xmppRoom activate:[[XMPPManager sharedManager] xmppStream]];
+    //[xmppRoom activate:xmppStream];
+    [self performSelector:@selector(joinroom) withObject:nil afterDelay:2];
     [self joinroom];
+    [xmppRoom addDelegate:self delegateQueue:dispatch_get_main_queue()];
+    
 }
 
 -(void)joinroom{
     
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [xmppRoom joinRoomUsingNickname:@"user3" history:nil];
     
-    [xmppRoom joinRoomUsingNickname:[defaults stringForKey:@"userID"] history:nil];
+ 
+    
+    [xmppRoom fetchConfigurationForm];
+    [xmppRoom configureRoomUsingOptions:nil];
 }
 
 
@@ -111,8 +121,10 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
     NSLog(@"群发言了。。。。");
     
     NSString *type = [[message attributeForName:@"type"] stringValue];
+    //NSLog(
     if ([type isEqualToString:@"groupchat"]) {
         NSString *msg = [[message elementForName:@"body"] stringValue];
+        NSLog(@"MESSAGEBOdy is %@",msg);
         //NSString *timexx = [[timex attributeForName:@"stamp"] stringValue];
         NSString *from = [[message attributeForName:@"from"] stringValue];
         NSMutableDictionary *dict = [NSMutableDictionary dictionary];
@@ -141,35 +153,21 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
     //本地输入框中的信息
     //TO DO:Add textfield
     NSString *message = _inputTextField.text;
+    
     _inputTextField.text = @"";
     [_inputTextField resignFirstResponder];
     
     if (message.length > 0){
-        NSXMLElement *body = [NSXMLElement elementWithName:@"body"];
-        [body setStringValue:message];
-        
-        //生成XML消息文档
-        NSXMLElement *mes = [NSXMLElement elementWithName:@"message"];
-        
-        //消息类型
-        [mes addAttributeWithName:@"type" stringValue:@"groupchat"];
-        
-        //发送给谁
-        [mes addAttributeWithName:@"to" stringValue:CHATROOM];
-        
-        //由谁发送
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        
-        [mes addAttributeWithName:@"from" stringValue:[NSString stringWithFormat:@"%@/%@",CHATROOM,[defaults stringForKey:@"userID"]]];
-        
-        //组合
-        [mes addChild:body];
-        
-        //发送消息
-        [xmppStream sendElement:mes];
-        NSLog(@"Send message: %@",mes);
+        [xmppRoom sendMessageWithBody:@"TEST message is "];
+        NSLog(@"Send message: %@",message);
         
     }
+}
+- (IBAction)InviteNewFriend:(UIBarButtonItem *)sender {
+    
+    XMPPJID *user2JID = [XMPPJID jidWithString:@"yi@ip-172-31-20-117"];
+    [xmppRoom inviteUser: user2JID withMessage:@"This is a invitation reason"];
+    
 }
 
 -(void)newMessageReceived:(NSDictionary *)messageContent{
@@ -180,7 +178,7 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
       //  [self.tableview1 setContentOffset:CGPointMake(0, self.tableview1.contentSize.height - self.tableview1.frame.size.height)];
    // }
     
-    NSLog(@"receive message %@", messageContent);
+    NSLog(@"receive message %@, from %@", messageContent[@"body"], messageContent[@"from"]);
 }
 
 
@@ -221,6 +219,45 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
     MainTabBarViewController *viewController = (MainTabBarViewController *)[storyboard instantiateViewControllerWithIdentifier:@"GoMeet"];
     [viewController setSelectedIndex:2];
     [self presentViewController:viewController animated:YES completion:nil];
+}
+
+#pragma mark 配置房间为永久房间
+-(void)sendDefaultRoomConfig
+{
+    
+    NSXMLElement *x = [NSXMLElement elementWithName:@"x" xmlns:@"jabber:x:data"];
+    
+    NSXMLElement *field = [NSXMLElement elementWithName:@"field"];
+    NSXMLElement *value = [NSXMLElement elementWithName:@"value"];
+    
+    NSXMLElement *fieldowners = [NSXMLElement elementWithName:@"field"];
+    NSXMLElement *valueowners = [NSXMLElement elementWithName:@"value"];
+    
+    
+    [field addAttributeWithName:@"var" stringValue:@"muc#roomconfig_persistentroom"];  // 永久属性
+    [fieldowners addAttributeWithName:@"var" stringValue:@"muc#roomconfig_roomowners"];  // 谁创建的房间
+    
+    
+    [field addAttributeWithName:@"type" stringValue:@"boolean"];
+    [fieldowners addAttributeWithName:@"type" stringValue:@"jid-multi"];
+    
+    [value setStringValue:@"1"];
+    [valueowners setStringValue:[xmppStream myJID].bare]; //创建者的Jid
+    
+    [x addChild:field];
+    [x addChild:fieldowners];
+    [field addChild:value];
+    [fieldowners addChild:valueowners];
+    
+    [xmppRoom configureRoomUsingOptions:x];
+    
+}
+
+// 房间创建成功后在配置永久属性
+#pragma mark - 创建讨论组成功回调
+- (void)xmppRoomDidCreate:(XMPPRoom *)sender
+{
+    [self sendDefaultRoomConfig];
 }
 
 @end

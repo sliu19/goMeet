@@ -8,6 +8,8 @@
 
 #ifndef chatTest_NewsFeed_h
 #define chatTest_NewsFeed_h
+#import "OwnerNewsFeed.h"
+#import "NewsFeedList.h"
 @interface NewsFeed: NSObject
 
 @property(strong,nonatomic)NSString* userID;
@@ -15,9 +17,12 @@
 @property(strong,nonatomic)NSData* contentImage;
 @property(strong,nonatomic)NSString* newsFeedUUID;
 @property(strong,nonatomic)NSMutableArray* comments;
+@property(strong,nonatomic)NSDate* date;
 
 
 -(void)SampleInit:(NSData*) testImage;
+-(NewsFeed*)initWithOwnerNewsFeed:(OwnerNewsFeed*) ownerNewsFeed;
+-(NewsFeed*)initWithNewsFeedList:(NewsFeedList*) newsFeedList;
 
 -(NSString*)getUserID:(NewsFeed*)myNewsFeed;
 -(void)setUserID:(NewsFeed*)myNewsFeed :(NSString*) myUserName;

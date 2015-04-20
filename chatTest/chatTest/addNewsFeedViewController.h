@@ -11,7 +11,7 @@
 #import "NewsFeedViewController.h"
 #import "RSKImageCropViewController.h"
 
-@interface addNewsFeedViewController : UIViewController<UIImagePickerControllerDelegate,UIPopoverControllerDelegate,UINavigationControllerDelegate,UIAlertViewDelegate,NSStreamDelegate,RSKImageCropViewControllerDelegate,UITextFieldDelegate>
+@interface addNewsFeedViewController : UIViewController<UIImagePickerControllerDelegate,UIAlertViewDelegate,NSStreamDelegate,UITextFieldDelegate,RSKImageCropViewControllerDelegate,UINavigationControllerDelegate>
 
 @property (nonatomic, weak) IBOutlet UIImageView *outImageView;
 @end

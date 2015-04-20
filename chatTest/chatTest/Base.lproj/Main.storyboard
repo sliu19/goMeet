@@ -267,7 +267,7 @@
             </objects>
             <point key="canvasLocation" x="3083" y="1031"/>
         </scene>
-        <!--Add News Feed View Controller-->
+        <!--News-->
         <scene sceneID="88M-im-9BH">
             <objects>
                 <viewController storyboardIdentifier="addNews" id="hS2-hm-v98" customClass="addNewsFeedViewController" sceneMemberID="viewController">
@@ -305,22 +305,16 @@
                                     <action selector="showImagePickerForPhotoPicker:" destination="hS2-hm-v98" eventType="touchUpInside" id="8tz-qQ-bre"/>
                                 </connections>
                             </button>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dXE-GP-YDv">
-                                <rect key="frame" x="0.0" y="37" width="320" height="44"/>
-                                <items>
-                                    <navigationItem title="Add News" id="qjr-rf-Wqd">
-                                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="xyV-Dp-raD">
-                                            <connections>
-                                                <action selector="CancelBack:" destination="hS2-hm-v98" id="Bbl-F3-8wx"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" red="0.6174597691" green="0.77775983979999996" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" id="YkC-MA-H8B"/>
+                    <navigationItem key="navigationItem" title="News" id="YkC-MA-H8B">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="O12-FH-WYT">
+                            <connections>
+                                <action selector="CancelBack:" destination="hS2-hm-v98" id="2ls-Qo-aik"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="BodyTextField" destination="8Bh-D8-3sA" id="27c-dl-y6s"/>
                         <outlet property="SendNewsFeed" destination="eTy-pp-Y4b" id="d4P-oj-oyd"/>
@@ -331,7 +325,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="coK-Oa-Hq3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3981" y="1031"/>
+            <point key="canvasLocation" x="4103" y="1031"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="NLW-2i-UK6">
@@ -395,7 +389,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="56w-Of-bQo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4442" y="1031"/>
+            <point key="canvasLocation" x="4626" y="1031"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="YSo-Gu-5bO">
@@ -431,7 +425,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rh2-gX-ZUz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4874" y="1031"/>
+            <point key="canvasLocation" x="5126" y="1031"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="Q1e-KD-hP6">
@@ -574,6 +568,11 @@
                                         <barButtonItem key="leftBarButtonItem" title="Back" id="bf8-uk-oOM">
                                             <connections>
                                                 <action selector="clickBack:" destination="92y-bh-dv8" id="l4n-GP-lgV"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Inivite" id="ZQU-Gl-g5n">
+                                            <connections>
+                                                <action selector="InviteNewFriend:" destination="92y-bh-dv8" id="eeS-ye-3qk"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -938,6 +937,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tPn-fN-aAd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2613" y="1031"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Yz1-qb-Htm">
+            <objects>
+                <navigationController storyboardIdentifier="AddNewsFeedNavi" automaticallyAdjustsScrollViewInsets="NO" id="eT5-Ya-K23" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="CDf-fA-wmg">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="hS2-hm-v98" kind="relationship" relationship="rootViewController" id="9dG-8c-X8g"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hxX-KG-6Y3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3553" y="1031"/>
         </scene>
     </scenes>
     <resources>
