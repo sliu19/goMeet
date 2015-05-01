@@ -10,6 +10,7 @@
 #import "EventList.h"
 #import "AppDelegate.h"
 #import "GroupChatVC.h"
+#import "EventListTableViewCell.h"
 
 @interface EventTableViewController ()
 @property (strong, nonatomic) IBOutlet UITableView *EventTableView;
@@ -27,6 +28,9 @@
     [self setManagedObjectContent:[(AppDelegate*) [[UIApplication sharedApplication]delegate] managedObjectContext]];
     CGFloat topLayoutGuide = self.topLayoutGuide.length;
     _EventTableView.contentInset = UIEdgeInsetsMake(topLayoutGuide, 0, 0, 0);
+    self.tableView.rowHeight = 180;
+    self.tableView.estimatedRowHeight = 180.0;
+    self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"backGround"]];
     
 }
 -(void)setManagedObjectContent:(NSManagedObjectContext *)managedObjectContent
@@ -45,15 +49,14 @@
 
 -(UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"EventCell"];
+    
     
     EventList *event = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    NSLog(@"This is debug for event list %@",event.jid);
-    cell.textLabel.text = event.eventDescription;
-    NSArray* userList = event.groupMember;
-    NSLog(@"userList convert to String is %@",userList);
-    NSString * result = [[userList valueForKey:@"description"] componentsJoinedByString:@" "];
-    cell.detailTextLabel.text = result;
+    
+    EventListTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"EventCell"];
+    //NSLog(@"Cell frame is %@",cell.frame.size.height);
+    //cell.contentView.backgroundColor = [UIColor clearColor];
+    cell.myEvent = event;
     return cell;
 }
 

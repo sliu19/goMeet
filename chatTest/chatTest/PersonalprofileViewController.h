@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "Friend.h"
 
-@interface Personalprofile : UIViewController
+@interface PersonalprofileViewController : UIViewController
 
-@property (strong, atomic) Friend* friend;
+@property (strong, atomic) Friend* friends;
 
 @end

@@ -6,20 +6,19 @@
 //  Copyright (c) 2015 LPP. All rights reserved.
 //
 
-#import "Personalprofile.h"
+#import "PersonalprofileViewController.h"
 
-@interface Personalprofile ()
-@property (weak, nonatomic) IBOutlet UIImageView *ProfilePic;
-@property (weak, nonatomic) IBOutlet UITextView *InformationTextField;
+@interface PersonalprofileViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *userName;
+
 
 @end
 
-@implementation Personalprofile
+@implementation PersonalprofileViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _InformationTextField.text = _friend.userName;
-    _ProfilePic.image = [[UIImage alloc]initWithData:_friend.userPic];
+    _userName.text = _friends.userName;
     // Do any additional setup after loading the view.
 }
 

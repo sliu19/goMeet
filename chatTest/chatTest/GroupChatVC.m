@@ -92,15 +92,16 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
     //NSString* roomJIDString = [NSString stringWithFormat:@"%@@54.69.204.42",eventElement.jid];
     //NSLog(@"roomJIDString is %@",roomJIDString);
     xmppRoomStorage  = [XMPPRoomCoreDataStorage sharedInstance];
-    XMPPJID *roomJID = [XMPPJID jidWithString:@"room4@conference.ip-172-31-20-117"];
+    NSString* roomJIDString = [[NSString alloc]initWithFormat:@"%@@conference.ip-172-31-20-117",eventElement.jid];
+    XMPPJID *roomJID = [XMPPJID jidWithString:roomJIDString];
     xmppRoom = [[XMPPRoom alloc] initWithRoomStorage:xmppRoomStorage jid:roomJID  dispatchQueue:dispatch_get_main_queue()];
     XMPPStream *stream = [self xmppStream];
     
     [xmppRoom activate:stream];
     //[xmppRoom activate:[[XMPPManager sharedManager] xmppStream]];
     //[xmppRoom activate:xmppStream];
-    [self performSelector:@selector(joinroom) withObject:nil afterDelay:2];
-    [self joinroom];
+    //[self performSelector:@selector(joinroom) withObject:nil afterDelay:2];
+    //[self joinroom];
     [xmppRoom addDelegate:self delegateQueue:dispatch_get_main_queue()];
     
 }
@@ -220,6 +221,15 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
     [viewController setSelectedIndex:2];
     [self presentViewController:viewController animated:YES completion:nil];
 }
+
+
+- (void)handleIncomingMessage:(XMPPMessage *)message room:(XMPPRoom *)room{
+    
+}
+- (void)handleOutgoingMessage:(XMPPMessage *)message room:(XMPPRoom *)room{
+    
+}
+
 
 #pragma mark 配置房间为永久房间
 -(void)sendDefaultRoomConfig

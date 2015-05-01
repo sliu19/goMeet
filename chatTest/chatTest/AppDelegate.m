@@ -110,7 +110,7 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
     people = [NSEntityDescription insertNewObjectForEntityForName:@"Friend" inManagedObjectContext:[(AppDelegate*) [[UIApplication sharedApplication]delegate] managedObjectContext]];
     //people.userName =[key obje]
     //people.unique = unique;
-    [people setValue: @"testUserName" forKey :@"userName"];
+    [people setValue: @"Amy" forKey :@"userName"];
     NSData *imageData = UIImageJPEGRepresentation([UIImage imageNamed:@"testImage.jpeg"],0.0);
     [people setValue: imageData forKey :@"userPic"];
     [people setValue:@"111111" forKey:@"userImageUUID"];
@@ -118,9 +118,33 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
     people2 = [NSEntityDescription insertNewObjectForEntityForName:@"Friend" inManagedObjectContext:[(AppDelegate*) [[UIApplication sharedApplication]delegate] managedObjectContext]];
     //people.userName =[key obje]
     //people.unique = unique;
-    [people2 setValue: @"testUserName222" forKey :@"userName"];
+    [people2 setValue: @"Zak" forKey :@"userName"];
     [people2 setValue: imageData forKey :@"userPic"];
     [people2 setValue:@"111111" forKey:@"userImageUUID"];
+    
+    Friend* people3 = nil;
+    Friend* people4 = nil;
+    Friend* people5 = nil;
+    people3 = [NSEntityDescription insertNewObjectForEntityForName:@"Friend" inManagedObjectContext:[(AppDelegate*) [[UIApplication sharedApplication]delegate] managedObjectContext]];
+    //people.userName =[key obje]
+    //people.unique = unique;
+    [people3 setValue: @"Bob" forKey :@"userName"];
+    [people3 setValue: imageData forKey :@"userPic"];
+    [people3 setValue:@"111111" forKey:@"userImageUUID"];
+    //NSLog(@"This is debug for people list %@",people.userName);
+    people4 = [NSEntityDescription insertNewObjectForEntityForName:@"Friend" inManagedObjectContext:[(AppDelegate*) [[UIApplication sharedApplication]delegate] managedObjectContext]];
+    //people.userName =[key obje]
+    //people.unique = unique;
+    [people4 setValue: @"David" forKey :@"userName"];
+    [people4 setValue: imageData forKey :@"userPic"];
+    [people4 setValue:@"111111" forKey:@"userImageUUID"];
+
+    people5 = [NSEntityDescription insertNewObjectForEntityForName:@"Friend" inManagedObjectContext:[(AppDelegate*) [[UIApplication sharedApplication]delegate] managedObjectContext]];
+    //people.userName =[key obje]
+    //people.unique = unique;
+    [people5 setValue: @"Simin" forKey :@"userName"];
+    [people5 setValue: imageData forKey :@"userPic"];
+    [people5 setValue:@"111111" forKey:@"userImageUUID"];
     
     if (![self connect])
     {

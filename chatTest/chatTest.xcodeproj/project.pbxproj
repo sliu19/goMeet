@@ -15,8 +15,14 @@
 		EBD0D8C71A82E1F700B76C79 /* chatTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EBD0D8C61A82E1F700B76C79 /* chatTestTests.m */; };
 		EBD0D8D91A82E30500B76C79 /* InitPage.m in Sources */ = {isa = PBXBuildFile; fileRef = EBD0D8D71A82E30500B76C79 /* InitPage.m */; };
 		F7159A9C1A9478B600846566 /* NewsFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7159A9B1A9478B600846566 /* NewsFeedViewController.m */; };
+		F76F4ABD1AF2F92000A0E525 /* FriendListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F76F4ABC1AF2F92000A0E525 /* FriendListViewController.m */; };
+		F76F4AC51AF2FD7500A0E525 /* PersonalProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = F76F4AC41AF2FD7500A0E525 /* PersonalProfile.m */; };
+		F76F4AC91AF2FFFE00A0E525 /* PersonUIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F76F4AC81AF2FFFE00A0E525 /* PersonUIButton.m */; };
 		F77C900B1AA3C0950005EC2F /* NewsFeedView.m in Sources */ = {isa = PBXBuildFile; fileRef = F77C900A1AA3C0950005EC2F /* NewsFeedView.m */; };
 		F77C90101AA3F4A60005EC2F /* Lib.m in Sources */ = {isa = PBXBuildFile; fileRef = F77C900F1AA3F4A60005EC2F /* Lib.m */; };
+		F77EC12D1AE86D9400D790C2 /* GroupChatTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F77EC12C1AE86D9400D790C2 /* GroupChatTableViewCell.m */; };
+		F77EC12F1AE86FD000D790C2 /* icon.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F77EC12E1AE86FD000D790C2 /* icon.jpeg */; };
+		F77EC1321AE8720A00D790C2 /* EventListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F77EC1311AE8720A00D790C2 /* EventListTableViewCell.m */; };
 		F791A6951AAC1A040025365A /* testImage.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F791A6941AAC1A040025365A /* testImage.jpeg */; };
 		F791A6971AAC1A090025365A /* nightLife.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F791A6961AAC1A090025365A /* nightLife.jpeg */; };
 		F791A69A1AAC1A7B0025365A /* CoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F791A6991AAC1A7B0025365A /* CoreDataTableViewController.m */; };
@@ -79,9 +85,17 @@
 		F7B0E5CF1AB69CE8000C1E82 /* forest.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F7B0E5CE1AB69CE8000C1E82 /* forest.jpeg */; };
 		F7B0E5D11AB69D47000C1E82 /* testImageApple.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F7B0E5D01AB69D47000C1E82 /* testImageApple.jpeg */; };
 		F7B0E5D41AB6A2AA000C1E82 /* AddFriend.m in Sources */ = {isa = PBXBuildFile; fileRef = F7B0E5D31AB6A2AA000C1E82 /* AddFriend.m */; };
+		F7CF947B1AE8A90C007400FB /* Divider.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F7CF947A1AE8A90C007400FB /* Divider.jpg */; };
+		F7CF948D1AE8AAE5007400FB /* Check-in Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F7CF94861AE8AAE5007400FB /* Check-in Icon.png */; };
+		F7CF948E1AE8AAE5007400FB /* clock icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F7CF94871AE8AAE5007400FB /* clock icon.png */; };
+		F7CF948F1AE8AAE5007400FB /* Date Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F7CF94881AE8AAE5007400FB /* Date Icon.png */; };
+		F7CF94901AE8AAE5007400FB /* Discrption icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F7CF94891AE8AAE5007400FB /* Discrption icon.png */; };
+		F7CF94911AE8AAE5007400FB /* icon-4.png in Resources */ = {isa = PBXBuildFile; fileRef = F7CF948A1AE8AAE5007400FB /* icon-4.png */; };
+		F7CF94921AE8AAE5007400FB /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F7CF948B1AE8AAE5007400FB /* icon.png */; };
+		F7CF94931AE8AAE5007400FB /* People Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F7CF948C1AE8AAE5007400FB /* People Icon.png */; };
 		F7EA54111ACDE6E600B9FC1E /* MainTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7EA54101ACDE6E600B9FC1E /* MainTabBarViewController.m */; };
 		F7EA54141ACDEEDC00B9FC1E /* NewsFeedCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7EA54131ACDEEDC00B9FC1E /* NewsFeedCardView.m */; };
-		F7F2BEF41AB9EDA300C810E5 /* Personalprofile.m in Sources */ = {isa = PBXBuildFile; fileRef = F7F2BEF31AB9EDA300C810E5 /* Personalprofile.m */; };
+		F7F2BEF41AB9EDA300C810E5 /* PersonalprofileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7F2BEF31AB9EDA300C810E5 /* PersonalprofileViewController.m */; };
 		F7F2BEF71ABA965200C810E5 /* addNewsFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7F2BEF61ABA965200C810E5 /* addNewsFeedViewController.m */; };
 		F7F2BF081ABB39C000C810E5 /* CGGeometry+RSKImageCropper.m in Sources */ = {isa = PBXBuildFile; fileRef = F7F2BEFE1ABB39C000C810E5 /* CGGeometry+RSKImageCropper.m */; };
 		F7F2BF091ABB39C000C810E5 /* RSKImageCropViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7F2BF011ABB39C000C810E5 /* RSKImageCropViewController.m */; };
@@ -219,10 +233,21 @@
 		EBD0D8D71A82E30500B76C79 /* InitPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InitPage.m; path = ../InitPage.m; sourceTree = "<group>"; };
 		F7159A9A1A9478B600846566 /* NewsFeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsFeedViewController.h; sourceTree = "<group>"; };
 		F7159A9B1A9478B600846566 /* NewsFeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsFeedViewController.m; sourceTree = "<group>"; };
+		F76F4ABB1AF2F92000A0E525 /* FriendListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendListViewController.h; sourceTree = "<group>"; };
+		F76F4ABC1AF2F92000A0E525 /* FriendListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendListViewController.m; sourceTree = "<group>"; };
+		F76F4AC31AF2FD7500A0E525 /* PersonalProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PersonalProfile.h; path = ../PersonalProfile.h; sourceTree = "<group>"; };
+		F76F4AC41AF2FD7500A0E525 /* PersonalProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PersonalProfile.m; path = ../PersonalProfile.m; sourceTree = "<group>"; };
+		F76F4AC71AF2FFFE00A0E525 /* PersonUIButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonUIButton.h; sourceTree = "<group>"; };
+		F76F4AC81AF2FFFE00A0E525 /* PersonUIButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonUIButton.m; sourceTree = "<group>"; };
 		F77C90091AA3C0950005EC2F /* NewsFeedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsFeedView.h; sourceTree = "<group>"; };
 		F77C900A1AA3C0950005EC2F /* NewsFeedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsFeedView.m; sourceTree = "<group>"; };
 		F77C900F1AA3F4A60005EC2F /* Lib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Lib.m; sourceTree = "<group>"; };
 		F77C90111AA3F4B50005EC2F /* Lib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Lib.h; sourceTree = "<group>"; };
+		F77EC12B1AE86D9400D790C2 /* GroupChatTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupChatTableViewCell.h; sourceTree = "<group>"; };
+		F77EC12C1AE86D9400D790C2 /* GroupChatTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupChatTableViewCell.m; sourceTree = "<group>"; };
+		F77EC12E1AE86FD000D790C2 /* icon.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = icon.jpeg; path = "../../../../Image Module/Picture - icon/icon.jpeg"; sourceTree = "<group>"; };
+		F77EC1301AE8720A00D790C2 /* EventListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventListTableViewCell.h; sourceTree = "<group>"; };
+		F77EC1311AE8720A00D790C2 /* EventListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventListTableViewCell.m; sourceTree = "<group>"; };
 		F791A6941AAC1A040025365A /* testImage.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = testImage.jpeg; sourceTree = "<group>"; };
 		F791A6961AAC1A090025365A /* nightLife.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nightLife.jpeg; sourceTree = "<group>"; };
 		F791A6981AAC1A750025365A /* CoreDataTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreDataTableViewController.h; sourceTree = "<group>"; };
@@ -345,12 +370,20 @@
 		F7B0E5D01AB69D47000C1E82 /* testImageApple.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = testImageApple.jpeg; sourceTree = "<group>"; };
 		F7B0E5D21AB6A2AA000C1E82 /* AddFriend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddFriend.h; sourceTree = "<group>"; };
 		F7B0E5D31AB6A2AA000C1E82 /* AddFriend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddFriend.m; sourceTree = "<group>"; };
+		F7CF947A1AE8A90C007400FB /* Divider.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Divider.jpg; path = "../../../../Event V2.0/Event - Home - Full-assets/Divider.jpg"; sourceTree = "<group>"; };
+		F7CF94861AE8AAE5007400FB /* Check-in Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Check-in Icon.png"; path = "../../../../Event V2.0/Event - Home - Full-assets/Check-in Icon.png"; sourceTree = "<group>"; };
+		F7CF94871AE8AAE5007400FB /* clock icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "clock icon.png"; path = "../../../../Event V2.0/Event - Home - Full-assets/clock icon.png"; sourceTree = "<group>"; };
+		F7CF94881AE8AAE5007400FB /* Date Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Date Icon.png"; path = "../../../../Event V2.0/Event - Home - Full-assets/Date Icon.png"; sourceTree = "<group>"; };
+		F7CF94891AE8AAE5007400FB /* Discrption icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Discrption icon.png"; path = "../../../../Event V2.0/Event - Home - Full-assets/Discrption icon.png"; sourceTree = "<group>"; };
+		F7CF948A1AE8AAE5007400FB /* icon-4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-4.png"; path = "../../../../Event V2.0/Event - Home - Full-assets/icon-4.png"; sourceTree = "<group>"; };
+		F7CF948B1AE8AAE5007400FB /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = "../../../../Event V2.0/Event - Home - Full-assets/icon.png"; sourceTree = "<group>"; };
+		F7CF948C1AE8AAE5007400FB /* People Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "People Icon.png"; path = "../../../../Event V2.0/Event - Home - Full-assets/People Icon.png"; sourceTree = "<group>"; };
 		F7EA540F1ACDE6E600B9FC1E /* MainTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabBarViewController.h; sourceTree = "<group>"; };
 		F7EA54101ACDE6E600B9FC1E /* MainTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabBarViewController.m; sourceTree = "<group>"; };
 		F7EA54121ACDEEDC00B9FC1E /* NewsFeedCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsFeedCardView.h; sourceTree = "<group>"; };
 		F7EA54131ACDEEDC00B9FC1E /* NewsFeedCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsFeedCardView.m; sourceTree = "<group>"; };
-		F7F2BEF21AB9EDA300C810E5 /* Personalprofile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Personalprofile.h; sourceTree = "<group>"; };
-		F7F2BEF31AB9EDA300C810E5 /* Personalprofile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Personalprofile.m; sourceTree = "<group>"; };
+		F7F2BEF21AB9EDA300C810E5 /* PersonalprofileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalprofileViewController.h; sourceTree = "<group>"; };
+		F7F2BEF31AB9EDA300C810E5 /* PersonalprofileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalprofileViewController.m; sourceTree = "<group>"; };
 		F7F2BEF51ABA965200C810E5 /* addNewsFeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = addNewsFeedViewController.h; sourceTree = "<group>"; };
 		F7F2BEF61ABA965200C810E5 /* addNewsFeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = addNewsFeedViewController.m; sourceTree = "<group>"; };
 		F7F2BEFD1ABB39C000C810E5 /* CGGeometry+RSKImageCropper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CGGeometry+RSKImageCropper.h"; path = "chatTest/Base.lproj/RSKImageCropper/CGGeometry+RSKImageCropper.h"; sourceTree = "<group>"; };
@@ -644,6 +677,7 @@
 				F77C90141AA3FDB20005EC2F /* UserImage */,
 				F77C90091AA3C0950005EC2F /* NewsFeedView.h */,
 				F77C900A1AA3C0950005EC2F /* NewsFeedView.m */,
+				F76F4ABF1AF2FCFD00A0E525 /* Views */,
 				EB4B60C91A82EB960061CCD8 /* ViewControll */,
 				F791A6A91AAC1DD70025365A /* AppDelegate.h */,
 				F791A6AA1AAC1DDA0025365A /* AppDelegate.m */,
@@ -681,10 +715,58 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		F76F4ABF1AF2FCFD00A0E525 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F76F4AC21AF2FD4300A0E525 /* PersonalProfile */,
+				F76F4AC11AF2FD3C00A0E525 /* Event */,
+				F77EC1301AE8720A00D790C2 /* EventListTableViewCell.h */,
+				F77EC1311AE8720A00D790C2 /* EventListTableViewCell.m */,
+				F76F4AC61AF2FF1800A0E525 /* NewsFeed */,
+				F7EA54121ACDEEDC00B9FC1E /* NewsFeedCardView.h */,
+				F7EA54131ACDEEDC00B9FC1E /* NewsFeedCardView.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		F76F4AC11AF2FD3C00A0E525 /* Event */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Event;
+			sourceTree = "<group>";
+		};
+		F76F4AC21AF2FD4300A0E525 /* PersonalProfile */ = {
+			isa = PBXGroup;
+			children = (
+				F76F4AC31AF2FD7500A0E525 /* PersonalProfile.h */,
+				F76F4AC41AF2FD7500A0E525 /* PersonalProfile.m */,
+				F76F4AC71AF2FFFE00A0E525 /* PersonUIButton.h */,
+				F76F4AC81AF2FFFE00A0E525 /* PersonUIButton.m */,
+			);
+			name = PersonalProfile;
+			sourceTree = "<group>";
+		};
+		F76F4AC61AF2FF1800A0E525 /* NewsFeed */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = NewsFeed;
+			sourceTree = "<group>";
+		};
 		F77C90141AA3FDB20005EC2F /* UserImage */ = {
 			isa = PBXGroup;
 			children = (
+				F7CF94861AE8AAE5007400FB /* Check-in Icon.png */,
+				F7CF94871AE8AAE5007400FB /* clock icon.png */,
+				F7CF94881AE8AAE5007400FB /* Date Icon.png */,
+				F7CF94891AE8AAE5007400FB /* Discrption icon.png */,
+				F7CF948A1AE8AAE5007400FB /* icon-4.png */,
+				F7CF948B1AE8AAE5007400FB /* icon.png */,
+				F7CF948C1AE8AAE5007400FB /* People Icon.png */,
+				F7CF947A1AE8A90C007400FB /* Divider.jpg */,
 				F791A6961AAC1A090025365A /* nightLife.jpeg */,
+				F77EC12E1AE86FD000D790C2 /* icon.jpeg */,
 				F7B0E5CE1AB69CE8000C1E82 /* forest.jpeg */,
 				F7B0E5D01AB69D47000C1E82 /* testImageApple.jpeg */,
 				F791A6941AAC1A040025365A /* testImage.jpeg */,
@@ -1010,8 +1092,10 @@
 				F7B0E5D31AB6A2AA000C1E82 /* AddFriend.m */,
 				F791A69B1AAC1AAF0025365A /* PeopleList.h */,
 				F791A69C1AAC1AB30025365A /* PeopleList.m */,
-				F7F2BEF21AB9EDA300C810E5 /* Personalprofile.h */,
-				F7F2BEF31AB9EDA300C810E5 /* Personalprofile.m */,
+				F76F4ABB1AF2F92000A0E525 /* FriendListViewController.h */,
+				F76F4ABC1AF2F92000A0E525 /* FriendListViewController.m */,
+				F7F2BEF21AB9EDA300C810E5 /* PersonalprofileViewController.h */,
+				F7F2BEF31AB9EDA300C810E5 /* PersonalprofileViewController.m */,
 			);
 			name = FriendList;
 			sourceTree = "<group>";
@@ -1021,8 +1105,6 @@
 			children = (
 				F7A443971AA49B2D00E9ADFC /* NewsFeed.h */,
 				F7A443951AA49B1A00E9ADFC /* NewsFeed.m */,
-				F7EA54121ACDEEDC00B9FC1E /* NewsFeedCardView.h */,
-				F7EA54131ACDEEDC00B9FC1E /* NewsFeedCardView.m */,
 				F7159A9A1A9478B600846566 /* NewsFeedViewController.h */,
 				F7159A9B1A9478B600846566 /* NewsFeedViewController.m */,
 				F7F2BEF51ABA965200C810E5 /* addNewsFeedViewController.h */,
@@ -1036,6 +1118,8 @@
 			children = (
 				F7FA8BE31AC7BF7800F88F94 /* GroupChatVC.h */,
 				F7FA8BE41AC7BF7800F88F94 /* GroupChatVC.m */,
+				F77EC12B1AE86D9400D790C2 /* GroupChatTableViewCell.h */,
+				F77EC12C1AE86D9400D790C2 /* GroupChatTableViewCell.m */,
 				F7FA8BD41AC7A07400F88F94 /* EventTableViewController.h */,
 				F7FA8BD51AC7A07400F88F94 /* EventTableViewController.m */,
 				F7FA8BDA1AC7A55500F88F94 /* CreateNewEventViewController.h */,
@@ -1751,14 +1835,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				F791A6971AAC1A090025365A /* nightLife.jpeg in Resources */,
+				F7CF948D1AE8AAE5007400FB /* Check-in Icon.png in Resources */,
+				F7CF94921AE8AAE5007400FB /* icon.png in Resources */,
+				F7CF947B1AE8A90C007400FB /* Divider.jpg in Resources */,
 				EBD0D8B61A82E1F700B76C79 /* Main.storyboard in Resources */,
 				F7A11DAB1ABD314100DF9AEB /* README.txt in Resources */,
 				F791A6951AAC1A040025365A /* testImage.jpeg in Resources */,
+				F7CF94911AE8AAE5007400FB /* icon-4.png in Resources */,
 				EBD0D8BB1A82E1F700B76C79 /* LaunchScreen.xib in Resources */,
 				F7B0E5D11AB69D47000C1E82 /* testImageApple.jpeg in Resources */,
 				F7B0E5CF1AB69CE8000C1E82 /* forest.jpeg in Resources */,
 				F7A11D8F1ABD1BBD00DF9AEB /* testSmallImage.jpeg in Resources */,
+				F77EC12F1AE86FD000D790C2 /* icon.jpeg in Resources */,
 				F7A11D8D1ABD0C7900DF9AEB /* testLargeImage.jpeg in Resources */,
+				F7CF948F1AE8AAE5007400FB /* Date Icon.png in Resources */,
+				F7CF948E1AE8AAE5007400FB /* clock icon.png in Resources */,
+				F7CF94931AE8AAE5007400FB /* People Icon.png in Resources */,
+				F7CF94901AE8AAE5007400FB /* Discrption icon.png in Resources */,
 				EBD0D8B81A82E1F700B76C79 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1831,6 +1924,7 @@
 				F7A11E2B1ABD376200DF9AEB /* XMPPStringPrep.m in Sources */,
 				F7FA88DC1AC7094600F88F94 /* XMPPSoftwareVersion.m in Sources */,
 				F7FA88D91AC7094600F88F94 /* NSDate+XMPPDateTimeProfiles.m in Sources */,
+				F77EC1321AE8720A00D790C2 /* EventListTableViewCell.m in Sources */,
 				F7FA88FA1AC7094600F88F94 /* XMPPMessage+XEP_0280.m in Sources */,
 				F7FA88D71AC7094600F88F94 /* XMPPMessage+XEP_0066.m in Sources */,
 				F7FA88CA1AC7094600F88F94 /* XMPPvCardTempAdr.m in Sources */,
@@ -1864,6 +1958,7 @@
 				F7FA88DB1AC7094600F88F94 /* XMPPMessage+XEP_0085.m in Sources */,
 				F7A11DA41ABD314100DF9AEB /* DDASLLogger.m in Sources */,
 				F7A11E2A1ABD376200DF9AEB /* XMPPSRVResolver.m in Sources */,
+				F77EC12D1AE86D9400D790C2 /* GroupChatTableViewCell.m in Sources */,
 				F7FA889F1AC7094600F88F94 /* XMPPCoreDataStorage.m in Sources */,
 				F7FA88DE1AC7094600F88F94 /* NSString+XEP_0106.m in Sources */,
 				F7FA88AB1AC7094600F88F94 /* XMPPResourceMemoryStorageObject.m in Sources */,
@@ -1879,6 +1974,7 @@
 				F7FA88CD1AC7094600F88F94 /* XMPPvCardTempEmail.m in Sources */,
 				F7FA88DF1AC7094600F88F94 /* XMPPCapabilities.xcdatamodel in Sources */,
 				F791A69A1AAC1A7B0025365A /* CoreDataTableViewController.m in Sources */,
+				F76F4ABD1AF2F92000A0E525 /* FriendListViewController.m in Sources */,
 				F7FA88F31AC7094600F88F94 /* XMPPPing.m in Sources */,
 				F7FA88C31AC7094600F88F94 /* XMPPRoom.m in Sources */,
 				F7FA88A81AC7094600F88F94 /* XMPPRoster.xcdatamodel in Sources */,
@@ -1904,13 +2000,14 @@
 				F7FA88CB1AC7094600F88F94 /* XMPPvCardTempAdrTypes.m in Sources */,
 				F7F2BF091ABB39C000C810E5 /* RSKImageCropViewController.m in Sources */,
 				F7FA88CF1AC7094600F88F94 /* XMPPvCardTempModule.m in Sources */,
+				F76F4AC91AF2FFFE00A0E525 /* PersonUIButton.m in Sources */,
 				F7FA88F91AC7094600F88F94 /* XMPPMessage+XEP_0224.m in Sources */,
 				F7FA88A71AC7094600F88F94 /* XMPPResourceCoreDataStorageObject.m in Sources */,
 				F7A11E291ABD376200DF9AEB /* XMPPIDTracker.m in Sources */,
 				F7FA88EF1AC7094600F88F94 /* XMPPStreamManagementMemoryStorage.m in Sources */,
 				F7A11E1D1ABD376200DF9AEB /* XMPPConstants.m in Sources */,
 				F7FA88F11AC7094600F88F94 /* XMPPStreamManagement.m in Sources */,
-				F7F2BEF41AB9EDA300C810E5 /* Personalprofile.m in Sources */,
+				F7F2BEF41AB9EDA300C810E5 /* PersonalprofileViewController.m in Sources */,
 				F7A11E4E1ABF655000DF9AEB /* OwnerNewsFeed.m in Sources */,
 				F7FA88DD1AC7094600F88F94 /* XMPPTransports.m in Sources */,
 				F7FA88BF1AC7094600F88F94 /* XMPPRoomMessageMemoryStorageObject.m in Sources */,
@@ -1937,6 +2034,7 @@
 				F7A11E201ABD376200DF9AEB /* XMPPJID.m in Sources */,
 				F7FA88A61AC7094600F88F94 /* XMPPGroupCoreDataStorageObject.m in Sources */,
 				F7FA88FB1AC7094600F88F94 /* XMPPMessageCarbons.m in Sources */,
+				F76F4AC51AF2FD7500A0E525 /* PersonalProfile.m in Sources */,
 				F7FA88C71AC7094600F88F94 /* XMPPvCardCoreDataStorageObject.m in Sources */,
 				F7FA88D61AC7094600F88F94 /* XMPPIQ+XEP_0066.m in Sources */,
 				F7159A9C1A9478B600846566 /* NewsFeedViewController.m in Sources */,

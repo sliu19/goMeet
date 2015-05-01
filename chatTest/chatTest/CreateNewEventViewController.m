@@ -19,6 +19,15 @@
 
 @implementation CreateNewEventViewController
 
+@synthesize xmppStream;
+@synthesize xmppRoom;
+@synthesize xmppRoomStorage;
+
+- (AppDelegate *)appDelegate
+{
+    return (AppDelegate *)[[UIApplication sharedApplication] delegate];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -45,7 +54,14 @@
     [event setGroupMember:userList];
     NSLog(@"GroupMember when set is %@",[[NSString alloc] initWithData:event.groupMember_data encoding:NSUTF8StringEncoding]);
     _EventDescription.text = @"";
-
+    
+    
+    //Create Room
+    
+    xmppStream = [self appDelegate].xmppStream;
+    [self initxmpproom:uuidString];
+    
+    //Return to main page
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     MainTabBarViewController *viewController = (MainTabBarViewController *)[storyboard instantiateViewControllerWithIdentifier:@"GoMeet"];
     [viewController setSelectedIndex:2];
@@ -72,6 +88,35 @@
     [self presentViewController:viewController animated:YES completion:nil];
 
 }
+
+
+
+-(void)initxmpproom:(NSString*)uuid{
+    xmppRoomStorage  = [XMPPRoomCoreDataStorage sharedInstance];
+    NSString* roomJIDString = [[NSString alloc]initWithFormat:@"%@@conference.ip-172-31-20-117",uuid];
+    XMPPJID *roomJID = [XMPPJID jidWithString:roomJIDString];
+    xmppRoom = [[XMPPRoom alloc] initWithRoomStorage:xmppRoomStorage jid:roomJID  dispatchQueue:dispatch_get_main_queue()];
+    XMPPStream *stream = [self xmppStream];
+    
+    [xmppRoom activate:stream];
+    //[xmppRoom activate:[[XMPPManager sharedManager] xmppStream]];
+    //[xmppRoom activate:xmppStream];
+    [self performSelector:@selector(joinroom) withObject:nil afterDelay:2];
+    [self joinroom];
+    //[xmppRoom addDelegate:self delegateQueue:dispatch_get_main_queue()];
+    
+}
+
+-(void)joinroom{
+    
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    //Join with userID
+    //[xmppRoom joinRoomUsingNickname:[prefs stringForKey:@"userID"] history:nil];
+    [xmppRoom joinRoomUsingNickname:@"user3" history:nil];
+    [xmppRoom fetchConfigurationForm];
+    [xmppRoom configureRoomUsingOptions:nil];
+}
+
 
 
 @end
