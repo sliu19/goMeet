@@ -89,19 +89,27 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
     NSLog(@"%lu Messages available",(unsigned long)count);
     //NSMutableArray* newsFeedArray = [[NSMutableArray alloc]init];
     // for( Friend* friends in sortedList){
-    for (NSInteger i = 0; i<count; i++) {
-        //[messageHistory addObject:eventElement.message[i]];
-    }
+    
     messageHistory = [[NSMutableArray alloc]init];
+    for (NSInteger i = 0; i<count; i++) {
+        [messageHistory addObject:eventElement.message[i]];
+    }
+
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    
+    //Send through NSStrem
+    NSString* userId = [prefs stringForKey:@"userID"];
+
     Message* sampleMessage = [[Message alloc]init:@"Test message" name:@"UserAmy"];
+    Message* sampleMyMessage = [[Message alloc]init:@"Test message is soooo long but not sure how to do autosize" name:userId];
     [messageHistory addObject:sampleMessage];
     [messageHistory addObject:sampleMessage];
+    [messageHistory addObject:sampleMyMessage];
     [messageHistory addObject:sampleMessage];
     [messageHistory addObject:sampleMessage];
+    [messageHistory addObject:sampleMyMessage];
     [messageHistory addObject:sampleMessage];
-    [messageHistory addObject:sampleMessage];
-    [messageHistory addObject:sampleMessage];
-    [messageHistory addObject:sampleMessage];
+    [messageHistory addObject:sampleMyMessage];
     
     _groupChatTableView.delegate = self;
     _groupChatTableView.dataSource = self;
@@ -219,10 +227,8 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 {
     [[self appDelegate] disconnect];
     [[[self appDelegate] xmppvCardTempModule] removeDelegate:self];
-    
     [super viewWillDisappear:animated];
-    [eventElement setValue: messageHistory forKey:@"message"];
-    [eventElement setMessage:messageHistory];
+    eventElement.message_data = [NSKeyedArchiver archivedDataWithRootObject:messageHistory];
 }
 
 
@@ -282,7 +288,6 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
     }
     Message *message = messageHistory[indexPath.row];
     cell.myMessage = message;
-    cell.backgroundColor = [UIColor blueColor];
     return cell;
 }
 

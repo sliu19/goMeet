@@ -9,7 +9,7 @@
 #ifndef chatTest_Message_h
 #define chatTest_Message_h
 
-@interface Message: NSObject
+@interface Message: NSObject<NSCoding>
 
 @property(strong,nonatomic)NSString* userID;
 @property(strong,nonatomic)NSString* bodyText;

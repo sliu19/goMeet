@@ -6,16 +6,21 @@
 //  Copyright (c) 2015 LPP. All rights reserved.
 //
 
-#import "AddFriend.h"
+#import "AddFriendViewController.h"
 
-@interface AddFriend ()
+@interface AddFriendViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *addFriendTextField;
 @property (weak, nonatomic) IBOutlet UIButton *addFriendButton;
 @property (nonatomic, assign) id currentResponder;
-
+@property (weak, nonatomic) IBOutlet UIView *resultView;
+@property (weak, nonatomic) IBOutlet UISearchBar *searchFriend;
+@property (weak, nonatomic) IBOutlet UIImageView *userImage;
+@property (weak, nonatomic) IBOutlet UITextField *MessageTextField;
+@property (weak, nonatomic) IBOutlet UIButton *confirmSearch;
+@property (strong,nonatomic) NSString* newfriend;
 @end
 
-@implementation AddFriend
+@implementation AddFriendViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -25,6 +30,7 @@
     _addFriendTextField.delegate = self;
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(resignOnTap:)];
     singleTap.numberOfTapsRequired = 1;
+    _searchFriend.delegate = self;
     //[self setUserInteractionEnabled:YES];
     //[iv addGestureRecognizer:singleTap];
 
@@ -35,6 +41,12 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+- (IBAction)searchPeople:(id)sender {
+    NSLog(@"searchNumber %@",_searchFriend.text);
+    _newfriend = _searchFriend.text;
+}
+
+
 
 - (IBAction)sendRequest:(id)sender {
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
@@ -52,8 +64,6 @@
     NSData *imageData = UIImageJPEGRepresentation([UIImage imageNamed:@"testImageApple.jpeg"],0.0);
     [people setValue: imageData forKey :@"userPic"];
     _addFriendTextField.text =@"";
-    
-    
     
 }
 
@@ -131,6 +141,18 @@
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
     self.currentResponder = textField;
 }
+
+-(BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar{
+    [searchBar resignFirstResponder];
+    return YES;
+}
+
+-(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
+    [searchBar resignFirstResponder]; // using method search bar
+    [_searchFriend resignFirstResponder]; // using actual object name
+    [self.view endEditing:YES];
+}
+
 - (void)resignOnTap:(id)iSender {
     [self.currentResponder resignFirstResponder];
 }

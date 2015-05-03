@@ -13,6 +13,6 @@
 #import "AppDelegate.h"
 
 
-@interface AddFriend : UIViewController<NSStreamDelegate,UITextFieldDelegate>
+@interface AddFriendViewController : UIViewController<NSStreamDelegate,UITextFieldDelegate,UISearchBarDelegate>
 
 @end

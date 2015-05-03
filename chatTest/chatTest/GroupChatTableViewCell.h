@@ -12,5 +12,6 @@
 @interface GroupChatTableViewCell : UITableViewCell
 
 @property(nonatomic,strong)Message* myMessage;
-
+-(void)setup;
+-(GroupChatTableViewCell*)initWithMessage:(Message*)message;
 @end

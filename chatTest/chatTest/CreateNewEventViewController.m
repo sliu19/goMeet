@@ -11,6 +11,7 @@
 #import "MainTabBarViewController.h"
 
 @interface CreateNewEventViewController()
+@property (weak, nonatomic) IBOutlet UIScrollView *mainView;
 
 @property (weak, nonatomic) IBOutlet UITextField *EventDescription;
 @property (nonatomic, assign) id currentResponder;

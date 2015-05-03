@@ -9,7 +9,6 @@
 #import "Message.h"
 @interface Message()
 
-
 @end
 
 @implementation Message
@@ -34,4 +33,15 @@
     return false;
 }
 
+
+- (void) encodeWithCoder:(NSCoder *)encoder {
+    [encoder encodeObject:_userID forKey:@"userID"];
+    [encoder encodeObject:_bodyText forKey:@"bodyText"];
+}
+
+- (id)initWithCoder:(NSCoder *)decoder {
+    NSString *userID = [decoder decodeObjectForKey:@"userID"];
+    NSString*bodyText = [decoder decodeObjectForKey:@"bodyText"];
+    return [self init:bodyText name:userID];
+}
 @end

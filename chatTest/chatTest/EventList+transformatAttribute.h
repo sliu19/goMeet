@@ -10,9 +10,9 @@
 
 @interface EventList (transformatAttribute)
 
--(NSArray *)groupMember;
+-(NSMutableArray *)groupMember;
 -(void) setGroupMember:(id)groupMember;
--(NSArray *)message;
+-(NSMutableArray *)message;
 -(void) setMessage:(id)message;
 
 @end

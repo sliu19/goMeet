@@ -33,6 +33,9 @@
     NSData * userPic = [prefs dataForKey:@"userPic"];
     _PersonalnfoTextView.text = userId;
     _PersonalPicImageView.image=[[UIImage alloc]initWithData:userPic];
+    _PersonalPicImageView.layer.cornerRadius = _PersonalPicImageView.frame.size.width / 2;
+    _PersonalPicImageView.clipsToBounds = YES;
+
     _startPoint = _window.bounds.origin;
     [self drawNews];
     // Do any additional setup after loading the view.

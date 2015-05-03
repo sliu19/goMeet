@@ -10,7 +10,7 @@
 
 @implementation EventList (transformatAttribute)
 
--(NSArray *)groupMember{
+-(NSMutableArray *)groupMember{
     if (!self.groupMember_data) {
         return nil;
     }
@@ -22,7 +22,7 @@
     [self setValue:groupMember_data forKey:@"groupMember_data"];
 }
 
--(NSArray*)message{
+-(NSMutableArray*)message{
     if (!self.message_data) {
         return nil;
     }

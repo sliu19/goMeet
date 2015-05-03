@@ -18,6 +18,8 @@
 		F76F4ABD1AF2F92000A0E525 /* FriendListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F76F4ABC1AF2F92000A0E525 /* FriendListViewController.m */; };
 		F76F4AC51AF2FD7500A0E525 /* PersonalProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = F76F4AC41AF2FD7500A0E525 /* PersonalProfile.m */; };
 		F76F4AC91AF2FFFE00A0E525 /* PersonUIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F76F4AC81AF2FFFE00A0E525 /* PersonUIButton.m */; };
+		F76FC7F11AF6B4EA0085A851 /* newFriendNoticeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F76FC7F01AF6B4EA0085A851 /* newFriendNoticeTableViewCell.m */; };
+		F76FC7F51AF6B8540085A851 /* newFriendNoticeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F76FC7F41AF6B8540085A851 /* newFriendNoticeViewController.m */; };
 		F77C900B1AA3C0950005EC2F /* NewsFeedView.m in Sources */ = {isa = PBXBuildFile; fileRef = F77C900A1AA3C0950005EC2F /* NewsFeedView.m */; };
 		F77C90101AA3F4A60005EC2F /* Lib.m in Sources */ = {isa = PBXBuildFile; fileRef = F77C900F1AA3F4A60005EC2F /* Lib.m */; };
 		F77EC12D1AE86D9400D790C2 /* GroupChatTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F77EC12C1AE86D9400D790C2 /* GroupChatTableViewCell.m */; };
@@ -84,7 +86,7 @@
 		F7A443961AA49B1A00E9ADFC /* NewsFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = F7A443951AA49B1A00E9ADFC /* NewsFeed.m */; };
 		F7B0E5CF1AB69CE8000C1E82 /* forest.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F7B0E5CE1AB69CE8000C1E82 /* forest.jpeg */; };
 		F7B0E5D11AB69D47000C1E82 /* testImageApple.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F7B0E5D01AB69D47000C1E82 /* testImageApple.jpeg */; };
-		F7B0E5D41AB6A2AA000C1E82 /* AddFriend.m in Sources */ = {isa = PBXBuildFile; fileRef = F7B0E5D31AB6A2AA000C1E82 /* AddFriend.m */; };
+		F7B0E5D41AB6A2AA000C1E82 /* AddFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7B0E5D31AB6A2AA000C1E82 /* AddFriendViewController.m */; };
 		F7CF947B1AE8A90C007400FB /* Divider.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F7CF947A1AE8A90C007400FB /* Divider.jpg */; };
 		F7CF948D1AE8AAE5007400FB /* Check-in Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F7CF94861AE8AAE5007400FB /* Check-in Icon.png */; };
 		F7CF948E1AE8AAE5007400FB /* clock icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F7CF94871AE8AAE5007400FB /* clock icon.png */; };
@@ -243,6 +245,10 @@
 		F76F4AC41AF2FD7500A0E525 /* PersonalProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PersonalProfile.m; path = ../PersonalProfile.m; sourceTree = "<group>"; };
 		F76F4AC71AF2FFFE00A0E525 /* PersonUIButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonUIButton.h; sourceTree = "<group>"; };
 		F76F4AC81AF2FFFE00A0E525 /* PersonUIButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonUIButton.m; sourceTree = "<group>"; };
+		F76FC7EF1AF6B4EA0085A851 /* newFriendNoticeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = newFriendNoticeTableViewCell.h; sourceTree = "<group>"; };
+		F76FC7F01AF6B4EA0085A851 /* newFriendNoticeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = newFriendNoticeTableViewCell.m; sourceTree = "<group>"; };
+		F76FC7F31AF6B8540085A851 /* newFriendNoticeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = newFriendNoticeViewController.h; sourceTree = "<group>"; };
+		F76FC7F41AF6B8540085A851 /* newFriendNoticeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = newFriendNoticeViewController.m; sourceTree = "<group>"; };
 		F77C90091AA3C0950005EC2F /* NewsFeedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsFeedView.h; sourceTree = "<group>"; };
 		F77C900A1AA3C0950005EC2F /* NewsFeedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsFeedView.m; sourceTree = "<group>"; };
 		F77C900F1AA3F4A60005EC2F /* Lib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Lib.m; sourceTree = "<group>"; };
@@ -372,8 +378,8 @@
 		F7A443971AA49B2D00E9ADFC /* NewsFeed.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewsFeed.h; sourceTree = "<group>"; };
 		F7B0E5CE1AB69CE8000C1E82 /* forest.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = forest.jpeg; sourceTree = "<group>"; };
 		F7B0E5D01AB69D47000C1E82 /* testImageApple.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = testImageApple.jpeg; sourceTree = "<group>"; };
-		F7B0E5D21AB6A2AA000C1E82 /* AddFriend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddFriend.h; sourceTree = "<group>"; };
-		F7B0E5D31AB6A2AA000C1E82 /* AddFriend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddFriend.m; sourceTree = "<group>"; };
+		F7B0E5D21AB6A2AA000C1E82 /* AddFriendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddFriendViewController.h; sourceTree = "<group>"; };
+		F7B0E5D31AB6A2AA000C1E82 /* AddFriendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddFriendViewController.m; sourceTree = "<group>"; };
 		F7CF947A1AE8A90C007400FB /* Divider.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Divider.jpg; path = "../../../../Event V2.0/Event - Home - Full-assets/Divider.jpg"; sourceTree = "<group>"; };
 		F7CF94861AE8AAE5007400FB /* Check-in Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Check-in Icon.png"; path = "../../../../Event V2.0/Event - Home - Full-assets/Check-in Icon.png"; sourceTree = "<group>"; };
 		F7CF94871AE8AAE5007400FB /* clock icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "clock icon.png"; path = "../../../../Event V2.0/Event - Home - Full-assets/clock icon.png"; sourceTree = "<group>"; };
@@ -727,6 +733,7 @@
 		F76F4ABF1AF2FCFD00A0E525 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F76FC7F21AF6B4F60085A851 /* Notice */,
 				F76F4AC21AF2FD4300A0E525 /* PersonalProfile */,
 				F76F4AC11AF2FD3C00A0E525 /* Event */,
 				F76F4AC61AF2FF1800A0E525 /* NewsFeed */,
@@ -765,6 +772,15 @@
 				F7EA54131ACDEEDC00B9FC1E /* NewsFeedCardView.m */,
 			);
 			name = NewsFeed;
+			sourceTree = "<group>";
+		};
+		F76FC7F21AF6B4F60085A851 /* Notice */ = {
+			isa = PBXGroup;
+			children = (
+				F76FC7EF1AF6B4EA0085A851 /* newFriendNoticeTableViewCell.h */,
+				F76FC7F01AF6B4EA0085A851 /* newFriendNoticeTableViewCell.m */,
+			);
+			name = Notice;
 			sourceTree = "<group>";
 		};
 		F77C90141AA3FDB20005EC2F /* UserImage */ = {
@@ -1113,14 +1129,16 @@
 		F7F2BEF81ABA966100C810E5 /* FriendList */ = {
 			isa = PBXGroup;
 			children = (
-				F7B0E5D21AB6A2AA000C1E82 /* AddFriend.h */,
-				F7B0E5D31AB6A2AA000C1E82 /* AddFriend.m */,
+				F7B0E5D21AB6A2AA000C1E82 /* AddFriendViewController.h */,
+				F7B0E5D31AB6A2AA000C1E82 /* AddFriendViewController.m */,
 				F791A69B1AAC1AAF0025365A /* PeopleList.h */,
 				F791A69C1AAC1AB30025365A /* PeopleList.m */,
 				F76F4ABB1AF2F92000A0E525 /* FriendListViewController.h */,
 				F76F4ABC1AF2F92000A0E525 /* FriendListViewController.m */,
 				F7F2BEF21AB9EDA300C810E5 /* PersonalprofileViewController.h */,
 				F7F2BEF31AB9EDA300C810E5 /* PersonalprofileViewController.m */,
+				F76FC7F31AF6B8540085A851 /* newFriendNoticeViewController.h */,
+				F76FC7F41AF6B8540085A851 /* newFriendNoticeViewController.m */,
 			);
 			name = FriendList;
 			sourceTree = "<group>";
@@ -1964,6 +1982,7 @@
 				F7FA88F51AC7094600F88F94 /* XMPPTime.m in Sources */,
 				F7FA88B51AC7094600F88F94 /* XMPPPrivacy.m in Sources */,
 				F7A11E281ABD376200DF9AEB /* RFImageToDataTransformer.m in Sources */,
+				F76FC7F11AF6B4EA0085A851 /* newFriendNoticeTableViewCell.m in Sources */,
 				F7A11E141ABD376200DF9AEB /* XMPPDeprecatedPlainAuthentication.m in Sources */,
 				F7FA88D21AC7094600F88F94 /* XMPPResultSet.m in Sources */,
 				F7FA88C21AC7094600F88F94 /* XMPPMUC.m in Sources */,
@@ -1988,6 +2007,7 @@
 				F7FA88AB1AC7094600F88F94 /* XMPPResourceMemoryStorageObject.m in Sources */,
 				F7FA88CE1AC7094600F88F94 /* XMPPvCardTempLabel.m in Sources */,
 				F7FA88AD1AC7094600F88F94 /* XMPPUserMemoryStorageObject.m in Sources */,
+				F76FC7F51AF6B8540085A851 /* newFriendNoticeViewController.m in Sources */,
 				F7A11E1F1ABD376200DF9AEB /* XMPPIQ.m in Sources */,
 				F7FA88C11AC7094600F88F94 /* XMPPMessage+XEP0045.m in Sources */,
 				F7A443961AA49B1A00E9ADFC /* NewsFeed.m in Sources */,
@@ -2003,7 +2023,7 @@
 				F7FA88C31AC7094600F88F94 /* XMPPRoom.m in Sources */,
 				F7FA88A81AC7094600F88F94 /* XMPPRoster.xcdatamodel in Sources */,
 				F7FA88FE1AC7094600F88F94 /* XMPPMessage+XEP_0333.m in Sources */,
-				F7B0E5D41AB6A2AA000C1E82 /* AddFriend.m in Sources */,
+				F7B0E5D41AB6A2AA000C1E82 /* AddFriendViewController.m in Sources */,
 				F7FA88AE1AC7094600F88F94 /* XMPPRoster.m in Sources */,
 				F7A11E121ABD376200DF9AEB /* XMPPAnonymousAuthentication.m in Sources */,
 				F7FA88BC1AC7094600F88F94 /* XMPPRoomMessageHybridCoreDataStorageObject.m in Sources */,

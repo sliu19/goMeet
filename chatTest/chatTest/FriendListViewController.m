@@ -14,18 +14,20 @@
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UIScrollView *mainView;
 @property (weak, nonatomic) IBOutlet UIImageView *redDot;
+@property (strong,nonatomic)NSString* searchString;
 
 
 @end
 
 @implementation FriendListViewController
-
-
+BOOL isSearching;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setup];
     _searchBar.delegate = self;
+    isSearching = false;
+    _searchBar.showsCancelButton = YES;
     // Do any additional setup after loading the view.
 }
 
@@ -38,6 +40,7 @@
 {
     [searchBar resignFirstResponder];
 }
+
 /*
 #pragma mark - Navigation
 
@@ -47,6 +50,25 @@
     // Pass the selected object to the new view controller.
 }
 */
+-(BOOL)searchBarDidEndEditing:(UISearchBar *)searchBar{
+    [searchBar resignFirstResponder];
+    [_searchBar resignFirstResponder];
+    return YES;
+}
+
+-(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
+    isSearching = true;
+    _searchString = [[@"*" stringByAppendingString:searchText ] stringByAppendingString:@"*"];
+    [[_mainView subviews] makeObjectsPerformSelector: @selector(removeFromSuperview)];
+    [self setup];
+    [_mainView setNeedsDisplay];
+}
+-(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
+    [searchBar resignFirstResponder]; // using method search bar
+    [_searchBar resignFirstResponder]; // using actual object name
+    [self.view endEditing:YES];
+    isSearching = false;
+}
 
 
 -(void)setup
@@ -60,9 +82,11 @@
     // managedObjectContent = [[[UIApplication sharedApplication]delegate] managedObjectContext];
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Friend"];
     request.predicate = nil;
-    //NSPredicate *predicate =
-    //[NSPredicate predicateWithFormat:@"self == %@", OwnerNewsFeed];
-    //[request setPredicate:predicate];
+    if(isSearching){
+        NSPredicate *predicate =[NSPredicate predicateWithFormat:@"userName like[c] %@",_searchString];
+        [request setPredicate:predicate];
+
+    }
     
     NSError *error;
     NSArray *array = [[(AppDelegate*) [[UIApplication sharedApplication]delegate] managedObjectContext] executeFetchRequest:request error:&error];
