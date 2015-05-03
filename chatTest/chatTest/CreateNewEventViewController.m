@@ -118,5 +118,46 @@
 }
 
 
+#pragma mark 配置房间为永久房间
+-(void)sendDefaultRoomConfig
+{
+    
+    NSXMLElement *x = [NSXMLElement elementWithName:@"x" xmlns:@"jabber:x:data"];
+    
+    NSXMLElement *field = [NSXMLElement elementWithName:@"field"];
+    NSXMLElement *value = [NSXMLElement elementWithName:@"value"];
+    
+    NSXMLElement *fieldowners = [NSXMLElement elementWithName:@"field"];
+    NSXMLElement *valueowners = [NSXMLElement elementWithName:@"value"];
+    
+    
+    [field addAttributeWithName:@"var" stringValue:@"muc#roomconfig_persistentroom"];  // 永久属性
+    [fieldowners addAttributeWithName:@"var" stringValue:@"muc#roomconfig_roomowners"];  // 谁创建的房间
+    
+    
+    [field addAttributeWithName:@"type" stringValue:@"boolean"];
+    [fieldowners addAttributeWithName:@"type" stringValue:@"jid-multi"];
+    
+    [value setStringValue:@"1"];
+    [valueowners setStringValue:[xmppStream myJID].bare]; //创建者的Jid
+    
+    [x addChild:field];
+    [x addChild:fieldowners];
+    [field addChild:value];
+    [fieldowners addChild:valueowners];
+    
+    [xmppRoom configureRoomUsingOptions:x];
+    
+}
+
+// 房间创建成功后在配置永久属性
+#pragma mark - 创建讨论组成功回调
+- (void)xmppRoomDidCreate:(XMPPRoom *)sender
+{
+    [self sendDefaultRoomConfig];
+}
+
+
+
 
 @end

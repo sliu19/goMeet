@@ -25,6 +25,7 @@
 #import <CFNetwork/CFNetwork.h>
 
 #import "MainTabBarViewController.h"
+#import "GroupChatTableView.h"
 #import "GroupChatTableViewCell.h"
 #import "Message.h"
 
@@ -84,7 +85,27 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
     [_groupChatTableView setUserInteractionEnabled:YES];
     [_groupChatTableView addGestureRecognizer:singleTap];
     [self inputTextField].delegate=self;
-    [self setupTableView];
+    NSUInteger count = [eventElement.message count]; // May be 0 if the object has been deleted.
+    NSLog(@"%lu Messages available",(unsigned long)count);
+    //NSMutableArray* newsFeedArray = [[NSMutableArray alloc]init];
+    // for( Friend* friends in sortedList){
+    for (NSInteger i = 0; i<count; i++) {
+        //[messageHistory addObject:eventElement.message[i]];
+    }
+    messageHistory = [[NSMutableArray alloc]init];
+    Message* sampleMessage = [[Message alloc]init:@"Test message" name:@"UserAmy"];
+    [messageHistory addObject:sampleMessage];
+    [messageHistory addObject:sampleMessage];
+    [messageHistory addObject:sampleMessage];
+    [messageHistory addObject:sampleMessage];
+    [messageHistory addObject:sampleMessage];
+    [messageHistory addObject:sampleMessage];
+    [messageHistory addObject:sampleMessage];
+    [messageHistory addObject:sampleMessage];
+    
+    _groupChatTableView.delegate = self;
+    _groupChatTableView.dataSource = self;
+    [_groupChatTableView reloadData];
 }
 
 -(void)initxmpproom{
@@ -162,8 +183,9 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
     if (message.length > 0){
         [xmppRoom sendMessageWithBody:@"TEST message is "];
         NSLog(@"Send message: %@",message);
-        
     }
+    _inputTextField.text = @"Answer here...";
+    
 }
 - (IBAction)InviteNewFriend:(UIBarButtonItem *)sender {
     
@@ -181,6 +203,10 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
    // }
     
     NSLog(@"receive message %@, from %@", messageContent[@"body"], messageContent[@"from"]);
+    
+    Message* newMess = [[Message alloc]init:messageContent[@"body"] name:messageContent[@"from"]];
+    [messageHistory addObject:newMess];
+    [_groupChatTableView reloadData];
 }
 
 
@@ -195,6 +221,8 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
     [[[self appDelegate] xmppvCardTempModule] removeDelegate:self];
     
     [super viewWillDisappear:animated];
+    [eventElement setValue: messageHistory forKey:@"message"];
+    [eventElement setMessage:messageHistory];
 }
 
 
@@ -208,6 +236,7 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
     NSLog(@"textFieldDidBeginEdit");
+    _inputTextField.text = @"";
     self.currentResponder = textField;
 }
 
@@ -232,93 +261,28 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 }
 
 
-#pragma mark 配置房间为永久房间
--(void)sendDefaultRoomConfig
-{
-    
-    NSXMLElement *x = [NSXMLElement elementWithName:@"x" xmlns:@"jabber:x:data"];
-    
-    NSXMLElement *field = [NSXMLElement elementWithName:@"field"];
-    NSXMLElement *value = [NSXMLElement elementWithName:@"value"];
-    
-    NSXMLElement *fieldowners = [NSXMLElement elementWithName:@"field"];
-    NSXMLElement *valueowners = [NSXMLElement elementWithName:@"value"];
-    
-    
-    [field addAttributeWithName:@"var" stringValue:@"muc#roomconfig_persistentroom"];  // 永久属性
-    [fieldowners addAttributeWithName:@"var" stringValue:@"muc#roomconfig_roomowners"];  // 谁创建的房间
-    
-    
-    [field addAttributeWithName:@"type" stringValue:@"boolean"];
-    [fieldowners addAttributeWithName:@"type" stringValue:@"jid-multi"];
-    
-    [value setStringValue:@"1"];
-    [valueowners setStringValue:[xmppStream myJID].bare]; //创建者的Jid
-    
-    [x addChild:field];
-    [x addChild:fieldowners];
-    [field addChild:value];
-    [fieldowners addChild:valueowners];
-    
-    [xmppRoom configureRoomUsingOptions:x];
-    
-}
 
-// 房间创建成功后在配置永久属性
-#pragma mark - 创建讨论组成功回调
-- (void)xmppRoomDidCreate:(XMPPRoom *)sender
-{
-    [self sendDefaultRoomConfig];
-}
-
--(void)setupTableView{
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"EventList"];
-    request.predicate = nil;
-    //NSPredicate *predicate =
-    //[NSPredicate predicateWithFormat:@"self == %@", OwnerNewsFeed];
-    //[request setPredicate:predicate];
-    
-    NSError *error;
-    NSArray *array = [[(AppDelegate*) [[UIApplication sharedApplication]delegate] managedObjectContext] executeFetchRequest:request error:&error];
-    
-    NSSortDescriptor *descriptor = [[NSSortDescriptor alloc] initWithKey:@"time" ascending:YES];
-    NSArray *sortedList = [array sortedArrayUsingDescriptors:[NSArray arrayWithObjects:descriptor, nil]];
-    //sortedList = [[sortedList reverseObjectEnumerator] allObjects];
-    if (array != nil) {
-        NSUInteger count = [array count]; // May be 0 if the object has been deleted.
-        NSLog(@"%lu Friends available",(unsigned long)count);
-        //NSMutableArray* newsFeedArray = [[NSMutableArray alloc]init];
-        // for( Friend* friends in sortedList){
-        for (int i =0; i<count; i++) {
-            [messageHistory addObject:(Message*)sortedList[i]];
-        }
-    }
-}
-
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    // Return the number of sections.
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    // Return the number of rows in the section.
-    return 5;
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    // Number of rows is the number of time zones in the region for the specified section.
+    return [messageHistory count];
 }
 
 
--(UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    
-    
-    Message* messageItem = [self.messageHistory objectAtIndex:indexPath.row];
-    
-    GroupChatTableViewCell *cell = [self.groupChatTableView dequeueReusableCellWithIdentifier:@"EventCell"];
-    //NSLog(@"Cell frame is %@",cell.frame.size.height);
-    //cell.contentView.backgroundColor = [UIColor clearColor];
-    cell.myMessage = messageItem;
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *MyIdentifier = @"MessageCell";
+    GroupChatTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MyIdentifier];
+    if (cell == nil) {
+        cell = [[GroupChatTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault  reuseIdentifier:MyIdentifier];
+    }
+    Message *message = messageHistory[indexPath.row];
+    cell.myMessage = message;
+    cell.backgroundColor = [UIColor blueColor];
     return cell;
 }
 

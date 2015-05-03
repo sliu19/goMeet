@@ -12,4 +12,6 @@
 
 
 @property (strong,nonatomic)NSArray* messageHistory;
+
+-(GroupChatTableView*)initWithFrame:(CGRect)frames message:(NSMutableArray*)messages;
 @end

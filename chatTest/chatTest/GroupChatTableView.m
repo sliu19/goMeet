@@ -20,30 +20,32 @@
 }
 */
 
+-(GroupChatTableView*)initWithFrame:(CGRect)frames message:(NSArray*)messages{
+    self = [super initWithFrame:frames style:UITableViewStylePlain];
+    self.messageHistory = messages;
+    return self;
+}
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    // Return the number of sections.
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    // Return the number of rows in the section.
-    return 5;
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    // Number of rows is the number of time zones in the region for the specified section.
+    return [messageHistory count];
 }
 
 
--(UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    
-    
-    Message* messageItem = [self.messageHistory objectAtIndex:indexPath.row];
-    
-    GroupChatTableViewCell *cell = [self dequeueReusableCellWithIdentifier:@"EventCell"];
-    //NSLog(@"Cell frame is %@",cell.frame.size.height);
-    //cell.contentView.backgroundColor = [UIColor clearColor];
-    cell.myMessage = messageItem;
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *MyIdentifier = @"MessageCell";
+    GroupChatTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MyIdentifier];
+    if (cell == nil) {
+        cell = [[GroupChatTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault  reuseIdentifier:MyIdentifier];
+    }
+    Message *message = [messageHistory objectAtIndex:indexPath.row];
+    cell.myMessage = message;
     return cell;
 }
 
