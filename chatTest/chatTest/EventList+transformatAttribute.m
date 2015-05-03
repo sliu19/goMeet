@@ -22,4 +22,18 @@
     [self setValue:groupMember_data forKey:@"groupMember_data"];
 }
 
+-(NSArray*)message{
+    if (!self.message_data) {
+        return nil;
+    }
+    return [NSKeyedUnarchiver unarchiveObjectWithData:self.message_data];
+}
+
+-(void)setMessage:(id)message{
+    NSData* message_data =[NSKeyedArchiver archivedDataWithRootObject:message];
+    [self setValue:message_data forKey:@"message_data"];
+
+}
+
+
 @end

@@ -14,7 +14,7 @@
 #import "XMPPMUC.h"
 #import "XMPPFramework.h"
 
-@interface GroupChatVC :UIViewController<NSFetchedResultsControllerDelegate,XMPPMUCDelegate,XMPPRoomDelegate,UITextFieldDelegate>
+@interface GroupChatVC :UIViewController<NSFetchedResultsControllerDelegate,XMPPMUCDelegate,XMPPRoomDelegate,UITextFieldDelegate,UITableViewDataSource,UITableViewDelegate>
 {
     NSFetchedResultsController *fetchedResultsController;
 }

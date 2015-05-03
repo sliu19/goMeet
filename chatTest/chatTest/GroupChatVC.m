@@ -25,6 +25,8 @@
 #import <CFNetwork/CFNetwork.h>
 
 #import "MainTabBarViewController.h"
+#import "GroupChatTableViewCell.h"
+#import "Message.h"
 
 
 // Log levels: off, error, warn, info, verbose
@@ -47,7 +49,7 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 @property (weak, nonatomic) IBOutlet UITextField *inputTextField;
 
 @property (nonatomic, assign) id currentResponder;
-
+@property (nonatomic,strong)NSMutableArray* messageHistory;
 @end
 
 @implementation GroupChatVC
@@ -56,6 +58,7 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 @synthesize xmppRoom;
 @synthesize xmppStream;
 @synthesize eventElement;
+@synthesize messageHistory;
 
 - (AppDelegate *)appDelegate
 {
@@ -81,9 +84,7 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
     [_groupChatTableView setUserInteractionEnabled:YES];
     [_groupChatTableView addGestureRecognizer:singleTap];
     [self inputTextField].delegate=self;
-
-
-   
+    [self setupTableView];
 }
 
 -(void)initxmpproom{
@@ -269,5 +270,66 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 {
     [self sendDefaultRoomConfig];
 }
+
+-(void)setupTableView{
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"EventList"];
+    request.predicate = nil;
+    //NSPredicate *predicate =
+    //[NSPredicate predicateWithFormat:@"self == %@", OwnerNewsFeed];
+    //[request setPredicate:predicate];
+    
+    NSError *error;
+    NSArray *array = [[(AppDelegate*) [[UIApplication sharedApplication]delegate] managedObjectContext] executeFetchRequest:request error:&error];
+    
+    NSSortDescriptor *descriptor = [[NSSortDescriptor alloc] initWithKey:@"time" ascending:YES];
+    NSArray *sortedList = [array sortedArrayUsingDescriptors:[NSArray arrayWithObjects:descriptor, nil]];
+    //sortedList = [[sortedList reverseObjectEnumerator] allObjects];
+    if (array != nil) {
+        NSUInteger count = [array count]; // May be 0 if the object has been deleted.
+        NSLog(@"%lu Friends available",(unsigned long)count);
+        //NSMutableArray* newsFeedArray = [[NSMutableArray alloc]init];
+        // for( Friend* friends in sortedList){
+        for (int i =0; i<count; i++) {
+            [messageHistory addObject:(Message*)sortedList[i]];
+        }
+    }
+}
+
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    // Return the number of sections.
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    // Return the number of rows in the section.
+    return 5;
+}
+
+
+-(UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    
+    Message* messageItem = [self.messageHistory objectAtIndex:indexPath.row];
+    
+    GroupChatTableViewCell *cell = [self.groupChatTableView dequeueReusableCellWithIdentifier:@"EventCell"];
+    //NSLog(@"Cell frame is %@",cell.frame.size.height);
+    //cell.contentView.backgroundColor = [UIColor clearColor];
+    cell.myMessage = messageItem;
+    return cell;
+}
+
+
+#pragma mark - Table view delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"Row pressed!!");
+}
+
+
 
 @end

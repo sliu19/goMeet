@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Message.h"
 
 @interface GroupChatTableViewCell : UITableViewCell
+
+@property(nonatomic,strong)Message* myMessage;
 
 @end

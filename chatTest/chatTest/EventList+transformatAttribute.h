@@ -12,5 +12,7 @@
 
 -(NSArray *)groupMember;
 -(void) setGroupMember:(id)groupMember;
+-(NSArray *)message;
+-(void) setMessage:(id)message;
 
 @end

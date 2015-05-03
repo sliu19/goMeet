@@ -13,6 +13,4 @@
 @interface EventListTableViewCell : UITableViewCell
 
 @property (strong,nonatomic) EventList* myEvent;
-@property (strong,nonatomic) UIColor* backGroundColor;
--(EventListTableViewCell*)initWith:(EventList*)event;
 @end

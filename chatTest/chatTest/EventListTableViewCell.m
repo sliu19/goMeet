@@ -78,39 +78,8 @@
 
 
 
--(EventListTableViewCell*)initWith:(EventList*)event{
-    self = [super init];
-    if(!self) return nil;
-    
-    NSString * text = @"testEventListCellString";
-    
-   // CGSize labelSize = [text boundingRectWithSize:<#(CGSize)#> options:<#(NSStringDrawingOptions)#> attributes:<#(NSDictionary *)#> context:<#(NSStringDrawingContext *)#> :[UIFont preferredFontForTextStyle:UIFontTextStyleBody] constrainedToSize:CGSizeMake(380, 20) lineBreakMode:NSLineBreakByTruncatingTail];
-    
-    UILabel *eventDesc = [[UILabel alloc]initWithFrame:CGRectMake(OFF_SET,OFF_SET, TitleWeight, TitleHeight)];
-    eventDesc.text = text;
-    [self addSubview:eventDesc];
-    
-    return self;
-}
-
-
-- (void)drawkkkkRect:(CGRect)rect {
-    //CGPoint innerPoint;
-    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-    paragraphStyle.alignment = NSTextAlignmentCenter;
-    
-    UIFont *contentFont = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
-    
-    //UILabel* title = [[UILabel alloc] initWithFrame:CGRectMake(OFF_SET,OFF_SET, TitleWeight, TitleHeight)];
-    //contentFont = [contentFont fontWithSize:contentFont.pointSize];
-    
-    //Draw context here!!!!!Use test content as sample
-    
-    NSAttributedString *contentText = [[NSAttributedString alloc] initWithString:myEvent.eventDescription attributes:@{ NSFontAttributeName :contentFont, NSParagraphStyleAttributeName:paragraphStyle}];
-    CGRect textBounds;
-    textBounds.origin = CGPointMake(OFF_SET, OFF_SET);
-    textBounds.size = CGSizeMake(TitleWeight, TitleHeight);
-    [contentText drawInRect:textBounds];
+- (void)drawRect:(CGRect)rect {
+    _Title.text = myEvent.eventDescription;
     //UIImage *testImage = [UIImage imageNamed:@"testImage.jpeg"];
     //test = UIImageJPEGRepresentation(testImage,testImage.scale);
     

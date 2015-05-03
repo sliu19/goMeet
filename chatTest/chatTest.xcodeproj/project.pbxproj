@@ -93,6 +93,10 @@
 		F7CF94911AE8AAE5007400FB /* icon-4.png in Resources */ = {isa = PBXBuildFile; fileRef = F7CF948A1AE8AAE5007400FB /* icon-4.png */; };
 		F7CF94921AE8AAE5007400FB /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F7CF948B1AE8AAE5007400FB /* icon.png */; };
 		F7CF94931AE8AAE5007400FB /* People Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F7CF948C1AE8AAE5007400FB /* People Icon.png */; };
+		F7CF9FC71AF56D2500DAF91A /* beach.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F7CF9FC61AF56D2500DAF91A /* beach.jpeg */; };
+		F7CF9FCA1AF5878B00DAF91A /* GroupChatTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7CF9FC91AF5878B00DAF91A /* GroupChatTableView.m */; };
+		F7CF9FD01AF596DE00DAF91A /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = F7CF9FCF1AF596DE00DAF91A /* Message.m */; };
+		F7CF9FD41AF59D2F00DAF91A /* EventList.m in Sources */ = {isa = PBXBuildFile; fileRef = F7CF9FD31AF59D2F00DAF91A /* EventList.m */; };
 		F7EA54111ACDE6E600B9FC1E /* MainTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7EA54101ACDE6E600B9FC1E /* MainTabBarViewController.m */; };
 		F7EA54141ACDEEDC00B9FC1E /* NewsFeedCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7EA54131ACDEEDC00B9FC1E /* NewsFeedCardView.m */; };
 		F7F2BEF41AB9EDA300C810E5 /* PersonalprofileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7F2BEF31AB9EDA300C810E5 /* PersonalprofileViewController.m */; };
@@ -203,7 +207,6 @@
 		F7FA8BD61AC7A07400F88F94 /* EventTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7FA8BD51AC7A07400F88F94 /* EventTableViewController.m */; };
 		F7FA8BDC1AC7A55500F88F94 /* CreateNewEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7FA8BDB1AC7A55500F88F94 /* CreateNewEventViewController.m */; };
 		F7FA8BDF1AC7AA0200F88F94 /* EventList+transformatAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = F7FA8BDE1AC7AA0200F88F94 /* EventList+transformatAttribute.m */; };
-		F7FA8BE21AC7AF1800F88F94 /* EventList.m in Sources */ = {isa = PBXBuildFile; fileRef = F7FA8BE11AC7AF1800F88F94 /* EventList.m */; };
 		F7FA8BE51AC7BF7800F88F94 /* GroupChatVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F7FA8BE41AC7BF7800F88F94 /* GroupChatVC.m */; };
 /* End PBXBuildFile section */
 
@@ -233,6 +236,7 @@
 		EBD0D8D71A82E30500B76C79 /* InitPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InitPage.m; path = ../InitPage.m; sourceTree = "<group>"; };
 		F7159A9A1A9478B600846566 /* NewsFeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsFeedViewController.h; sourceTree = "<group>"; };
 		F7159A9B1A9478B600846566 /* NewsFeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsFeedViewController.m; sourceTree = "<group>"; };
+		F71BBCF11AF5A91F00A87FDD /* Message.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
 		F76F4ABB1AF2F92000A0E525 /* FriendListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendListViewController.h; sourceTree = "<group>"; };
 		F76F4ABC1AF2F92000A0E525 /* FriendListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendListViewController.m; sourceTree = "<group>"; };
 		F76F4AC31AF2FD7500A0E525 /* PersonalProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PersonalProfile.h; path = ../PersonalProfile.h; sourceTree = "<group>"; };
@@ -378,6 +382,12 @@
 		F7CF948A1AE8AAE5007400FB /* icon-4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-4.png"; path = "../../../../Event V2.0/Event - Home - Full-assets/icon-4.png"; sourceTree = "<group>"; };
 		F7CF948B1AE8AAE5007400FB /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = "../../../../Event V2.0/Event - Home - Full-assets/icon.png"; sourceTree = "<group>"; };
 		F7CF948C1AE8AAE5007400FB /* People Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "People Icon.png"; path = "../../../../Event V2.0/Event - Home - Full-assets/People Icon.png"; sourceTree = "<group>"; };
+		F7CF9FC61AF56D2500DAF91A /* beach.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = beach.jpeg; sourceTree = "<group>"; };
+		F7CF9FC81AF5878B00DAF91A /* GroupChatTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupChatTableView.h; sourceTree = "<group>"; };
+		F7CF9FC91AF5878B00DAF91A /* GroupChatTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupChatTableView.m; sourceTree = "<group>"; };
+		F7CF9FCF1AF596DE00DAF91A /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Message.m; path = ../Message.m; sourceTree = "<group>"; };
+		F7CF9FD21AF59D2F00DAF91A /* EventList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventList.h; path = ../EventList.h; sourceTree = "<group>"; };
+		F7CF9FD31AF59D2F00DAF91A /* EventList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventList.m; path = ../EventList.m; sourceTree = "<group>"; };
 		F7EA540F1ACDE6E600B9FC1E /* MainTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabBarViewController.h; sourceTree = "<group>"; };
 		F7EA54101ACDE6E600B9FC1E /* MainTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabBarViewController.m; sourceTree = "<group>"; };
 		F7EA54121ACDEEDC00B9FC1E /* NewsFeedCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsFeedCardView.h; sourceTree = "<group>"; };
@@ -603,8 +613,6 @@
 		F7FA8BDB1AC7A55500F88F94 /* CreateNewEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateNewEventViewController.m; sourceTree = "<group>"; };
 		F7FA8BDD1AC7AA0200F88F94 /* EventList+transformatAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EventList+transformatAttribute.h"; sourceTree = "<group>"; };
 		F7FA8BDE1AC7AA0200F88F94 /* EventList+transformatAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EventList+transformatAttribute.m"; sourceTree = "<group>"; };
-		F7FA8BE01AC7AF1800F88F94 /* EventList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventList.h; sourceTree = "<group>"; };
-		F7FA8BE11AC7AF1800F88F94 /* EventList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventList.m; sourceTree = "<group>"; };
 		F7FA8BE31AC7BF7800F88F94 /* GroupChatVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupChatVC.h; sourceTree = "<group>"; };
 		F7FA8BE41AC7BF7800F88F94 /* GroupChatVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupChatVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -677,6 +685,7 @@
 				F77C90141AA3FDB20005EC2F /* UserImage */,
 				F77C90091AA3C0950005EC2F /* NewsFeedView.h */,
 				F77C900A1AA3C0950005EC2F /* NewsFeedView.m */,
+				F7CF9FCE1AF595DE00DAF91A /* Model */,
 				F76F4ABF1AF2FCFD00A0E525 /* Views */,
 				EB4B60C91A82EB960061CCD8 /* ViewControll */,
 				F791A6A91AAC1DD70025365A /* AppDelegate.h */,
@@ -720,11 +729,7 @@
 			children = (
 				F76F4AC21AF2FD4300A0E525 /* PersonalProfile */,
 				F76F4AC11AF2FD3C00A0E525 /* Event */,
-				F77EC1301AE8720A00D790C2 /* EventListTableViewCell.h */,
-				F77EC1311AE8720A00D790C2 /* EventListTableViewCell.m */,
 				F76F4AC61AF2FF1800A0E525 /* NewsFeed */,
-				F7EA54121ACDEEDC00B9FC1E /* NewsFeedCardView.h */,
-				F7EA54131ACDEEDC00B9FC1E /* NewsFeedCardView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -732,6 +737,12 @@
 		F76F4AC11AF2FD3C00A0E525 /* Event */ = {
 			isa = PBXGroup;
 			children = (
+				F7CF9FC81AF5878B00DAF91A /* GroupChatTableView.h */,
+				F7CF9FC91AF5878B00DAF91A /* GroupChatTableView.m */,
+				F77EC1301AE8720A00D790C2 /* EventListTableViewCell.h */,
+				F77EC1311AE8720A00D790C2 /* EventListTableViewCell.m */,
+				F77EC12B1AE86D9400D790C2 /* GroupChatTableViewCell.h */,
+				F77EC12C1AE86D9400D790C2 /* GroupChatTableViewCell.m */,
 			);
 			name = Event;
 			sourceTree = "<group>";
@@ -750,6 +761,8 @@
 		F76F4AC61AF2FF1800A0E525 /* NewsFeed */ = {
 			isa = PBXGroup;
 			children = (
+				F7EA54121ACDEEDC00B9FC1E /* NewsFeedCardView.h */,
+				F7EA54131ACDEEDC00B9FC1E /* NewsFeedCardView.m */,
 			);
 			name = NewsFeed;
 			sourceTree = "<group>";
@@ -757,6 +770,7 @@
 		F77C90141AA3FDB20005EC2F /* UserImage */ = {
 			isa = PBXGroup;
 			children = (
+				F7CF9FC61AF56D2500DAF91A /* beach.jpeg */,
 				F7CF94861AE8AAE5007400FB /* Check-in Icon.png */,
 				F7CF94871AE8AAE5007400FB /* clock icon.png */,
 				F7CF94881AE8AAE5007400FB /* Date Icon.png */,
@@ -789,8 +803,8 @@
 			isa = PBXGroup;
 			children = (
 				F791A69F1AAC1AEA0025365A /* GoMeet.xcdatamodeld */,
-				F7FA8BE01AC7AF1800F88F94 /* EventList.h */,
-				F7FA8BE11AC7AF1800F88F94 /* EventList.m */,
+				F7CF9FD21AF59D2F00DAF91A /* EventList.h */,
+				F7CF9FD31AF59D2F00DAF91A /* EventList.m */,
 				F7FA8BDD1AC7AA0200F88F94 /* EventList+transformatAttribute.h */,
 				F7FA8BDE1AC7AA0200F88F94 /* EventList+transformatAttribute.m */,
 				F7A11E4C1ABF655000DF9AEB /* OwnerNewsFeed.h */,
@@ -1085,6 +1099,17 @@
 			name = Me;
 			sourceTree = "<group>";
 		};
+		F7CF9FCE1AF595DE00DAF91A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F7A443971AA49B2D00E9ADFC /* NewsFeed.h */,
+				F7A443951AA49B1A00E9ADFC /* NewsFeed.m */,
+				F71BBCF11AF5A91F00A87FDD /* Message.h */,
+				F7CF9FCF1AF596DE00DAF91A /* Message.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		F7F2BEF81ABA966100C810E5 /* FriendList */ = {
 			isa = PBXGroup;
 			children = (
@@ -1103,8 +1128,6 @@
 		F7F2BEF91ABA966D00C810E5 /* NewsFeed */ = {
 			isa = PBXGroup;
 			children = (
-				F7A443971AA49B2D00E9ADFC /* NewsFeed.h */,
-				F7A443951AA49B1A00E9ADFC /* NewsFeed.m */,
 				F7159A9A1A9478B600846566 /* NewsFeedViewController.h */,
 				F7159A9B1A9478B600846566 /* NewsFeedViewController.m */,
 				F7F2BEF51ABA965200C810E5 /* addNewsFeedViewController.h */,
@@ -1118,8 +1141,6 @@
 			children = (
 				F7FA8BE31AC7BF7800F88F94 /* GroupChatVC.h */,
 				F7FA8BE41AC7BF7800F88F94 /* GroupChatVC.m */,
-				F77EC12B1AE86D9400D790C2 /* GroupChatTableViewCell.h */,
-				F77EC12C1AE86D9400D790C2 /* GroupChatTableViewCell.m */,
 				F7FA8BD41AC7A07400F88F94 /* EventTableViewController.h */,
 				F7FA8BD51AC7A07400F88F94 /* EventTableViewController.m */,
 				F7FA8BDA1AC7A55500F88F94 /* CreateNewEventViewController.h */,
@@ -1843,6 +1864,7 @@
 				F791A6951AAC1A040025365A /* testImage.jpeg in Resources */,
 				F7CF94911AE8AAE5007400FB /* icon-4.png in Resources */,
 				EBD0D8BB1A82E1F700B76C79 /* LaunchScreen.xib in Resources */,
+				F7CF9FC71AF56D2500DAF91A /* beach.jpeg in Resources */,
 				F7B0E5D11AB69D47000C1E82 /* testImageApple.jpeg in Resources */,
 				F7B0E5CF1AB69CE8000C1E82 /* forest.jpeg in Resources */,
 				F7A11D8F1ABD1BBD00DF9AEB /* testSmallImage.jpeg in Resources */,
@@ -1879,11 +1901,11 @@
 				F7FA8BE51AC7BF7800F88F94 /* GroupChatVC.m in Sources */,
 				F7FA88A41AC7094600F88F94 /* XMPPProcessOne.m in Sources */,
 				F7FA88EE1AC7094600F88F94 /* XMPPBlocking.m in Sources */,
+				F7CF9FD01AF596DE00DAF91A /* Message.m in Sources */,
 				F7A11E3E1ABE392800DF9AEB /* Friend.m in Sources */,
 				EBD0D8D91A82E30500B76C79 /* InitPage.m in Sources */,
 				F7FA88F61AC7094600F88F94 /* NSXMLElement+XEP_0203.m in Sources */,
 				EB8BD4191A886E3400851D28 /* SignUpViewController.m in Sources */,
-				F7FA8BE21AC7AF1800F88F94 /* EventList.m in Sources */,
 				F7A11E161ABD376200DF9AEB /* XMPPPlainAuthentication.m in Sources */,
 				F7FA88FF1AC7094600F88F94 /* NSXMLElement+XEP_0335.m in Sources */,
 				F7FA88E21AC7094600F88F94 /* XMPPCapsResourceCoreDataStorageObject.m in Sources */,
@@ -1906,12 +1928,14 @@
 				F7FA88BA1AC7094600F88F94 /* XMPPRoomHybrid.xcdatamodeld in Sources */,
 				F7FA88AF1AC7094600F88F94 /* XMPPSystemInputActivityMonitor.m in Sources */,
 				F7A11E261ABD376200DF9AEB /* DDList.m in Sources */,
+				F7CF9FD41AF59D2F00DAF91A /* EventList.m in Sources */,
 				F7A11E251ABD376200DF9AEB /* XMPPStream.m in Sources */,
 				F7FA88C41AC7094600F88F94 /* XMPPvCard.xcdatamodeld in Sources */,
 				F7A11E1C1ABD376200DF9AEB /* NSXMLElement+XMPP.m in Sources */,
 				F7FA88A01AC7094600F88F94 /* XMPPFileTransfer.m in Sources */,
 				F7A11DA71ABD314100DF9AEB /* DDTTYLogger.m in Sources */,
 				F7FA88B61AC7094600F88F94 /* XMPPRoom.xcdatamodeld in Sources */,
+				F7CF9FCA1AF5878B00DAF91A /* GroupChatTableView.m in Sources */,
 				F7FA88C51AC7094600F88F94 /* XMPPvCardAvatarCoreDataStorageObject.m in Sources */,
 				F7FA88B71AC7094600F88F94 /* XMPPRoomCoreDataStorage.m in Sources */,
 				F7F2BF0A1ABB39C000C810E5 /* RSKImageScrollView.m in Sources */,

@@ -7,8 +7,8 @@
 //
 
 #import "GroupChatTableViewCell.h"
-
 @implementation GroupChatTableViewCell
+
 
 - (void)awakeFromNib {
     // Initialization code
