@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "PersonUIButton.h"
 
-@interface FriendListViewController : UIViewController<UITextFieldDelegate,UISearchBarDelegate>
+@interface FriendListViewController : UIViewController<UITextFieldDelegate,UISearchBarDelegate,NSStreamDelegate>
 
 @end

@@ -18,6 +18,8 @@
 +(CGFloat)cornerRadius:(UIView*) thisView;
 +(CGFloat)cornerOffset:(UIView*) thisView;
 +(UIImage*)compressToSmallSquare:(UIImage*)oldImage;
++(NSString*)parseIntoJson:(NSDictionary*)dict;
++(NSDictionary*)parseFromJson:(NSData*)json;
 @end
 NSInputStream* inputStream;
 NSOutputStream* outputStream;

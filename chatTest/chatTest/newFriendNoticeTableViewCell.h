@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface newFriendNoticeTableViewCell : UITableViewCell
-
+@property(strong,nonatomic)NSDictionary* Info;
 @end

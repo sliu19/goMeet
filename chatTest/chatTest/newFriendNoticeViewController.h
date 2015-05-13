@@ -10,4 +10,6 @@
 
 @interface newFriendNoticeViewController : UITableViewController
 
+
+@property(strong,nonatomic)NSArray* notificationList;
 @end

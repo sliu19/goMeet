@@ -54,9 +54,6 @@
     EventList *event = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
     EventListTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"EventCell"];
-    //[[EventListTableViewCell alloc]initWith:event];
-    //NSLog(@"Cell frame is %@",cell.frame.size.height);
-    //cell.contentView.backgroundColor = [UIColor clearColor];
     cell.myEvent = event;
     return cell;
 }

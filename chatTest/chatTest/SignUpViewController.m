@@ -8,6 +8,7 @@
 
 #import "SignUpViewController.h"
 #import "Communication.h"
+#import "MainTabBarViewController.h"
 
 @interface SignUpViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *phoneNum;
@@ -16,7 +17,10 @@
 @property (weak, nonatomic) IBOutlet UIButton *signUp;
 @property (weak, nonatomic) IBOutlet UILabel *outPut;
 @property (nonatomic, assign) id currentResponder;
-
+@property (weak, nonatomic) IBOutlet UIButton *gender_F;
+@property (weak, nonatomic) IBOutlet UIButton *gender_M;
+@property (weak, nonatomic) IBOutlet UITextField *nickName;
+@property (nonatomic,strong)NSString* gender;
 @end
 
 @implementation SignUpViewController
@@ -24,10 +28,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-   // [self initNetworkCommunication];
+    //[Communication initNetworkCommunication];
+    [inputStream setDelegate:self];
+    [outputStream setDelegate:self];
     self.phoneNum.delegate = self;
     self.passCode.delegate = self;
     self.passCodeConfirm.delegate = self;
+    self.nickName.delegate = self;
+    self.gender = @"F";
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(resignOnTap:)];
     [singleTap setNumberOfTapsRequired:1];
     [singleTap setNumberOfTouchesRequired:1];
@@ -47,8 +55,13 @@
     }
     else{
         if ([_passCodeConfirm.text isEqualToString:_passCode.text]){
-            NSString *response  = [NSString stringWithFormat:@"reg:%@;%@" , _phoneNum.text,_passCode.text];
-            NSData *data = [[NSData alloc] initWithData:[response dataUsingEncoding:NSASCIIStringEncoding]];
+            
+            //{"gender":"M","pass_hash":"password","phone_num":6505758649,"nick":"ZhouYi"}
+            NSDictionary* dict = @{@"gender":self.gender,@"pass_hash":self.passCode.text,@"phone_num":self.phoneNum.text,@"nick":self.nickName.text};
+            
+            
+            NSString *response  = [NSString stringWithFormat:@"reg:%@", [Communication parseIntoJson:dict]];
+            NSData *data = [[NSData alloc] initWithData:[response dataUsingEncoding:NSUTF8StringEncoding]];
             [Communication send:data];
         }
         else{
@@ -85,6 +98,17 @@
     // Pass the selected object to the new view controller.
 }
 */
+- (IBAction)gender_Female:(id)sender {
+    self.gender_F.backgroundColor = [UIColor greenColor];
+    self.gender_M.backgroundColor = [UIColor grayColor];
+    self.gender = @"F";
+}
+- (IBAction)gender_Male:(id)sender {
+    self.gender_M.backgroundColor = [UIColor greenColor];
+    self.gender_F.backgroundColor = [UIColor grayColor];
+    self.gender = @"M";
+
+}
 
 - (void)stream:(NSStream *)theStream handleEvent:(NSStreamEvent)streamEvent {
     
@@ -121,14 +145,10 @@
                                 case 1:
                                 {
                                     NSLog(@"trigger segue");
-                                    [self performSegueWithIdentifier:@"loginFromSignUp" sender:nil];
-                                    [_phoneNum resignFirstResponder];
-                                    [_passCode resignFirstResponder];
-                                    //[ageTextField resignFirstResponder];
-                                    
                                     // Create strings and integer to store the text info
                                     NSString *userID = [_phoneNum text];
                                     NSString *userPassCode  = [_passCode text];
+                                    NSString* nickName = [_nickName text];
                                     //int age = [[ageTextField text] integerValue];
                                     
                                     // Create instances of NSData
@@ -143,8 +163,13 @@
                                     [defaults setObject:userPassCode forKey:@"passCode"];
                                     //[defaults setInteger:age forKey:@"age"];
                                     [defaults setObject:imageData forKey:@"userPic"];
+                                    [defaults setObject:nickName forKey:@"nickName"];
+                                    [defaults setObject:_gender forKey:@"gender"];
                                     [defaults synchronize];
-                                    
+                                    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                                    MainTabBarViewController *viewController = (MainTabBarViewController *)[storyboard instantiateViewControllerWithIdentifier:@"GoMeet"];
+                                    [viewController setSelectedIndex:0];
+                                    [self presentViewController:viewController animated:YES completion:nil];
                                     break;
                                 }
                                     
@@ -168,7 +193,7 @@
             break;
             
         default:
-            NSLog(@"Unknown event");
+            NSLog(@"Unknown event in Signup");
     }
     
 }

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "OwnerNewsFeed.h"
-#import "NewsFeed.h"
+#import "PublicEvent.h"
 
 @interface MeViewController : UIViewController
 @property(nonatomic,strong) NSManagedObjectContext *managedObjectContent;

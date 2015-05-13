@@ -32,7 +32,7 @@ int OFFSET = 0;
 */
 //scale view for all sizes
 
--(NewsFeedCardView*)initWith:(CGRect)frame :(NewsFeed*)newsFeed{
+-(NewsFeedCardView*)initWith:(CGRect)frame :(PublicEvent*)newsFeed{
     self = [super initWithFrame:frame];
     if(!self) return nil;
     news = newsFeed;
@@ -78,21 +78,21 @@ return self.bounds.size.height/CORNER_FONT_STANDARD_HEIGHT;
     //UIImage *testImage = [UIImage imageNamed:@"testImage.jpeg"];
     //test = UIImageJPEGRepresentation(testImage,testImage.scale);
     
-    UIImage *contentImage = [[UIImage alloc] initWithData:[news getContentImage:news]];
-    contentImage = [Communication imageWithImage:contentImage scaledToSize:CGSizeMake(self.bounds.size.width-2*OFFSET_FROM_FRAME,self.bounds.size.width-2*OFFSET_FROM_FRAME)];
-    UIImageView *iv = [[UIImageView alloc] initWithFrame:CGRectMake(OFFSET_FROM_FRAME, OFFSET_FROM_FRAME, contentImage.size.width,contentImage.size.height )];
+    //UIImage *contentImage = [[UIImage alloc] initWithData:[news getContentImage:news]];
+    //contentImage = [Communication imageWithImage:contentImage scaledToSize:CGSizeMake(self.bounds.size.width-2*OFFSET_FROM_FRAME,self.bounds.size.width-2*OFFSET_FROM_FRAME)];
+    //UIImageView *iv = [[UIImageView alloc] initWithFrame:CGRectMake(OFFSET_FROM_FRAME, OFFSET_FROM_FRAME, contentImage.size.width,contentImage.size.height )];
     //iv.contentMode = UIViewContentModeScaleAspectFit;
-    iv.image = contentImage;
-    [iv setImage:contentImage];
-    innerPoint.x = OFFSET_FROM_FRAME;
-    innerPoint.y = OFFSET_FROM_FRAME +contentImage.size.height;
-    UILabel* contentString = [[UILabel alloc]initWithFrame:CGRectMake(innerPoint.x, innerPoint.y, self.bounds.size.width-2*OFFSET_FROM_FRAME,20)];
-    contentString.text = [news getContentText:news];
-    contentString.font=[UIFont boldSystemFontOfSize:15.0];
-    contentString.textColor=[UIColor blackColor];
-    contentString.backgroundColor=[UIColor clearColor];
-    if((self.bounds.size.height - innerPoint.y)> OFFSET_FROM_FRAME ){[self addSubview:contentString];}
-    [self addSubview:iv];
+    //iv.image = contentImage;
+    //[iv setImage:contentImage];
+    //innerPoint.x = OFFSET_FROM_FRAME;
+   // innerPoint.y = OFFSET_FROM_FRAME +contentImage.size.height;
+   // UILabel* contentString = [[UILabel alloc]initWithFrame:CGRectMake(innerPoint.x, innerPoint.y, self.bounds.size.width-2*OFFSET_FROM_FRAME,20)];
+   // contentString.text = [news getContentText:news];
+    //contentString.font=[UIFont boldSystemFontOfSize:15.0];
+    //contentString.textColor=[UIColor blackColor];
+    //contentString.backgroundColor=[UIColor clearColor];
+    //if((self.bounds.size.height - innerPoint.y)> OFFSET_FROM_FRAME ){[self addSubview:contentString];}
+   // [self addSubview:iv];
 }
 
 #pragma mark -Initialization

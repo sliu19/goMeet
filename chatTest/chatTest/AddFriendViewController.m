@@ -7,6 +7,7 @@
 //
 
 #import "AddFriendViewController.h"
+#import "MainTabBarViewController.h"
 
 @interface AddFriendViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *addFriendTextField;
@@ -31,6 +32,7 @@
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(resignOnTap:)];
     singleTap.numberOfTapsRequired = 1;
     _searchFriend.delegate = self;
+    _newfriend = @"111111111";
     //[self setUserInteractionEnabled:YES];
     //[iv addGestureRecognizer:singleTap];
 
@@ -52,19 +54,13 @@
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     
     //Send through NSStrem
+    //addfriend:6505758649#1234567899
     NSString* userId = [prefs stringForKey:@"userID"];
-    NSString* response = [NSString stringWithFormat:@"addfriend:%@#%@",userId,_addFriendTextField.text];
+    //addfriend:{"src_user":12341234,"msg":"omg my message","dst_user":68958695}
+    NSDictionary* dict = @{@"src_user":userId,@"msg":@"test test test friend request",@"dst_user":_newfriend};
+    NSString* response = [NSString stringWithFormat:@"addfriend:%@",[Communication parseIntoJson:dict]];
     NSData *data = [[NSData alloc] initWithData:[response dataUsingEncoding:NSUTF8StringEncoding]];
-    [Communication send:data];
-    Friend* people = nil;
-    people = [NSEntityDescription insertNewObjectForEntityForName:@"Friend" inManagedObjectContext:[(AppDelegate*) [[UIApplication sharedApplication]delegate] managedObjectContext]];
-    //people.userName =[key obje]
-    //people.unique = unique;
-    [people setValue: _addFriendTextField.text forKey :@"userName"];
-    NSData *imageData = UIImageJPEGRepresentation([UIImage imageNamed:@"testImageApple.jpeg"],0.0);
-    [people setValue: imageData forKey :@"userPic"];
-    _addFriendTextField.text =@"";
-    
+    [Communication send:data];    
 }
 
 - (void)stream:(NSStream *)theStream handleEvent:(NSStreamEvent)streamEvent {
@@ -89,40 +85,38 @@
             if (theStream == inputStream) {
                 
                 uint8_t buffer[1024];
-                int len;
+                NSInteger len;
                 
                 while ([inputStream hasBytesAvailable]) {
                     len = [inputStream read:buffer maxLength:sizeof(buffer)];
                     if (len > 0) {
                         
-                        NSString *output = [[NSString alloc] initWithBytes:buffer length:len encoding:NSUTF8StringEncoding];
-                        NSLog(@"This return string from server %@",output);
+                       NSData *output = [[NSData alloc] initWithBytes:buffer length:len];
                         
                         if (nil != output) {
-                            switch (output.intValue) {
-                                case 1:
-                                    // NSLog(@"trigger segue");
-                                    //[[NSNotificationCenter defaultCenter] postNotificationName:@"LogInNotification" object:self];
-                                    //[self performSegueWithIdentifier:@"login" sender:nil];
-                                    
-                                    break;
-                                    
-                                default:
-                                    NSLog(@"output int val %d", output.intValue);
-                                    break;
-                            }
+                                UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                                    MainTabBarViewController *viewController = (MainTabBarViewController *)[storyboard instantiateViewControllerWithIdentifier:@"GoMeet"];
+                                [viewController setSelectedIndex:0];
+                                [self presentViewController:viewController animated:YES completion:nil];
+
                             NSLog(@"server said: %@", output);
-                            
                         }
+                        
+                            
                     }
                 }
             }
             break;
             
         case NSStreamEventErrorOccurred:
+        {
             NSLog(@"Can not connect to the host!");
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"链接不上服务器" message:@"稍微晚些时候试试吧？" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
+            // optional - add more buttons:
+            [alert addButtonWithTitle:@"Yes"];
+            [alert show];
             break;
-            
+        }
         case NSStreamEventEndEncountered:
             break;
             

@@ -7,14 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "NewsFeed.h"
+#import "PublicEvent.h"
 
 @interface NewsFeedCardView : UIView
 
-@property (strong,nonatomic) NewsFeed* news;
+@property (strong,nonatomic) PublicEvent* news;
 @property (strong,nonatomic) id currentResponder;
 
 
--(NewsFeedCardView*)initWith:(CGRect)frame :(NewsFeed*)newsFeed;
+-(NewsFeedCardView*)initWith:(CGRect)frame :(PublicEvent*)newsFeed;
 
 @end
