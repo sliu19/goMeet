@@ -11,7 +11,7 @@
 
 @implementation Friend
 
-@dynamic userName;
+@dynamic userID;
 @dynamic userPic;
 @dynamic userImageUUID;
 
@@ -35,7 +35,7 @@
     }else{
         people = [NSEntityDescription insertNewObjectForEntityForName:@"Friend" inManagedObjectContext:context];
         //people.unique = unique;
-        people.userName = [FriendDictionary valueForKeyPath:@"testUserName"];
+        people.userID = [FriendDictionary valueForKeyPath:@"testUserName"];
         people.userPic = [FriendDictionary valueForKeyPath:@"testUserPic"];
         
     }

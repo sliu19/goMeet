@@ -13,5 +13,6 @@
 
 @property(nonatomic,strong)Message* myMessage;
 -(void)setup;
+-(CGFloat)getMessageHeight;
 -(GroupChatTableViewCell*)initWithMessage:(Message*)message;
 @end

@@ -11,7 +11,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *OtherUser;
 @property (weak, nonatomic) IBOutlet UIImageView *selfUser;
 @property (weak, nonatomic) IBOutlet UILabel *otherLabel;
-@property (weak, nonatomic) IBOutlet UILabel *selfLabel;
+@property (weak, nonatomic) IBOutlet UITextView *selfTextView;
 
 
 @end
@@ -22,7 +22,13 @@
     self.myMessage = message;
     self.selfUser.image =[UIImage imageNamed:@"beach.jpeg"];
     self.OtherUser.image =[UIImage imageNamed:@"beach.jpeg"];
-    self.selfLabel.text = message.bodyText;
+    NSLog(@"MessageBody is %@",message.bodyText);
+    self.selfTextView.text = message.bodyText;
+    CGRect frame;
+    frame = self.selfTextView.frame;
+    frame.size.height = [self.selfTextView contentSize].height;
+    self.selfTextView.frame = frame;
+    [self.otherLabel sizeToFit];
     return self;
 }
 
@@ -37,23 +43,34 @@
 
 -(void)setup{
     self.OtherUser.image = [UIImage imageNamed:@"beach.jpeg"];
-    self.selfLabel.text = _myMessage.bodyText;
+    
+    self.selfTextView.text = _myMessage.bodyText;
 
 }
 
 - (void)drawRect:(CGRect)rect {
     self.OtherUser.image = [UIImage imageNamed:@"beach.jpeg"];
-    self.selfLabel.text = _myMessage.bodyText;
+    self.selfTextView.text = self.myMessage.bodyText;
+    self.selfTextView.textColor = [UIColor whiteColor];
+   // NSLog(@"height before is %f",self.selfTextView.frame.size.height);
+    [self.selfTextView sizeToFit];
+    [self.otherLabel sizeToFit];
+    //NSLog(@"height after is %f",self.selfTextView.frame.size.height);
+
     if ([self isSelf]) {
         NSLog(@"Self message");
         self.OtherUser.hidden = true;
         self.otherLabel.hidden = true;
     }else{
         NSLog(@"Others message");
-        self.selfLabel.hidden = true;
+        self.selfTextView.hidden = true;
         self.selfUser.hidden = true;
     }
     
+}
+
+-(CGFloat)getMessageHeight{
+    return self.self.frame.size.height;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

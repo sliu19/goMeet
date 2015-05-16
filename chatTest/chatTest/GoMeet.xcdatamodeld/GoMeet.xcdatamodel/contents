@@ -4,15 +4,17 @@
         <attribute name="eventDescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="groupMember" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="groupMember_data" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="hostID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="jid" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="location" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="message" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="message_data" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="time" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="Friend" representedClassName="Friend" syncable="YES">
+        <attribute name="userID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="userImageUUID" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="userName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="userPic" optional="YES" attributeType="Binary" syncable="YES"/>
     </entity>
     <entity name="NewsFeedList" representedClassName="NewsFeedList" syncable="YES">
@@ -31,9 +33,9 @@
         <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="EventList" positionX="-9" positionY="90" width="128" height="165"/>
-        <element name="Friend" positionX="-18" positionY="27" width="128" height="88"/>
-        <element name="NewsFeedList" positionX="-9" positionY="72" width="128" height="133"/>
-        <element name="OwnerNewsFeed" positionX="-18" positionY="45" width="128" height="118"/>
+        <element name="EventList" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Friend" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="NewsFeedList" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="OwnerNewsFeed" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>

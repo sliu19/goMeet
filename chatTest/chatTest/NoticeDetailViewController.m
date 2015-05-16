@@ -1,30 +1,37 @@
 //
-//  Personalprofile.m
+//  NoticeDetailViewController.m
 //  chatTest
 //
-//  Created by Simin Liu on 3/18/15.
+//  Created by Simin Liu on 5/14/15.
 //  Copyright (c) 2015 LPP. All rights reserved.
 //
 
-#import "PersonalprofileViewController.h"
+#import "NoticeDetailViewController.h"
 
-@interface PersonalprofileViewController ()
-@property (weak, nonatomic) IBOutlet UILabel *userName;
+@interface NoticeDetailViewController ()
 
-
+@property (weak, nonatomic) IBOutlet UILabel *eventOwnerLabel;
+@property (weak, nonatomic) IBOutlet UILabel *eventDescriptLabel;
+@property (weak, nonatomic) IBOutlet UILabel *locationLabel;
+@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *attandaceLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *userImae;
 @end
 
-@implementation PersonalprofileViewController
+@implementation NoticeDetailViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _userName.text = _friends.userID;
     // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+- (IBAction)joinEvent:(id)sender {
+}
+- (IBAction)nextTime:(id)sender {
 }
 
 /*

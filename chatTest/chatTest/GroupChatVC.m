@@ -25,7 +25,7 @@
 #import <CFNetwork/CFNetwork.h>
 
 #import "MainTabBarViewController.h"
-#import "GroupChatTableView.h"
+
 #import "GroupChatTableViewCell.h"
 #import "Message.h"
 
@@ -114,6 +114,8 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
     _groupChatTableView.delegate = self;
     _groupChatTableView.dataSource = self;
     [_groupChatTableView reloadData];
+    _groupChatTableView.rowHeight = UITableViewAutomaticDimension;
+
 }
 
 -(void)initxmpproom{
@@ -276,7 +278,6 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
     // Number of rows is the number of time zones in the region for the specified section.
     return [messageHistory count];
 }
-
 
 
 

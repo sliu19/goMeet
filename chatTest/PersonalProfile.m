@@ -17,7 +17,7 @@
 - (void)drawRect:(CGRect)rect {
     // Drawing code
     UILabel *yourLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 30, 20)];
-    yourLabel.text = [NSString stringWithFormat:@"Test String for personalprofile name: %@",myFriend.userName];
+    yourLabel.text = [NSString stringWithFormat:@"Test String for personalprofile name: %@",myFriend.userID];
     [yourLabel setTextColor:[UIColor whiteColor]];
     [yourLabel setBackgroundColor:[UIColor whiteColor]];
     [yourLabel setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleBody]];

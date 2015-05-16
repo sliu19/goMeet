@@ -12,7 +12,7 @@
 
 @interface Friend : NSManagedObject
 
-@property (nonatomic, retain) NSString * userName;
+@property (nonatomic, retain) NSString * userID;
 @property (nonatomic, retain) NSData * userPic;
 @property (nonatomic, retain) NSString * userImageUUID;
 

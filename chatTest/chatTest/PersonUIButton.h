@@ -15,6 +15,6 @@
 
 -(PersonUIButton*)initWith:(CGRect)frame friendItem:(Friend*)friends;
 
-
+-(void)ButtonSelected;
 
 @end

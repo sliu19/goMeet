@@ -9,12 +9,21 @@
 #import "CreateNewEventViewController.h"
 #import "EventList.h"
 #import "MainTabBarViewController.h"
+#import "Communication.h"
 
 @interface CreateNewEventViewController()
 @property (weak, nonatomic) IBOutlet UIScrollView *mainView;
 
+@property (weak, nonatomic) IBOutlet UITextField *EventTitle;
+@property (weak, nonatomic) IBOutlet UITextField *EventLocation;
+@property (weak, nonatomic) IBOutlet UITextField *EventTime;
 @property (weak, nonatomic) IBOutlet UITextField *EventDescription;
+
+@property (weak, nonatomic) IBOutlet UIButton *public;
+
 @property (nonatomic, assign) id currentResponder;
+@property (nonatomic,strong) NSString* PUBLIC;
+@property (nonatomic,strong)NSString* uuid;
 @end
 
 
@@ -32,29 +41,37 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [_EventTitle setDelegate:self];
+    [_EventTime setDelegate:self];
+    [_EventLocation setDelegate:self];
     [_EventDescription setDelegate:self];
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(resignOnTap:)];
     singleTap.numberOfTapsRequired = 1;
+    [inputStream setDelegate:self];
+    [outputStream setDelegate:self];
+    _inviteList = [[NSMutableArray alloc]init];
+    _PUBLIC = @"true";
 }
 
 - (IBAction)AddEvent:(id)sender {
     CFUUIDRef uuid = CFUUIDCreate(kCFAllocatorDefault);
     NSString* uuidString = (__bridge_transfer NSString *)CFUUIDCreateString(kCFAllocatorDefault, uuid);
     CFRelease(uuid);
-
+    _uuid = uuidString;
     
     EventList* event = nil;
     event = [NSEntityDescription insertNewObjectForEntityForName:@"EventList" inManagedObjectContext:[(AppDelegate*) [[UIApplication sharedApplication]delegate] managedObjectContext]];
     [event setValue: _EventDescription.text forKey :@"eventDescription"];
     [event setValue: uuidString forKey :@"jid"];
-    [event setValue: @"UIUC" forKey :@"location"];
+    [event setValue: _EventLocation.text forKey :@"location"];
+    [event setValue: _EventTitle.text forKey :@"title"];
     NSDate* now = [NSDate date];
     [event setValue:now forKey:@"time"];
-    NSArray* userList =@[@"user1",@"user2",@"user3"];
-    [event setValue: userList forKey:@"groupMember"];
-    [event setGroupMember:userList];
+    _inviteList =@[@"user1",@"user2",@"user3"];
+    [event setValue: _inviteList forKey:@"groupMember"];
+    [event setGroupMember:_inviteList];
     NSLog(@"GroupMember when set is %@",[[NSString alloc] initWithData:event.groupMember_data encoding:NSUTF8StringEncoding]);
-    _EventDescription.text = @"";
+
     
     
     //Create Room
@@ -62,12 +79,21 @@
     xmppStream = [self appDelegate].xmppStream;
     [self initxmpproom:uuidString];
     
-    //Return to main page
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    MainTabBarViewController *viewController = (MainTabBarViewController *)[storyboard instantiateViewControllerWithIdentifier:@"GoMeet"];
-    [viewController setSelectedIndex:2];
-    [self presentViewController:viewController animated:YES completion:nil];
-   }
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+
+    
+    //Also sent to server
+    //newevent:{"description":"my description","title":"my event title4","event_id":"acf6830f-f945-11e4-a2bf-b8e85632007e","invite_list":[68958333],"location":"test event location4","time":1431503837791,"host_id":12341333,"public":false}
+    NSDictionary*dict = @{@"title":_EventTitle.text,@"event_id":uuidString,@"invite_list":_inviteList,@"location":_EventLocation.text,@"time":_EventTime.text,@"host_id":[prefs objectForKey:@"userID"],@"public":_PUBLIC,@"description":_EventDescription.text};
+    NSString *response  = [NSString stringWithFormat:@"newevent:%@",[Communication parseIntoJson:dict]];
+    NSData *data = [[NSData alloc] initWithData:[response dataUsingEncoding:NSUTF8StringEncoding]];
+    [Communication send:data];
+    
+    _EventDescription.text = @"";
+    _EventTitle.text = @"";
+    _EventTime.text = @"";
+    _EventLocation.text = @"";
+}
 
 -(BOOL) textFieldShouldReturn: (UITextField *) textField {
     [textField resignFirstResponder];
@@ -156,6 +182,67 @@
 - (void)xmppRoomDidCreate:(XMPPRoom *)sender
 {
     [self sendDefaultRoomConfig];
+}
+
+
+- (void)stream:(NSStream *)theStream handleEvent:(NSStreamEvent)streamEvent {
+    
+    typedef enum {
+        NSStreamEventNone = 0,
+        NSStreamEventOpenCompleted = 1 << 0,
+        NSStreamEventHasBytesAvailable = 1 << 1,
+        NSStreamEventHasSpaceAvailable = 1 << 2,
+        NSStreamEventErrorOccurred = 1 << 3,
+        NSStreamEventEndEncountered = 1 << 4
+    }NSStringEvent;
+    
+    switch (streamEvent) {
+            
+        case NSStreamEventOpenCompleted:
+            NSLog(@"Stream opened");
+            break;
+            
+        case NSStreamEventHasBytesAvailable:
+            
+            if (theStream == inputStream) {
+                
+                uint8_t buffer[1024];
+                int len;
+                
+                while ([inputStream hasBytesAvailable]) {
+                    len = [inputStream read:buffer maxLength:sizeof(buffer)];
+                    if (len > 0) {
+                        
+                        NSString *output = [[NSString alloc] initWithBytes:buffer length:len encoding:NSUTF8StringEncoding];
+                        
+                        if (nil != output) {
+                            NSLog(@"server said: %@", output);
+                            if ([output isEqualToString:_uuid]) {
+                                //Return to main page
+                                UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                                MainTabBarViewController *viewController = (MainTabBarViewController *)[storyboard instantiateViewControllerWithIdentifier:@"GoMeet"];
+                                [viewController setSelectedIndex:2];
+                                [self presentViewController:viewController animated:YES completion:nil];
+
+                            }
+                            
+                        }
+                    }
+                }
+            }
+            break;
+            
+        case NSStreamEventErrorOccurred:
+            NSLog(@"Can not connect to the host!");
+            break;
+            
+        case NSStreamEventEndEncountered:
+            break;
+            
+        default:
+            NSLog(@"Unknown event");
+    }
+    
 }
 
 
