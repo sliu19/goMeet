@@ -31,6 +31,7 @@
 		F77EC12D1AE86D9400D790C2 /* GroupChatTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F77EC12C1AE86D9400D790C2 /* GroupChatTableViewCell.m */; };
 		F77EC12F1AE86FD000D790C2 /* icon.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F77EC12E1AE86FD000D790C2 /* icon.jpeg */; };
 		F77EC1321AE8720A00D790C2 /* EventListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F77EC1311AE8720A00D790C2 /* EventListTableViewCell.m */; };
+		F78BEA3B1B0B51EC0076FC6A /* Divider.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F78BEA3A1B0B51EC0076FC6A /* Divider.jpg */; };
 		F791A6951AAC1A040025365A /* testImage.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F791A6941AAC1A040025365A /* testImage.jpeg */; };
 		F791A6971AAC1A090025365A /* nightLife.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F791A6961AAC1A090025365A /* nightLife.jpeg */; };
 		F791A69A1AAC1A7B0025365A /* CoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F791A6991AAC1A7B0025365A /* CoreDataTableViewController.m */; };
@@ -94,7 +95,6 @@
 		F7B0E5CF1AB69CE8000C1E82 /* forest.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F7B0E5CE1AB69CE8000C1E82 /* forest.jpeg */; };
 		F7B0E5D11AB69D47000C1E82 /* testImageApple.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F7B0E5D01AB69D47000C1E82 /* testImageApple.jpeg */; };
 		F7B0E5D41AB6A2AA000C1E82 /* AddFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7B0E5D31AB6A2AA000C1E82 /* AddFriendViewController.m */; };
-		F7CF947B1AE8A90C007400FB /* Divider.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F7CF947A1AE8A90C007400FB /* Divider.jpg */; };
 		F7CF948D1AE8AAE5007400FB /* Check-in Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F7CF94861AE8AAE5007400FB /* Check-in Icon.png */; };
 		F7CF948E1AE8AAE5007400FB /* clock icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F7CF94871AE8AAE5007400FB /* clock icon.png */; };
 		F7CF948F1AE8AAE5007400FB /* Date Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F7CF94881AE8AAE5007400FB /* Date Icon.png */; };
@@ -231,13 +231,11 @@
 		8A18DBD01D24674FA56A3655 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		EB8BD4171A886E3400851D28 /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
 		EB8BD4181A886E3400851D28 /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
-		EBD0D8A71A82E1F700B76C79 /* chatTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = chatTest.app; path = "/Users/Simin/Desktop/Github/goMeetold/chatTest/build/Debug-iphoneos/chatTest.app"; sourceTree = "<absolute>"; };
 		EBD0D8AB1A82E1F700B76C79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EBD0D8AC1A82E1F700B76C79 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		EBD0D8B51A82E1F700B76C79 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EBD0D8B71A82E1F700B76C79 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		EBD0D8BA1A82E1F700B76C79 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		EBD0D8C01A82E1F700B76C79 /* chatTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = chatTestTests.xctest; path = "/Users/Simin/Desktop/Github/goMeetold/chatTest/build/Debug-iphoneos/chatTestTests.xctest"; sourceTree = "<absolute>"; };
 		EBD0D8C51A82E1F700B76C79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EBD0D8C61A82E1F700B76C79 /* chatTestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = chatTestTests.m; sourceTree = "<group>"; };
 		EBD0D8D61A82E30500B76C79 /* InitPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InitPage.h; path = ../InitPage.h; sourceTree = "<group>"; };
@@ -276,6 +274,9 @@
 		F77EC1311AE8720A00D790C2 /* EventListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventListTableViewCell.m; sourceTree = "<group>"; };
 		F78BEA341B0ADC0A0076FC6A /* zmq.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zmq.h; sourceTree = "<group>"; };
 		F78BEA351B0ADC0A0076FC6A /* zmq_utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zmq_utils.h; sourceTree = "<group>"; };
+		F78BEA381B0AF4AF0076FC6A /* chatTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = chatTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F78BEA391B0AF4AF0076FC6A /* chatTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = chatTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F78BEA3A1B0B51EC0076FC6A /* Divider.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Divider.jpg; sourceTree = "<group>"; };
 		F791A6941AAC1A040025365A /* testImage.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = testImage.jpeg; sourceTree = "<group>"; };
 		F791A6961AAC1A090025365A /* nightLife.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nightLife.jpeg; sourceTree = "<group>"; };
 		F791A6981AAC1A750025365A /* CoreDataTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreDataTableViewController.h; sourceTree = "<group>"; };
@@ -400,7 +401,6 @@
 		F7B0E5D01AB69D47000C1E82 /* testImageApple.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = testImageApple.jpeg; sourceTree = "<group>"; };
 		F7B0E5D21AB6A2AA000C1E82 /* AddFriendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddFriendViewController.h; sourceTree = "<group>"; };
 		F7B0E5D31AB6A2AA000C1E82 /* AddFriendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddFriendViewController.m; sourceTree = "<group>"; };
-		F7CF947A1AE8A90C007400FB /* Divider.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Divider.jpg; path = "../../../../Event V2.0/Event - Home - Full-assets/Divider.jpg"; sourceTree = "<group>"; };
 		F7CF94861AE8AAE5007400FB /* Check-in Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Check-in Icon.png"; path = "../../../../Event V2.0/Event - Home - Full-assets/Check-in Icon.png"; sourceTree = "<group>"; };
 		F7CF94871AE8AAE5007400FB /* clock icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "clock icon.png"; path = "../../../../Event V2.0/Event - Home - Full-assets/clock icon.png"; sourceTree = "<group>"; };
 		F7CF94881AE8AAE5007400FB /* Date Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Date Icon.png"; path = "../../../../Event V2.0/Event - Home - Full-assets/Date Icon.png"; sourceTree = "<group>"; };
@@ -700,6 +700,8 @@
 				EBD0D8C31A82E1F700B76C79 /* chatTestTests */,
 				96DE573DE21B3DEFD33C4B7D /* Pods */,
 				37A98715AC7D007D0CD8651D /* Frameworks */,
+				F78BEA381B0AF4AF0076FC6A /* chatTest.app */,
+				F78BEA391B0AF4AF0076FC6A /* chatTestTests.xctest */,
 			);
 			sourceTree = "<group>";
 		};
@@ -807,6 +809,7 @@
 		F77C90141AA3FDB20005EC2F /* UserImage */ = {
 			isa = PBXGroup;
 			children = (
+				F78BEA3A1B0B51EC0076FC6A /* Divider.jpg */,
 				F7CF9FC61AF56D2500DAF91A /* beach.jpeg */,
 				F7CF94861AE8AAE5007400FB /* Check-in Icon.png */,
 				F7CF94871AE8AAE5007400FB /* clock icon.png */,
@@ -815,7 +818,6 @@
 				F7CF948A1AE8AAE5007400FB /* icon-4.png */,
 				F7CF948B1AE8AAE5007400FB /* icon.png */,
 				F7CF948C1AE8AAE5007400FB /* People Icon.png */,
-				F7CF947A1AE8A90C007400FB /* Divider.jpg */,
 				F791A6961AAC1A090025365A /* nightLife.jpeg */,
 				F77EC12E1AE86FD000D790C2 /* icon.jpeg */,
 				F7B0E5CE1AB69CE8000C1E82 /* forest.jpeg */,
@@ -1864,7 +1866,7 @@
 			);
 			name = chatTest;
 			productName = chatTest;
-			productReference = EBD0D8A71A82E1F700B76C79 /* chatTest.app */;
+			productReference = F78BEA381B0AF4AF0076FC6A /* chatTest.app */;
 			productType = "com.apple.product-type.application";
 		};
 		EBD0D8BF1A82E1F700B76C79 /* chatTestTests */ = {
@@ -1882,7 +1884,7 @@
 			);
 			name = chatTestTests;
 			productName = chatTestTests;
-			productReference = EBD0D8C01A82E1F700B76C79 /* chatTestTests.xctest */;
+			productReference = F78BEA391B0AF4AF0076FC6A /* chatTestTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -1931,13 +1933,13 @@
 				F791A6971AAC1A090025365A /* nightLife.jpeg in Resources */,
 				F7CF948D1AE8AAE5007400FB /* Check-in Icon.png in Resources */,
 				F7CF94921AE8AAE5007400FB /* icon.png in Resources */,
-				F7CF947B1AE8A90C007400FB /* Divider.jpg in Resources */,
 				EBD0D8B61A82E1F700B76C79 /* Main.storyboard in Resources */,
 				F7A11DAB1ABD314100DF9AEB /* README.txt in Resources */,
 				F791A6951AAC1A040025365A /* testImage.jpeg in Resources */,
 				F7CF94911AE8AAE5007400FB /* icon-4.png in Resources */,
 				EBD0D8BB1A82E1F700B76C79 /* LaunchScreen.xib in Resources */,
 				F7CF9FC71AF56D2500DAF91A /* beach.jpeg in Resources */,
+				F78BEA3B1B0B51EC0076FC6A /* Divider.jpg in Resources */,
 				F7B0E5D11AB69D47000C1E82 /* testImageApple.jpeg in Resources */,
 				F7B0E5CF1AB69CE8000C1E82 /* forest.jpeg in Resources */,
 				F7A11D8F1ABD1BBD00DF9AEB /* testSmallImage.jpeg in Resources */,

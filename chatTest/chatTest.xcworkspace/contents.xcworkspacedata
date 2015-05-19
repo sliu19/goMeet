@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:Divider.jpg">
+   </FileRef>
+   <FileRef
       location = "group:chatTest.xcodeproj">
    </FileRef>
    <FileRef
