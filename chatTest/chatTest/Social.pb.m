@@ -3550,7 +3550,7 @@ static AppRequestPhotoAlbum* defaultAppRequestPhotoAlbumInstance = nil;
 @property (strong) NSString* nickname;
 @property (strong) NSString* password;
 @property (strong) NSData* profilePhoto;
-@property (strong) NSMutableArray * newAlbumsArray;
+@property (strong) NSMutableArray * personalAlbumsArray;
 @end
 
 @implementation AppRequestUpdateProfile
@@ -3597,8 +3597,8 @@ static AppRequestPhotoAlbum* defaultAppRequestPhotoAlbumInstance = nil;
   hasProfilePhoto_ = !!_value_;
 }
 @synthesize profilePhoto;
-@synthesize newAlbumsArray;
-@dynamic newAlbums;
+@synthesize personalAlbumsArray;
+@dynamic personalAlbums;
 - (instancetype) init {
   if ((self = [super init])) {
     self.email = @"";
@@ -3622,21 +3622,21 @@ static AppRequestUpdateProfile* defaultAppRequestUpdateProfileInstance = nil;
 - (instancetype) defaultInstance {
   return defaultAppRequestUpdateProfileInstance;
 }
-- (NSArray *)newAlbums {
-  return newAlbumsArray;
+- (NSArray *)personalAlbums {
+  return personalAlbumsArray;
 }
-- (AppRequestPhotoAlbum*)newAlbumsAtIndex:(NSUInteger)index {
-  return [newAlbumsArray objectAtIndex:index];
+- (AppRequestPhotoAlbum*)personalAlbumsAtIndex:(NSUInteger)index {
+  return [personalAlbumsArray objectAtIndex:index];
 }
 - (BOOL) isInitialized {
-  __block BOOL isInitnewAlbums = YES;
-   [self.newAlbums enumerateObjectsUsingBlock:^(AppRequestPhotoAlbum *element, NSUInteger idx, BOOL *stop) {
+  __block BOOL isInitpersonalAlbums = YES;
+   [self.personalAlbums enumerateObjectsUsingBlock:^(AppRequestPhotoAlbum *element, NSUInteger idx, BOOL *stop) {
     if (!element.isInitialized) {
-      isInitnewAlbums = NO;
+      isInitpersonalAlbums = NO;
       *stop = YES;
     }
   }];
-  if (!isInitnewAlbums) return isInitnewAlbums;
+  if (!isInitpersonalAlbums) return isInitpersonalAlbums;
   return YES;
 }
 - (void) writeToCodedOutputStream:(PBCodedOutputStream*) output {
@@ -3658,7 +3658,7 @@ static AppRequestUpdateProfile* defaultAppRequestUpdateProfileInstance = nil;
   if (self.hasProfilePhoto) {
     [output writeData:6 value:self.profilePhoto];
   }
-  [self.newAlbumsArray enumerateObjectsUsingBlock:^(AppRequestPhotoAlbum *element, NSUInteger idx, BOOL *stop) {
+  [self.personalAlbumsArray enumerateObjectsUsingBlock:^(AppRequestPhotoAlbum *element, NSUInteger idx, BOOL *stop) {
     [output writeMessage:7 value:element];
   }];
   [self.unknownFields writeToCodedOutputStream:output];
@@ -3688,7 +3688,7 @@ static AppRequestUpdateProfile* defaultAppRequestUpdateProfileInstance = nil;
   if (self.hasProfilePhoto) {
     size_ += computeDataSize(6, self.profilePhoto);
   }
-  [self.newAlbumsArray enumerateObjectsUsingBlock:^(AppRequestPhotoAlbum *element, NSUInteger idx, BOOL *stop) {
+  [self.personalAlbumsArray enumerateObjectsUsingBlock:^(AppRequestPhotoAlbum *element, NSUInteger idx, BOOL *stop) {
     size_ += computeMessageSize(7, element);
   }];
   size_ += self.unknownFields.serializedSize;
@@ -3744,8 +3744,8 @@ static AppRequestUpdateProfile* defaultAppRequestUpdateProfileInstance = nil;
   if (self.hasProfilePhoto) {
     [output appendFormat:@"%@%@: %@\n", indent, @"profilePhoto", self.profilePhoto];
   }
-  [self.newAlbumsArray enumerateObjectsUsingBlock:^(AppRequestPhotoAlbum *element, NSUInteger idx, BOOL *stop) {
-    [output appendFormat:@"%@%@ {\n", indent, @"newAlbums"];
+  [self.personalAlbumsArray enumerateObjectsUsingBlock:^(AppRequestPhotoAlbum *element, NSUInteger idx, BOOL *stop) {
+    [output appendFormat:@"%@%@ {\n", indent, @"personalAlbums"];
     [element writeDescriptionTo:output
                      withIndent:[NSString stringWithFormat:@"%@  ", indent]];
     [output appendFormat:@"%@}\n", indent];
@@ -3771,10 +3771,10 @@ static AppRequestUpdateProfile* defaultAppRequestUpdateProfileInstance = nil;
   if (self.hasProfilePhoto) {
     [dictionary setObject: self.profilePhoto forKey: @"profilePhoto"];
   }
-  for (AppRequestPhotoAlbum* element in self.newAlbumsArray) {
+  for (AppRequestPhotoAlbum* element in self.personalAlbumsArray) {
     NSMutableDictionary *elementDictionary = [NSMutableDictionary dictionary];
     [element storeInDictionary:elementDictionary];
-    [dictionary setObject:[NSDictionary dictionaryWithDictionary:elementDictionary] forKey:@"newAlbums"];
+    [dictionary setObject:[NSDictionary dictionaryWithDictionary:elementDictionary] forKey:@"personalAlbums"];
   }
   [self.unknownFields storeInDictionary:dictionary];
 }
@@ -3799,7 +3799,7 @@ static AppRequestUpdateProfile* defaultAppRequestUpdateProfileInstance = nil;
       (!self.hasPassword || [self.password isEqual:otherMessage.password]) &&
       self.hasProfilePhoto == otherMessage.hasProfilePhoto &&
       (!self.hasProfilePhoto || [self.profilePhoto isEqual:otherMessage.profilePhoto]) &&
-      [self.newAlbumsArray isEqualToArray:otherMessage.newAlbumsArray] &&
+      [self.personalAlbumsArray isEqualToArray:otherMessage.personalAlbumsArray] &&
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 - (NSUInteger) hash {
@@ -3822,7 +3822,7 @@ static AppRequestUpdateProfile* defaultAppRequestUpdateProfileInstance = nil;
   if (self.hasProfilePhoto) {
     hashCode = hashCode * 31 + [self.profilePhoto hash];
   }
-  [self.newAlbumsArray enumerateObjectsUsingBlock:^(AppRequestPhotoAlbum *element, NSUInteger idx, BOOL *stop) {
+  [self.personalAlbumsArray enumerateObjectsUsingBlock:^(AppRequestPhotoAlbum *element, NSUInteger idx, BOOL *stop) {
     hashCode = hashCode * 31 + [element hash];
   }];
   hashCode = hashCode * 31 + [self.unknownFields hash];
@@ -3886,11 +3886,11 @@ static AppRequestUpdateProfile* defaultAppRequestUpdateProfileInstance = nil;
   if (other.hasProfilePhoto) {
     [self setProfilePhoto:other.profilePhoto];
   }
-  if (other.newAlbumsArray.count > 0) {
-    if (resultUpdateProfile.newAlbumsArray == nil) {
-      resultUpdateProfile.newAlbumsArray = [[NSMutableArray alloc] initWithArray:other.newAlbumsArray];
+  if (other.personalAlbumsArray.count > 0) {
+    if (resultUpdateProfile.personalAlbumsArray == nil) {
+      resultUpdateProfile.personalAlbumsArray = [[NSMutableArray alloc] initWithArray:other.personalAlbumsArray];
     } else {
-      [resultUpdateProfile.newAlbumsArray addObjectsFromArray:other.newAlbumsArray];
+      [resultUpdateProfile.personalAlbumsArray addObjectsFromArray:other.personalAlbumsArray];
     }
   }
   [self mergeUnknownFields:other.unknownFields];
@@ -3941,7 +3941,7 @@ static AppRequestUpdateProfile* defaultAppRequestUpdateProfileInstance = nil;
       case 58: {
         AppRequestPhotoAlbumBuilder* subBuilder = [AppRequestPhotoAlbum builder];
         [input readMessage:subBuilder extensionRegistry:extensionRegistry];
-        [self addNewAlbums:[subBuilder buildPartial]];
+        [self addPersonalAlbums:[subBuilder buildPartial]];
         break;
       }
     }
@@ -4043,25 +4043,25 @@ static AppRequestUpdateProfile* defaultAppRequestUpdateProfileInstance = nil;
   resultUpdateProfile.profilePhoto = [NSData data];
   return self;
 }
-- (NSMutableArray *)newAlbums {
-  return resultUpdateProfile.newAlbumsArray;
+- (NSMutableArray *)personalAlbums {
+  return resultUpdateProfile.personalAlbumsArray;
 }
-- (AppRequestPhotoAlbum*)newAlbumsAtIndex:(NSUInteger)index {
-  return [resultUpdateProfile newAlbumsAtIndex:index];
+- (AppRequestPhotoAlbum*)personalAlbumsAtIndex:(NSUInteger)index {
+  return [resultUpdateProfile personalAlbumsAtIndex:index];
 }
-- (AppRequestUpdateProfileBuilder *)addNewAlbums:(AppRequestPhotoAlbum*)value {
-  if (resultUpdateProfile.newAlbumsArray == nil) {
-    resultUpdateProfile.newAlbumsArray = [[NSMutableArray alloc]init];
+- (AppRequestUpdateProfileBuilder *)addPersonalAlbums:(AppRequestPhotoAlbum*)value {
+  if (resultUpdateProfile.personalAlbumsArray == nil) {
+    resultUpdateProfile.personalAlbumsArray = [[NSMutableArray alloc]init];
   }
-  [resultUpdateProfile.newAlbumsArray addObject:value];
+  [resultUpdateProfile.personalAlbumsArray addObject:value];
   return self;
 }
-- (AppRequestUpdateProfileBuilder *)setNewAlbumsArray:(NSArray *)array {
-  resultUpdateProfile.newAlbumsArray = [[NSMutableArray alloc]initWithArray:array];
+- (AppRequestUpdateProfileBuilder *)setPersonalAlbumsArray:(NSArray *)array {
+  resultUpdateProfile.personalAlbumsArray = [[NSMutableArray alloc]initWithArray:array];
   return self;
 }
-- (AppRequestUpdateProfileBuilder *)clearNewAlbums {
-  resultUpdateProfile.newAlbumsArray = nil;
+- (AppRequestUpdateProfileBuilder *)clearPersonalAlbums {
+  resultUpdateProfile.personalAlbumsArray = nil;
   return self;
 }
 @end

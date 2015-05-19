@@ -823,7 +823,7 @@ NSString *NSStringFromAppReplyResponseType(AppReplyResponseType value);
 #define UpdateProfile_nickname @"nickname"
 #define UpdateProfile_password @"password"
 #define UpdateProfile_profile_photo @"profilePhoto"
-#define UpdateProfile_new_albums @"newAlbums"
+#define UpdateProfile_personal_albums @"personalAlbums"
 @interface AppRequestUpdateProfile : PBGeneratedMessage<GeneratedMessageProtocol> {
 @private
   BOOL hasEmail_:1;
@@ -838,7 +838,7 @@ NSString *NSStringFromAppReplyResponseType(AppReplyResponseType value);
   NSString* nickname;
   NSString* password;
   NSData* profilePhoto;
-  NSMutableArray * newAlbumsArray;
+  NSMutableArray * personalAlbumsArray;
 }
 - (BOOL) hasEmail;
 - (BOOL) hasDescription;
@@ -852,8 +852,8 @@ NSString *NSStringFromAppReplyResponseType(AppReplyResponseType value);
 @property (readonly, strong) NSString* nickname;
 @property (readonly, strong) NSString* password;
 @property (readonly, strong) NSData* profilePhoto;
-@property (readonly, strong) NSArray * newAlbums;
-- (AppRequestPhotoAlbum*)newAlbumsAtIndex:(NSUInteger)index;
+@property (readonly, strong) NSArray * personalAlbums;
+- (AppRequestPhotoAlbum*)personalAlbumsAtIndex:(NSUInteger)index;
 
 + (instancetype) defaultInstance;
 - (instancetype) defaultInstance;
@@ -920,11 +920,11 @@ NSString *NSStringFromAppReplyResponseType(AppReplyResponseType value);
 - (AppRequestUpdateProfileBuilder*) setProfilePhoto:(NSData*) value;
 - (AppRequestUpdateProfileBuilder*) clearProfilePhoto;
 
-- (NSMutableArray *)newAlbums;
-- (AppRequestPhotoAlbum*)newAlbumsAtIndex:(NSUInteger)index;
-- (AppRequestUpdateProfileBuilder *)addNewAlbums:(AppRequestPhotoAlbum*)value;
-- (AppRequestUpdateProfileBuilder *)setNewAlbumsArray:(NSArray *)array;
-- (AppRequestUpdateProfileBuilder *)clearNewAlbums;
+- (NSMutableArray *)personalAlbums;
+- (AppRequestPhotoAlbum*)personalAlbumsAtIndex:(NSUInteger)index;
+- (AppRequestUpdateProfileBuilder *)addPersonalAlbums:(AppRequestPhotoAlbum*)value;
+- (AppRequestUpdateProfileBuilder *)setPersonalAlbumsArray:(NSArray *)array;
+- (AppRequestUpdateProfileBuilder *)clearPersonalAlbums;
 @end
 
 @interface AppRequestBuilder : PBGeneratedMessageBuilder {

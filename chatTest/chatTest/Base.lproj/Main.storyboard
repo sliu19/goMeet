@@ -913,6 +913,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
+                                            <action selector="chageProfilePic:" destination="dn7-ts-Wn3" eventType="touchUpInside" id="2Gy-0m-HK6"/>
                                             <action selector="changePic:" destination="dn7-ts-Wn3" eventType="touchUpInside" id="0ds-AA-m2j"/>
                                         </connections>
                                     </button>

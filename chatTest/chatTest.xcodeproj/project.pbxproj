@@ -33,7 +33,7 @@
 		F77EC1321AE8720A00D790C2 /* EventListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F77EC1311AE8720A00D790C2 /* EventListTableViewCell.m */; };
 		F78BEA3B1B0B51EC0076FC6A /* Divider.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F78BEA3A1B0B51EC0076FC6A /* Divider.jpg */; };
 		F78BEA3D1B0B578E0076FC6A /* social.proto in Resources */ = {isa = PBXBuildFile; fileRef = F78BEA3C1B0B578E0076FC6A /* social.proto */; };
-		F78BEA401B0B58350076FC6A /* Social.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = F78BEA3F1B0B58350076FC6A /* Social.pb.m */; };
+		F78BEA471B0B71D50076FC6A /* Social.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = F78BEA461B0B71D50076FC6A /* Social.pb.m */; };
 		F791A6951AAC1A040025365A /* testImage.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F791A6941AAC1A040025365A /* testImage.jpeg */; };
 		F791A6971AAC1A090025365A /* nightLife.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F791A6961AAC1A090025365A /* nightLife.jpeg */; };
 		F791A69A1AAC1A7B0025365A /* CoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F791A6991AAC1A7B0025365A /* CoreDataTableViewController.m */; };
@@ -280,8 +280,8 @@
 		F78BEA391B0AF4AF0076FC6A /* chatTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = chatTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F78BEA3A1B0B51EC0076FC6A /* Divider.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Divider.jpg; sourceTree = "<group>"; };
 		F78BEA3C1B0B578E0076FC6A /* social.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = social.proto; sourceTree = "<group>"; };
-		F78BEA3E1B0B58350076FC6A /* Social.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Social.pb.h; sourceTree = "<group>"; };
-		F78BEA3F1B0B58350076FC6A /* Social.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Social.pb.m; sourceTree = "<group>"; };
+		F78BEA451B0B71D50076FC6A /* Social.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Social.pb.h; sourceTree = "<group>"; };
+		F78BEA461B0B71D50076FC6A /* Social.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Social.pb.m; sourceTree = "<group>"; };
 		F791A6941AAC1A040025365A /* testImage.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = testImage.jpeg; sourceTree = "<group>"; };
 		F791A6961AAC1A090025365A /* nightLife.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nightLife.jpeg; sourceTree = "<group>"; };
 		F791A6981AAC1A750025365A /* CoreDataTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreDataTableViewController.h; sourceTree = "<group>"; };
@@ -713,9 +713,9 @@
 		EBD0D8A91A82E1F700B76C79 /* chatTest */ = {
 			isa = PBXGroup;
 			children = (
+				F78BEA451B0B71D50076FC6A /* Social.pb.h */,
+				F78BEA461B0B71D50076FC6A /* Social.pb.m */,
 				F78BEA3C1B0B578E0076FC6A /* social.proto */,
-				F78BEA3E1B0B58350076FC6A /* Social.pb.h */,
-				F78BEA3F1B0B58350076FC6A /* Social.pb.m */,
 				F7A11E2F1ABE20D700DF9AEB /* external-support */,
 				EBD0D8B41A82E1F700B76C79 /* Main.storyboard */,
 				F791A6A51AAC1B200025365A /* CoreData */,
@@ -2093,7 +2093,7 @@
 				F7A11E441ABE429F00DF9AEB /* NewsFeedList.m in Sources */,
 				F7FA88BD1AC7094600F88F94 /* XMPPRoomOccupantHybridMemoryStorageObject.m in Sources */,
 				F7FA88B91AC7094600F88F94 /* XMPPRoomOccupantCoreDataStorageObject.m in Sources */,
-				F78BEA401B0B58350076FC6A /* Social.pb.m in Sources */,
+				F78BEA471B0B71D50076FC6A /* Social.pb.m in Sources */,
 				F7FA88B81AC7094600F88F94 /* XMPPRoomMessageCoreDataStorageObject.m in Sources */,
 				F7F2BF081ABB39C000C810E5 /* CGGeometry+RSKImageCropper.m in Sources */,
 				F7A11E181ABD376200DF9AEB /* XMPPXFacebookPlatformAuthentication.m in Sources */,
@@ -2335,6 +2335,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3BC399BDDC8FECBE433F9551 /* Pods.debug.xcconfig */;
 			buildSettings = {
+				ARCHS = (
+					"$(ARCHS_STANDARD)",
+					arm64,
+					armv7s,
+					armv7,
+				);
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -2358,6 +2364,7 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				VALID_ARCHS = "arm64 armv7 armv7s i386";
 			};
 			name = Debug;
 		};
@@ -2365,6 +2372,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8A18DBD01D24674FA56A3655 /* Pods.release.xcconfig */;
 			buildSettings = {
+				ARCHS = (
+					"$(ARCHS_STANDARD)",
+					arm64,
+					armv7s,
+					armv7,
+				);
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -2382,12 +2395,14 @@
 					"$(PROJECT_DIR)",
 				);
 				New_Setting = "";
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-lxml2",
 					"-lstdc++",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				VALID_ARCHS = "arm64 armv7 armv7s i386";
 			};
 			name = Release;
 		};

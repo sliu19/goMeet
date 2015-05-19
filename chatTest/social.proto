@@ -132,7 +132,7 @@ message AppRequest {
     optional string nickname = 4;
     optional string password = 5;
     optional bytes profile_photo = 6;
-    repeated PhotoAlbum new_albums = 7;
+    repeated PhotoAlbum personal_albums = 7;
   }
   optional UpdateProfile update_profile = 13;
 

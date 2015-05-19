@@ -10,6 +10,7 @@
 #import "Communication.h"
 #import "MainTabBarViewController.h"
 
+
 @interface ModifyProfileViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *nickName;
 @property (weak, nonatomic) IBOutlet UITextField *intro;
@@ -19,6 +20,18 @@
 @property (weak, nonatomic) IBOutlet UILabel *userID;
 @property (weak, nonatomic) IBOutlet UILabel *gender;
 @property (nonatomic, assign) id currentResponder;
+@property (nonatomic, weak) IBOutlet UIImageView *imageView;
+
+@property (nonatomic) UIImagePickerController *imagePickerController;
+
+@property (nonatomic, weak) NSTimer *cameraTimer;
+@property (nonatomic) NSMutableArray *capturedImages;
+@property (nonatomic) IBOutlet UIView *overlayView;
+@property (nonatomic, weak) IBOutlet UIBarButtonItem *takePictureButton;
+@property (nonatomic, weak) IBOutlet UIBarButtonItem *startStopButton;
+@property (nonatomic, weak) IBOutlet UIBarButtonItem *delayedPhotoButton;
+@property (nonatomic, weak) IBOutlet UIBarButtonItem *doneButton;
+
 @end
 
 @implementation ModifyProfileViewController
@@ -63,6 +76,195 @@
     NSData *data = [[NSData alloc] initWithData:[response dataUsingEncoding:NSUTF8StringEncoding]];
     [Communication send:data];
 }
+- (IBAction)chageProfilePic:(id)sender {
+    UIImage* image = _userPic.image;
+    RSKImageCropViewController *imageCropVC = [[RSKImageCropViewController alloc] initWithImage:image];
+    imageCropVC.delegate = self;
+    [self.navigationController pushViewController:imageCropVC animated:YES];
+    
+}
+
+- (IBAction)showImagePickerForCamera:(id)sender
+{
+    [self showImagePickerForSourceType:UIImagePickerControllerSourceTypeCamera];
+}
+
+
+- (IBAction)showImagePickerForPhotoPicker:(id)sender
+{
+    NSLog(@"start pick pics");
+    [self showImagePickerForSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+    
+}
+
+
+- (void)showImagePickerForSourceType:(UIImagePickerControllerSourceType)sourceType
+{
+    if (self.capturedImages.count > 0)
+    {
+        [self.capturedImages removeAllObjects];
+    }
+    
+    UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
+    imagePickerController.modalPresentationStyle = UIModalPresentationCurrentContext;
+    imagePickerController.sourceType = sourceType;
+    imagePickerController.delegate = self;
+    
+    if (sourceType == UIImagePickerControllerSourceTypeCamera)
+    {
+        /*
+         The user wants to use the camera interface. Set up our custom overlay view for the camera.
+         */
+        imagePickerController.showsCameraControls = NO;
+        
+        /*
+         Load the overlay view from the OverlayView nib file. Self is the File's Owner for the nib file, so the overlayView outlet is set to the main view in the nib. Pass that view to the image picker controller to use as its overlay view, and set self's reference to the view to nil.
+         */
+        [[NSBundle mainBundle] loadNibNamed:@"LaunchScreen" owner:self options:nil];
+        self.overlayView.frame = imagePickerController.cameraOverlayView.frame;
+        imagePickerController.cameraOverlayView = self.overlayView;
+        self.overlayView = nil;
+    }
+    
+    self.imagePickerController = imagePickerController;
+    [self presentViewController:self.imagePickerController animated:YES completion:nil];
+}
+
+
+#pragma mark - Toolbar actions
+
+- (IBAction)done:(id)sender
+{
+    // Dismiss the camera.
+    if ([self.cameraTimer isValid])
+    {
+        [self.cameraTimer invalidate];
+    }
+    [self finishAndUpdate];
+}
+
+
+- (IBAction)takePhoto:(id)sender
+{
+    [self.imagePickerController takePicture];
+}
+
+
+
+
+- (IBAction)stopTakingPicturesAtIntervals:(id)sender
+{
+    // Stop and reset the timer.
+    [self.cameraTimer invalidate];
+    self.cameraTimer = nil;
+    
+    [self finishAndUpdate];
+}
+
+
+- (void)finishAndUpdate
+{
+    [self dismissViewControllerAnimated:YES completion:NULL];
+    
+    if ([self.capturedImages count] > 0)
+    {
+        if ([self.capturedImages count] == 1)
+        {
+            // Camera took a single picture.
+            [self.imageView setImage:[self.capturedImages objectAtIndex:0]];
+        }
+        else
+        {
+            // Camera took multiple pictures; use the list of images for animation.
+            self.imageView.animationImages = self.capturedImages;
+            self.imageView.animationDuration = 5.0;    // Show each captured photo for 5 seconds.
+            self.imageView.animationRepeatCount = 0;   // Animate forever (show all photos).
+            [self.imageView startAnimating];
+        }
+        
+        // To be ready to start again, clear the captured images array.
+        [self.capturedImages removeAllObjects];
+    }
+    
+    self.imagePickerController = nil;
+}
+
+
+#pragma mark - Timer
+
+// Called by the timer to take a picture.
+- (void)timedPhotoFire:(NSTimer *)timer
+{
+    [self.imagePickerController takePicture];
+}
+
+
+#pragma mark - UIImagePickerControllerDelegate
+
+// This method is called when an image has been chosen from the library or taken from the camera.
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    NSLog(@"didFinishPicking pic");
+    UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
+    //_imageView.image = image;
+    [self.capturedImages addObject:image];
+    
+    if ([self.cameraTimer isValid])
+    {
+        NSLog(@"return here");
+        return;
+    }
+    
+    [self finishAndUpdate];
+    //UIImage *image = _imageView.image;
+    //RSKImageCropViewController *imageCropVC = [[RSKImageCropViewController alloc] initWithImage:image];
+    // imageCropVC.delegate = self;
+    // [self.navigationController pushViewController:imageCropVC animated:NO];
+    
+}
+
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    [self dismissViewControllerAnimated:YES completion:NULL];
+    //[_uiView setNeedsDisplay];
+}
+
+- (void)imageCropViewControllerDidCancelCrop:(RSKImageCropViewController *)controller
+{
+    [self.navigationController popViewControllerAnimated:YES];
+    //[_uiView setNeedsDisplay];
+}
+
+// The original image has been cropped.
+- (void)imageCropViewController:(RSKImageCropViewController *)controller
+                   didCropImage:(UIImage *)croppedImage
+                  usingCropRect:(CGRect)cropRect
+{
+    self.imageView.image = croppedImage;
+    _imageView.image = croppedImage;
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+// The original image has been cropped. Additionally provides a rotation angle used to produce image.
+- (void)imageCropViewController:(RSKImageCropViewController *)controller
+                   didCropImage:(UIImage *)croppedImage
+                  usingCropRect:(CGRect)cropRect
+                  rotationAngle:(CGFloat)rotationAngle
+{
+    self.imageView.image = croppedImage;
+    _imageView.image = croppedImage;
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+// The original image will be cropped.
+- (void)imageCropViewController:(RSKImageCropViewController *)controller
+                  willCropImage:(UIImage *)originalImage
+{
+    // Use when `applyMaskToCroppedImage` set to YES.
+    //[SVProgressHUD show];
+}
+
 
 
 -(BOOL) textFieldShouldReturn: (UITextField *) textField {
