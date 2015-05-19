@@ -32,6 +32,8 @@
 		F77EC12F1AE86FD000D790C2 /* icon.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F77EC12E1AE86FD000D790C2 /* icon.jpeg */; };
 		F77EC1321AE8720A00D790C2 /* EventListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F77EC1311AE8720A00D790C2 /* EventListTableViewCell.m */; };
 		F78BEA3B1B0B51EC0076FC6A /* Divider.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F78BEA3A1B0B51EC0076FC6A /* Divider.jpg */; };
+		F78BEA3D1B0B578E0076FC6A /* social.proto in Resources */ = {isa = PBXBuildFile; fileRef = F78BEA3C1B0B578E0076FC6A /* social.proto */; };
+		F78BEA401B0B58350076FC6A /* Social.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = F78BEA3F1B0B58350076FC6A /* Social.pb.m */; };
 		F791A6951AAC1A040025365A /* testImage.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F791A6941AAC1A040025365A /* testImage.jpeg */; };
 		F791A6971AAC1A090025365A /* nightLife.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F791A6961AAC1A090025365A /* nightLife.jpeg */; };
 		F791A69A1AAC1A7B0025365A /* CoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F791A6991AAC1A7B0025365A /* CoreDataTableViewController.m */; };
@@ -277,6 +279,9 @@
 		F78BEA381B0AF4AF0076FC6A /* chatTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = chatTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F78BEA391B0AF4AF0076FC6A /* chatTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = chatTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F78BEA3A1B0B51EC0076FC6A /* Divider.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Divider.jpg; sourceTree = "<group>"; };
+		F78BEA3C1B0B578E0076FC6A /* social.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = social.proto; sourceTree = "<group>"; };
+		F78BEA3E1B0B58350076FC6A /* Social.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Social.pb.h; sourceTree = "<group>"; };
+		F78BEA3F1B0B58350076FC6A /* Social.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Social.pb.m; sourceTree = "<group>"; };
 		F791A6941AAC1A040025365A /* testImage.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = testImage.jpeg; sourceTree = "<group>"; };
 		F791A6961AAC1A090025365A /* nightLife.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nightLife.jpeg; sourceTree = "<group>"; };
 		F791A6981AAC1A750025365A /* CoreDataTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreDataTableViewController.h; sourceTree = "<group>"; };
@@ -708,6 +713,9 @@
 		EBD0D8A91A82E1F700B76C79 /* chatTest */ = {
 			isa = PBXGroup;
 			children = (
+				F78BEA3C1B0B578E0076FC6A /* social.proto */,
+				F78BEA3E1B0B58350076FC6A /* Social.pb.h */,
+				F78BEA3F1B0B58350076FC6A /* Social.pb.m */,
 				F7A11E2F1ABE20D700DF9AEB /* external-support */,
 				EBD0D8B41A82E1F700B76C79 /* Main.storyboard */,
 				F791A6A51AAC1B200025365A /* CoreData */,
@@ -1947,6 +1955,7 @@
 				F7A11D8D1ABD0C7900DF9AEB /* testLargeImage.jpeg in Resources */,
 				F7CF948F1AE8AAE5007400FB /* Date Icon.png in Resources */,
 				F7CF948E1AE8AAE5007400FB /* clock icon.png in Resources */,
+				F78BEA3D1B0B578E0076FC6A /* social.proto in Resources */,
 				F7CF94931AE8AAE5007400FB /* People Icon.png in Resources */,
 				F7CF94901AE8AAE5007400FB /* Discrption icon.png in Resources */,
 				EBD0D8B81A82E1F700B76C79 /* Images.xcassets in Resources */,
@@ -2084,6 +2093,7 @@
 				F7A11E441ABE429F00DF9AEB /* NewsFeedList.m in Sources */,
 				F7FA88BD1AC7094600F88F94 /* XMPPRoomOccupantHybridMemoryStorageObject.m in Sources */,
 				F7FA88B91AC7094600F88F94 /* XMPPRoomOccupantCoreDataStorageObject.m in Sources */,
+				F78BEA401B0B58350076FC6A /* Social.pb.m in Sources */,
 				F7FA88B81AC7094600F88F94 /* XMPPRoomMessageCoreDataStorageObject.m in Sources */,
 				F7F2BF081ABB39C000C810E5 /* CGGeometry+RSKImageCropper.m in Sources */,
 				F7A11E181ABD376200DF9AEB /* XMPPXFacebookPlatformAuthentication.m in Sources */,
