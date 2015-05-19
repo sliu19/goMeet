@@ -62,29 +62,6 @@
     NSString *response  = [NSString stringWithFormat:@"log:%@",[Communication parseIntoJson:dict]];
     NSData *data = [[NSData alloc] initWithData:[response dataUsingEncoding:NSUTF8StringEncoding]];
     [Communication send:data];
-        
-    NSLog(@"send login");
-    //delete later!!!!
-    NSString *userID = [_phoneNum text];
-    NSString *userPassCode  = [_passCode text];
-    // Create instances of NSData
-    UIImage *contactImage = [UIImage imageNamed:@"testImage.jpeg"];
-    NSData *imageData = UIImageJPEGRepresentation(contactImage, 100);
-    
-    
-    // Store the data
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    
-    [defaults setObject:userID forKey:@"userID"];
-    [defaults setObject:userPassCode forKey:@"passCode"];
-    [defaults setObject:@"F" forKey:@"gender"];
-    [defaults setObject:@"testNickName" forKey:@"nickName"];
-    [defaults setObject:imageData forKey:@"userPic"];
-    [defaults synchronize];
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    MainTabBarViewController *viewController = (MainTabBarViewController *)[storyboard instantiateViewControllerWithIdentifier:@"GoMeet"];
-    [viewController setSelectedIndex:0];
-    [self presentViewController:viewController animated:YES completion:nil];
 }
 
 

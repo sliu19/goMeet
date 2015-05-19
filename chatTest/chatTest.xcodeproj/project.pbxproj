@@ -21,6 +21,7 @@
 		F73723391B05445600BFC8D3 /* NoticeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F73723381B05445600BFC8D3 /* NoticeDetailViewController.m */; };
 		F737233C1B05454E00BFC8D3 /* EventNoticeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F737233B1B05454E00BFC8D3 /* EventNoticeTableViewController.m */; };
 		F737233F1B06934300BFC8D3 /* InviteFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F737233E1B06934300BFC8D3 /* InviteFriendViewController.m */; };
+		F76EA1731B09C2920098E301 /* libzmq_framework.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F76EA1721B09C2920098E301 /* libzmq_framework.a */; };
 		F76F4ABD1AF2F92000A0E525 /* FriendListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F76F4ABC1AF2F92000A0E525 /* FriendListViewController.m */; };
 		F76F4AC51AF2FD7500A0E525 /* PersonalProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = F76F4AC41AF2FD7500A0E525 /* PersonalProfile.m */; };
 		F76F4AC91AF2FFFE00A0E525 /* PersonUIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F76F4AC81AF2FFFE00A0E525 /* PersonUIButton.m */; };
@@ -254,6 +255,7 @@
 		F737233B1B05454E00BFC8D3 /* EventNoticeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventNoticeTableViewController.m; sourceTree = "<group>"; };
 		F737233D1B06934300BFC8D3 /* InviteFriendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InviteFriendViewController.h; sourceTree = "<group>"; };
 		F737233E1B06934300BFC8D3 /* InviteFriendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InviteFriendViewController.m; sourceTree = "<group>"; };
+		F76EA1721B09C2920098E301 /* libzmq_framework.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libzmq_framework.a; sourceTree = "<group>"; };
 		F76F4ABB1AF2F92000A0E525 /* FriendListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendListViewController.h; sourceTree = "<group>"; };
 		F76F4ABC1AF2F92000A0E525 /* FriendListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendListViewController.m; sourceTree = "<group>"; };
 		F76F4AC31AF2FD7500A0E525 /* PersonalProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PersonalProfile.h; path = ../PersonalProfile.h; sourceTree = "<group>"; };
@@ -271,6 +273,8 @@
 		F77EC12E1AE86FD000D790C2 /* icon.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = icon.jpeg; path = "../../../../Image Module/Picture - icon/icon.jpeg"; sourceTree = "<group>"; };
 		F77EC1301AE8720A00D790C2 /* EventListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventListTableViewCell.h; sourceTree = "<group>"; };
 		F77EC1311AE8720A00D790C2 /* EventListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventListTableViewCell.m; sourceTree = "<group>"; };
+		F78BEA341B0ADC0A0076FC6A /* zmq.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zmq.h; sourceTree = "<group>"; };
+		F78BEA351B0ADC0A0076FC6A /* zmq_utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zmq_utils.h; sourceTree = "<group>"; };
 		F791A6941AAC1A040025365A /* testImage.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = testImage.jpeg; sourceTree = "<group>"; };
 		F791A6961AAC1A090025365A /* nightLife.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nightLife.jpeg; sourceTree = "<group>"; };
 		F791A6981AAC1A750025365A /* CoreDataTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreDataTableViewController.h; sourceTree = "<group>"; };
@@ -637,6 +641,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F76EA1731B09C2920098E301 /* libzmq_framework.a in Frameworks */,
 				F7A11E2E1ABD379F00DF9AEB /* libresolv.dylib in Frameworks */,
 				F7A11DC91ABD365400DF9AEB /* libidn.a in Frameworks */,
 				F7A11DB41ABD329000DF9AEB /* Security.framework in Frameworks */,
@@ -671,6 +676,8 @@
 		EBD0D89E1A82E1F700B76C79 = {
 			isa = PBXGroup;
 			children = (
+				F76EA1721B09C2920098E301 /* libzmq_framework.a */,
+				F78BEA321B0ADC0A0076FC6A /* lib */,
 				F7A11E2D1ABD379F00DF9AEB /* libresolv.dylib */,
 				F7A11DB31ABD329000DF9AEB /* Security.framework */,
 				F7A11DB11ABD327300DF9AEB /* CFNetwork.framework */,
@@ -813,6 +820,32 @@
 				F7A11D8C1ABD0C7800DF9AEB /* testLargeImage.jpeg */,
 			);
 			name = UserImage;
+			sourceTree = "<group>";
+		};
+		F78BEA321B0ADC0A0076FC6A /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				F78BEA331B0ADC0A0076FC6A /* include */,
+				F78BEA361B0ADC0A0076FC6A /* lib */,
+			);
+			name = lib;
+			path = chatTest/lib;
+			sourceTree = "<group>";
+		};
+		F78BEA331B0ADC0A0076FC6A /* include */ = {
+			isa = PBXGroup;
+			children = (
+				F78BEA341B0ADC0A0076FC6A /* zmq.h */,
+				F78BEA351B0ADC0A0076FC6A /* zmq_utils.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		F78BEA361B0ADC0A0076FC6A /* lib */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = lib;
 			sourceTree = "<group>";
 		};
 		F791A69E1AAC1AC00025365A /* CoreDataTableViewController */ = {
@@ -2151,6 +2184,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					"$(ARCHS_STANDARD)",
+					armv7,
+					i386,
+					armv7,
+				);
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -2198,6 +2237,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					"$(ARCHS_STANDARD)",
+					armv7,
+					i386,
+					armv7,
+				);
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -2241,13 +2286,24 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"${SRCROOT}/chatTest/lib/**/**",
+					/usr/include/libxml2,
+				);
 				INFOPLIST_FILE = chatTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/chatTest",
+					"$(PROJECT_DIR)",
 				);
 				New_Setting = "";
+				OTHER_LDFLAGS = (
+					"-lxml2",
+					"-lstdc++",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -2259,13 +2315,24 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"${SRCROOT}/chatTest/lib/**/**",
+					/usr/include/libxml2,
+				);
 				INFOPLIST_FILE = chatTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/chatTest",
+					"$(PROJECT_DIR)",
 				);
 				New_Setting = "";
+				OTHER_LDFLAGS = (
+					"-lxml2",
+					"-lstdc++",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

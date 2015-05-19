@@ -32,7 +32,7 @@
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     
     //Send through NSStrem
-    NSString* userId = [prefs stringForKey:@"nickName"];
+    NSString* userId = [prefs stringForKey:@"nickID"];
     NSData * userPic = [prefs dataForKey:@"userPic"];
     _PersonalnfoTextView.text = userId;
     _PersonalPicImageView.image=[[UIImage alloc]initWithData:userPic];

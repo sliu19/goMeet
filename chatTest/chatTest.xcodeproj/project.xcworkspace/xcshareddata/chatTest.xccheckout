@@ -12,8 +12,6 @@
 	<dict>
 		<key>4E38D719597463E5FDB9ED3C0137ED28455981AB</key>
 		<string>https://github.com/sliu19/goMeet.git</string>
-		<key>DD20A1A48C66B5213E0FEBB87A95EF51D6C6F3E8</key>
-		<string>https://github.com/sliu19/AFNetworking.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>chatTest/chatTest.xcodeproj</string>
@@ -21,8 +19,6 @@
 	<dict>
 		<key>4E38D719597463E5FDB9ED3C0137ED28455981AB</key>
 		<string>../../..</string>
-		<key>DD20A1A48C66B5213E0FEBB87A95EF51D6C6F3E8</key>
-		<string>../../..old/chatTest/AFNetworking</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/sliu19/goMeet.git</string>
@@ -36,17 +32,9 @@
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>DD20A1A48C66B5213E0FEBB87A95EF51D6C6F3E8</string>
-			<key>IDESourceControlWCCName</key>
-			<string>AFNetworking</string>
-		</dict>
-		<dict>
-			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
-			<string>public.vcs.git</string>
-			<key>IDESourceControlWCCIdentifierKey</key>
 			<string>4E38D719597463E5FDB9ED3C0137ED28455981AB</string>
 			<key>IDESourceControlWCCName</key>
-			<string>goMeet</string>
+			<string>goMeetold</string>
 		</dict>
 	</array>
 </dict>
