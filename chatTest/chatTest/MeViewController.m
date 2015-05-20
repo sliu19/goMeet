@@ -7,6 +7,7 @@
 //
 
 #import "MeViewController.h"
+#import "NewsFeedCardView.h"
 #import "AppDelegate.h"
 #define OFFSET_FROM_FRAME  2
 
@@ -31,7 +32,7 @@
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     
     //Send through NSStrem
-    NSString* userId = [prefs stringForKey:@"nickID"];
+    NSString* userId = [prefs stringForKey:@"nickName"];
     NSData * userPic = [prefs dataForKey:@"userPic"];
     _PersonalnfoTextView.text = userId;
     _PersonalPicImageView.image=[[UIImage alloc]initWithData:userPic];
@@ -61,12 +62,20 @@
 - (void)resignOnTap:(UITapGestureRecognizer *)sender{
     //[self.currentResponder resignFirstResponder];
     NSLog(@"Double Tab detacted");
+    if ([(NewsFeedCardView *)sender.view isKindOfClass:[NewsFeedCardView class]]) {
+        NSLog(@"This is a NewsFeedCardView,TO DO:Push a new navi view");
+        //[sender.view setFrame:CGRectMake(0, 0, self.view.frame.size.width, 80)];
+    }
+    else {
         NSLog(@"This is not a imageView");
         NSLog(@"Sender is a %@",NSStringFromClass([sender class]));
         //NSLog(@"Sender is a %@",NSStringFromClass([sender class]));
         //[UIView animateWithDuration:0.25 animations:^{
         //      self.imageView.center = CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds));
         //    self.imageView.transform = CGAffineTransformIdentity;
+        // }];
+        
+    }
 }
 
 /*

@@ -67,7 +67,7 @@
     [event setValue: _EventTitle.text forKey :@"title"];
     NSDate* now = [NSDate date];
     [event setValue:now forKey:@"time"];
-    _inviteList =@[@"6505758649"];
+    _inviteList =@[@"user1",@"user2",@"user3"];
     [event setValue: _inviteList forKey:@"groupMember"];
     [event setGroupMember:_inviteList];
     NSLog(@"GroupMember when set is %@",[[NSString alloc] initWithData:event.groupMember_data encoding:NSUTF8StringEncoding]);
@@ -84,7 +84,7 @@
     
     //Also sent to server
     //newevent:{"description":"my description","title":"my event title4","event_id":"acf6830f-f945-11e4-a2bf-b8e85632007e","invite_list":[68958333],"location":"test event location4","time":1431503837791,"host_id":12341333,"public":false}
-    NSDictionary*dict = @{@"title":_EventTitle.text,@"event_id":uuidString,@"invite_list":_inviteList,@"location":_EventLocation.text,@"time":@"1431918262",@"host_id":[prefs objectForKey:@"userID"],@"public":_PUBLIC,@"description":_EventDescription.text};
+    NSDictionary*dict = @{@"title":_EventTitle.text,@"event_id":uuidString,@"invite_list":_inviteList,@"location":_EventLocation.text,@"time":_EventTime.text,@"host_id":[prefs objectForKey:@"userID"],@"public":_PUBLIC,@"description":_EventDescription.text};
     NSString *response  = [NSString stringWithFormat:@"newevent:%@",[Communication parseIntoJson:dict]];
     NSData *data = [[NSData alloc] initWithData:[response dataUsingEncoding:NSUTF8StringEncoding]];
     [Communication send:data];

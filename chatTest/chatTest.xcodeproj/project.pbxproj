@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B67E9B0BFB433A9D9C2558D6 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A256AF00C072D1E7D47B3D8 /* libPods.a */; };
 		EB8BD4191A886E3400851D28 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB8BD4181A886E3400851D28 /* SignUpViewController.m */; };
 		EBD0D8AD1A82E1F700B76C79 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EBD0D8AC1A82E1F700B76C79 /* main.m */; };
 		EBD0D8B61A82E1F700B76C79 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBD0D8B41A82E1F700B76C79 /* Main.storyboard */; };
@@ -31,9 +30,6 @@
 		F77EC12D1AE86D9400D790C2 /* GroupChatTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F77EC12C1AE86D9400D790C2 /* GroupChatTableViewCell.m */; };
 		F77EC12F1AE86FD000D790C2 /* icon.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F77EC12E1AE86FD000D790C2 /* icon.jpeg */; };
 		F77EC1321AE8720A00D790C2 /* EventListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F77EC1311AE8720A00D790C2 /* EventListTableViewCell.m */; };
-		F78BEA3B1B0B51EC0076FC6A /* Divider.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F78BEA3A1B0B51EC0076FC6A /* Divider.jpg */; };
-		F78BEA3D1B0B578E0076FC6A /* social.proto in Resources */ = {isa = PBXBuildFile; fileRef = F78BEA3C1B0B578E0076FC6A /* social.proto */; };
-		F78BEA471B0B71D50076FC6A /* Social.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = F78BEA461B0B71D50076FC6A /* Social.pb.m */; };
 		F791A6951AAC1A040025365A /* testImage.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F791A6941AAC1A040025365A /* testImage.jpeg */; };
 		F791A6971AAC1A090025365A /* nightLife.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F791A6961AAC1A090025365A /* nightLife.jpeg */; };
 		F791A69A1AAC1A7B0025365A /* CoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F791A6991AAC1A7B0025365A /* CoreDataTableViewController.m */; };
@@ -97,6 +93,7 @@
 		F7B0E5CF1AB69CE8000C1E82 /* forest.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F7B0E5CE1AB69CE8000C1E82 /* forest.jpeg */; };
 		F7B0E5D11AB69D47000C1E82 /* testImageApple.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F7B0E5D01AB69D47000C1E82 /* testImageApple.jpeg */; };
 		F7B0E5D41AB6A2AA000C1E82 /* AddFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7B0E5D31AB6A2AA000C1E82 /* AddFriendViewController.m */; };
+		F7CF947B1AE8A90C007400FB /* Divider.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F7CF947A1AE8A90C007400FB /* Divider.jpg */; };
 		F7CF948D1AE8AAE5007400FB /* Check-in Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F7CF94861AE8AAE5007400FB /* Check-in Icon.png */; };
 		F7CF948E1AE8AAE5007400FB /* clock icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F7CF94871AE8AAE5007400FB /* clock icon.png */; };
 		F7CF948F1AE8AAE5007400FB /* Date Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F7CF94881AE8AAE5007400FB /* Date Icon.png */; };
@@ -107,6 +104,7 @@
 		F7CF9FC71AF56D2500DAF91A /* beach.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F7CF9FC61AF56D2500DAF91A /* beach.jpeg */; };
 		F7CF9FD01AF596DE00DAF91A /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = F7CF9FCF1AF596DE00DAF91A /* Message.m */; };
 		F7EA54111ACDE6E600B9FC1E /* MainTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7EA54101ACDE6E600B9FC1E /* MainTabBarViewController.m */; };
+		F7EA54141ACDEEDC00B9FC1E /* NewsFeedCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7EA54131ACDEEDC00B9FC1E /* NewsFeedCardView.m */; };
 		F7F2BEF41AB9EDA300C810E5 /* PersonalprofileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7F2BEF31AB9EDA300C810E5 /* PersonalprofileViewController.m */; };
 		F7F2BF081ABB39C000C810E5 /* CGGeometry+RSKImageCropper.m in Sources */ = {isa = PBXBuildFile; fileRef = F7F2BEFE1ABB39C000C810E5 /* CGGeometry+RSKImageCropper.m */; };
 		F7F2BF091ABB39C000C810E5 /* RSKImageCropViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7F2BF011ABB39C000C810E5 /* RSKImageCropViewController.m */; };
@@ -228,16 +226,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3A256AF00C072D1E7D47B3D8 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		3BC399BDDC8FECBE433F9551 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		8A18DBD01D24674FA56A3655 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		EB8BD4171A886E3400851D28 /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
 		EB8BD4181A886E3400851D28 /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
+		EBD0D8A71A82E1F700B76C79 /* chatTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = chatTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBD0D8AB1A82E1F700B76C79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EBD0D8AC1A82E1F700B76C79 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		EBD0D8B51A82E1F700B76C79 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EBD0D8B71A82E1F700B76C79 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		EBD0D8BA1A82E1F700B76C79 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		EBD0D8C01A82E1F700B76C79 /* chatTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = chatTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBD0D8C51A82E1F700B76C79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EBD0D8C61A82E1F700B76C79 /* chatTestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = chatTestTests.m; sourceTree = "<group>"; };
 		EBD0D8D61A82E30500B76C79 /* InitPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InitPage.h; path = ../InitPage.h; sourceTree = "<group>"; };
@@ -274,14 +271,6 @@
 		F77EC12E1AE86FD000D790C2 /* icon.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = icon.jpeg; path = "../../../../Image Module/Picture - icon/icon.jpeg"; sourceTree = "<group>"; };
 		F77EC1301AE8720A00D790C2 /* EventListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventListTableViewCell.h; sourceTree = "<group>"; };
 		F77EC1311AE8720A00D790C2 /* EventListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventListTableViewCell.m; sourceTree = "<group>"; };
-		F78BEA341B0ADC0A0076FC6A /* zmq.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zmq.h; sourceTree = "<group>"; };
-		F78BEA351B0ADC0A0076FC6A /* zmq_utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zmq_utils.h; sourceTree = "<group>"; };
-		F78BEA381B0AF4AF0076FC6A /* chatTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = chatTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		F78BEA391B0AF4AF0076FC6A /* chatTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = chatTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F78BEA3A1B0B51EC0076FC6A /* Divider.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Divider.jpg; sourceTree = "<group>"; };
-		F78BEA3C1B0B578E0076FC6A /* social.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = social.proto; sourceTree = "<group>"; };
-		F78BEA451B0B71D50076FC6A /* Social.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Social.pb.h; sourceTree = "<group>"; };
-		F78BEA461B0B71D50076FC6A /* Social.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Social.pb.m; sourceTree = "<group>"; };
 		F791A6941AAC1A040025365A /* testImage.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = testImage.jpeg; sourceTree = "<group>"; };
 		F791A6961AAC1A090025365A /* nightLife.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nightLife.jpeg; sourceTree = "<group>"; };
 		F791A6981AAC1A750025365A /* CoreDataTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreDataTableViewController.h; sourceTree = "<group>"; };
@@ -406,6 +395,7 @@
 		F7B0E5D01AB69D47000C1E82 /* testImageApple.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = testImageApple.jpeg; sourceTree = "<group>"; };
 		F7B0E5D21AB6A2AA000C1E82 /* AddFriendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddFriendViewController.h; sourceTree = "<group>"; };
 		F7B0E5D31AB6A2AA000C1E82 /* AddFriendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddFriendViewController.m; sourceTree = "<group>"; };
+		F7CF947A1AE8A90C007400FB /* Divider.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Divider.jpg; path = "../../../../Event V2.0/Event - Home - Full-assets/Divider.jpg"; sourceTree = "<group>"; };
 		F7CF94861AE8AAE5007400FB /* Check-in Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Check-in Icon.png"; path = "../../../../Event V2.0/Event - Home - Full-assets/Check-in Icon.png"; sourceTree = "<group>"; };
 		F7CF94871AE8AAE5007400FB /* clock icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "clock icon.png"; path = "../../../../Event V2.0/Event - Home - Full-assets/clock icon.png"; sourceTree = "<group>"; };
 		F7CF94881AE8AAE5007400FB /* Date Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Date Icon.png"; path = "../../../../Event V2.0/Event - Home - Full-assets/Date Icon.png"; sourceTree = "<group>"; };
@@ -417,6 +407,8 @@
 		F7CF9FCF1AF596DE00DAF91A /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Message.m; path = ../Message.m; sourceTree = "<group>"; };
 		F7EA540F1ACDE6E600B9FC1E /* MainTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabBarViewController.h; sourceTree = "<group>"; };
 		F7EA54101ACDE6E600B9FC1E /* MainTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabBarViewController.m; sourceTree = "<group>"; };
+		F7EA54121ACDEEDC00B9FC1E /* NewsFeedCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsFeedCardView.h; sourceTree = "<group>"; };
+		F7EA54131ACDEEDC00B9FC1E /* NewsFeedCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsFeedCardView.m; sourceTree = "<group>"; };
 		F7F2BEF21AB9EDA300C810E5 /* PersonalprofileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalprofileViewController.h; sourceTree = "<group>"; };
 		F7F2BEF31AB9EDA300C810E5 /* PersonalprofileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalprofileViewController.m; sourceTree = "<group>"; };
 		F7F2BEFD1ABB39C000C810E5 /* CGGeometry+RSKImageCropper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CGGeometry+RSKImageCropper.h"; path = "chatTest/Base.lproj/RSKImageCropper/CGGeometry+RSKImageCropper.h"; sourceTree = "<group>"; };
@@ -649,7 +641,6 @@
 				F7A11DC91ABD365400DF9AEB /* libidn.a in Frameworks */,
 				F7A11DB41ABD329000DF9AEB /* Security.framework in Frameworks */,
 				F7A11DB21ABD327300DF9AEB /* CFNetwork.framework in Frameworks */,
-				B67E9B0BFB433A9D9C2558D6 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -663,23 +654,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		37A98715AC7D007D0CD8651D /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				3A256AF00C072D1E7D47B3D8 /* libPods.a */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		96DE573DE21B3DEFD33C4B7D /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				3BC399BDDC8FECBE433F9551 /* Pods.debug.xcconfig */,
-				8A18DBD01D24674FA56A3655 /* Pods.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		EB4B60C91A82EB960061CCD8 /* ViewControll */ = {
 			isa = PBXGroup;
 			children = (
@@ -697,25 +671,27 @@
 		EBD0D89E1A82E1F700B76C79 = {
 			isa = PBXGroup;
 			children = (
-				F78BEA321B0ADC0A0076FC6A /* lib */,
 				F7A11E2D1ABD379F00DF9AEB /* libresolv.dylib */,
 				F7A11DB31ABD329000DF9AEB /* Security.framework */,
 				F7A11DB11ABD327300DF9AEB /* CFNetwork.framework */,
 				EBD0D8A91A82E1F700B76C79 /* chatTest */,
 				EBD0D8C31A82E1F700B76C79 /* chatTestTests */,
-				96DE573DE21B3DEFD33C4B7D /* Pods */,
-				37A98715AC7D007D0CD8651D /* Frameworks */,
-				F78BEA381B0AF4AF0076FC6A /* chatTest.app */,
-				F78BEA391B0AF4AF0076FC6A /* chatTestTests.xctest */,
+				EBD0D8A81A82E1F700B76C79 /* Products */,
 			);
+			sourceTree = "<group>";
+		};
+		EBD0D8A81A82E1F700B76C79 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EBD0D8A71A82E1F700B76C79 /* chatTest.app */,
+				EBD0D8C01A82E1F700B76C79 /* chatTestTests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		EBD0D8A91A82E1F700B76C79 /* chatTest */ = {
 			isa = PBXGroup;
 			children = (
-				F78BEA451B0B71D50076FC6A /* Social.pb.h */,
-				F78BEA461B0B71D50076FC6A /* Social.pb.m */,
-				F78BEA3C1B0B578E0076FC6A /* social.proto */,
 				F7A11E2F1ABE20D700DF9AEB /* external-support */,
 				EBD0D8B41A82E1F700B76C79 /* Main.storyboard */,
 				F791A6A51AAC1B200025365A /* CoreData */,
@@ -799,6 +775,8 @@
 		F76F4AC61AF2FF1800A0E525 /* NewsFeed */ = {
 			isa = PBXGroup;
 			children = (
+				F7EA54121ACDEEDC00B9FC1E /* NewsFeedCardView.h */,
+				F7EA54131ACDEEDC00B9FC1E /* NewsFeedCardView.m */,
 				F796719C1AFAA1FC00EB4B79 /* PublicEventTableViewCell.h */,
 				F796719D1AFAA1FC00EB4B79 /* PublicEventTableViewCell.m */,
 			);
@@ -817,7 +795,6 @@
 		F77C90141AA3FDB20005EC2F /* UserImage */ = {
 			isa = PBXGroup;
 			children = (
-				F78BEA3A1B0B51EC0076FC6A /* Divider.jpg */,
 				F7CF9FC61AF56D2500DAF91A /* beach.jpeg */,
 				F7CF94861AE8AAE5007400FB /* Check-in Icon.png */,
 				F7CF94871AE8AAE5007400FB /* clock icon.png */,
@@ -826,6 +803,7 @@
 				F7CF948A1AE8AAE5007400FB /* icon-4.png */,
 				F7CF948B1AE8AAE5007400FB /* icon.png */,
 				F7CF948C1AE8AAE5007400FB /* People Icon.png */,
+				F7CF947A1AE8A90C007400FB /* Divider.jpg */,
 				F791A6961AAC1A090025365A /* nightLife.jpeg */,
 				F77EC12E1AE86FD000D790C2 /* icon.jpeg */,
 				F7B0E5CE1AB69CE8000C1E82 /* forest.jpeg */,
@@ -835,32 +813,6 @@
 				F7A11D8C1ABD0C7800DF9AEB /* testLargeImage.jpeg */,
 			);
 			name = UserImage;
-			sourceTree = "<group>";
-		};
-		F78BEA321B0ADC0A0076FC6A /* lib */ = {
-			isa = PBXGroup;
-			children = (
-				F78BEA331B0ADC0A0076FC6A /* include */,
-				F78BEA361B0ADC0A0076FC6A /* lib */,
-			);
-			name = lib;
-			path = chatTest/lib;
-			sourceTree = "<group>";
-		};
-		F78BEA331B0ADC0A0076FC6A /* include */ = {
-			isa = PBXGroup;
-			children = (
-				F78BEA341B0ADC0A0076FC6A /* zmq.h */,
-				F78BEA351B0ADC0A0076FC6A /* zmq_utils.h */,
-			);
-			path = include;
-			sourceTree = "<group>";
-		};
-		F78BEA361B0ADC0A0076FC6A /* lib */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = lib;
 			sourceTree = "<group>";
 		};
 		F791A69E1AAC1AC00025365A /* CoreDataTableViewController */ = {
@@ -1862,11 +1814,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EBD0D8CA1A82E1F700B76C79 /* Build configuration list for PBXNativeTarget "chatTest" */;
 			buildPhases = (
-				81FFB73AD1D8C68DC0162BB1 /* Check Pods Manifest.lock */,
 				EBD0D8A31A82E1F700B76C79 /* Sources */,
 				EBD0D8A41A82E1F700B76C79 /* Frameworks */,
 				EBD0D8A51A82E1F700B76C79 /* Resources */,
-				B7F8C3D792E923AA9C1D6D00 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1874,7 +1824,7 @@
 			);
 			name = chatTest;
 			productName = chatTest;
-			productReference = F78BEA381B0AF4AF0076FC6A /* chatTest.app */;
+			productReference = EBD0D8A71A82E1F700B76C79 /* chatTest.app */;
 			productType = "com.apple.product-type.application";
 		};
 		EBD0D8BF1A82E1F700B76C79 /* chatTestTests */ = {
@@ -1892,7 +1842,7 @@
 			);
 			name = chatTestTests;
 			productName = chatTestTests;
-			productReference = F78BEA391B0AF4AF0076FC6A /* chatTestTests.xctest */;
+			productReference = EBD0D8C01A82E1F700B76C79 /* chatTestTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -1923,7 +1873,7 @@
 				Base,
 			);
 			mainGroup = EBD0D89E1A82E1F700B76C79;
-			productRefGroup = EBD0D89E1A82E1F700B76C79;
+			productRefGroup = EBD0D8A81A82E1F700B76C79 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -1941,13 +1891,13 @@
 				F791A6971AAC1A090025365A /* nightLife.jpeg in Resources */,
 				F7CF948D1AE8AAE5007400FB /* Check-in Icon.png in Resources */,
 				F7CF94921AE8AAE5007400FB /* icon.png in Resources */,
+				F7CF947B1AE8A90C007400FB /* Divider.jpg in Resources */,
 				EBD0D8B61A82E1F700B76C79 /* Main.storyboard in Resources */,
 				F7A11DAB1ABD314100DF9AEB /* README.txt in Resources */,
 				F791A6951AAC1A040025365A /* testImage.jpeg in Resources */,
 				F7CF94911AE8AAE5007400FB /* icon-4.png in Resources */,
 				EBD0D8BB1A82E1F700B76C79 /* LaunchScreen.xib in Resources */,
 				F7CF9FC71AF56D2500DAF91A /* beach.jpeg in Resources */,
-				F78BEA3B1B0B51EC0076FC6A /* Divider.jpg in Resources */,
 				F7B0E5D11AB69D47000C1E82 /* testImageApple.jpeg in Resources */,
 				F7B0E5CF1AB69CE8000C1E82 /* forest.jpeg in Resources */,
 				F7A11D8F1ABD1BBD00DF9AEB /* testSmallImage.jpeg in Resources */,
@@ -1955,7 +1905,6 @@
 				F7A11D8D1ABD0C7900DF9AEB /* testLargeImage.jpeg in Resources */,
 				F7CF948F1AE8AAE5007400FB /* Date Icon.png in Resources */,
 				F7CF948E1AE8AAE5007400FB /* clock icon.png in Resources */,
-				F78BEA3D1B0B578E0076FC6A /* social.proto in Resources */,
 				F7CF94931AE8AAE5007400FB /* People Icon.png in Resources */,
 				F7CF94901AE8AAE5007400FB /* Discrption icon.png in Resources */,
 				EBD0D8B81A82E1F700B76C79 /* Images.xcassets in Resources */,
@@ -1970,39 +1919,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		81FFB73AD1D8C68DC0162BB1 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		B7F8C3D792E923AA9C1D6D00 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		EBD0D8A31A82E1F700B76C79 /* Sources */ = {
@@ -2093,7 +2009,6 @@
 				F7A11E441ABE429F00DF9AEB /* NewsFeedList.m in Sources */,
 				F7FA88BD1AC7094600F88F94 /* XMPPRoomOccupantHybridMemoryStorageObject.m in Sources */,
 				F7FA88B91AC7094600F88F94 /* XMPPRoomOccupantCoreDataStorageObject.m in Sources */,
-				F78BEA471B0B71D50076FC6A /* Social.pb.m in Sources */,
 				F7FA88B81AC7094600F88F94 /* XMPPRoomMessageCoreDataStorageObject.m in Sources */,
 				F7F2BF081ABB39C000C810E5 /* CGGeometry+RSKImageCropper.m in Sources */,
 				F7A11E181ABD376200DF9AEB /* XMPPXFacebookPlatformAuthentication.m in Sources */,
@@ -2186,6 +2101,7 @@
 				F7FA88C71AC7094600F88F94 /* XMPPvCardCoreDataStorageObject.m in Sources */,
 				F7FA88D61AC7094600F88F94 /* XMPPIQ+XEP_0066.m in Sources */,
 				F7F2BF0C1ABB39C000C810E5 /* UIImage+RSKImageCropper.m in Sources */,
+				F7EA54141ACDEEDC00B9FC1E /* NewsFeedCardView.m in Sources */,
 				F7FA88E51AC7094600F88F94 /* XMPPMessageArchiving_Contact_CoreDataObject.m in Sources */,
 				F737233C1B05454E00BFC8D3 /* EventNoticeTableViewController.m in Sources */,
 				F7FA88E91AC7094600F88F94 /* XMPPvCardAvatarModule.m in Sources */,
@@ -2235,12 +2151,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = (
-					"$(ARCHS_STANDARD)",
-					armv7,
-					i386,
-					armv7,
-				);
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -2288,12 +2198,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = (
-					"$(ARCHS_STANDARD)",
-					armv7,
-					i386,
-					armv7,
-				);
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -2333,76 +2237,37 @@
 		};
 		EBD0D8CB1A82E1F700B76C79 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3BC399BDDC8FECBE433F9551 /* Pods.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = (
-					"$(ARCHS_STANDARD)",
-					arm64,
-					armv7s,
-					armv7,
-				);
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"${SRCROOT}/chatTest/lib/**/**",
-					/usr/include/libxml2,
-				);
 				INFOPLIST_FILE = chatTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/chatTest",
-					"$(PROJECT_DIR)",
 				);
 				New_Setting = "";
-				OTHER_LDFLAGS = (
-					"-lxml2",
-					"-lstdc++",
-				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				VALID_ARCHS = "arm64 armv7 armv7s i386";
 			};
 			name = Debug;
 		};
 		EBD0D8CC1A82E1F700B76C79 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8A18DBD01D24674FA56A3655 /* Pods.release.xcconfig */;
 			buildSettings = {
-				ARCHS = (
-					"$(ARCHS_STANDARD)",
-					arm64,
-					armv7s,
-					armv7,
-				);
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"${SRCROOT}/chatTest/lib/**/**",
-					/usr/include/libxml2,
-				);
 				INFOPLIST_FILE = chatTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/chatTest",
-					"$(PROJECT_DIR)",
 				);
 				New_Setting = "";
-				ONLY_ACTIVE_ARCH = YES;
-				OTHER_LDFLAGS = (
-					"-lxml2",
-					"-lstdc++",
-				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				VALID_ARCHS = "arm64 armv7 armv7s i386";
 			};
 			name = Release;
 		};
