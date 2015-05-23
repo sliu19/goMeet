@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RSKImageCropViewController.h"
 
-@interface ModifyProfileViewController : UIViewController<UITextFieldDelegate,NSStreamDelegate>
+@interface ModifyProfileViewController : UIViewController<UITextFieldDelegate,NSStreamDelegate,UIImagePickerControllerDelegate,RSKImageCropViewControllerDataSource,RSKImageCropViewControllerDelegate,UINavigationControllerDelegate>
 
 @end

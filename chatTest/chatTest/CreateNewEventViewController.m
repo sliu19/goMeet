@@ -14,6 +14,7 @@
 @interface CreateNewEventViewController()
 @property (weak, nonatomic) IBOutlet UIScrollView *mainView;
 
+@property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 @property (weak, nonatomic) IBOutlet UITextField *EventTitle;
 @property (weak, nonatomic) IBOutlet UITextField *EventLocation;
 @property (weak, nonatomic) IBOutlet UITextField *EventTime;
@@ -50,7 +51,7 @@
     [inputStream setDelegate:self];
     [outputStream setDelegate:self];
     _inviteList = [[NSMutableArray alloc]init];
-    _PUBLIC = @"true";
+    _PUBLIC = @"false";
 }
 
 - (IBAction)AddEvent:(id)sender {
@@ -67,11 +68,11 @@
     [event setValue: _EventTitle.text forKey :@"title"];
     NSDate* now = [NSDate date];
     [event setValue:now forKey:@"time"];
-    _inviteList =@[@"user1",@"user2",@"user3"];
+    _inviteList =@[@"11111111",@"222222222",@"333333"];
     [event setValue: _inviteList forKey:@"groupMember"];
     [event setGroupMember:_inviteList];
     NSLog(@"GroupMember when set is %@",[[NSString alloc] initWithData:event.groupMember_data encoding:NSUTF8StringEncoding]);
-
+    int unixTime = [_datePicker.date timeIntervalSince1970];
     
     
     //Create Room
@@ -80,18 +81,17 @@
     [self initxmpproom:uuidString];
     
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-
     
     //Also sent to server
     //newevent:{"description":"my description","title":"my event title4","event_id":"acf6830f-f945-11e4-a2bf-b8e85632007e","invite_list":[68958333],"location":"test event location4","time":1431503837791,"host_id":12341333,"public":false}
-    NSDictionary*dict = @{@"title":_EventTitle.text,@"event_id":uuidString,@"invite_list":_inviteList,@"location":_EventLocation.text,@"time":_EventTime.text,@"host_id":[prefs objectForKey:@"userID"],@"public":_PUBLIC,@"description":_EventDescription.text};
-    NSString *response  = [NSString stringWithFormat:@"newevent:%@",[Communication parseIntoJson:dict]];
+    //newPublicEvent:{"description":"my newsfeed event","title":"newfeed event","event_id":"47ec6551-fee1-11e4-b58d-a45e60c40087","start_time":1432120425578,"location":"newsfeed_event","host_id":111111111,"end_time":1432120435578}
+    NSDictionary*dict = @{@"title":_EventTitle.text,@"event_id":uuidString,@"invite_list":_inviteList,@"location":_EventLocation.text,@"start_time":[NSString stringWithFormat:@"%d", unixTime ],@"host_id":[prefs objectForKey:@"userID"],@"end_time":@"1432155744",@"description":_EventDescription.text};
+    NSString *response  = [NSString stringWithFormat:@"newPublicEvent:%@",[Communication parseIntoJson:dict]];
     NSData *data = [[NSData alloc] initWithData:[response dataUsingEncoding:NSUTF8StringEncoding]];
     [Communication send:data];
     
     _EventDescription.text = @"";
     _EventTitle.text = @"";
-    _EventTime.text = @"";
     _EventLocation.text = @"";
 }
 
@@ -216,8 +216,8 @@
                         NSString *output = [[NSString alloc] initWithBytes:buffer length:len encoding:NSUTF8StringEncoding];
                         
                         if (nil != output) {
-                            NSLog(@"server said: %@", output);
-                            if ([output isEqualToString:_uuid]) {
+                            NSLog(@"server said: \"%@\", our uuid \"%@\"", [output uppercaseString],_uuid);
+                            if ([[output uppercaseString] isEqualToString:_uuid]) {
                                 //Return to main page
                                 UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
                                 MainTabBarViewController *viewController = (MainTabBarViewController *)[storyboard instantiateViewControllerWithIdentifier:@"GoMeet"];

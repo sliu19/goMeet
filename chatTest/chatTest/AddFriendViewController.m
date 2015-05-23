@@ -8,6 +8,7 @@
 
 #import "AddFriendViewController.h"
 #import "MainTabBarViewController.h"
+#import "Communication.h"
 
 @interface AddFriendViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *addFriendTextField;
@@ -46,6 +47,10 @@
 - (IBAction)searchPeople:(id)sender {
     NSLog(@"searchNumber %@",_searchFriend.text);
     _newfriend = _searchFriend.text;
+    //seekuser:6505758649
+    NSString* response = [NSString stringWithFormat:@"seekuser:%@",_newfriend];
+    NSData *data = [[NSData alloc] initWithData:[response dataUsingEncoding:NSUTF8StringEncoding]];
+    [Communication send:data];
 }
 
 
