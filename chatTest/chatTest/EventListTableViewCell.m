@@ -21,6 +21,9 @@
 
 @property (weak, nonatomic) IBOutlet UIView *cardView;
 @property (weak, nonatomic) IBOutlet UIView *mainView;
+@property (weak, nonatomic) IBOutlet UILabel *mainViewLabel;
+@property (weak, nonatomic) IBOutlet UIView *displayView;
+
 
 @end
 
@@ -72,6 +75,17 @@
     self.opaque = YES;
     _mainView.frame =CGRectMake(0, 0, self.frame.size.width,180);
     [_mainView addSubview:_cardView];
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd 'at' HH:mm"];
+    
+    //Optionally for time zone conversions
+    [formatter setTimeZone:[NSTimeZone defaultTimeZone]];
+    
+    NSString *stringFromDate = [formatter stringFromDate:myEvent.time];
+    
+    _mainViewLabel.text = stringFromDate;
+
     self.contentMode = UIViewContentModeRedraw;
     
 }
@@ -79,7 +93,7 @@
 
 
 - (void)drawRect:(CGRect)rect {
-    _Title.text = myEvent.eventDescription;
+    _Title.text = myEvent.title;
     //UIImage *testImage = [UIImage imageNamed:@"testImage.jpeg"];
     //test = UIImageJPEGRepresentation(testImage,testImage.scale);
     
@@ -102,16 +116,27 @@
 
 - (IBAction)clickCalender:(id)sender {
     _contentImageView.image = [UIImage imageNamed:@"Date"];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd 'at' HH:mm"];
+    
+    //Optionally for time zone conversions
+    [formatter setTimeZone:[NSTimeZone defaultTimeZone]];
+    
+    NSString *stringFromDate = [formatter stringFromDate:myEvent.time];
+
+    _mainViewLabel.text = stringFromDate;
     
 }
 
 
 - (IBAction)clickLoaction:(id)sender {
     _contentImageView.image = [UIImage imageNamed:@"Check-in"];
+    _mainViewLabel.text = myEvent.location;
 }
 
 - (IBAction)clickDescription:(id)sender {
     _contentImageView.image = [UIImage imageNamed:@"Description"];
+    _mainViewLabel.text = myEvent.eventDescription;
 }
 
 - (IBAction)clickPeople:(id)sender {

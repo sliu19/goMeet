@@ -12,7 +12,7 @@
 #import "NoticeDetailViewController.h"
 
 @interface EventNoticeTableViewController ()
-
+@property(strong,nonatomic)NSMutableArray* notificationMessage;
 @end
 
 @implementation EventNoticeTableViewController
@@ -21,6 +21,23 @@
     [super viewDidLoad];
     [inputStream setDelegate:self];
     [outputStream setDelegate:self];
+    _notificationMessage = [[NSMutableArray alloc]init];
+    //pollinvited:{"amount":10,"user_id":6505758650,"start_offset":0}
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    NSDictionary* dict = @{@"user_id":[prefs objectForKey:@"userID"],@"amount":@"10",@"start_offset":@"0"};
+    NSString *response  = [NSString stringWithFormat:@"pollinvited:%@",[Communication parseIntoJson:dict]];
+    NSData *data = [[NSData alloc] initWithData:[response dataUsingEncoding:NSUTF8StringEncoding]];
+    [Communication send:data];
+    
+    //HARD CODE sample output for demo purpose ONLY
+    NSString* output = @"{\"events\":[{\"description\":\"my newsfeed event\",\"title\":\"newfeed event\",\"event_id\":\"47ec6551-fee1-11e4-b58d-a45e60c40087\",\"end_time\":1432120435578,\"begin_time\":1432120425578,\"host_id\":111111111,\"location\":\"newsfeed_event\"},{\"description\":\"my newsfeed event\",\"title\":\"newfeed event\",\"event_id\":\"ecde604c-fee3-11e4-bbb1-a45e60c40087\",\"end_time\":1432121571303,\"begin_time\":1432121561303,\"host_id\":111111111,\"location\":\"newsfeed_event\"}],\"new_friends\":[11111111]}";
+    NSData* sample = [output dataUsingEncoding:NSUTF8StringEncoding];
+    NSDictionary*result = [Communication parseFromJson:sample];
+    NSArray* resultList = [result objectForKey:@"events"];
+    NSLog(@"result %@",resultList);
+    _notificationMessage = resultList;
+
+    
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -42,17 +59,19 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return [_notificationMessage count];
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     EventNoticeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"EventNoticeCell" forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
+    if (cell == nil) {
+        cell = [[EventNoticeTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault  reuseIdentifier:@"EventNoticeCell"];
+    }
+    NSDictionary *myevent = _notificationMessage[indexPath.row];
+    NSLog(@"EVENT in this row is %@",myevent);
+    cell.myEvent = myevent;
     return cell;
 }
 
@@ -92,6 +111,65 @@
 */
 
 
+- (void)stream:(NSStream *)theStream handleEvent:(NSStreamEvent)streamEvent {
+    
+    typedef enum {
+        NSStreamEventNone = 0,
+        NSStreamEventOpenCompleted = 1 << 0,
+        NSStreamEventHasBytesAvailable = 1 << 1,
+        NSStreamEventHasSpaceAvailable = 1 << 2,
+        NSStreamEventErrorOccurred = 1 << 3,
+        NSStreamEventEndEncountered = 1 << 4
+    }NSStringEvent;
+    
+    switch (streamEvent) {
+            
+        case NSStreamEventOpenCompleted:
+            NSLog(@"Stream opened");
+            break;
+            
+        case NSStreamEventHasBytesAvailable:
+            
+            if (theStream == inputStream) {
+                
+                uint8_t buffer[1024];
+                int len;
+                
+                while ([inputStream hasBytesAvailable]) {
+                    len = [inputStream read:buffer maxLength:sizeof(buffer)];
+                    if (len > 0) {
+                        
+                        NSString *output = [[NSString alloc] initWithBytes:buffer length:len encoding:NSUTF8StringEncoding];
+                        
+                        if (nil != output) {
+                            NSLog(@"have friend request available");
+                            output = @"{\"events\":[{\"description\":\"my newsfeed event\",\"title\":\"newfeed event\",\"event_id\":\"47ec6551-fee1-11e4-b58d-a45e60c40087\",\"end_time\":1432120435578,\"begin_time\":1432120425578,\"host_id\":111111111,\"location\":\"newsfeed_event\"},{\"description\":\"my newsfeed event\",\"title\":\"newfeed event\",\"event_id\":\"ecde604c-fee3-11e4-bbb1-a45e60c40087\",\"end_time\":1432121571303,\"begin_time\":1432121561303,\"host_id\":111111111,\"location\":\"newsfeed_event\"}],\"new_friends\":[11111111]}";
+                            NSDictionary*result = [Communication parseFromJson:output];
+                            NSArray* resultList = [result objectForKey:@"events"];
+                            _notificationMessage = resultList;
+                        }
+
+                    }
+                }
+            }
+            break;
+            
+        case NSStreamEventErrorOccurred:
+            NSLog(@"Can not connect to the host!");
+            break;
+            
+        case NSStreamEventEndEncountered:
+            break;
+            
+        default:
+            NSLog(@"Unknown event");
+    }
+    
+}
+
+
+
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -100,6 +178,8 @@
     // Pass the selected object to the new view controller.
     if ([[segue identifier]isEqualToString:@"NoticeDetailSegue"]) {
         NoticeDetailViewController *vc = [segue destinationViewController];
+    
+        vc.myEvent = [(EventNoticeTableViewCell*)sender myEvent];
     }
 
 }

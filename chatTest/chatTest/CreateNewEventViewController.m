@@ -66,7 +66,7 @@
     [event setValue: uuidString forKey :@"jid"];
     [event setValue: _EventLocation.text forKey :@"location"];
     [event setValue: _EventTitle.text forKey :@"title"];
-    NSDate* now = [NSDate date];
+    NSDate* now = _datePicker.date;
     [event setValue:now forKey:@"time"];
     _inviteList =@[@"11111111",@"222222222",@"333333"];
     [event setValue: _inviteList forKey:@"groupMember"];
@@ -221,7 +221,7 @@
                                 //Return to main page
                                 UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
                                 MainTabBarViewController *viewController = (MainTabBarViewController *)[storyboard instantiateViewControllerWithIdentifier:@"GoMeet"];
-                                [viewController setSelectedIndex:2];
+                                [viewController setSelectedIndex:1];
                                 [self presentViewController:viewController animated:YES completion:nil];
 
                             }

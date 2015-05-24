@@ -9,6 +9,7 @@
 #import "SignUpViewController.h"
 #import "Communication.h"
 #import "MainTabBarViewController.h"
+#import "JFBCrypt.h"
 
 @interface SignUpViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *phoneNum;
@@ -57,7 +58,9 @@
         if ([_passCodeConfirm.text isEqualToString:_passCode.text]){
             
             //{"gender":"M","pass_hash":"password","phone_num":6505758649,"nick":"ZhouYi"}
-            NSDictionary* dict = @{@"gender":self.gender,@"pass_hash":self.passCode.text,@"phone_num":self.phoneNum.text,@"nick":self.nickName.text};
+            // [JFBCrypt hashPassword: password withSalt: salt]
+            //NSString *salt = [JFBCrypt generateSaltWithNumberOfRounds: 10];
+            NSDictionary* dict = @{@"gender":self.gender,@"pass_hash":_passCode.text,@"phone_num":self.phoneNum.text,@"nick":self.nickName.text};
             
             
             NSString *response  = [NSString stringWithFormat:@"reg:%@", [Communication parseIntoJson:dict]];

@@ -15,6 +15,7 @@
     <entity name="Friend" representedClassName="Friend" syncable="YES">
         <attribute name="userID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="userImageUUID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userNickName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="userPic" optional="YES" attributeType="Binary" syncable="YES"/>
     </entity>
     <entity name="NewsFeedList" representedClassName="NewsFeedList" syncable="YES">
@@ -33,9 +34,9 @@
         <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="EventList" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Friend" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="NewsFeedList" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="OwnerNewsFeed" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="EventList" positionX="0" positionY="0" width="128" height="195"/>
+        <element name="Friend" positionX="0" positionY="0" width="128" height="105"/>
+        <element name="NewsFeedList" positionX="0" positionY="0" width="128" height="135"/>
+        <element name="OwnerNewsFeed" positionX="0" positionY="0" width="128" height="120"/>
     </elements>
 </model>

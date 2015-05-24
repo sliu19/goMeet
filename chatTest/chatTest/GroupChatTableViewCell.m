@@ -12,6 +12,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *selfUser;
 @property (weak, nonatomic) IBOutlet UILabel *otherLabel;
 @property (weak, nonatomic) IBOutlet UITextView *selfTextView;
+@property (weak, nonatomic) IBOutlet UILabel *selfLabel;
 
 
 @end
@@ -50,11 +51,9 @@
 
 - (void)drawRect:(CGRect)rect {
     self.OtherUser.image = [UIImage imageNamed:@"beach.jpeg"];
-    self.selfTextView.text = self.myMessage.bodyText;
-    self.selfTextView.textColor = [UIColor whiteColor];
-   // NSLog(@"height before is %f",self.selfTextView.frame.size.height);
-    [self.selfTextView sizeToFit];
+    self.selfUser.image = [UIImage imageNamed:@"beach.jpeg"];
     [self.otherLabel sizeToFit];
+    [self.selfLabel sizeToFit];
     //NSLog(@"height after is %f",self.selfTextView.frame.size.height);
 
     if ([self isSelf]) {
@@ -63,7 +62,7 @@
         self.otherLabel.hidden = true;
     }else{
         NSLog(@"Others message");
-        self.selfTextView.hidden = true;
+        self.selfLabel.hidden = true;
         self.selfUser.hidden = true;
     }
     

@@ -28,6 +28,10 @@
 		F76F4AC91AF2FFFE00A0E525 /* PersonUIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F76F4AC81AF2FFFE00A0E525 /* PersonUIButton.m */; };
 		F76FC7F11AF6B4EA0085A851 /* newFriendNoticeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F76FC7F01AF6B4EA0085A851 /* newFriendNoticeTableViewCell.m */; };
 		F76FC7F51AF6B8540085A851 /* newFriendNoticeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F76FC7F41AF6B8540085A851 /* newFriendNoticeViewController.m */; };
+		F776C9821B118557006D48A9 /* JFBCrypt.m in Sources */ = {isa = PBXBuildFile; fileRef = F776C97E1B118557006D48A9 /* JFBCrypt.m */; };
+		F776C9831B118557006D48A9 /* JFRandom.m in Sources */ = {isa = PBXBuildFile; fileRef = F776C9811B118557006D48A9 /* JFRandom.m */; };
+		F776C9891B121748006D48A9 /* Notification.m in Sources */ = {isa = PBXBuildFile; fileRef = F776C9881B121748006D48A9 /* Notification.m */; };
+		F776C98D1B121AAA006D48A9 /* Friend.m in Sources */ = {isa = PBXBuildFile; fileRef = F776C98C1B121AAA006D48A9 /* Friend.m */; };
 		F77C90101AA3F4A60005EC2F /* Lib.m in Sources */ = {isa = PBXBuildFile; fileRef = F77C900F1AA3F4A60005EC2F /* Lib.m */; };
 		F77EC12D1AE86D9400D790C2 /* GroupChatTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F77EC12C1AE86D9400D790C2 /* GroupChatTableViewCell.m */; };
 		F77EC1321AE8720A00D790C2 /* EventListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F77EC1311AE8720A00D790C2 /* EventListTableViewCell.m */; };
@@ -85,7 +89,6 @@
 		F7A11E2B1ABD376200DF9AEB /* XMPPStringPrep.m in Sources */ = {isa = PBXBuildFile; fileRef = F7A11E0F1ABD376200DF9AEB /* XMPPStringPrep.m */; };
 		F7A11E2C1ABD376200DF9AEB /* XMPPTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = F7A11E111ABD376200DF9AEB /* XMPPTimer.m */; };
 		F7A11E2E1ABD379F00DF9AEB /* libresolv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F7A11E2D1ABD379F00DF9AEB /* libresolv.dylib */; };
-		F7A11E3E1ABE392800DF9AEB /* Friend.m in Sources */ = {isa = PBXBuildFile; fileRef = F7A11E3D1ABE392800DF9AEB /* Friend.m */; };
 		F7A11E441ABE429F00DF9AEB /* NewsFeedList.m in Sources */ = {isa = PBXBuildFile; fileRef = F7A11E431ABE429F00DF9AEB /* NewsFeedList.m */; };
 		F7A11E4E1ABF655000DF9AEB /* OwnerNewsFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = F7A11E4D1ABF655000DF9AEB /* OwnerNewsFeed.m */; };
 		F7A11E551ABF780A00DF9AEB /* MeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7A11E541ABF780A00DF9AEB /* MeViewController.m */; };
@@ -259,6 +262,15 @@
 		F76FC7F01AF6B4EA0085A851 /* newFriendNoticeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = newFriendNoticeTableViewCell.m; sourceTree = "<group>"; };
 		F76FC7F31AF6B8540085A851 /* newFriendNoticeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = newFriendNoticeViewController.h; sourceTree = "<group>"; };
 		F76FC7F41AF6B8540085A851 /* newFriendNoticeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = newFriendNoticeViewController.m; sourceTree = "<group>"; };
+		F776C97D1B118557006D48A9 /* JFBCrypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFBCrypt.h; sourceTree = "<group>"; };
+		F776C97E1B118557006D48A9 /* JFBCrypt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFBCrypt.m; sourceTree = "<group>"; };
+		F776C97F1B118557006D48A9 /* JFGC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFGC.h; sourceTree = "<group>"; };
+		F776C9801B118557006D48A9 /* JFRandom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFRandom.h; sourceTree = "<group>"; };
+		F776C9811B118557006D48A9 /* JFRandom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFRandom.m; sourceTree = "<group>"; };
+		F776C9881B121748006D48A9 /* Notification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Notification.m; sourceTree = "<group>"; };
+		F776C98A1B121758006D48A9 /* Notification.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Notification.h; sourceTree = "<group>"; };
+		F776C98B1B121AAA006D48A9 /* Friend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Friend.h; path = ../Friend.h; sourceTree = "<group>"; };
+		F776C98C1B121AAA006D48A9 /* Friend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Friend.m; path = ../Friend.m; sourceTree = "<group>"; };
 		F77C900F1AA3F4A60005EC2F /* Lib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Lib.m; sourceTree = "<group>"; };
 		F77C90111AA3F4B50005EC2F /* Lib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Lib.h; sourceTree = "<group>"; };
 		F77EC12B1AE86D9400D790C2 /* GroupChatTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupChatTableViewCell.h; sourceTree = "<group>"; };
@@ -373,8 +385,6 @@
 		F7A11E101ABD376200DF9AEB /* XMPPTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPTimer.h; sourceTree = "<group>"; };
 		F7A11E111ABD376200DF9AEB /* XMPPTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMPPTimer.m; sourceTree = "<group>"; };
 		F7A11E2D1ABD379F00DF9AEB /* libresolv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libresolv.dylib; path = usr/lib/libresolv.dylib; sourceTree = SDKROOT; };
-		F7A11E3C1ABE392800DF9AEB /* Friend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Friend.h; path = ../Friend.h; sourceTree = "<group>"; };
-		F7A11E3D1ABE392800DF9AEB /* Friend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Friend.m; path = ../Friend.m; sourceTree = "<group>"; };
 		F7A11E421ABE429F00DF9AEB /* NewsFeedList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewsFeedList.h; path = ../NewsFeedList.h; sourceTree = "<group>"; };
 		F7A11E431ABE429F00DF9AEB /* NewsFeedList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewsFeedList.m; path = ../NewsFeedList.m; sourceTree = "<group>"; };
 		F7A11E4C1ABF655000DF9AEB /* OwnerNewsFeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OwnerNewsFeed.h; sourceTree = "<group>"; };
@@ -677,6 +687,7 @@
 		EBD0D8A91A82E1F700B76C79 /* chatTest */ = {
 			isa = PBXGroup;
 			children = (
+				F776C9841B11857B006D48A9 /* JFBCrypt */,
 				F7A11E2F1ABE20D700DF9AEB /* external-support */,
 				F791A6A51AAC1B200025365A /* CoreData */,
 				F77C90111AA3F4B50005EC2F /* Lib.h */,
@@ -774,6 +785,18 @@
 			name = Notice;
 			sourceTree = "<group>";
 		};
+		F776C9841B11857B006D48A9 /* JFBCrypt */ = {
+			isa = PBXGroup;
+			children = (
+				F776C97D1B118557006D48A9 /* JFBCrypt.h */,
+				F776C97E1B118557006D48A9 /* JFBCrypt.m */,
+				F776C97F1B118557006D48A9 /* JFGC.h */,
+				F776C9801B118557006D48A9 /* JFRandom.h */,
+				F776C9811B118557006D48A9 /* JFRandom.m */,
+			);
+			name = JFBCrypt;
+			sourceTree = "<group>";
+		};
 		F77C90141AA3FDB20005EC2F /* UserImage */ = {
 			isa = PBXGroup;
 			children = (
@@ -802,14 +825,14 @@
 			isa = PBXGroup;
 			children = (
 				F791A69F1AAC1AEA0025365A /* GoMeet.xcdatamodeld */,
+				F776C98B1B121AAA006D48A9 /* Friend.h */,
+				F776C98C1B121AAA006D48A9 /* Friend.m */,
 				F7A17B5C1B0325E70027A181 /* EventList.h */,
 				F7A17B5D1B0325E70027A181 /* EventList.m */,
 				F7FA8BDD1AC7AA0200F88F94 /* EventList+transformatAttribute.h */,
 				F7FA8BDE1AC7AA0200F88F94 /* EventList+transformatAttribute.m */,
 				F7A11E4C1ABF655000DF9AEB /* OwnerNewsFeed.h */,
 				F7A11E4D1ABF655000DF9AEB /* OwnerNewsFeed.m */,
-				F7A11E3C1ABE392800DF9AEB /* Friend.h */,
-				F7A11E3D1ABE392800DF9AEB /* Friend.m */,
 				F7A11E421ABE429F00DF9AEB /* NewsFeedList.h */,
 				F7A11E431ABE429F00DF9AEB /* NewsFeedList.m */,
 			);
@@ -1105,6 +1128,8 @@
 		F7CF9FCE1AF595DE00DAF91A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F776C98A1B121758006D48A9 /* Notification.h */,
+				F776C9881B121748006D48A9 /* Notification.m */,
 				F71BBCF11AF5A91F00A87FDD /* Message.h */,
 				F7CF9FCF1AF596DE00DAF91A /* Message.m */,
 				F7163FDD1B02914400FB23D4 /* PublicEvent.h */,
@@ -1904,7 +1929,6 @@
 				F7FA88A41AC7094600F88F94 /* XMPPProcessOne.m in Sources */,
 				F7FA88EE1AC7094600F88F94 /* XMPPBlocking.m in Sources */,
 				F7CF9FD01AF596DE00DAF91A /* Message.m in Sources */,
-				F7A11E3E1ABE392800DF9AEB /* Friend.m in Sources */,
 				EBD0D8D91A82E30500B76C79 /* InitPage.m in Sources */,
 				F7FA88F61AC7094600F88F94 /* NSXMLElement+XEP_0203.m in Sources */,
 				EB8BD4191A886E3400851D28 /* SignUpViewController.m in Sources */,
@@ -1977,6 +2001,7 @@
 				F7A11E441ABE429F00DF9AEB /* NewsFeedList.m in Sources */,
 				F7FA88BD1AC7094600F88F94 /* XMPPRoomOccupantHybridMemoryStorageObject.m in Sources */,
 				F7FA88B91AC7094600F88F94 /* XMPPRoomOccupantCoreDataStorageObject.m in Sources */,
+				F776C9831B118557006D48A9 /* JFRandom.m in Sources */,
 				F7FA88B81AC7094600F88F94 /* XMPPRoomMessageCoreDataStorageObject.m in Sources */,
 				F7F2BF081ABB39C000C810E5 /* CGGeometry+RSKImageCropper.m in Sources */,
 				F7A11E181ABD376200DF9AEB /* XMPPXFacebookPlatformAuthentication.m in Sources */,
@@ -2002,6 +2027,7 @@
 				F737233F1B06934300BFC8D3 /* InviteFriendViewController.m in Sources */,
 				F7FA88B21AC7094600F88F94 /* XMPPJabberRPCModule.m in Sources */,
 				F7A11E211ABD376200DF9AEB /* XMPPMessage.m in Sources */,
+				F776C9821B118557006D48A9 /* JFBCrypt.m in Sources */,
 				F7FA88CD1AC7094600F88F94 /* XMPPvCardTempEmail.m in Sources */,
 				F7FA88DF1AC7094600F88F94 /* XMPPCapabilities.xcdatamodel in Sources */,
 				F791A69A1AAC1A7B0025365A /* CoreDataTableViewController.m in Sources */,
@@ -2035,9 +2061,11 @@
 				F7FA88F91AC7094600F88F94 /* XMPPMessage+XEP_0224.m in Sources */,
 				F7FA88A71AC7094600F88F94 /* XMPPResourceCoreDataStorageObject.m in Sources */,
 				F7A11E291ABD376200DF9AEB /* XMPPIDTracker.m in Sources */,
+				F776C9891B121748006D48A9 /* Notification.m in Sources */,
 				F7FA88EF1AC7094600F88F94 /* XMPPStreamManagementMemoryStorage.m in Sources */,
 				F7A11E1D1ABD376200DF9AEB /* XMPPConstants.m in Sources */,
 				F7FA88F11AC7094600F88F94 /* XMPPStreamManagement.m in Sources */,
+				F776C98D1B121AAA006D48A9 /* Friend.m in Sources */,
 				F7F2BEF41AB9EDA300C810E5 /* PersonalprofileViewController.m in Sources */,
 				F7A11E4E1ABF655000DF9AEB /* OwnerNewsFeed.m in Sources */,
 				F7FA88DD1AC7094600F88F94 /* XMPPTransports.m in Sources */,

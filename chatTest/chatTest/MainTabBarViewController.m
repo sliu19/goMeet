@@ -16,11 +16,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [[UINavigationBar appearance] setBarStyle:UIBarStyleBlack];
+    [[UITabBar appearance] setBarStyle:UIBarStyleBlack];
     // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
+    [super didReceiveMemoryWarning];    
     // Dispose of any resources that can be recreated.
 }
 

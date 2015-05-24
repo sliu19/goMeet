@@ -86,6 +86,8 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
     // Override point for customization after application launch.
     NSLog(@"Start App");
 
+    //setUp tabbar
+    [[UITabBar appearance] setBackgroundColor:[UIColor blackColor]];
     [DDLog addLogger:[DDTTYLogger sharedInstance] withLogLevel:XMPP_LOG_FLAG_SEND_RECV];
     // Setup the XMPP stream
     

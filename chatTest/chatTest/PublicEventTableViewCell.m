@@ -36,8 +36,9 @@
     [formatter setTimeZone:[NSTimeZone defaultTimeZone]];
     
     NSString *stringFromDate = [formatter stringFromDate:eventItem.time];
-    _TitleLabel.text = eventItem.eventDescription;
-    _LocationLabel.text = stringFromDate;
+    _TitleLabel.text = eventItem.title;
+    _LocationLabel.text = eventItem.location;
+    _TimeLabel.text = stringFromDate;
     _JoinButton.layer.cornerRadius = 5;
     _JoinButton.clipsToBounds = YES;
     self.contentMode = UIViewContentModeRedraw;

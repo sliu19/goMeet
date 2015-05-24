@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+
 @interface EventNoticeTableViewCell : UITableViewCell
+
+@property(strong,nonatomic)NSDictionary* myEvent;
 
 @end

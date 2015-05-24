@@ -7,10 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "EventList.h"
+
 
 @interface NoticeDetailViewController : UIViewController
 
-
-@property(strong,nonatomic)EventList* eventTitle;
+@property(strong,nonatomic)NSDictionary* myEvent;
 @end
