@@ -39,7 +39,7 @@
     
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"EventList"];
     request.predicate = nil;
-    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"time"
+    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"title"
                                                               ascending:YES
                                                                selector:@selector(localizedStandardCompare:)]];
     

@@ -21,17 +21,18 @@ BOOL selected;
 */
 - (void)drawRect:(CGRect)rect {
     // Drawing code
+    //UIImage* Pic = [[UIImage alloc]initWithData:myFriend.userPic];
     UIImageView* profilePic = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"testImageApple.jpeg"]];
     profilePic.frame = CGRectMake(OFF_SET, OFF_SET, self.bounds.size.width-2*OFF_SET, self.bounds.size.width-2*OFF_SET);
     profilePic.bounds = CGRectMake(OFF_SET, OFF_SET, self.bounds.size.width-2*OFF_SET, self.bounds.size.width-2*OFF_SET);
     profilePic.layer.cornerRadius = profilePic.frame.size.width / 2;
     profilePic.clipsToBounds = YES;
     [self addSubview:profilePic];
-    UILabel *yourLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, self.bounds.size.width, self.bounds.size.width-20, 20)];
+    UILabel *yourLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, self.bounds.size.width, self.bounds.size.width, 20)];
     yourLabel.text = [NSString stringWithFormat:@"%@",myFriend.userID];
     [yourLabel setTextColor:[UIColor whiteColor]];
     [yourLabel setBackgroundColor:[UIColor clearColor]];
-    [yourLabel setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleBody]];
+    [yourLabel setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleFootnote]];
     yourLabel.textAlignment = NSTextAlignmentCenter;
     [self addSubview:yourLabel];
 

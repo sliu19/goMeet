@@ -74,6 +74,27 @@
     NSString *response  = [NSString stringWithFormat:@"profile:%@",[Communication parseIntoJson:dict]];
     NSData *data = [[NSData alloc] initWithData:[response dataUsingEncoding:NSUTF8StringEncoding]];
     [Communication send:data];
+    
+    
+#warning below code is for test purpose ONLY
+    UIImage *contactImage = _userPic.image;
+    NSData *imageData = UIImageJPEGRepresentation(contactImage, 100);
+    
+    
+    // Store the data
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    [defaults setObject:[_nickName text] forKey:@"nickName"];
+    [defaults setObject:[_intro text] forKey:@"intro"];
+    [defaults setObject:[_location text] forKey:@"location"];
+    [defaults setObject:[_email text]forKey:@"email"];
+    [defaults setObject:imageData forKey:@"userPic"];
+    [defaults synchronize];
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    MainTabBarViewController *viewController = (MainTabBarViewController *)[storyboard instantiateViewControllerWithIdentifier:@"GoMeet"];
+    [viewController setSelectedIndex:0];
+    [self presentViewController:viewController animated:YES completion:nil];
 }
 
 

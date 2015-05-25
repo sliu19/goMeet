@@ -32,14 +32,17 @@ BOOL isSearching;
     isSearching = false;
     _searchBar.showsCancelButton = YES;
     _resultList = [[NSArray alloc]init];
-    //pull add friend request
-    //example:getfriendrequests:68958695
-      // Do any additional setup after loading the view.
+    _redDot.layer.cornerRadius = _redDot.frame.size.width / 2;
+    _redDot.clipsToBounds = YES;
+    //show reddot for test purpose
+    _redDot.hidden = true;
+
 }
 
 -(void)viewWillAppear:(BOOL)animated{
     [inputStream setDelegate:self];
     [inputStream setDelegate:self];
+    
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     
     NSString* request = [NSString stringWithFormat:@"getfriendrequests:%@",[prefs objectForKey:@"userID"]];
@@ -139,8 +142,6 @@ BOOL isSearching;
         // Deal with error.
         NSLog(@"No Friends Available");
     }
-    _redDot.image = [UIImage imageNamed:@"Date"];
-    
 }
 
 -(void)buttonClicked:(PersonUIButton*)sender
@@ -200,6 +201,7 @@ BOOL isSearching;
                         
                         if (nil != output) {
                             NSLog(@"have friend request available");
+                            _redDot.hidden = false;
                             NSDictionary*result = [Communication parseFromJson:output];
                             NSArray* resultList = [result objectForKey:@"requests"];
                             NSLog(@"RESULT IS %@",[result objectForKey:@"requests"]);

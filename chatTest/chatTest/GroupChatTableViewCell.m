@@ -23,8 +23,6 @@
     self.myMessage = message;
     self.selfUser.image =[UIImage imageNamed:@"beach.jpeg"];
     self.OtherUser.image =[UIImage imageNamed:@"beach.jpeg"];
-    NSLog(@"MessageBody is %@",message.bodyText);
-    self.selfTextView.text = message.bodyText;
     CGRect frame;
     frame = self.selfTextView.frame;
     frame.size.height = [self.selfTextView contentSize].height;
@@ -60,10 +58,12 @@
         NSLog(@"Self message");
         self.OtherUser.hidden = true;
         self.otherLabel.hidden = true;
+        self.selfLabel.text = _myMessage.bodyText;
     }else{
         NSLog(@"Others message");
         self.selfLabel.hidden = true;
         self.selfUser.hidden = true;
+        self.otherLabel.text = _myMessage.bodyText;
     }
     
 }

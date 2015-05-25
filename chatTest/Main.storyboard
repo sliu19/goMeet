@@ -5,7 +5,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Init Page-->
+        <!--赢家-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="InitPage" sceneMemberID="viewController">
@@ -18,9 +18,9 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LFD-bn-ZjW">
-                                <rect key="frame" x="31" y="413" width="259" height="30"/>
+                                <rect key="frame" x="31" y="408" width="259" height="35"/>
                                 <color key="backgroundColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Don't have account? Signup now">
+                                <state key="normal" title="没有账号？现在就注册！">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -28,25 +28,21 @@
                                     <segue destination="NRo-yB-S2U" kind="modal" identifier="SignIn" id="8Yp-bg-lJL"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Your phone number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dt0-sG-xuR">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="手机号码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dt0-sG-xuR">
                                 <rect key="frame" x="46" y="174" width="229" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Passcode" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pm8-T7-9D2">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="密码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pm8-T7-9D2">
                                 <rect key="frame" x="46" y="262" width="229" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sign In" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Wx-QM-Rj8">
-                                <rect key="frame" x="125" y="97" width="82" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u2N-M9-czY">
-                                <rect key="frame" x="141" y="340" width="38" height="30"/>
-                                <state key="normal" title="Login">
+                                <rect key="frame" x="104" y="340" width="112" height="30"/>
+                                <color key="backgroundColor" red="0.93333339689999995" green="0.34509804840000002" blue="0.31764706970000001" alpha="1" colorSpace="deviceRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="登陆">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -57,7 +53,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" id="GNg-t8-03D"/>
+                    <navigationItem key="navigationItem" title="赢家" id="GNg-t8-03D"/>
                     <connections>
                         <outlet property="joinView" destination="LFD-bn-ZjW" id="fCI-QJ-61m"/>
                         <outlet property="logIn" destination="u2N-M9-czY" id="UYU-br-CYF"/>
@@ -348,41 +344,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Your phone number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mxN-s2-ESb">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="手机号码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mxN-s2-ESb">
                                 <rect key="frame" x="46" y="130" width="229" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Passcode" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SmJ-f9-O5G">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="密码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SmJ-f9-O5G">
                                 <rect key="frame" x="46" y="181" width="229" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm Passcode" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="j46-Y8-SpK">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="确认密码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="j46-Y8-SpK">
                                 <rect key="frame" x="46" y="230" width="229" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G6W-m7-7bb">
-                                <rect key="frame" x="126" y="375" width="69" height="30"/>
-                                <state key="normal" title="Join Now!">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="SignUp:" destination="NRo-yB-S2U" eventType="touchUpInside" id="K2V-xq-iLk"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Welcome to GoMeet!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EOz-DG-klO">
-                                <rect key="frame" x="79" y="56" width="162" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jYu-Z2-STp">
-                                <rect key="frame" x="31" y="413" width="259" height="30"/>
+                                <rect key="frame" x="31" y="427" width="259" height="30"/>
                                 <color key="backgroundColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Already have account? Sign In">
+                                <state key="normal" title="已经有账号了？直接登录">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -412,11 +392,22 @@
                                     <action selector="gender_Male:" destination="NRo-yB-S2U" eventType="touchUpInside" id="u0e-xA-mZC"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="NickName" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LsP-DR-Frp">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="昵称" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LsP-DR-Frp">
                                 <rect key="frame" x="46" y="330" width="229" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G6W-m7-7bb">
+                                <rect key="frame" x="105" y="381" width="111" height="30"/>
+                                <color key="backgroundColor" red="0.93333339689999995" green="0.34509804840000002" blue="0.31764706970000001" alpha="1" colorSpace="deviceRGB"/>
+                                <state key="normal" title="现在就注册！">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="SignUp:" destination="NRo-yB-S2U" eventType="touchUpInside" id="K2V-xq-iLk"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -425,7 +416,6 @@
                         <outlet property="gender_F" destination="QrP-eu-PUE" id="CmG-du-F0i"/>
                         <outlet property="gender_M" destination="4AE-Uf-051" id="oOz-Rx-QDO"/>
                         <outlet property="nickName" destination="LsP-DR-Frp" id="DQL-6w-mDN"/>
-                        <outlet property="outPut" destination="EOz-DG-klO" id="NCM-SR-1jA"/>
                         <outlet property="passCode" destination="SmJ-f9-O5G" id="gGb-OP-ViC"/>
                         <outlet property="passCodeConfirm" destination="j46-Y8-SpK" id="4Rf-Jw-Si4"/>
                         <outlet property="phoneNum" destination="mxN-s2-ESb" id="dag-ie-8da"/>
@@ -448,7 +438,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Answer...." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="swH-K3-44z">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="回复...." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="swH-K3-44z">
                                 <rect key="frame" x="11" y="530" width="253" height="30"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -457,7 +447,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="drn-zf-uCY">
                                 <rect key="frame" x="262" y="532" width="53" height="28"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Send">
+                                <state key="normal" title="发送">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -469,12 +459,12 @@
                                 <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                                 <items>
                                     <navigationItem title="ChatRoom" id="kyR-5G-j1w">
-                                        <barButtonItem key="leftBarButtonItem" title="Back" id="bf8-uk-oOM">
+                                        <barButtonItem key="leftBarButtonItem" title="返回" id="bf8-uk-oOM">
                                             <connections>
                                                 <action selector="clickBack:" destination="92y-bh-dv8" id="l4n-GP-lgV"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Inivite" id="ZQU-Gl-g5n">
+                                        <barButtonItem key="rightBarButtonItem" title="添加好友" id="ZQU-Gl-g5n">
                                             <connections>
                                                 <action selector="InviteNewFriend:" destination="92y-bh-dv8" id="eeS-ye-3qk"/>
                                             </connections>
@@ -495,7 +485,6 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="92" translatesAutoresizingMaskIntoConstraints="NO" id="OF8-F9-lTq">
                                                     <rect key="frame" x="45" y="12" width="140" height="23"/>
-                                                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="750" constant="23" id="Hqd-pb-c8o"/>
                                                     </constraints>
@@ -510,19 +499,18 @@
                                                     </attributedString>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="73s-v9-so5">
-                                                    <rect key="frame" x="130" y="19" width="140" height="21"/>
-                                                    <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8S9-v7-g5t">
                                                     <rect key="frame" x="8" y="15" width="31" height="30"/>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3HB-j8-n60">
                                                     <rect key="frame" x="278" y="15" width="31" height="30"/>
                                                 </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="73s-v9-so5">
+                                                    <rect key="frame" x="130" y="12" width="140" height="33"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
@@ -552,7 +540,7 @@
             </objects>
             <point key="canvasLocation" x="3463" y="1575"/>
         </scene>
-        <!--FriendList-->
+        <!--好友列表-->
         <scene sceneID="Y1s-qK-s8G">
             <objects>
                 <viewController id="1B4-UP-vLa" customClass="FriendListViewController" sceneMemberID="viewController">
@@ -588,13 +576,13 @@
                                     <segue destination="CgE-iN-4jb" kind="push" identifier="friendNotification" id="6zO-ij-OqT"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tMJ-An-vRR">
-                                <rect key="frame" x="87" y="86" width="26" height="24"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="active-state.png" translatesAutoresizingMaskIntoConstraints="NO" id="tMJ-An-vRR">
+                                <rect key="frame" x="86" y="87" width="21" height="21"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" title="FriendList" id="SF1-BP-3B5">
+                    <navigationItem key="navigationItem" title="好友列表" id="SF1-BP-3B5">
                         <barButtonItem key="rightBarButtonItem" title="添加" id="xWO-aV-Bvc">
                             <connections>
                                 <segue destination="d28-k3-2LG" kind="push" id="si0-PA-JvY"/>
@@ -680,7 +668,7 @@
             </objects>
             <point key="canvasLocation" x="3381" y="237"/>
         </scene>
-        <!--Me-->
+        <!--个人中心-->
         <scene sceneID="El7-pb-L55">
             <objects>
                 <viewController id="5zJ-5l-JRg" customClass="MeViewController" sceneMemberID="viewController">
@@ -696,23 +684,11 @@
                                 <rect key="frame" x="0.0" y="64" width="320" height="260"/>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Name:Simin Liu          1               Place:UIUC" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="uCa-A1-AoG">
-                                <rect key="frame" x="91" y="191" width="139" height="80"/>
+                                <rect key="frame" x="91" y="162" width="139" height="80"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oLW-ka-zdG">
-                                <rect key="frame" x="87" y="272" width="147" height="23"/>
-                                <color key="backgroundColor" red="0.0" green="0.70196080207824707" blue="0.96078437566757202" alpha="1" colorSpace="deviceRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <state key="normal" title="修改资料">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="dn7-ts-Wn3" kind="push" id="gwt-I1-Ew8"/>
-                                </connections>
-                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="testImage.jpeg" translatesAutoresizingMaskIntoConstraints="NO" id="yNV-fK-9Xe">
                                 <rect key="frame" x="122" y="98" width="76" height="71"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -774,10 +750,22 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oLW-ka-zdG">
+                                <rect key="frame" x="87" y="231" width="147" height="31"/>
+                                <color key="backgroundColor" red="0.0" green="0.70196080207824707" blue="0.96078437566757202" alpha="1" colorSpace="deviceRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <state key="normal" title="修改资料">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="dn7-ts-Wn3" kind="push" id="gwt-I1-Ew8"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Me" id="fcT-EQ-5IR">
+                    <navigationItem key="navigationItem" title="个人中心" id="fcT-EQ-5IR">
                         <barButtonItem key="rightBarButtonItem" title="设置" id="7wp-jT-eue">
                             <connections>
                                 <action selector="LogOut:" destination="5zJ-5l-JRg" id="WBo-QA-3bt"/>
@@ -904,7 +892,7 @@
                                         <rect key="frame" x="120" y="104" width="180" height="1"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a4D-3O-nEn">
-                                        <rect key="frame" x="16" y="72" width="60" height="31"/>
+                                        <rect key="frame" x="16" y="72" width="60" height="42"/>
                                         <state key="normal" title="修改">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -920,7 +908,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="个人简介" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4RB-VD-ZNo">
-                                        <rect key="frame" x="53" y="113" width="259" height="65"/>
+                                        <rect key="frame" x="120" y="113" width="192" height="65"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -944,7 +932,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="简介" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t59-wV-fWt">
-                                        <rect key="frame" x="2" y="104" width="43" height="21"/>
+                                        <rect key="frame" x="72" y="113" width="43" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -1022,7 +1010,7 @@
         <scene sceneID="GAz-2E-3aC">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gHN-Mn-55t" userLabel="Me" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="个人" image="people" selectedImage="people" id="1mO-Si-qLj" userLabel="Me"/>
+                    <tabBarItem key="tabBarItem" title="个人" image="me" id="1mO-Si-qLj" userLabel="Me"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="y8X-te-Ftu">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1157,12 +1145,13 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Event" id="b7j-LH-jSc">
-                        <barButtonItem key="leftBarButtonItem" title="Notification" id="edH-H6-Xag">
+                        <barButtonItem key="leftBarButtonItem" image="notice" id="edH-H6-Xag">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="B0H-eh-7sM" kind="push" id="cYL-e0-stc"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="New" id="wHT-mt-qaA">
+                        <barButtonItem key="rightBarButtonItem" title="新活动" id="wHT-mt-qaA">
                             <connections>
                                 <segue destination="hOY-Jk-LUr" kind="push" id="Zb0-Ee-Tuv"/>
                             </connections>
@@ -1465,7 +1454,7 @@
         <scene sceneID="ygU-w0-7C8">
             <objects>
                 <navigationController storyboardIdentifier="EventNaviagtion" automaticallyAdjustsScrollViewInsets="NO" id="rlz-o4-3uV" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="行程" image="event" selectedImage="event" id="5vj-0d-Q1M"/>
+                    <tabBarItem key="tabBarItem" title="行程" image="event" id="5vj-0d-Q1M"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="hMt-Te-rRa"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
@@ -1504,7 +1493,13 @@
         <scene sceneID="7Uh-is-P4G">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mYG-tA-pqk" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="朋友" image="friend" id="tlr-QA-th3"/>
+                    <tabBarItem key="tabBarItem" title="朋友" image="friend" id="tlr-QA-th3">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="selectedImageTintColor">
+                                <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ma2-OY-FCX">
@@ -1520,7 +1515,7 @@
             </objects>
             <point key="canvasLocation" x="2554" y="245"/>
         </scene>
-        <!--Instant-->
+        <!--新鲜活动-->
         <scene sceneID="22z-5V-F3q">
             <objects>
                 <tableViewController id="Tpc-Wo-trL" customClass="PublicEventTableViewController" sceneMemberID="viewController">
@@ -1601,8 +1596,8 @@
                             <outlet property="delegate" destination="Tpc-Wo-trL" id="2rT-YQ-vkM"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Instant" id="sYS-gj-g6C">
-                        <barButtonItem key="rightBarButtonItem" title="Refresh" id="fYN-36-QVa"/>
+                    <navigationItem key="navigationItem" title="新鲜活动" id="sYS-gj-g6C">
+                        <barButtonItem key="rightBarButtonItem" title="刷新" id="fYN-36-QVa"/>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QOA-Of-Sbd" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1735,11 +1730,14 @@
         <image name="Date" width="24" height="24"/>
         <image name="Description" width="21" height="24"/>
         <image name="Divider.jpg" width="678" height="1"/>
+        <image name="active-state.png" width="188" height="110"/>
         <image name="beach.jpeg" width="6016" height="4000"/>
         <image name="clock" width="13" height="13"/>
         <image name="event" width="24" height="24"/>
         <image name="friend" width="27" height="24"/>
         <image name="instantEvent" width="24" height="25"/>
+        <image name="me" width="24" height="24"/>
+        <image name="notice" width="22" height="28"/>
         <image name="people" width="20" height="24"/>
         <image name="testImage.jpeg" width="512" height="512"/>
         <image name="testImageApple.jpeg" width="345" height="348"/>

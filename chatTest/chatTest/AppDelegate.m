@@ -114,14 +114,16 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
     //people.unique = unique;
     [people setValue: @"Amy" forKey :@"userID"];
     NSData *imageData = UIImageJPEGRepresentation([UIImage imageNamed:@"testImage.jpeg"],0.0);
-    [people setValue: imageData forKey :@"userPic"];
+    NSData *imageData2 = UIImageJPEGRepresentation([UIImage imageNamed:@"beach.jpeg"],0.0);
+    NSData *imageData3 = UIImageJPEGRepresentation([UIImage imageNamed:@"testImageApple.jpeg"],0.0);
+    [people setValue: imageData3 forKey :@"userPic"];
     [people setValue:@"111111" forKey:@"userImageUUID"];
     //NSLog(@"This is debug for people list %@",people.userName);
     people2 = [NSEntityDescription insertNewObjectForEntityForName:@"Friend" inManagedObjectContext:[(AppDelegate*) [[UIApplication sharedApplication]delegate] managedObjectContext]];
     //people.userName =[key obje]
     //people.unique = unique;
     [people2 setValue: @"Zak" forKey :@"userID"];
-    [people2 setValue: imageData forKey :@"userPic"];
+    [people2 setValue: imageData2 forKey :@"userPic"];
     [people2 setValue:@"111111" forKey:@"userImageUUID"];
     
     Friend* people3 = nil;
@@ -147,6 +149,8 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
     [people5 setValue: @"Simin" forKey :@"userID"];
     [people5 setValue: imageData forKey :@"userPic"];
     [people5 setValue:@"111111" forKey:@"userImageUUID"];
+
+
     
     if (![self connect])
     {

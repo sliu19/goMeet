@@ -20,6 +20,8 @@
 +(UIImage*)compressToSmallSquare:(UIImage*)oldImage;
 +(NSString*)parseIntoJson:(NSDictionary*)dict;
 +(NSDictionary*)parseFromJson:(NSData*)json;
++ (UIColor *)colorFromHexString:(NSString *)hexString;
++ (UIImage *)imageWithColor:(UIColor *)color;
 @end
 NSInputStream* inputStream;
 NSOutputStream* outputStream;

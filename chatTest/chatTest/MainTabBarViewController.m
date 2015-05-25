@@ -7,6 +7,7 @@
 //
 
 #import "MainTabBarViewController.h"
+#import "Communication.h"
 
 @interface MainTabBarViewController ()
 
@@ -18,6 +19,16 @@
     [super viewDidLoad];
     [[UINavigationBar appearance] setBarStyle:UIBarStyleBlack];
     [[UITabBar appearance] setBarStyle:UIBarStyleBlack];
+    CGRect myFrame = self.tabBar.frame;
+    UIImage *redBackground = [UIImage imageNamed:@"active-state.png"];
+    UIImage *activeBackground = [Communication imageWithImage:redBackground
+                                                scaledToSize:CGSizeMake(myFrame.size.width/4,myFrame.size.height)];
+
+    [[UITabBar appearance] setSelectionIndicatorImage:activeBackground];
+    [[UITabBar appearance]setTintColor:[UIColor whiteColor]];
+    
+ //UIImage *whiteBackground = [UIImage imageNamed:@"highLight.png"];
+    //[[UITabBar appearance] setSelectionIndicatorImage:whiteBackground];
     // Do any additional setup after loading the view.
 }
 

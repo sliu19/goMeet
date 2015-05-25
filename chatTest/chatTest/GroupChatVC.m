@@ -185,7 +185,13 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
     NSLog(@"Press Send");
     //本地输入框中的信息
     //TO DO:Add textfield
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    
+    //Send through NSStrem
+    NSString* userId = [prefs stringForKey:@"userID"];
     NSString *message = _inputTextField.text;
+    Message* myMessage = [[Message alloc]init:message name:userId];
+    [messageHistory addObject: myMessage];
     
     _inputTextField.text = @"";
     [_inputTextField resignFirstResponder];
@@ -194,7 +200,9 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
         [xmppRoom sendMessageWithBody:@"TEST message is "];
         NSLog(@"Send message: %@",message);
     }
-    _inputTextField.text = @"Answer here...";
+    _inputTextField.text = @"回复...";
+    [_groupChatTableView reloadData];
+
     
 }
 - (IBAction)InviteNewFriend:(UIBarButtonItem *)sender {
@@ -227,10 +235,11 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 
 - (void)viewWillDisappear:(BOOL)animated
 {
+    eventElement.message_data = [NSKeyedArchiver archivedDataWithRootObject:messageHistory];
     [[self appDelegate] disconnect];
     [[[self appDelegate] xmppvCardTempModule] removeDelegate:self];
     [super viewWillDisappear:animated];
-    eventElement.message_data = [NSKeyedArchiver archivedDataWithRootObject:messageHistory];
+    
 }
 
 
