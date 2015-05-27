@@ -205,6 +205,7 @@ BOOL isSearching;
                             NSDictionary*result = [Communication parseFromJson:output];
                             NSArray* resultList = [result objectForKey:@"requests"];
                             NSLog(@"RESULT IS %@",[result objectForKey:@"requests"]);
+                            NSLog(@"RESULT IS %@",result);
                             _resultList = resultList;
                         }
                     }
