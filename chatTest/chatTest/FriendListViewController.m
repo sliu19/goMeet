@@ -31,25 +31,21 @@ BOOL isSearching;
     _searchBar.delegate = self;
     isSearching = false;
     _searchBar.showsCancelButton = YES;
-    _resultList = [[NSArray alloc]init];
+
     _redDot.layer.cornerRadius = _redDot.frame.size.width / 2;
     _redDot.clipsToBounds = YES;
     //show reddot for test purpose
     _redDot.hidden = true;
-
-}
-
--(void)viewWillAppear:(BOOL)animated{
     [inputStream setDelegate:self];
     [inputStream setDelegate:self];
-    
+    _resultList = [[NSArray alloc]init];
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    
     NSString* request = [NSString stringWithFormat:@"getfriendrequests:%@",[prefs objectForKey:@"userID"]];
     NSData *data = [[NSData alloc] initWithData:[request dataUsingEncoding:NSUTF8StringEncoding]];
     [Communication send:data];
-
 }
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -110,7 +106,7 @@ BOOL isSearching;
     NSError *error;
     NSArray *array = [[(AppDelegate*) [[UIApplication sharedApplication]delegate] managedObjectContext] executeFetchRequest:request error:&error];
     
-    NSSortDescriptor *descriptor = [[NSSortDescriptor alloc] initWithKey:@"userID" ascending:YES];
+    NSSortDescriptor *descriptor = [[NSSortDescriptor alloc] initWithKey:@"userNickName" ascending:YES];
     NSArray *sortedList = [array sortedArrayUsingDescriptors:[NSArray arrayWithObjects:descriptor, nil]];
     //sortedList = [[sortedList reverseObjectEnumerator] allObjects];
     if (array != nil) {
@@ -119,9 +115,9 @@ BOOL isSearching;
         //NSMutableArray* newsFeedArray = [[NSMutableArray alloc]init];
        // for( Friend* friends in sortedList){
         for (int i =0; i<count; i++) {
-            NSLog(@"Draw one persionButton");
+            //NSLog(@"Draw one persionButton");
             CGRect frame = CGRectMake(startPt.x+OFF_SET, startPt.y, buttonWeigth, buttonHeight);
-            PersonUIButton* nameCard = [[PersonUIButton alloc]initWith:frame friendItem:sortedList[i]];
+            PersonButton* nameCard = [[PersonButton alloc]initWith:frame friendItem:sortedList[i]];
             [nameCard addTarget:self
                        action:@selector(buttonClicked:)
              forControlEvents:UIControlEventTouchDown];
@@ -144,21 +140,6 @@ BOOL isSearching;
     }
 }
 
--(void)buttonClicked:(PersonUIButton*)sender
-{
-    NSLog(@"buttonClick detacted");
-    if ([sender isKindOfClass:[PersonUIButton class]]) {
-        NSLog(@"This is a PersonalUIBUtton");
-        //[sender.view setFrame:CGRectMake(0, 0, self.view.frame.size.width, 80)];
-        NSLog(@"UserName is %@",sender.myFriend.userID);
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-       PersonalprofileViewController *viewController = (PersonalprofileViewController *)[storyboard instantiateViewControllerWithIdentifier:@"Profile"];
-        viewController.friends = sender.myFriend;
-        //[self presentViewController:viewController animated:YES completion:nil];
-        [[self navigationController] pushViewController:viewController animated:YES];
-    }
-
-}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if([[segue identifier] isEqualToString:@"friendNotification"])
@@ -224,6 +205,23 @@ BOOL isSearching;
     }
     
 }
+
+-(void)buttonClicked:(PersonButton*)sender
+{
+    NSLog(@"buttonClick detacted");
+    if ([sender isKindOfClass:[PersonButton class]]) {
+        NSLog(@"This is a PersonalUIBUtton");
+        //[sender.view setFrame:CGRectMake(0, 0, self.view.frame.size.width, 80)];
+        NSLog(@"UserName is %@",sender.myFriend.userID);
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        PersonalprofileViewController *viewController = (PersonalprofileViewController *)[storyboard instantiateViewControllerWithIdentifier:@"Profile"];
+        viewController.friends = sender.myFriend;
+        //[self presentViewController:viewController animated:YES completion:nil];
+        [[self navigationController] pushViewController:viewController animated:YES];
+    }
+    
+}
+
 
 
 @end

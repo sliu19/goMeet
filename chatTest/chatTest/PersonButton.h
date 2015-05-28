@@ -9,11 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "Friend.h"
 
-@interface PersonUIButton : UIButton
+@interface PersonButton : UIButton<UIGestureRecognizerDelegate>
 
 @property(strong,nonatomic)Friend* myFriend;
 
--(PersonUIButton*)initWith:(CGRect)frame friendItem:(Friend*)friends;
+-(PersonButton*)initWith:(CGRect)frame friendItem:(Friend*)friends;
 
 -(void)ButtonSelected;
 

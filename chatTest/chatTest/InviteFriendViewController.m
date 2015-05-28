@@ -113,7 +113,7 @@ BOOL isSearching;
         for (int i =0; i<count; i++) {
             NSLog(@"Draw one persionButton");
             CGRect frame = CGRectMake(startPt.x+OFF_SET, startPt.y, buttonWeigth, buttonHeight);
-            PersonUIButton* nameCard = [[PersonUIButton alloc]initWith:frame friendItem:sortedList[i]];
+            PersonButton* nameCard = [[PersonButton alloc]initWith:frame friendItem:sortedList[i]];
             [nameCard addTarget:self
                          action:@selector(buttonClicked:)
                forControlEvents:UIControlEventTouchDown];
@@ -137,10 +137,10 @@ BOOL isSearching;
     
 }
 
--(void)buttonClicked:(PersonUIButton*)sender
+-(void)buttonClicked:(PersonButton*)sender
 {
     NSLog(@"buttonClick detacted");
-    if ([sender isKindOfClass:[PersonUIButton class]]) {
+    if ([sender isKindOfClass:[PersonButton class]]) {
         NSLog(@"This is a PersonalUIBUtton");
         //[sender.view setFrame:CGRectMake(0, 0, self.view.frame.size.width, 80)];
         NSLog(@"UserName is %@",sender.myFriend.userID);

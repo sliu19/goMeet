@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PersonUIButton.h"
+#import "PersonButton.h"
 #import "CreateNewEventViewController.h"
 
 @interface InviteFriendViewController : UIViewController<UITextFieldDelegate,UISearchBarDelegate>

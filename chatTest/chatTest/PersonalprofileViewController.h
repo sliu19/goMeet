@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Friend.h"
 
-@interface PersonalprofileViewController : UIViewController
+@interface PersonalprofileViewController : UIViewController<NSStreamDelegate>
 
 @property (strong, atomic) Friend* friends;
 

@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PersonUIButton.h"
+#import <CoreData/CoreData.h>
+#import "PersonButton.h"
 
-@interface FriendListViewController : UIViewController<UITextFieldDelegate,UISearchBarDelegate,NSStreamDelegate>
+@interface FriendListViewController : UIViewController<UITextFieldDelegate,UISearchBarDelegate,NSStreamDelegate,UIGestureRecognizerDelegate>
 
 @end

@@ -10,6 +10,10 @@
 
 @interface PersonalprofileViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *userName;
+@property (weak, nonatomic) IBOutlet UIImageView *userPic;
+@property (weak, nonatomic) IBOutlet UILabel *sexLabel;
+@property (weak, nonatomic) IBOutlet UILabel *phoneNumLabel;
+@property (weak, nonatomic) IBOutlet UILabel *locationLabel;
 
 
 @end
@@ -18,7 +22,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _userName.text = _friends.userID;
+    _userName.text = _friends.userNickName;
+    _userPic.layer.cornerRadius = _userPic.frame.size.width / 2;
+    _userPic.clipsToBounds = YES;
+    _phoneNumLabel.text = _friends.userID;
     // Do any additional setup after loading the view.
 }
 
