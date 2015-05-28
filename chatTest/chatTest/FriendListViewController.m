@@ -102,7 +102,7 @@ BOOL isSearching;
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Friend"];
     request.predicate = nil;
     if(isSearching){
-        NSPredicate *predicate =[NSPredicate predicateWithFormat:@"userName like[c] %@",_searchString];
+        NSPredicate *predicate =[NSPredicate predicateWithFormat:@"userNickName like[c] %@",_searchString];
         [request setPredicate:predicate];
 
     }
@@ -205,7 +205,6 @@ BOOL isSearching;
                             NSDictionary*result = [Communication parseFromJson:output];
                             NSArray* resultList = [result objectForKey:@"requests"];
                             NSLog(@"RESULT IS %@",[result objectForKey:@"requests"]);
-                            NSLog(@"RESULT IS %@",result);
                             _resultList = resultList;
                         }
                     }
