@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0610"
+   LastUpgradeVersion = "0630"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -15,23 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "EBD0D8A61A82E1F700B76C79"
-               BuildableName = "chatTest.app"
-               BlueprintName = "chatTest"
-               ReferencedContainer = "container:chatTest.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "EBD0D8BF1A82E1F700B76C79"
-               BuildableName = "chatTestTests.xctest"
-               BlueprintName = "chatTestTests"
-               ReferencedContainer = "container:chatTest.xcodeproj">
+               BuildableName = "&#x8d62;&#x5bb6;.app"
+               BlueprintName = "&#x8d62;&#x5bb6;"
+               ReferencedContainer = "container:&#x8d62;&#x5bb6;.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -42,24 +28,14 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "EBD0D8BF1A82E1F700B76C79"
-               BuildableName = "chatTestTests.xctest"
-               BlueprintName = "chatTestTests"
-               ReferencedContainer = "container:chatTest.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "EBD0D8A61A82E1F700B76C79"
-            BuildableName = "chatTest.app"
-            BlueprintName = "chatTest"
-            ReferencedContainer = "container:chatTest.xcodeproj">
+            BuildableName = "&#x8d62;&#x5bb6;.app"
+            BlueprintName = "&#x8d62;&#x5bb6;"
+            ReferencedContainer = "container:&#x8d62;&#x5bb6;.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -72,13 +48,14 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "EBD0D8A61A82E1F700B76C79"
-            BuildableName = "chatTest.app"
-            BlueprintName = "chatTest"
-            ReferencedContainer = "container:chatTest.xcodeproj">
+            BuildableName = "&#x8d62;&#x5bb6;.app"
+            BlueprintName = "&#x8d62;&#x5bb6;"
+            ReferencedContainer = "container:&#x8d62;&#x5bb6;.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -90,13 +67,14 @@
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "EBD0D8A61A82E1F700B76C79"
-            BuildableName = "chatTest.app"
-            BlueprintName = "chatTest"
-            ReferencedContainer = "container:chatTest.xcodeproj">
+            BuildableName = "&#x8d62;&#x5bb6;.app"
+            BlueprintName = "&#x8d62;&#x5bb6;"
+            ReferencedContainer = "container:&#x8d62;&#x5bb6;.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
