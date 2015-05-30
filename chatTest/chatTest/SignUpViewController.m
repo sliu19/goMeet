@@ -22,9 +22,11 @@
 @property (weak, nonatomic) IBOutlet UIButton *gender_M;
 @property (weak, nonatomic) IBOutlet UITextField *nickName;
 @property (nonatomic,strong)NSString* gender;
+@property (nonatomic,strong)UIColor* onClick;
 @end
 
 @implementation SignUpViewController
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -35,8 +37,11 @@
     self.phoneNum.delegate = self;
     self.passCode.delegate = self;
     self.passCodeConfirm.delegate = self;
+    _passCode.secureTextEntry = true;
+    _passCodeConfirm.secureTextEntry = true;
     self.nickName.delegate = self;
     self.gender = @"F";
+    _onClick = _gender_F.backgroundColor;
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(resignOnTap:)];
     [singleTap setNumberOfTapsRequired:1];
     [singleTap setNumberOfTouchesRequired:1];
@@ -102,12 +107,12 @@
 }
 */
 - (IBAction)gender_Female:(id)sender {
-    self.gender_F.backgroundColor = [UIColor greenColor];
+    self.gender_F.backgroundColor = _onClick;
     self.gender_M.backgroundColor = [UIColor grayColor];
     self.gender = @"F";
 }
 - (IBAction)gender_Male:(id)sender {
-    self.gender_M.backgroundColor = [UIColor greenColor];
+    self.gender_M.backgroundColor = _onClick;
     self.gender_F.backgroundColor = [UIColor grayColor];
     self.gender = @"M";
 
@@ -145,6 +150,15 @@
                         
                         if (nil != output) {
                             switch (output.intValue) {
+                                case 0:
+                                {
+                                    NSLog(@"Can not create this account!");
+                                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"无法注册" message:@"换个账号试试？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:nil];
+                                    // optional - add more buttons:
+                                    [alert addButtonWithTitle:@"Yes"];
+                                    [alert show];
+                                    break;
+                                }
                                 case 1:
                                 {
                                     NSLog(@"trigger segue");
@@ -177,7 +191,7 @@
                                 }
                                     
                                 default:
-                                    NSLog(@"output int val %@", output.intValue);
+                                    NSLog(@"output val %@", output);
                                     break;
                             }
                             NSLog(@"server said: %@", output);
@@ -189,9 +203,14 @@
             break;
             
         case NSStreamEventErrorOccurred:
+        {
             NSLog(@"Can not connect to the host!");
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"链接不上服务器" message:@"稍微晚些时候试试吧？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:nil];
+            // optional - add more buttons:
+            [alert addButtonWithTitle:@"Yes"];
+            [alert show];
             break;
-            
+        }
         case NSStreamEventEndEncountered:
             break;
             

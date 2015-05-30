@@ -29,10 +29,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+ // Do any additional setup after loading the view.
+}
+
+-(void)viewWillAppear:(BOOL)animated{
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    
-    //Send through NSStrem
-    NSString* userId = [prefs stringForKey:@"nickName"];
+        //Send through NSStrem
+    NSString* userId = [prefs stringForKey:@"userID"];
     NSData * userPic = [prefs dataForKey:@"userPic"];
     _PersonalnfoTextView.text = userId;
     _PersonalPicImageView.image=[[UIImage alloc]initWithData:userPic];
@@ -41,15 +44,9 @@
     _genderLabel.text = @"男";
     if ([[prefs stringForKey:@"gender"] isEqualToString:@"F"]){
         _genderLabel.text = @"女";
-        }
+    }
     _locationLabel.text = [prefs stringForKey:@"location"] ;
     _phoneNubmerLabel.text = [prefs stringForKey:@"userID"] ;
-    // Do any additional setup after loading the view.
-}
-
--(void)viewWillAppear:(BOOL)animated{
-    [[_window subviews] makeObjectsPerformSelector: @selector(removeFromSuperview)];
-    _startPoint = _window.bounds.origin;
 }
 
 - (void)didReceiveMemoryWarning {

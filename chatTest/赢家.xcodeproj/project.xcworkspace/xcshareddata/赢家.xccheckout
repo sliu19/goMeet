@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>17506C9C-931C-45C9-8C56-D698BEEE6DBE</string>
+	<key>IDESourceControlProjectName</key>
+	<string>赢家</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>4E38D719597463E5FDB9ED3C0137ED28455981AB</key>
+		<string>https://github.com/sliu19/goMeet.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>chatTest/赢家.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>4E38D719597463E5FDB9ED3C0137ED28455981AB</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/sliu19/goMeet.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>4E38D719597463E5FDB9ED3C0137ED28455981AB</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>4E38D719597463E5FDB9ED3C0137ED28455981AB</string>
+			<key>IDESourceControlWCCName</key>
+			<string>goMeet</string>
+		</dict>
+	</array>
+</dict>
+</plist>

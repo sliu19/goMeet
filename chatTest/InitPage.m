@@ -26,9 +26,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     //Send through NSStrem
+    [[NSURLCache sharedURLCache] removeAllCachedResponses];
     [Communication initNetworkCommunication];
     [inputStream setDelegate:self];
     [outputStream setDelegate:self];
+    _passCode.secureTextEntry= true;
     NSLog(@"InitPage");
     [self phoneNum].delegate= self;
     [self passCode].delegate = self;
@@ -116,18 +118,20 @@
                     len = [inputStream read:buffer maxLength:sizeof(buffer)];
                     if (len > 0) {
                         
-                        NSString *output = [[NSString alloc] initWithBytes:buffer length:len encoding:NSASCIIStringEncoding];
+                        NSString *output = [[NSString alloc] initWithBytes:buffer length:len encoding:NSUTF8StringEncoding];
                         
-                        if (nil != output) {
+                        if (0 == output.intValue) {
+                            
                             switch (output.intValue) {
+                                    
                                 case 1:
                                 {
                                     NSLog(@"successful Login");
                                     NSString *userID = [_phoneNum text];
                                     NSString *userPassCode  = [_passCode text];
                                     // Create instances of NSData
-                                    UIImage *contactImage = [UIImage imageNamed:@"testImage.jpeg"];
-                                    NSData *imageData = UIImageJPEGRepresentation(contactImage, 100);
+                                   // UIImage *contactImage = [UIImage imageNamed:@"testImage.jpeg"];
+                                    //NSData *imageData = UIImageJPEGRepresentation(contactImage, 100);
                                     
                                     
                                     // Store the data
@@ -135,9 +139,9 @@
                                     
                                     [defaults setObject:userID forKey:@"userID"];
                                     [defaults setObject:userPassCode forKey:@"passCode"];
-                                    [defaults setObject:@"F" forKey:@"gender"];
-                                    [defaults setObject:@"testNickName" forKey:@"nickName"];
-                                    [defaults setObject:imageData forKey:@"userPic"];
+                                    //[defaults setObject:@"F" forKey:@"gender"];
+                                    //[defaults setObject:@"testNickName" forKey:@"nickName"];
+                                    //[defaults setObject:imageData forKey:@"userPic"];
                                     [defaults synchronize];
 
                                     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
@@ -159,8 +163,14 @@
             break;
             
         case NSStreamEventErrorOccurred:
+        {
             NSLog(@"Can not connect to the host!");
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"链接不上服务器" message:@"稍微晚些时候试试吧？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:nil];
+            // optional - add more buttons:
+            [alert addButtonWithTitle:@"Yes"];
+            [alert show];
             break;
+        }
             
         case NSStreamEventEndEncountered:
             break;

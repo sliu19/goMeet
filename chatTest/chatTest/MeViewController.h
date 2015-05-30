@@ -10,7 +10,7 @@
 #import "OwnerNewsFeed.h"
 #import "PublicEvent.h"
 
-@interface MeViewController : UIViewController
+@interface MeViewController : UIViewController<NSStreamDelegate>
 @property(nonatomic,strong) NSManagedObjectContext *managedObjectContent;
 
 @end
