@@ -35,7 +35,7 @@
 -(void)viewWillAppear:(BOOL)animated{
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
         //Send through NSStrem
-    NSString* userId = [prefs stringForKey:@"userID"];
+    NSString* userId = [prefs stringForKey:@"nickName"];
     NSData * userPic = [prefs dataForKey:@"userPic"];
     _PersonalnfoTextView.text = userId;
     _PersonalPicImageView.image=[[UIImage alloc]initWithData:userPic];

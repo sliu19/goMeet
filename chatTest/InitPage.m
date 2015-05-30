@@ -120,43 +120,59 @@
                         
                         NSString *output = [[NSString alloc] initWithBytes:buffer length:len encoding:NSUTF8StringEncoding];
                         
-                        if (0 == output.intValue) {
+                        if (nil!= output) {
+                            NSLog(@"server said: !%@!", output);
+                            if ([output isEqualToString:@"0\n"]) {
+                                NSLog(@"Can not login!");
+                                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"登陆失败" message:@"密码输错了嘛？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:nil];
+                                // optional - add more buttons:
+                                //[alert addButtonWithTitle:@"再试一次"];
+                                [alert show];
+                                
+                                break;
+                            }
+                            if (1==output.intValue) {
+                                NSLog(@"Find user");
+                                NSString *response  = [NSString stringWithFormat:@"seekuser:%@",_phoneNum.text];
+                                NSData *data = [[NSData alloc] initWithData:[response dataUsingEncoding:NSUTF8StringEncoding]];
+                                [Communication send:data];
+                                break;
+
+                            }
+                            //INPUT :seekuser:6505758649
+                            //OUTPUT : {"introduction":"password","email":"myemail","nickname":"mynickname","location":"mylocation","is_male":true}
+                            NSLog(@"successful Login");
                             
-                            switch (output.intValue) {
-                                    
-                                case 1:
-                                {
-                                    NSLog(@"successful Login");
-                                    NSString *userID = [_phoneNum text];
-                                    NSString *userPassCode  = [_passCode text];
+                            NSString *userID = [_phoneNum text];
+                            NSString *userPassCode  = [_passCode text];
                                     // Create instances of NSData
                                    // UIImage *contactImage = [UIImage imageNamed:@"testImage.jpeg"];
                                     //NSData *imageData = UIImageJPEGRepresentation(contactImage, 100);
+                            NSDictionary * userInfo = [Communication parseFromJson:[output dataUsingEncoding:NSUTF8StringEncoding]];
+                            NSLog(@"userInfo %@",userInfo);
+                            // Store the data
+                            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
                                     
-                                    
-                                    // Store the data
-                                    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-                                    
-                                    [defaults setObject:userID forKey:@"userID"];
-                                    [defaults setObject:userPassCode forKey:@"passCode"];
-                                    //[defaults setObject:@"F" forKey:@"gender"];
-                                    //[defaults setObject:@"testNickName" forKey:@"nickName"];
-                                    //[defaults setObject:imageData forKey:@"userPic"];
-                                    [defaults synchronize];
-
-                                    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-                                    MainTabBarViewController *viewController = (MainTabBarViewController *)[storyboard instantiateViewControllerWithIdentifier:@"GoMeet"];
-                                    [viewController setSelectedIndex:0];
-                                    [self presentViewController:viewController animated:YES completion:nil];                                    break;
-                                }
-                            
-                                default:
-                                    NSLog(@"output int val %@", output.intValue);
-                                    break;
+                            [defaults setObject:userID forKey:@"userID"];
+                            [defaults setObject:userPassCode forKey:@"passCode"];
+                            [defaults setObject:[userInfo objectForKey:@"introduction"] forKey:@"intro"];
+                            [defaults setObject:[userInfo objectForKey:@"email"] forKey:@"email"];
+                            [defaults setObject:[userInfo objectForKey:@"location"] forKey:@"location"];
+                            [defaults setObject:[userInfo objectForKey:@"nickname"] forKey:@"nickName"];
+                            [defaults setObject:@"F" forKey:@"gender"];
+                            NSNumber* isMale =(NSNumber*)[userInfo objectForKey:@"is_male"];
+                            if ([isMale boolValue]==YES) {
+                                [defaults setObject:@"M" forKey:@"gender"];
                             }
-                            NSLog(@"server said: %@", output);
-                            
+                            [defaults synchronize];
+
+                            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                            MainTabBarViewController *viewController = (MainTabBarViewController *)[storyboard instantiateViewControllerWithIdentifier:@"GoMeet"];
+                            [viewController setSelectedIndex:0];
+                            [self presentViewController:viewController animated:YES completion:nil];
+                            break;
                         }
+                        NSLog(@"server said: %@", output);
                     }
                 }
             }
@@ -167,7 +183,7 @@
             NSLog(@"Can not connect to the host!");
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"链接不上服务器" message:@"稍微晚些时候试试吧？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:nil];
             // optional - add more buttons:
-            [alert addButtonWithTitle:@"Yes"];
+            //[alert addButtonWithTitle:@"Yes"];
             [alert show];
             break;
         }

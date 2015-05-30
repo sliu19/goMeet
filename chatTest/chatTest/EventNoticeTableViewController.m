@@ -19,6 +19,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSLog(@"EventNoticePage");
     [inputStream setDelegate:self];
     [outputStream setDelegate:self];
     _notificationMessage = [[NSMutableArray alloc]init];
@@ -132,10 +133,10 @@
                         NSString *output = [[NSString alloc] initWithBytes:buffer length:len encoding:NSUTF8StringEncoding];
                         
                         if (nil != output) {
-                            NSLog(@"have friend request available");
-                            //output = @"{\"events\":[{\"description\":\"my newsfeed event\",\"title\":\"newfeed event\",\"event_id\":\"47ec6551-fee1-11e4-b58d-a45e60c40087\",\"end_time\":1432120435578,\"begin_time\":1432120425578,\"host_id\":111111111,\"location\":\"newsfeed_event\"},{\"description\":\"my newsfeed event\",\"title\":\"newfeed event\",\"event_id\":\"ecde604c-fee3-11e4-bbb1-a45e60c40087\",\"end_time\":1432121571303,\"begin_time\":1432121561303,\"host_id\":111111111,\"location\":\"newsfeed_event\"}],\"new_friends\":[11111111]}";
+                            NSLog(@"have friend invite available");
+                            output = @"{\"events\":[{\"description\":\"my newsfeed event\",\"title\":\"newfeed event\",\"event_id\":\"47ec6551-fee1-11e4-b58d-a45e60c40087\",\"end_time\":1432120435578,\"begin_time\":1432120425578,\"host_id\":111111111,\"location\":\"newsfeed_event\"},{\"description\":\"my newsfeed event\",\"title\":\"newfeed event\",\"event_id\":\"ecde604c-fee3-11e4-bbb1-a45e60c40087\",\"end_time\":1432121571303,\"begin_time\":1432121561303,\"host_id\":111111111,\"location\":\"newsfeed_event\"}],\"new_friends\":[11111111]}";
                             NSLog(@"OUTPUT is %@",output);
-                            NSDictionary*result = [Communication parseFromJson:output];
+                            NSDictionary*result = [Communication parseFromJson:[output dataUsingEncoding:NSUTF8StringEncoding]];
                             NSArray* resultList = [result objectForKey:@"events"];
                             _notificationMessage = resultList;
                         }

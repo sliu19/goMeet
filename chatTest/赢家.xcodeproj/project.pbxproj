@@ -32,6 +32,7 @@
 		F776C9891B121748006D48A9 /* Notification.m in Sources */ = {isa = PBXBuildFile; fileRef = F776C9881B121748006D48A9 /* Notification.m */; };
 		F776C98D1B121AAA006D48A9 /* Friend.m in Sources */ = {isa = PBXBuildFile; fileRef = F776C98C1B121AAA006D48A9 /* Friend.m */; };
 		F776C9911B12EB0E006D48A9 /* active-state.png in Resources */ = {isa = PBXBuildFile; fileRef = F776C9901B12EB0E006D48A9 /* active-state.png */; };
+		F7789EAE1B1965F0007FD7A5 /* ChangePasscodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7789EAD1B1965F0007FD7A5 /* ChangePasscodeViewController.m */; };
 		F77C90101AA3F4A60005EC2F /* Lib.m in Sources */ = {isa = PBXBuildFile; fileRef = F77C900F1AA3F4A60005EC2F /* Lib.m */; };
 		F77EC12D1AE86D9400D790C2 /* GroupChatTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F77EC12C1AE86D9400D790C2 /* GroupChatTableViewCell.m */; };
 		F77EC1321AE8720A00D790C2 /* EventListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F77EC1311AE8720A00D790C2 /* EventListTableViewCell.m */; };
@@ -270,6 +271,8 @@
 		F776C98B1B121AAA006D48A9 /* Friend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Friend.h; path = ../Friend.h; sourceTree = "<group>"; };
 		F776C98C1B121AAA006D48A9 /* Friend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Friend.m; path = ../Friend.m; sourceTree = "<group>"; };
 		F776C9901B12EB0E006D48A9 /* active-state.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "active-state.png"; sourceTree = "<group>"; };
+		F7789EAC1B1965F0007FD7A5 /* ChangePasscodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChangePasscodeViewController.h; path = ../ChangePasscodeViewController.h; sourceTree = "<group>"; };
+		F7789EAD1B1965F0007FD7A5 /* ChangePasscodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChangePasscodeViewController.m; path = ../ChangePasscodeViewController.m; sourceTree = "<group>"; };
 		F77C900F1AA3F4A60005EC2F /* Lib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Lib.m; sourceTree = "<group>"; };
 		F77C90111AA3F4B50005EC2F /* Lib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Lib.h; sourceTree = "<group>"; };
 		F77EC12B1AE86D9400D790C2 /* GroupChatTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupChatTableViewCell.h; sourceTree = "<group>"; };
@@ -1119,6 +1122,8 @@
 				F7163FE11B02A33600FB23D4 /* SettingViewController.m */,
 				F7163FE31B02A34C00FB23D4 /* ModifyProfileViewController.h */,
 				F7163FE41B02A34C00FB23D4 /* ModifyProfileViewController.m */,
+				F7789EAC1B1965F0007FD7A5 /* ChangePasscodeViewController.h */,
+				F7789EAD1B1965F0007FD7A5 /* ChangePasscodeViewController.m */,
 			);
 			name = Me;
 			sourceTree = "<group>";
@@ -1949,6 +1954,7 @@
 				F7FA88E01AC7094600F88F94 /* XMPPCapabilitiesCoreDataStorage.m in Sources */,
 				F7FA88FC1AC7094600F88F94 /* NSXMLElement+XEP_0297.m in Sources */,
 				F7A11DA91ABD314100DF9AEB /* DDDispatchQueueLogFormatter.m in Sources */,
+				F7789EAE1B1965F0007FD7A5 /* ChangePasscodeViewController.m in Sources */,
 				F7FA88EB1AC7094600F88F94 /* XMPPPresence+XEP_0172.m in Sources */,
 				F7FA88A31AC7094600F88F94 /* XMPPGoogleSharedStatus.m in Sources */,
 				F7FA88D01AC7094600F88F94 /* XMPPvCardTempTel.m in Sources */,

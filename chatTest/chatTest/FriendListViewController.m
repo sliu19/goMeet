@@ -24,7 +24,6 @@
 
 @implementation FriendListViewController
 BOOL isSearching;
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setup];
@@ -35,9 +34,9 @@ BOOL isSearching;
     _redDot.layer.cornerRadius = _redDot.frame.size.width / 2;
     _redDot.clipsToBounds = YES;
     //show reddot for test purpose
-    _redDot.hidden = true;
+    _redDot.hidden = YES;
     [inputStream setDelegate:self];
-    [inputStream setDelegate:self];
+    [outputStream setDelegate:self];
     _resultList = [[NSArray alloc]init];
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     NSString* request = [NSString stringWithFormat:@"getfriendrequests:%@",[prefs objectForKey:@"userID"]];

@@ -11,14 +11,17 @@
 #import "Communication.h"
 
 @interface AddFriendViewController ()
-@property (weak, nonatomic) IBOutlet UITextField *addFriendTextField;
-@property (weak, nonatomic) IBOutlet UIButton *addFriendButton;
+
 @property (nonatomic, assign) id currentResponder;
 @property (weak, nonatomic) IBOutlet UIView *resultView;
-@property (weak, nonatomic) IBOutlet UISearchBar *searchFriend;
+@property (weak, nonatomic) IBOutlet UITextField *searchTextField;
+
 @property (weak, nonatomic) IBOutlet UIImageView *userImage;
 @property (weak, nonatomic) IBOutlet UITextField *MessageTextField;
 @property (weak, nonatomic) IBOutlet UIButton *confirmSearch;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *locationLabel;
+@property (weak, nonatomic) IBOutlet UILabel *introLabel;
 @property (strong,nonatomic) NSString* newfriend;
 @end
 
@@ -28,16 +31,17 @@
     [super viewDidLoad];
     [inputStream setDelegate:self];
     [outputStream setDelegate:self];
+    [_MessageTextField setDelegate:self];
+    [_searchTextField setDelegate:self];
      NSLog(@"AddFriendPage");
-    _addFriendTextField.delegate = self;
+    _searchTextField.delegate = self;
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(resignOnTap:)];
     singleTap.numberOfTapsRequired = 1;
-    _searchFriend.delegate = self;
-    _newfriend = @"111111111";
-    //[self setUserInteractionEnabled:YES];
-    //[iv addGestureRecognizer:singleTap];
+    _searchTextField.delegate = self;
+    _resultView.hidden = YES;
+    _userImage.layer.cornerRadius = _userImage.frame.size.width / 2;
+    _userImage.clipsToBounds = YES;
 
-    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
@@ -45,8 +49,8 @@
     // Dispose of any resources that can be recreated.
 }
 - (IBAction)searchPeople:(id)sender {
-    NSLog(@"searchNumber %@",_searchFriend.text);
-    _newfriend = _searchFriend.text;
+    NSLog(@"searchNumber %@",_searchTextField.text);
+    _newfriend = _searchTextField.text;
     //seekuser:6505758649
     NSString* response = [NSString stringWithFormat:@"seekuser:%@",_newfriend];
     NSData *data = [[NSData alloc] initWithData:[response dataUsingEncoding:NSUTF8StringEncoding]];
@@ -62,11 +66,30 @@
     //addfriend:6505758649#1234567899
     NSString* userId = [prefs stringForKey:@"userID"];
     //addfriend:{"src_user":12341234,"msg":"omg my message","dst_user":68958695}
-    NSDictionary* dict = @{@"src_user":userId,@"msg":@"test test test friend request",@"dst_user":_newfriend};
+    NSDictionary* dict = @{@"src_user":userId,@"msg":_MessageTextField.text,@"dst_user":_searchTextField.text};
     NSString* response = [NSString stringWithFormat:@"addfriend:%@",[Communication parseIntoJson:dict]];
     NSData *data = [[NSData alloc] initWithData:[response dataUsingEncoding:NSUTF8StringEncoding]];
-    [Communication send:data];    
+    [Communication send:data];
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    MainTabBarViewController *viewController = (MainTabBarViewController *)[storyboard instantiateViewControllerWithIdentifier:@"GoMeet"];
+    [viewController setSelectedIndex:0];
+    [self presentViewController:viewController animated:YES completion:nil];
 }
+
+-(BOOL) textFieldShouldReturn: (UITextField *) textField {
+    [textField resignFirstResponder];
+    return YES;
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    self.currentResponder = textField;
+}
+- (void)resignOnTap:(id)iSender {
+    [self.currentResponder resignFirstResponder];
+    // self.becomeFirstResponder();
+}
+
 
 - (void)stream:(NSStream *)theStream handleEvent:(NSStreamEvent)streamEvent {
     
@@ -95,15 +118,21 @@
                 while ([inputStream hasBytesAvailable]) {
                     len = [inputStream read:buffer maxLength:sizeof(buffer)];
                     if (len > 0) {
-                        
-                       NSData *output = [[NSData alloc] initWithBytes:buffer length:len];
-                        
+                        NSString *output = [[NSString alloc] initWithBytes:buffer length:len encoding:NSUTF8StringEncoding];
                         if (nil != output) {
-                                UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-                                    MainTabBarViewController *viewController = (MainTabBarViewController *)[storyboard instantiateViewControllerWithIdentifier:@"GoMeet"];
-                                [viewController setSelectedIndex:0];
-                                [self presentViewController:viewController animated:YES completion:nil];
-
+                            if ([output  isEqualToString:@"{}\n"]) {
+                                NSLog(@"Can not find!");
+                                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"找不到用户" message:@"账号输错了嘛？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:nil];
+                                [alert show];
+                                break;
+                            }
+                            NSDictionary * userInfo = [Communication parseFromJson:[output dataUsingEncoding:NSUTF8StringEncoding]];
+                            NSLog(@"userInfo %@",userInfo);
+                            //OUTPUT : {"introduction":"password","email":"myemail","nickname":"mynickname","location":"mylocation","is_male":true}
+                            _nameLabel.text = [userInfo objectForKey:@"nickname"];
+                            _locationLabel.text = [userInfo objectForKey:@"location"];
+                            _introLabel.text = [userInfo objectForKey:@"introduction"];
+                            _resultView.hidden = false;
                             NSLog(@"server said: %@", output);
                         }
                         
@@ -131,30 +160,6 @@
     
 }
 
-
--(BOOL) textFieldShouldReturn: (UITextField *) textField {
-    [textField resignFirstResponder];
-    return YES;
-}
-
-- (void)textFieldDidBeginEditing:(UITextField *)textField {
-    self.currentResponder = textField;
-}
-
--(BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar{
-    [searchBar resignFirstResponder];
-    return YES;
-}
-
--(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
-    [searchBar resignFirstResponder]; // using method search bar
-    [_searchFriend resignFirstResponder]; // using actual object name
-    [self.view endEditing:YES];
-}
-
-- (void)resignOnTap:(id)iSender {
-    [self.currentResponder resignFirstResponder];
-}
 
 
 /*

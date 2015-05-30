@@ -217,7 +217,7 @@
                         
                         if (nil != output) {
                             NSLog(@"server said: \"%@\", our uuid \"%@\"", [output uppercaseString],_uuid);
-                            if ([[output uppercaseString] isEqualToString:_uuid]) {
+                            if ([[output uppercaseString] containsString:_uuid]) {
                                 //Return to main page
                                 UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
                                 MainTabBarViewController *viewController = (MainTabBarViewController *)[storyboard instantiateViewControllerWithIdentifier:@"GoMeet"];
