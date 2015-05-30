@@ -24,7 +24,7 @@
 
 @property (nonatomic, weak) NSTimer *cameraTimer;
 @property (nonatomic) NSMutableArray *capturedImages;
-
+@property (nonatomic) RSKImageCropViewController* imageCropController;
 
 @end
 
@@ -56,6 +56,11 @@
     doubleTap.numberOfTapsRequired = 2;
     [_userPic setUserInteractionEnabled:YES];
     [_userPic addGestureRecognizer:doubleTap];
+    
+    
+    _userPic.layer.cornerRadius = _userPic.frame.size.width / 2;
+    _userPic.clipsToBounds = YES;
+
 
     
     // Do any additional setup after loading the view.
@@ -98,19 +103,44 @@
 }
 
 
--(BOOL) textFieldShouldReturn: (UITextField *) textField {
-    [textField resignFirstResponder];
-    return YES;
-}
+
 - (void)changePicTap:(id)iSender {
     RSKImageCropViewController *imageCropVC = [[RSKImageCropViewController alloc] initWithImage:_userPic.image];
     imageCropVC.delegate = self;
     [self.navigationController pushViewController:imageCropVC animated:YES];
 }
+-(BOOL) textFieldShouldReturn: (UITextField *) textField {
+    [textField resignFirstResponder];
+    return YES;
+}
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
     self.currentResponder = textField;
+    [self animateTextField: textField up: YES];
 }
+-(void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    [self.currentResponder resignFirstResponder];
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    [self animateTextField: textField up: NO];
+}
+
+- (void) animateTextField: (UITextField *)textField up: (BOOL) up
+{
+    const int movementDistance = 140; // tweak as needed
+    const float movementDuration = 0.3f; // tweak as needed
+    
+    int movement = (up ? -movementDistance : movementDistance);
+    
+    [UIView beginAnimations: @"anim" context: nil];
+    [UIView setAnimationBeginsFromCurrentState: YES];
+    [UIView setAnimationDuration: movementDuration];
+    self.view.frame = CGRectOffset(self.view.frame, 0, movement);
+    [UIView commitAnimations];
+}
+
 - (void)resignOnTap:(id)iSender {
     [self.currentResponder resignFirstResponder];
 }
@@ -318,7 +348,8 @@
 {
     self.userPic.image = croppedImage;
     _userPic.image = croppedImage;
-    [self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController presentViewController:self.imageCropController animated:NO completion: nil];
+   // [self presentViewController:self.imagePickerController animated:YES completion:nil];
 }
 
 // The original image has been cropped. Additionally provides a rotation angle used to produce image.

@@ -78,7 +78,7 @@ static const CGFloat kLayoutImageScrollViewAnimationDuration = 0.25;
         _avoidEmptySpaceAroundImage = NO;
         _applyMaskToCroppedImage = NO;
         _rotationEnabled = NO;
-        _cropMode = RSKImageCropModeSquare;
+        _cropMode = RSKImageCropModeCircle;
     }
     return self;
 }

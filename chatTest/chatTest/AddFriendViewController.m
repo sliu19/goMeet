@@ -84,6 +84,29 @@
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
     self.currentResponder = textField;
+    [self animateTextField: textField up: YES];
+}
+-(void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    [self.currentResponder resignFirstResponder];
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    [self animateTextField: textField up: NO];
+}
+
+- (void) animateTextField: (UITextField *)textField up: (BOOL) up
+{
+    const int movementDistance = 140; // tweak as needed
+    const float movementDuration = 0.3f; // tweak as needed
+    
+    int movement = (up ? -movementDistance : movementDistance);
+    
+    [UIView beginAnimations: @"anim" context: nil];
+    [UIView setAnimationBeginsFromCurrentState: YES];
+    [UIView setAnimationDuration: movementDuration];
+    self.view.frame = CGRectOffset(self.view.frame, 0, movement);
+    [UIView commitAnimations];
 }
 - (void)resignOnTap:(id)iSender {
     [self.currentResponder resignFirstResponder];
@@ -121,7 +144,7 @@
                         NSString *output = [[NSString alloc] initWithBytes:buffer length:len encoding:NSUTF8StringEncoding];
                         if (nil != output) {
                             if ([output  isEqualToString:@"{}\n"]) {
-                                NSLog(@"Can not find!");
+                                NSLog(@"Can not find user!");
                                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"找不到用户" message:@"账号输错了嘛？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:nil];
                                 [alert show];
                                 break;

@@ -14,8 +14,7 @@
 
 @interface MeViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *PersonalPicImageView;
-@property (weak, nonatomic) IBOutlet UITextView *PersonalnfoTextView;
-@property (weak, nonatomic) IBOutlet UIScrollView *window;
+@property (weak, nonatomic) IBOutlet UILabel *userNickNameLabel;
 @property (weak, nonatomic) NSArray* OwnerNewsFeed;
 @property (nonatomic) CGPoint startPoint;
 @property (weak, nonatomic) IBOutlet UILabel *genderLabel;
@@ -35,9 +34,9 @@
 -(void)viewWillAppear:(BOOL)animated{
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
         //Send through NSStrem
-    NSString* userId = [prefs stringForKey:@"nickName"];
+    NSString* userNickName = [prefs stringForKey:@"nickName"];
     NSData * userPic = [prefs dataForKey:@"userPic"];
-    _PersonalnfoTextView.text = userId;
+    _userNickNameLabel.text = userNickName;
     _PersonalPicImageView.image=[[UIImage alloc]initWithData:userPic];
     _PersonalPicImageView.layer.cornerRadius = _PersonalPicImageView.frame.size.width / 2;
     _PersonalPicImageView.clipsToBounds = YES;

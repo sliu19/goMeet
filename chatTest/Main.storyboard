@@ -536,12 +536,6 @@
                             <imageView opaque="NO" userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="beach.jpeg" translatesAutoresizingMaskIntoConstraints="NO" id="LA3-eR-KYU">
                                 <rect key="frame" x="0.0" y="64" width="320" height="260"/>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Name:Simin Liu          1               Place:UIUC" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="uCa-A1-AoG">
-                                <rect key="frame" x="91" y="162" width="139" height="80"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="testImage.jpeg" translatesAutoresizingMaskIntoConstraints="NO" id="yNV-fK-9Xe">
                                 <rect key="frame" x="122" y="98" width="76" height="71"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -615,13 +609,18 @@
                                     <segue destination="dn7-ts-Wn3" kind="push" id="gwt-I1-Ew8"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aFZ-Lm-Qej">
+                                <rect key="frame" x="139" y="192" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="个人中心" id="fcT-EQ-5IR">
                         <barButtonItem key="rightBarButtonItem" title="设置" id="7wp-jT-eue">
                             <connections>
-                                <action selector="LogOut:" destination="5zJ-5l-JRg" id="WBo-QA-3bt"/>
                                 <segue destination="FwR-nS-LO1" kind="push" id="i0Q-oC-EF9"/>
                             </connections>
                         </barButtonItem>
@@ -629,10 +628,10 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="PersonalPicImageView" destination="yNV-fK-9Xe" id="OY2-aG-J7i"/>
-                        <outlet property="PersonalnfoTextView" destination="uCa-A1-AoG" id="SEw-uf-eGr"/>
                         <outlet property="genderLabel" destination="JXa-qO-ldP" id="kL5-NI-307"/>
                         <outlet property="locationLabel" destination="i9P-SG-gKL" id="lEu-AH-Zql"/>
                         <outlet property="phoneNubmerLabel" destination="Sdf-G0-Q3h" id="1TU-7l-mi6"/>
+                        <outlet property="userNickNameLabel" destination="aFZ-Lm-Qej" id="7wW-5N-DCc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8bb-91-jLw" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -821,9 +820,6 @@
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ylC-JU-62i">
                                 <rect key="frame" x="0.0" y="96" width="320" height="190"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="testImageApple.jpeg" translatesAutoresizingMaskIntoConstraints="NO" id="dCS-6o-uIf">
-                                        <rect key="frame" x="16" y="8" width="60" height="60"/>
-                                    </imageView>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="昵称" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AUC-Re-vqq">
                                         <rect key="frame" x="128" y="46" width="179" height="30"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -891,6 +887,9 @@
                                         <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="testImageApple.jpeg" translatesAutoresizingMaskIntoConstraints="NO" id="dCS-6o-uIf">
+                                        <rect key="frame" x="16" y="16" width="60" height="60"/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
@@ -1570,9 +1569,6 @@
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bT0-oB-aEq">
                                         <rect key="frame" x="0.0" y="15" width="320" height="103"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="testImage.jpeg" translatesAutoresizingMaskIntoConstraints="NO" id="VIg-Z9-hiy">
-                                                <rect key="frame" x="8" y="8" width="96" height="87"/>
-                                            </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="NickName" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dEH-4v-rOU">
                                                 <rect key="frame" x="128" y="8" width="168" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -1591,6 +1587,9 @@
                                                 <color key="textColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="testImage.jpeg" translatesAutoresizingMaskIntoConstraints="NO" id="VIg-Z9-hiy">
+                                                <rect key="frame" x="24" y="19" width="71" height="66"/>
+                                            </imageView>
                                         </subviews>
                                         <color key="backgroundColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>

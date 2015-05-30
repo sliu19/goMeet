@@ -79,6 +79,10 @@
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
     self.currentResponder = textField;
 }
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    [self.currentResponder resignFirstResponder];
+}
+
 - (void)resignOnTap:(id)iSender {
     [self.currentResponder resignFirstResponder];
     // self.becomeFirstResponder();
