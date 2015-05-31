@@ -11,7 +11,8 @@
 #import "MainTabBarViewController.h"
 #import "Communication.h"
 #import "InviteFriendViewController.h"
-#define inviteViewHeight 30.0
+#import "inviteFriendView.h"
+#define inviteViewHeight 60.0
 
 @interface CreateNewEventViewController()
 @property (weak, nonatomic) IBOutlet UIScrollView *mainView;
@@ -29,7 +30,7 @@
 @property (nonatomic,strong)NSString* uuid;
 @property (nonatomic,strong)UIButton* publicButton;
 @property (nonatomic,strong)UIButton* privateButton;
-@property (nonatomic,strong)UIView* invitePicView;
+@property (nonatomic,strong)inviteFriendView* invitePicView;
 @end
 
 
@@ -314,12 +315,14 @@
 }
 -(void)setFoo:(NSMutableArray *)inviteList{
     NSLog(@"Desplay %@",inviteList);
-    _inviteList = inviteList;
-    CGFloat lines = ceilf([_inviteList count]);
+    _inviteList = [[NSMutableArray alloc]initWithArray:inviteList];
+    //integer round up
+    int lines =1 + (int)([_inviteList count]-1)/5;
     CGSize viewSize = CGSizeMake(_mainView.frame.size.width, lines*inviteViewHeight);
     CGFloat viewOrigin = _datePicker.frame.origin.y + 180;
-    invitePicView = [[UIView alloc]initWithFrame:CGRectMake(0, viewOrigin, viewSize.width, viewSize.height)];
-    invitePicView.backgroundColor = [UIColor whiteColor];
+    invitePicView = [[inviteFriendView alloc]initWithFrame:CGRectMake(0, viewOrigin, viewSize.width, viewSize.height)];
+    invitePicView.inviteList = _inviteList;
+    invitePicView.backgroundColor = self.view.backgroundColor;
     [_mainView addSubview:invitePicView];
     [self moveButton:viewSize.height+30];
 }

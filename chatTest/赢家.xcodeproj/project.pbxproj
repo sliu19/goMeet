@@ -22,6 +22,7 @@
 		F737233C1B05454E00BFC8D3 /* EventNoticeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F737233B1B05454E00BFC8D3 /* EventNoticeTableViewController.m */; };
 		F737233F1B06934300BFC8D3 /* InviteFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F737233E1B06934300BFC8D3 /* InviteFriendViewController.m */; };
 		F749C5461B1ABBE400EB5388 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F749C5451B1ABBE400EB5388 /* AppDelegate.m */; };
+		F749C5491B1B48A400EB5388 /* inviteFriendView.m in Sources */ = {isa = PBXBuildFile; fileRef = F749C5481B1B48A400EB5388 /* inviteFriendView.m */; };
 		F74BD9CC1B0D1CB50036F104 /* Divider.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F74BD9CB1B0D1CB50036F104 /* Divider.jpg */; };
 		F74BD9D11B0E369F0036F104 /* UILabel+WhiteUIDatePickerLabels.m in Sources */ = {isa = PBXBuildFile; fileRef = F74BD9D01B0E369F0036F104 /* UILabel+WhiteUIDatePickerLabels.m */; };
 		F76F4ABD1AF2F92000A0E525 /* FriendListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F76F4ABC1AF2F92000A0E525 /* FriendListViewController.m */; };
@@ -250,6 +251,8 @@
 		F737233D1B06934300BFC8D3 /* InviteFriendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InviteFriendViewController.h; sourceTree = "<group>"; };
 		F737233E1B06934300BFC8D3 /* InviteFriendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InviteFriendViewController.m; sourceTree = "<group>"; };
 		F749C5451B1ABBE400EB5388 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		F749C5471B1B48A400EB5388 /* inviteFriendView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = inviteFriendView.h; sourceTree = "<group>"; };
+		F749C5481B1B48A400EB5388 /* inviteFriendView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = inviteFriendView.m; sourceTree = "<group>"; };
 		F74BD9CB1B0D1CB50036F104 /* Divider.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Divider.jpg; sourceTree = "<group>"; };
 		F74BD9CF1B0E369F0036F104 /* UILabel+WhiteUIDatePickerLabels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+WhiteUIDatePickerLabels.h"; sourceTree = "<group>"; };
 		F74BD9D01B0E369F0036F104 /* UILabel+WhiteUIDatePickerLabels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+WhiteUIDatePickerLabels.m"; sourceTree = "<group>"; };
@@ -759,6 +762,8 @@
 			children = (
 				F76F4AC71AF2FFFE00A0E525 /* FriendCell.h */,
 				F76F4AC81AF2FFFE00A0E525 /* FriendCell.m */,
+				F749C5471B1B48A400EB5388 /* inviteFriendView.h */,
+				F749C5481B1B48A400EB5388 /* inviteFriendView.m */,
 			);
 			name = PersonalProfile;
 			sourceTree = "<group>";
@@ -2062,6 +2067,7 @@
 				F776C9891B121748006D48A9 /* Notification.m in Sources */,
 				F7FA88EF1AC7094600F88F94 /* XMPPStreamManagementMemoryStorage.m in Sources */,
 				F7A11E1D1ABD376200DF9AEB /* XMPPConstants.m in Sources */,
+				F749C5491B1B48A400EB5388 /* inviteFriendView.m in Sources */,
 				F7FA88F11AC7094600F88F94 /* XMPPStreamManagement.m in Sources */,
 				F776C98D1B121AAA006D48A9 /* Friend.m in Sources */,
 				F7F2BEF41AB9EDA300C810E5 /* PersonalprofileViewController.m in Sources */,
