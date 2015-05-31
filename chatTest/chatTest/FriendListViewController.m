@@ -158,7 +158,7 @@ BOOL isSearching;
     cell.backgroundColor = [UIColor clearColor];
     NSLog(@"index number is %lu",indexPath.row);
     cell.myFriend = _sortedList[indexPath.row];
-    cell.selectedPic.hidden = true;
+    [cell deselect:cell];
     return cell;
 }
 
