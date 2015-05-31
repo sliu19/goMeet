@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "OwnerNewsFeed.h"
 #import "PublicEvent.h"
 
 @interface MeViewController : UIViewController<NSStreamDelegate>

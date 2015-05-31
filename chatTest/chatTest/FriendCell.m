@@ -10,7 +10,7 @@
 
 #import "FriendCell.h"
 #import "PersonalprofileViewController.h"
-#define OFF_SET 18.0
+#define OFF_SET 20.0
 
 
 @implementation FriendCell
@@ -41,20 +41,27 @@ BOOL selected;
 
     UIImage* selectPic = [UIImage imageNamed:@"greenImage.jpg"];
     selectedPic = [[UIImageView alloc] initWithImage:selectPic];
-    selectedPic.frame = CGRectMake(OFF_SET, OFF_SET, self.bounds.size.width-2*OFF_SET, self.bounds.size.width-2*OFF_SET);
-    selectedPic.bounds = CGRectMake(OFF_SET, OFF_SET, self.bounds.size.width-2*OFF_SET, self.bounds.size.width-2*OFF_SET);
+    selectedPic.frame = CGRectMake(self.bounds.size.width-2*OFF_SET, self.bounds.size.width-2*OFF_SET, 20, 20);
+    selectedPic.bounds = CGRectMake(self.bounds.size.width-2*OFF_SET, self.bounds.size.width-2*OFF_SET, 20, 20);
     selectedPic.layer.cornerRadius = selectedPic.frame.size.width / 2;
     selectedPic.clipsToBounds = YES;
-    NSLog(@"set selected color %f",selectedPic.alpha);
-    selectedPic.alpha = 0.0;
+   // NSLog(@"set selected color %@",selected);
+    //selectedPic.alpha = 0.0;
     if (selected){
-        selectedPic.alpha = 0.6;
+        NSLog(@"selected");
+        //selectedPic.alpha = ;
+        [self addSubview:selectedPic];
+    }else{
+        NSLog(@"NOT SELECTED");
+        //self.backgroundColor =[UIColor whiteColor];
+        [self.selectedPic removeFromSuperview];
+        //selectedPic.hidden = true;
     }
-    [profilePic addSubview:selectedPic];
+    
 }
 
 -(void)prepareForReuse {
-    self.selected = FALSE;
+    selected = FALSE;
 }
 
 
@@ -65,6 +72,7 @@ BOOL selected;
     NSLog(@"Friend Name %@", friends.userNickName);
    // myFriend = [Friend alloc];
     myFriend = friends;
+    [self deselect:self];
     return self;
 }
 
@@ -84,8 +92,10 @@ BOOL selected;
 
 -(void) select:(FriendCell*)cell{
     selected = true;
+    [self.selectedPic setHidden:NO];
 }
 -(void) deselect:(FriendCell*)cell{
     selected = false;
+    [self.selectedPic setHidden:YES];
 }
 @end

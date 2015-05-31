@@ -53,7 +53,7 @@
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 - (NSManagedObjectContext *)managedObjectContext_roster;
 - (NSManagedObjectContext *)managedObjectContext_capabilities;
-
+-(void)deleteAllContext;
 
 
 - (void)saveContext;

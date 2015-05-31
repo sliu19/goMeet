@@ -7,12 +7,18 @@
 //
 
 #import "SettingViewController.h"
+#import "AppDelegate.h"
 
 @interface SettingViewController ()
 
 @end
 
 @implementation SettingViewController
+
+- (AppDelegate *)appDelegate
+{
+    return (AppDelegate *)[[UIApplication sharedApplication] delegate];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -25,14 +31,11 @@
 }
 
 - (IBAction)logOut:(id)sender {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    
-    [defaults setObject:nil forKey:@"userID"];
-    [defaults setObject:nil forKey:@"passCode"];
-    //[defaults setInteger:age forKey:@"age"];
-    [defaults setObject:nil forKey:@"userPic"];
-    [defaults synchronize];
-    
+    NSString *appDomain = [[NSBundle mainBundle] bundleIdentifier];
+    [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
+    [(AppDelegate*)[[UIApplication sharedApplication] delegate]deleteAllContext];
+    [(AppDelegate*)[[UIApplication sharedApplication] delegate]saveContext];
+
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UINavigationController *viewController = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"InitPage"];
     [self presentViewController:viewController animated:YES completion:nil];

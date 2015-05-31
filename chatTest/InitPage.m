@@ -182,9 +182,12 @@
                                     
                             [defaults setObject:userID forKey:@"userID"];
                             [defaults setObject:userPassCode forKey:@"passCode"];
-                            [defaults setObject:[userInfo objectForKey:@"introduction"] forKey:@"intro"];
-                            [defaults setObject:[userInfo objectForKey:@"email"] forKey:@"email"];
-                            [defaults setObject:[userInfo objectForKey:@"location"] forKey:@"location"];
+                            if(![[userInfo objectForKey:@"introduction"] isEqual:[NSNull null]]){
+                                [defaults setObject:[userInfo objectForKey:@"introduction"] forKey:@"intro"];}
+                            if(![[userInfo objectForKey:@"email"]isEqual:[NSNull null]]){
+                                [defaults setObject:[userInfo objectForKey:@"email"] forKey:@"email"];}
+                            if(![[userInfo objectForKey:@"location"] isEqual:[NSNull null]]){
+                                [defaults setObject:[userInfo objectForKey:@"location"] forKey:@"location"];}
                             [defaults setObject:[userInfo objectForKey:@"nickname"] forKey:@"nickName"];
                             [defaults setObject:@"F" forKey:@"gender"];
                             NSNumber* isMale =(NSNumber*)[userInfo objectForKey:@"is_male"];

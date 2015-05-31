@@ -193,11 +193,14 @@ BOOL isSearching;
                         NSData *output = [[NSData alloc] initWithBytes:buffer length:len];
                         
                         if (nil != output) {
-                            NSLog(@"have friend request available");
-                            _redDot.hidden = false;
                             NSDictionary*result = [Communication parseFromJson:output];
                             NSArray* resultList = [result objectForKey:@"requests"];
-                            NSLog(@"RESULT IS %@",[result objectForKey:@"requests"]);
+                            NSLog(@"RESULT IS %@",resultList);
+                            if ([resultList count]>=1) {
+                                NSLog(@"have friend request available");
+                                _redDot.hidden = false;
+
+                            }
                             _resultList = resultList;
                         }
                     }

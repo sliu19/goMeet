@@ -814,4 +814,9 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
     
 }
 
+-(void)deleteAllContext{
+    [CoreDataTableViewController deleteAllObjectsWithEntityName:@"Friend" inContext:[(AppDelegate*) [[UIApplication sharedApplication]delegate] managedObjectContext]];
+    [CoreDataTableViewController deleteAllObjectsWithEntityName:@"EventList" inContext:[(AppDelegate*) [[UIApplication sharedApplication]delegate] managedObjectContext]];
+}
+
 @end

@@ -105,7 +105,7 @@
     CGPoint textFieldCenter = textField.center;
     CGPoint textPosition = [_currentResponder convertPoint:textFieldCenter fromView:self.view];
     NSLog(@"POSITION IS %f",textPosition.y);
-    const int movementDistance = -textPosition.y;; // tweak as needed
+    const int movementDistance = 30+textPosition.y;; // tweak as needed
     const float movementDuration = 0.3f; // tweak as needed
     
     int movement = (up ? -movementDistance : movementDistance);
