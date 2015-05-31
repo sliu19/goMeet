@@ -11,14 +11,15 @@
 #import "AppDelegate.h"
 #import "Communication.h"
 #import "newFriendNoticeViewController.h"
+#import "FriendCell.h"
 #define OFF_SET 10.0
 @interface FriendListViewController ()
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
-@property (weak, nonatomic) IBOutlet UIScrollView *mainView;
 @property (weak, nonatomic) IBOutlet UIImageView *redDot;
 @property (strong,nonatomic)NSString* searchString;
-@property (strong,nonatomic)NSArray* resultList;
-
+@property (strong,atomic)NSArray* resultList;
+@property (strong,atomic)NSArray* sortedList;
+@property (weak, nonatomic) IBOutlet UICollectionView *friendCollectionView;
 
 @end
 
@@ -37,11 +38,12 @@ BOOL isSearching;
     _redDot.hidden = YES;
     [inputStream setDelegate:self];
     [outputStream setDelegate:self];
-    _resultList = [[NSArray alloc]init];
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     NSString* request = [NSString stringWithFormat:@"getfriendrequests:%@",[prefs objectForKey:@"userID"]];
     NSData *data = [[NSData alloc] initWithData:[request dataUsingEncoding:NSUTF8StringEncoding]];
     [Communication send:data];
+    [self.friendCollectionView setDelegate:self];
+    [self.friendCollectionView setDataSource:self];
 }
 
 
@@ -73,10 +75,10 @@ BOOL isSearching;
 -(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
     isSearching = true;
     _searchString = [[@"*" stringByAppendingString:searchText ] stringByAppendingString:@"*"];
-    [[_mainView subviews] makeObjectsPerformSelector: @selector(removeFromSuperview)];
+    [[_friendCollectionView subviews] makeObjectsPerformSelector: @selector(removeFromSuperview)];
     [self setup];
-    [_mainView setNeedsDisplay];
 }
+
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
     [searchBar resignFirstResponder]; // using method search bar
     [_searchBar resignFirstResponder]; // using actual object name
@@ -84,15 +86,12 @@ BOOL isSearching;
     isSearching = false;
 }
 
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    [_searchBar resignFirstResponder];
+}
 
 -(void)setup
 {
-    CGPoint startPt = _mainView.bounds.origin;
-    CGFloat buttonWeigth = _mainView.bounds.size.width/3-2*OFF_SET;
-    CGFloat buttonHeight = buttonWeigth*1.3;
-    
-    
-    
     // managedObjectContent = [[[UIApplication sharedApplication]delegate] managedObjectContext];
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Friend"];
     request.predicate = nil;
@@ -103,40 +102,26 @@ BOOL isSearching;
     }
     
     NSError *error;
-    NSArray *array = [[(AppDelegate*) [[UIApplication sharedApplication]delegate] managedObjectContext] executeFetchRequest:request error:&error];
+    NSArray *array = [[NSArray alloc]init];
+    array = [[(AppDelegate*) [[UIApplication sharedApplication]delegate] managedObjectContext] executeFetchRequest:request error:&error];
+    
     
     NSSortDescriptor *descriptor = [[NSSortDescriptor alloc] initWithKey:@"userNickName" ascending:YES];
-    NSArray *sortedList = [array sortedArrayUsingDescriptors:[NSArray arrayWithObjects:descriptor, nil]];
-    //sortedList = [[sortedList reverseObjectEnumerator] allObjects];
+    _sortedList = [[NSArray alloc]init];
+    _sortedList=[array sortedArrayUsingDescriptors:[NSArray arrayWithObjects:descriptor, nil]];
     if (array != nil) {
         NSUInteger count = [array count]; // May be 0 if the object has been deleted.
         NSLog(@"%lu Friends available",(unsigned long)count);
         //NSMutableArray* newsFeedArray = [[NSMutableArray alloc]init];
        // for( Friend* friends in sortedList){
-        for (int i =0; i<count; i++) {
-            //NSLog(@"Draw one persionButton");
-            CGRect frame = CGRectMake(startPt.x+OFF_SET, startPt.y, buttonWeigth, buttonHeight);
-            PersonButton* nameCard = [[PersonButton alloc]initWith:frame friendItem:sortedList[i]];
-            [nameCard addTarget:self
-                       action:@selector(buttonClicked:)
-             forControlEvents:UIControlEventTouchDown];
-            [_mainView addSubview:nameCard];
-            nameCard.hidden = false;
-            nameCard.backgroundColor = [UIColor clearColor];
-            startPt.x = startPt.x + buttonWeigth+ 2*OFF_SET;
-            if(startPt.x>=_mainView.bounds.size.width){
-                startPt.y +=buttonHeight;
-                startPt.x = _mainView.bounds.origin.x;
-            //[_mainView setNeedsDisplay];
-            }
-
-        }
-        //[_mainView setNeedsDisplay];
+            //CGRect frame = CGRectMake(startPt.x+OFF_SET, startPt.y, buttonWeigth, buttonHeight);
+            //FriendCell* nameCard = [[FriendCell alloc]initWith:frame friendItem:_sortedList[i]];;
     }
     else {
         // Deal with error.
         NSLog(@"No Friends Available");
     }
+    [self.friendCollectionView reloadData];
 }
 
 
@@ -146,7 +131,35 @@ BOOL isSearching;
         newFriendNoticeViewController *vc = [segue destinationViewController];
         vc.notificationList = _resultList;
     }
+    if ([[segue identifier] isEqualToString:@"FriendProfile"]) {
+        PersonalprofileViewController* vc = [segue destinationViewController];
+        FriendCell* friend = (FriendCell*)sender;
+        vc.friends = friend.myFriend;
+    }
     
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    return CGSizeMake(100, 120);
+}
+
+- (NSInteger)collectionView:(UICollectionView *)view numberOfItemsInSection:(NSInteger)section {
+    NSLog(@"Numver of cells %lu",[self.sortedList count]);
+    return [self.sortedList count];
+}
+// 2
+- (NSInteger)numberOfSectionsInCollectionView: (UICollectionView *)collectionView {
+    return 1;
+}
+// 3
+- (UICollectionViewCell *)collectionView:(UICollectionView *)cv cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"Array is %@",self.sortedList);
+    FriendCell *cell= [self.friendCollectionView dequeueReusableCellWithReuseIdentifier:@"FriendCell" forIndexPath:indexPath];
+    cell.backgroundColor = [UIColor clearColor];
+    NSLog(@"index number is %lu",indexPath.row);
+    cell.myFriend = _sortedList[indexPath.row];
+    cell.selectedPic.hidden = true;
+    return cell;
 }
 
 - (void)stream:(NSStream *)theStream handleEvent:(NSStreamEvent)streamEvent {
@@ -210,21 +223,6 @@ BOOL isSearching;
     
 }
 
--(void)buttonClicked:(PersonButton*)sender
-{
-    NSLog(@"buttonClick detacted");
-    if ([sender isKindOfClass:[PersonButton class]]) {
-        NSLog(@"This is a PersonalUIBUtton");
-        //[sender.view setFrame:CGRectMake(0, 0, self.view.frame.size.width, 80)];
-        NSLog(@"UserName is %@",sender.myFriend.userID);
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        PersonalprofileViewController *viewController = (PersonalprofileViewController *)[storyboard instantiateViewControllerWithIdentifier:@"Profile"];
-        viewController.friends = sender.myFriend;
-        //[self presentViewController:viewController animated:YES completion:nil];
-        [[self navigationController] pushViewController:viewController animated:YES];
-    }
-    
-}
 
 
 

@@ -17,7 +17,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *passCodeConfirm;
 @property (weak, nonatomic) IBOutlet UIButton *signUp;
 @property (weak, nonatomic) IBOutlet UILabel *outPut;
-@property (nonatomic, assign) id currentResponder;
+@property (nonatomic, assign) UITextField* currentResponder;
 @property (weak, nonatomic) IBOutlet UIButton *gender_F;
 @property (weak, nonatomic) IBOutlet UIButton *gender_M;
 @property (weak, nonatomic) IBOutlet UITextField *nickName;
@@ -102,11 +102,13 @@
 
 - (void) animateTextField: (UITextField *)textField up: (BOOL) up
 {
-    const int movementDistance = 140; // tweak as needed
+    CGPoint textFieldCenter = textField.center;
+    CGPoint textPosition = [_currentResponder convertPoint:textFieldCenter fromView:self.view];
+    NSLog(@"POSITION IS %f",textPosition.y);
+    const int movementDistance = -textPosition.y;; // tweak as needed
     const float movementDuration = 0.3f; // tweak as needed
     
     int movement = (up ? -movementDistance : movementDistance);
-    
     [UIView beginAnimations: @"anim" context: nil];
     [UIView setAnimationBeginsFromCurrentState: YES];
     [UIView setAnimationDuration: movementDuration];

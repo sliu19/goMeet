@@ -39,18 +39,16 @@
     
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"EventList"];
     request.predicate = nil;
-    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"title"
-                                                              ascending:YES
-                                                               selector:@selector(localizedStandardCompare:)]];
+    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"time"
+                                                              ascending:YES]];
     
     self.fetchedResultsController = [[NSFetchedResultsController alloc]initWithFetchRequest:request managedObjectContext:managedObjectContent sectionNameKeyPath:nil cacheName:nil];
     
 }
-
 -(UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    
+    NSLog(@"Draw on event");
     EventList *event = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
     EventListTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"EventCell"];

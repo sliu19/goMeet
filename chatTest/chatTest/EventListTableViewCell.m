@@ -73,7 +73,7 @@
 {
     self.backgroundColor = [UIColor whiteColor];
     self.opaque = YES;
-    _mainView.frame =CGRectMake(0, 0, self.frame.size.width,180);
+    _mainView.frame =CGRectMake(0, 0, self.frame.size.width,174);
     [_mainView addSubview:_cardView];
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];

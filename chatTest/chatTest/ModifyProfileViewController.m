@@ -11,7 +11,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *userPic;
 @property (weak, nonatomic) IBOutlet UILabel *userID;
 @property (weak, nonatomic) IBOutlet UILabel *gender;
-@property (nonatomic, assign) id currentResponder;
+@property (nonatomic, assign) UITextField* currentResponder;
 
 @property (nonatomic) IBOutlet UIView *overlayView;
 @property (nonatomic, weak) IBOutlet UIBarButtonItem *takePictureButton;
@@ -129,7 +129,10 @@
 
 - (void) animateTextField: (UITextField *)textField up: (BOOL) up
 {
-    const int movementDistance = 140; // tweak as needed
+    CGPoint textFieldCenter = textField.center;
+    CGPoint textPosition = [_currentResponder convertPoint:textFieldCenter fromView:self.view];
+    NSLog(@"POSITION IS %f",textPosition.y);
+    const int movementDistance = -textPosition.y-80; // tweak as needed
     const float movementDuration = 0.3f; // tweak as needed
     
     int movement = (up ? -movementDistance : movementDistance);

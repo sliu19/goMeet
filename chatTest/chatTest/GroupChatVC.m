@@ -270,7 +270,7 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 
 - (void) animateTextField: (UITextField *)textField up: (BOOL) up
 {
-    const int movementDistance = 140; // tweak as needed
+    const int movementDistance = 40; // tweak as needed
     const float movementDuration = 0.3f; // tweak as needed
     
     int movement = (up ? -movementDistance : movementDistance);

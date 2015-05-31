@@ -7,15 +7,20 @@
 //
 
 #import "InviteFriendViewController.h"
+#import "CreateNewEventViewController.h"
 #import "AppDelegate.h"
-#define OFF_SET 10.0
+
+#define OFF_SET 18.0
 
 @interface InviteFriendViewController ()
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
-@property (weak, nonatomic) IBOutlet UIScrollView *mainView;
+@property (weak, nonatomic) IBOutlet UICollectionView *friendCollectionView;
+
 
 @property (strong,nonatomic)NSString* searchString;
-@property (strong,nonatomic)NSArray* resultList;
+
+@property (strong,nonatomic)NSArray* sortedList;
+@property (strong,nonatomic)NSMutableArray* selectedList;
 
 @end
 
@@ -29,7 +34,10 @@ BOOL isSearching;
     _searchBar.delegate = self;
     isSearching = false;
     _searchBar.showsCancelButton = YES;
-    _resultList = [[NSArray alloc]init];
+    _selectedList = [[NSMutableArray alloc]init];
+    [_friendCollectionView setDataSource:self];
+    [_friendCollectionView setDelegate:self];
+    _friendCollectionView.allowsMultipleSelection = YES;
     //pull add friend request
     //example:getfriendrequests:68958695
     // Do any additional setup after loading the view.
@@ -70,10 +78,10 @@ BOOL isSearching;
 -(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
     isSearching = true;
     _searchString = [[@"*" stringByAppendingString:searchText ] stringByAppendingString:@"*"];
-    [[_mainView subviews] makeObjectsPerformSelector: @selector(removeFromSuperview)];
+    [[_friendCollectionView subviews] makeObjectsPerformSelector: @selector(removeFromSuperview)];
     [self setup];
-    [_mainView setNeedsDisplay];
 }
+
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
     [searchBar resignFirstResponder]; // using method search bar
     [_searchBar resignFirstResponder]; // using actual object name
@@ -81,66 +89,72 @@ BOOL isSearching;
     isSearching = false;
 }
 
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    [_searchBar resignFirstResponder];
+}
 
 -(void)setup
 {
-    CGPoint startPt = _mainView.bounds.origin;
-    CGFloat buttonWeigth = _mainView.bounds.size.width/3-2*OFF_SET;
-    CGFloat buttonHeight = buttonWeigth*1.3;
-    
-    
-    
     // managedObjectContent = [[[UIApplication sharedApplication]delegate] managedObjectContext];
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Friend"];
     request.predicate = nil;
     if(isSearching){
-        NSPredicate *predicate =[NSPredicate predicateWithFormat:@"userName like[c] %@",_searchString];
+        NSPredicate *predicate =[NSPredicate predicateWithFormat:@"userNickName like[c] %@",_searchString];
         [request setPredicate:predicate];
         
     }
     
     NSError *error;
-    NSArray *array = [[(AppDelegate*) [[UIApplication sharedApplication]delegate] managedObjectContext] executeFetchRequest:request error:&error];
+    NSArray *array = [[NSArray alloc]init];
+    array = [[(AppDelegate*) [[UIApplication sharedApplication]delegate] managedObjectContext] executeFetchRequest:request error:&error];
     
-    NSSortDescriptor *descriptor = [[NSSortDescriptor alloc] initWithKey:@"userName" ascending:YES];
-    NSArray *sortedList = [array sortedArrayUsingDescriptors:[NSArray arrayWithObjects:descriptor, nil]];
-    //sortedList = [[sortedList reverseObjectEnumerator] allObjects];
+    
+    NSSortDescriptor *descriptor = [[NSSortDescriptor alloc] initWithKey:@"userNickName" ascending:YES];
+    _sortedList = [[NSArray alloc]init];
+    _sortedList=[array sortedArrayUsingDescriptors:[NSArray arrayWithObjects:descriptor, nil]];
     if (array != nil) {
         NSUInteger count = [array count]; // May be 0 if the object has been deleted.
         NSLog(@"%lu Friends available",(unsigned long)count);
         //NSMutableArray* newsFeedArray = [[NSMutableArray alloc]init];
         // for( Friend* friends in sortedList){
-        for (int i =0; i<count; i++) {
-            NSLog(@"Draw one persionButton");
-            CGRect frame = CGRectMake(startPt.x+OFF_SET, startPt.y, buttonWeigth, buttonHeight);
-            PersonButton* nameCard = [[PersonButton alloc]initWith:frame friendItem:sortedList[i]];
-            [nameCard addTarget:self
-                         action:@selector(buttonClicked:)
-               forControlEvents:UIControlEventTouchDown];
-            [_mainView addSubview:nameCard];
-            nameCard.hidden = false;
-            nameCard.backgroundColor = [UIColor clearColor];
-            startPt.x = startPt.x + buttonWeigth+ 2*OFF_SET;
-            if(startPt.x>=_mainView.bounds.size.width){
-                startPt.y +=buttonHeight;
-                startPt.x = _mainView.bounds.origin.x;
-                //[_mainView setNeedsDisplay];
-            }
-            
-        }
-        //[_mainView setNeedsDisplay];
+        //CGRect frame = CGRectMake(startPt.x+OFF_SET, startPt.y, buttonWeigth, buttonHeight);
+        //FriendCell* nameCard = [[FriendCell alloc]initWith:frame friendItem:_sortedList[i]];;
     }
     else {
         // Deal with error.
         NSLog(@"No Friends Available");
     }
-    
+    [self.friendCollectionView reloadData];
 }
 
--(void)buttonClicked:(PersonButton*)sender
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    return CGSizeMake(100, 120);
+}
+
+- (NSInteger)collectionView:(UICollectionView *)view numberOfItemsInSection:(NSInteger)section {
+    NSLog(@"Numver of cells %lu",[self.sortedList count]);
+    return [self.sortedList count];
+}
+// 2
+- (NSInteger)numberOfSectionsInCollectionView: (UICollectionView *)collectionView {
+    return 1;
+}
+// 3
+- (UICollectionViewCell *)collectionView:(UICollectionView *)cv cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    //NSLog(@"Array is %@",self.sortedList);
+    FriendCell *cell= [self.friendCollectionView dequeueReusableCellWithReuseIdentifier:@"FriendCell" forIndexPath:indexPath];
+    cell.backgroundColor = [UIColor clearColor];
+    NSLog(@"index number is %lu",indexPath.row);
+    cell.myFriend = _sortedList[indexPath.row];
+    [cell deselect:cell];
+    return cell;
+}
+
+-(void)buttonClicked:(FriendCell*)sender
 {
     NSLog(@"buttonClick detacted");
-    if ([sender isKindOfClass:[PersonButton class]]) {
+    if ([sender isKindOfClass:[FriendCell class]]) {
         NSLog(@"This is a PersonalUIBUtton");
         //[sender.view setFrame:CGRectMake(0, 0, self.view.frame.size.width, 80)];
         NSLog(@"UserName is %@",sender.myFriend.userID);
@@ -154,7 +168,35 @@ BOOL isSearching;
         }
     }
 }
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 
+{
+    NSLog(@"Select one cell");
+    FriendCell *cell = (FriendCell *)[collectionView cellForItemAtIndexPath:indexPath];
+    // Set the index once user taps on a cell
+    [_selectedList addObject:cell.myFriend];
+    // Set the selection here so that selection of cell is shown to ur user immediately
+    [cell select:cell];
+    [cell setNeedsDisplay];
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
+
+{
+    NSLog(@"Diselect one cell");
+    FriendCell *cell = (FriendCell *)[collectionView cellForItemAtIndexPath:indexPath];
+    // Set the index once user taps on a cell
+    [_selectedList removeObject:cell.myFriend];
+    // Set the selection here so that selection of cell is shown to ur user immediately
+    [cell deselect:cell];
+    [cell setNeedsDisplay];
+}
+
+- (IBAction)confirm:(id)sender {
+    NSLog(@"SELECTED LIST IS %@",_selectedList);
+    [self.orginalController setFoo:_selectedList];
+    [self dismissViewControllerAnimated:NO completion:nil];
+}
 
 
 

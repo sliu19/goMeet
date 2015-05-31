@@ -10,6 +10,8 @@
 #import "EventList.h"
 #import "MainTabBarViewController.h"
 #import "Communication.h"
+#import "InviteFriendViewController.h"
+#define inviteViewHeight 30.0
 
 @interface CreateNewEventViewController()
 @property (weak, nonatomic) IBOutlet UIScrollView *mainView;
@@ -17,22 +19,27 @@
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 @property (weak, nonatomic) IBOutlet UITextField *EventTitle;
 @property (weak, nonatomic) IBOutlet UITextField *EventLocation;
-@property (weak, nonatomic) IBOutlet UITextField *EventTime;
 @property (weak, nonatomic) IBOutlet UITextField *EventDescription;
 
 @property (weak, nonatomic) IBOutlet UIButton *public;
 
-@property (nonatomic, assign) id currentResponder;
+@property (weak, nonatomic) IBOutlet UIButton *private;
+@property (nonatomic, assign) UITextField* currentResponder;
 @property (nonatomic,strong) NSString* PUBLIC;
 @property (nonatomic,strong)NSString* uuid;
+@property (nonatomic,strong)UIButton* publicButton;
+@property (nonatomic,strong)UIButton* privateButton;
+@property (nonatomic,strong)UIView* invitePicView;
 @end
 
 
 @implementation CreateNewEventViewController
-
 @synthesize xmppStream;
 @synthesize xmppRoom;
 @synthesize xmppRoomStorage;
+@synthesize publicButton;
+@synthesize privateButton;
+@synthesize invitePicView;
 
 - (AppDelegate *)appDelegate
 {
@@ -43,49 +50,70 @@
 {
     [super viewDidLoad];
     [_EventTitle setDelegate:self];
-    [_EventTime setDelegate:self];
     [_EventLocation setDelegate:self];
     [_EventDescription setDelegate:self];
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(resignOnTap:)];
     singleTap.numberOfTapsRequired = 1;
     [inputStream setDelegate:self];
     [outputStream setDelegate:self];
-    _inviteList = [[NSMutableArray alloc]init];
-    _PUBLIC = @"false";
+    [_mainView setDelegate:self];
+    CGSize contectSize  = _mainView.frame.size;
+    _mainView.contentSize = contectSize;
+    if(_inviteList==nil){_inviteList = [[NSMutableArray alloc]init];}
+    _EventDescription.text = @"";
+    _EventTitle.text = @"";
+    _EventLocation.text = @"";
+    _private.tag = true;
+    _public.tag = false;
+    [_private addTarget:self action:@selector(AddEvent:) forControlEvents:UIControlEventTouchUpInside];
+    [_public addTarget:self action:@selector(AddEvent:) forControlEvents:UIControlEventTouchUpInside];
+    
 }
 
-- (IBAction)AddEvent:(id)sender {
+- (void)AddEvent:(id)sender {
+    UIButton* clicked = (UIButton*) sender;
+    BOOL private = clicked.tag;
+    _PUBLIC = [NSString stringWithFormat:@"%s", (private ? "true" : "false")];
     CFUUIDRef uuid = CFUUIDCreate(kCFAllocatorDefault);
     NSString* uuidString = (__bridge_transfer NSString *)CFUUIDCreateString(kCFAllocatorDefault, uuid);
     CFRelease(uuid);
     _uuid = uuidString;
+    NSDate* now = _datePicker.date;
+    int unixTime = [_datePicker.date timeIntervalSince1970];
+    NSMutableArray* inviteID =[[NSMutableArray alloc]init];
+    if (_inviteList!=nil) {
+        for (Friend* friends in _inviteList) {
+            [inviteID addObject:friends.userID];
+        }
+    }
+    NSLog(@"FriendIDList is %@",inviteID);
+
     
+    //Create Room
+    if (private) {
+        xmppStream = [self appDelegate].xmppStream;
+        [self initxmpproom:uuidString];
+        
     EventList* event = nil;
     event = [NSEntityDescription insertNewObjectForEntityForName:@"EventList" inManagedObjectContext:[(AppDelegate*) [[UIApplication sharedApplication]delegate] managedObjectContext]];
     [event setValue: _EventDescription.text forKey :@"eventDescription"];
     [event setValue: uuidString forKey :@"jid"];
     [event setValue: _EventLocation.text forKey :@"location"];
     [event setValue: _EventTitle.text forKey :@"title"];
-    NSDate* now = _datePicker.date;
+    
     [event setValue:now forKey:@"time"];
-    _inviteList =@[@"11111111",@"222222222",@"333333"];
-    [event setValue: _inviteList forKey:@"groupMember"];
-    [event setGroupMember:_inviteList];
+    [event setValue: inviteID forKey:@"groupMember"];
+    [event setGroupMember:inviteID];
     NSLog(@"GroupMember when set is %@",[[NSString alloc] initWithData:event.groupMember_data encoding:NSUTF8StringEncoding]);
-    int unixTime = [_datePicker.date timeIntervalSince1970];
     
-    
-    //Create Room
-    
-    xmppStream = [self appDelegate].xmppStream;
-    [self initxmpproom:uuidString];
+    }
     
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     
     //Also sent to server
     //newevent:{"description":"my description","title":"my event title4","event_id":"acf6830f-f945-11e4-a2bf-b8e85632007e","invite_list":[68958333],"location":"test event location4","time":1431503837791,"host_id":12341333,"public":false}
     //newPublicEvent:{"description":"my newsfeed event","title":"newfeed event","event_id":"47ec6551-fee1-11e4-b58d-a45e60c40087","start_time":1432120425578,"location":"newsfeed_event","host_id":111111111,"end_time":1432120435578}
-    NSDictionary*dict = @{@"title":_EventTitle.text,@"event_id":uuidString,@"invite_list":_inviteList,@"location":_EventLocation.text,@"start_time":[NSString stringWithFormat:@"%d", unixTime ],@"host_id":[prefs objectForKey:@"userID"],@"end_time":@"1432155744",@"description":_EventDescription.text};
+    NSDictionary*dict = @{@"title":_EventTitle.text,@"event_id":uuidString,@"invite_list":inviteID,@"location":_EventLocation.text,@"start_time":[NSString stringWithFormat:@"%d", unixTime ],@"host_id":[prefs objectForKey:@"userID"],@"end_time":@"1432155744",@"description":_EventDescription.text,@"public":_PUBLIC};
     NSString *response  = [NSString stringWithFormat:@"newPublicEvent:%@",[Communication parseIntoJson:dict]];
     NSData *data = [[NSData alloc] initWithData:[response dataUsingEncoding:NSUTF8StringEncoding]];
     [Communication send:data];
@@ -93,6 +121,13 @@
     _EventDescription.text = @"";
     _EventTitle.text = @"";
     _EventLocation.text = @"";
+    NSError *error = nil;
+    NSManagedObjectContext* selfManage = [(AppDelegate*) [[UIApplication sharedApplication]delegate] managedObjectContext];
+    [selfManage save:&error];
+}
+
+
+- (IBAction)publicEventCreation:(id)sender {
 }
 
 -(BOOL) textFieldShouldReturn: (UITextField *) textField {
@@ -111,11 +146,15 @@
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
     [self animateTextField: textField up: NO];
+    
 }
 
 - (void) animateTextField: (UITextField *)textField up: (BOOL) up
 {
-    const int movementDistance = 140; // tweak as needed
+    CGPoint textFieldCenter = textField.center;
+    CGPoint textPosition = [_currentResponder convertPoint:textFieldCenter fromView:self.mainView];
+    NSLog(@"POSITION IS %f",textPosition.y);
+    const int movementDistance = -textPosition.y;; // tweak as needed
     const float movementDuration = 0.3f; // tweak as needed
     
     int movement = (up ? -movementDistance : movementDistance);
@@ -273,8 +312,68 @@
     }
     
 }
+-(void)setFoo:(NSMutableArray *)inviteList{
+    NSLog(@"Desplay %@",inviteList);
+    _inviteList = inviteList;
+    CGFloat lines = ceilf([_inviteList count]);
+    CGSize viewSize = CGSizeMake(_mainView.frame.size.width, lines*inviteViewHeight);
+    CGFloat viewOrigin = _datePicker.frame.origin.y + 180;
+    invitePicView = [[UIView alloc]initWithFrame:CGRectMake(0, viewOrigin, viewSize.width, viewSize.height)];
+    invitePicView.backgroundColor = [UIColor whiteColor];
+    [_mainView addSubview:invitePicView];
+    [self moveButton:viewSize.height+30];
+}
 
+- (IBAction)inviteFriend:(id)sender {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    InviteFriendViewController *vc = (InviteFriendViewController *)[storyboard instantiateViewControllerWithIdentifier:@"InviteFriend"];
+    [self.navigationController presentViewController:vc animated:YES completion:nil];
+     [vc setOrginalController:self];
+    [privateButton removeFromSuperview];
+    [publicButton removeFromSuperview];
+    [invitePicView removeFromSuperview];
+}
 
+-(void)moveButton:(CGFloat)moveDistance{
+    NSLog(@"ADDing scrolling view");
+    CGRect publicFrame = _public.frame;
+    CGRect privateFrame = _private.frame;
+    CGSize mainFrameSize = _mainView.contentSize;
+    NSLog(@"contectSize is %f,publivButton position is %f",mainFrameSize.height,publicFrame.origin.y);
+    publicFrame.origin.y += moveDistance;
+    privateFrame.origin.y += moveDistance;
+    privateButton = [self buttonDeepCopy: _private];
+    privateButton.frame = privateFrame;
+    publicButton = [self buttonDeepCopy: _public];
+    publicButton.frame = publicFrame;
+    privateButton.tag = true;
+    publicButton.tag = false;
+    [privateButton addTarget:self action:@selector(AddEvent:) forControlEvents:UIControlEventTouchUpInside];
+    [publicButton addTarget:self action:@selector(AddEvent:) forControlEvents:UIControlEventTouchUpInside];
+    [_mainView addSubview:privateButton];
+    [_mainView addSubview:publicButton];
+    _mainView.contentSize = CGSizeMake(mainFrameSize.width,mainFrameSize.height+moveDistance);
+    [_mainView setNeedsDisplay];
+    _public.hidden = true;
+    _private.hidden = true;
+    publicButton.hidden = FALSE;
 
+}
+
+-(UIButton*)buttonDeepCopy:(UIButton*)originalButton{
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    button.frame = originalButton.frame;
+    //[button addTarget:self
+               //action:@selector(aMethod:)
+     //forControlEvents:UIControlEventTouchUpInside];
+    [button setTintColor:[UIColor whiteColor]];
+    [button setTitle:originalButton.titleLabel.text forState:UIControlStateNormal];
+    button.backgroundColor = originalButton.backgroundColor;
+    //newButton.titleLabel.text= originalButton.titleLabel.text;
+    button.titleLabel.attributedText = originalButton.titleLabel.attributedText;
+    //newButton.titleLabel.textAlignment = originalButton.titleLabel.textAlignment;
+    button.titleLabel.textColor = originalButton.titleLabel.textColor;
+    return button;
+}
 
 @end

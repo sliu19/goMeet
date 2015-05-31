@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PersonButton.h"
+#import "FriendCell.h"
 #import "CreateNewEventViewController.h"
+@class CreatNewEventController;
 
-@interface InviteFriendViewController : UIViewController<UITextFieldDelegate,UISearchBarDelegate>
+@interface InviteFriendViewController : UIViewController<UISearchBarDelegate,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
 @property(nonatomic,strong)CreateNewEventViewController* orginalController;
+
 @end

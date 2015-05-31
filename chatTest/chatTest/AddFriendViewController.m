@@ -12,7 +12,7 @@
 
 @interface AddFriendViewController ()
 
-@property (nonatomic, assign) id currentResponder;
+@property (nonatomic, assign) UITextField* currentResponder;
 @property (weak, nonatomic) IBOutlet UIView *resultView;
 @property (weak, nonatomic) IBOutlet UITextField *searchTextField;
 
@@ -97,7 +97,8 @@
 
 - (void) animateTextField: (UITextField *)textField up: (BOOL) up
 {
-    const int movementDistance = 140; // tweak as needed
+    NSLog(@"CurrentResponder origin y is %f",_currentResponder.frame.origin.y);
+    const int movementDistance = _currentResponder.frame.origin.y-80; // tweak as needed
     const float movementDuration = 0.3f; // tweak as needed
     
     int movement = (up ? -movementDistance : movementDistance);

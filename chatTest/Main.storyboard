@@ -173,6 +173,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
+                    <navigationItem key="navigationItem" id="WKs-Tl-wKK"/>
                     <connections>
                         <outlet property="locationLabel" destination="TlQ-6B-kay" id="zG0-Jt-oCb"/>
                         <outlet property="phoneNumLabel" destination="gbs-cB-8ZZ" id="1WA-zP-Llf"/>
@@ -410,9 +411,6 @@
                                 <color key="backgroundColor" red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eXp-MN-IGH">
-                                <rect key="frame" x="0.0" y="175" width="320" height="344"/>
-                            </scrollView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="新的朋友" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2kf-aW-cvk">
                                 <rect key="frame" x="16" y="87" width="68" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -432,6 +430,30 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="active-state.png" translatesAutoresizingMaskIntoConstraints="NO" id="tMJ-An-vRR">
                                 <rect key="frame" x="86" y="87" width="21" height="21"/>
                             </imageView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="yVb-ri-Rbs">
+                                <rect key="frame" x="0.0" y="175" width="320" height="344"/>
+                                <color key="backgroundColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="h1P-LB-PfC">
+                                    <size key="itemSize" width="100" height="130"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FriendCell" id="1uO-Xv-2Y9" customClass="FriendCell">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="130"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <connections>
+                                            <segue destination="CFw-TZ-2IR" kind="push" identifier="FriendProfile" id="Vuf-Zn-kWD"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -443,7 +465,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="mainView" destination="eXp-MN-IGH" id="XND-Qw-X5W"/>
+                        <outlet property="friendCollectionView" destination="yVb-ri-Rbs" id="zfE-Bx-Lkv"/>
                         <outlet property="redDot" destination="tMJ-An-vRR" id="gVG-gk-LZd"/>
                         <outlet property="searchBar" destination="XTz-7y-YY9" id="9EY-e0-rgi"/>
                     </connections>
@@ -1271,7 +1293,7 @@
         <!--创建活动-->
         <scene sceneID="DlX-Jl-sAh">
             <objects>
-                <viewController id="hOY-Jk-LUr" customClass="CreateNewEventViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="creatEvent" id="hOY-Jk-LUr" customClass="CreateNewEventViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="svl-pW-5jy"/>
                         <viewControllerLayoutGuide type="bottom" id="Ldy-qU-iIY"/>
@@ -1320,15 +1342,15 @@
                                         <color key="backgroundColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kJB-ex-KwC">
-                                        <rect key="frame" x="0.0" y="382" width="320" height="52"/>
+                                        <rect key="frame" x="0.0" y="382" width="156" height="52"/>
                                         <color key="backgroundColor" red="0.93333339691162109" green="0.34509804844856262" blue="0.31764706969261169" alpha="1" colorSpace="deviceRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <state key="normal" title="创建活动">
+                                        <state key="normal" title="实时活动">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="AddEvent:" destination="hOY-Jk-LUr" eventType="touchUpInside" id="eH8-v8-oSb"/>
+                                            <action selector="publicEventCreation:" destination="hOY-Jk-LUr" eventType="touchUpInside" id="JLF-Xe-reZ"/>
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2ok-qV-qpX">
@@ -1349,8 +1371,20 @@
                                         </subviews>
                                         <color key="backgroundColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K1d-G0-K9X">
+                                        <rect key="frame" x="164" y="382" width="156" height="52"/>
+                                        <color key="backgroundColor" red="0.93333339689999995" green="0.34509804840000002" blue="0.31764706970000001" alpha="1" colorSpace="deviceRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="私人聚会">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="AddEvent:" destination="hOY-Jk-LUr" eventType="touchUpInside" id="BE3-2B-Kne"/>
+                                        </connections>
+                                    </button>
                                     <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="O73-A0-YbA">
-                                        <rect key="frame" x="12" y="198" width="297" height="162"/>
+                                        <rect key="frame" x="0.0" y="195" width="289" height="157"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <date key="date" timeIntervalSinceReferenceDate="453913970.50435901">
                                             <!--2015-05-21 15:12:50 +0000-->
@@ -1361,23 +1395,31 @@
                         </subviews>
                         <color key="backgroundColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" title="创建活动" id="dnp-jV-ZkL"/>
+                    <navigationItem key="navigationItem" title="创建活动" id="dnp-jV-ZkL">
+                        <barButtonItem key="rightBarButtonItem" title="邀请好友" id="lbS-be-mRC">
+                            <connections>
+                                <action selector="inviteFriend:" destination="hOY-Jk-LUr" id="z6N-z3-Upz"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="EventDescription" destination="lrK-Kp-OL3" id="0Yl-Qy-3vg"/>
                         <outlet property="EventLocation" destination="aJD-gq-TJR" id="bQ0-Od-M0k"/>
                         <outlet property="EventTitle" destination="Ndp-Ct-ehd" id="mSg-QU-4mH"/>
                         <outlet property="datePicker" destination="O73-A0-YbA" id="cyj-8F-gET"/>
                         <outlet property="mainView" destination="nfs-MN-TJz" id="Bof-Br-IPE"/>
+                        <outlet property="private" destination="K1d-G0-K9X" id="CaE-HJ-5uX"/>
+                        <outlet property="public" destination="kJB-ex-KwC" id="Bp1-6Q-CnE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vlp-FQ-hkn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2954" y="2248"/>
         </scene>
-        <!--View Controller-->
+        <!--Invite Friend View Controller-->
         <scene sceneID="9kS-2l-zLR">
             <objects>
-                <viewController id="TSb-M9-qCY" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="InviteFriend" id="TSb-M9-qCY" customClass="InviteFriendViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="qeb-jP-585"/>
                         <viewControllerLayoutGuide type="bottom" id="48l-nZ-19f"/>
@@ -1386,18 +1428,53 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gw0-GS-1UH">
-                                <rect key="frame" x="0.0" y="108" width="320" height="411"/>
-                                <color key="backgroundColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
-                            </scrollView>
                             <searchBar contentMode="redraw" fixedFrame="YES" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="0u5-yI-V2A">
-                                <rect key="frame" x="0.0" y="64" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="qsd-5Y-x4Z">
+                                <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                                <color key="backgroundColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="twc-9e-Zsr">
+                                    <size key="itemSize" width="109" height="136"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FriendCell" id="hJD-rH-5C4" customClass="FriendCell">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="109" height="136"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qfj-s9-n93">
+                                <rect key="frame" x="0.0" y="519" width="320" height="49"/>
+                                <color key="backgroundColor" red="0.93333339689999995" green="0.34509804840000002" blue="0.31764706970000001" alpha="1" colorSpace="deviceRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <state key="normal" title="确认">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="confirm:" destination="TSb-M9-qCY" eventType="touchUpInside" id="ibz-sx-CDe"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" id="2tA-Kr-gt8"/>
+                    <navigationItem key="navigationItem" id="2tA-Kr-gt8">
+                        <barButtonItem key="rightBarButtonItem" title="确认" id="jP0-pg-V65"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="friendCollectionView" destination="qsd-5Y-x4Z" id="v1V-wx-wbh"/>
+                        <outlet property="searchBar" destination="0u5-yI-V2A" id="d3P-9k-3KL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6J0-aa-q05" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
