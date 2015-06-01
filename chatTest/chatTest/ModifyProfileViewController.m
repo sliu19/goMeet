@@ -2,6 +2,7 @@
 #import "ModifyProfileViewController.h"
 #import "Communication.h"
 #import "MainTabBarViewController.h"
+#import <Parse/Parse.h>
 
 @interface ModifyProfileViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *nickName;
@@ -79,27 +80,6 @@
     NSString *response  = [NSString stringWithFormat:@"profile:%@",[Communication parseIntoJson:dict]];
     NSData *data = [[NSData alloc] initWithData:[response dataUsingEncoding:NSUTF8StringEncoding]];
     [Communication send:data];
-    
-    
-#warning below code is for test purpose ONLY
-    UIImage *contactImage = _userPic.image;
-    NSData *imageData = UIImageJPEGRepresentation(contactImage, 100);
-    
-    
-    // Store the data
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    
-    [defaults setObject:[_nickName text] forKey:@"nickName"];
-    [defaults setObject:[_intro text] forKey:@"intro"];
-    [defaults setObject:[_location text] forKey:@"location"];
-    [defaults setObject:[_email text]forKey:@"email"];
-    [defaults setObject:imageData forKey:@"userPic"];
-    [defaults synchronize];
-    
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    MainTabBarViewController *viewController = (MainTabBarViewController *)[storyboard instantiateViewControllerWithIdentifier:@"GoMeet"];
-    [viewController setSelectedIndex:0];
-    [self presentViewController:viewController animated:YES completion:nil];
 }
 
 
@@ -413,12 +393,25 @@
                                     //6505758649,"nick":"mynickname","intro":"password","location":"mylocation","pass":"mypassword","email":"myemail"} only phoneNumberrequired
                                     
                                     // Create instances of NSData
-                                    UIImage *contactImage = [UIImage imageNamed:@"testImage.jpeg"];
-                                    NSData *imageData = UIImageJPEGRepresentation(contactImage, 100);
+                                    CGFloat compressionRatio = 1 ;
+                                    UIImage *contactImage = _userPic.image;
+                                    NSData *imageData = UIImageJPEGRepresentation(contactImage,compressionRatio);
+                                    while ([imageData length]>50000) {
+                                        compressionRatio=compressionRatio*0.5;
+                                        imageData=UIImageJPEGRepresentation(contactImage,compressionRatio);
+                                    }
+                                    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
                                     
+                                    PFQuery *query = [PFQuery queryWithClassName:@"People"];
+                                    [query getObjectInBackgroundWithId:[defaults objectForKey:@"parseID"] block:^(PFObject *user, NSError *error) {
+                                        // Do something with the returned PFObject in the gameScore variable.
+                                        NSLog(@"%@,old image is%@, new image is %@", user.objectId,user[@"small"], imageData);
+                                        user[@"small"] = imageData;
+                                        [user saveInBackground];
+                                    }];
                                     
                                     // Store the data
-                                    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                                    
                                     
                                     [defaults setObject:[_nickName text] forKey:@"nickName"];
                                     [defaults setObject:[_intro text] forKey:@"intro"];

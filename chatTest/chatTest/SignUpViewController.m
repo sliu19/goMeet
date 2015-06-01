@@ -10,6 +10,7 @@
 #import "Communication.h"
 #import "MainTabBarViewController.h"
 #import "JFBCrypt.h"
+#import <Parse/Parse.h>
 
 @interface SignUpViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *phoneNum;
@@ -191,19 +192,20 @@
                                     //int age = [[ageTextField text] integerValue];
                                     
                                     // Create instances of NSData
-                                    UIImage *contactImage = [UIImage imageNamed:@"testImage.jpeg"];
-                                    NSData *imageData = UIImageJPEGRepresentation(contactImage, 100);
-                                    
-                                    
+                                    PFObject *user = [PFObject objectWithClassName:@"Friend"];
+                                    NSData* smallPic = UIImageJPEGRepresentation([UIImage imageNamed:@"blankUser.jpg"],1);
+                                    user[@"small"] = smallPic;
+                                    [user saveInBackground];
                                     // Store the data
                                     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
                                     
                                     [defaults setObject:userID forKey:@"userID"];
                                     [defaults setObject:userPassCode forKey:@"passCode"];
                                     //[defaults setInteger:age forKey:@"age"];
-                                    [defaults setObject:imageData forKey:@"userPic"];
+                                    [defaults setObject:smallPic forKey:@"userPic"];
                                     [defaults setObject:nickName forKey:@"nickName"];
                                     [defaults setObject:_gender forKey:@"gender"];
+                                    [defaults setObject:user.objectId forKey:@"parseID"];
                                     [defaults synchronize];
                                     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
                                     MainTabBarViewController *viewController = (MainTabBarViewController *)[storyboard instantiateViewControllerWithIdentifier:@"GoMeet"];

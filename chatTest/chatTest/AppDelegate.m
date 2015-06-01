@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-
+#import <Parse/Parse.h>
 #import "GCDAsyncSocket.h"
 #import "XMPP.h"
 #import "XMPPLogging.h"
@@ -85,8 +85,16 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     NSLog(@"Start App");
-
+    [Parse enableLocalDatastore];
+    
+    // Initialize Parse.
+    [Parse setApplicationId:@"VBQoyHgJ3LA3fPYk4KZLBHroGRRNcTZYE61RkBID"
+                  clientKey:@"VAMfNODYzHUvL2ukuJExDQ1Xq8Coj87oNekLzUUn"];
+    
+    // [Optional] Track statistics around application opens.
+    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     //setUp tabbar
+    
     [[UITabBar appearance] setBackgroundColor:[UIColor blackColor]];
     [DDLog addLogger:[DDTTYLogger sharedInstance] withLogLevel:XMPP_LOG_FLAG_SEND_RECV];
     // Setup the XMPP stream
@@ -113,19 +121,16 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
     //people.userName =[key obje]
     //people.unique = unique;
     [people setValue: @"Amy" forKey :@"userNickName"];
-    NSData *imageData = UIImageJPEGRepresentation([UIImage imageNamed:@"testImage.jpeg"],0.01);
-    NSData *imageData2 = UIImageJPEGRepresentation([UIImage imageNamed:@"beach.jpeg"],0.01);
-    NSData *imageData3 = UIImageJPEGRepresentation([UIImage imageNamed:@"testImageApple.jpeg"],0.01);
-    [people setValue: imageData3 forKey :@"userPic"];
-    [people setValue:@"111111" forKey:@"userImageUUID"];
+    NSData *imageData = UIImageJPEGRepresentation([UIImage imageNamed:@"blankUser.jpg"],1);
+    [people setValue: imageData forKey :@"userPic"];;
+    [people setValue: @"7" forKey :@"userID"];
     //NSLog(@"This is debug for people list %@",people.userName);
     people2 = [NSEntityDescription insertNewObjectForEntityForName:@"Friend" inManagedObjectContext:[(AppDelegate*) [[UIApplication sharedApplication]delegate] managedObjectContext]];
     //people.userName =[key obje]
     //people.unique = unique;
     [people2 setValue: @"Zak" forKey :@"userNickName"];
-    [people2 setValue: imageData2 forKey :@"userPic"];
+    [people2 setValue: imageData forKey :@"userPic"];
     [people2 setValue: @"7" forKey :@"userID"];
-    [people2 setValue:@"111111" forKey:@"userImageUUID"];
     
     Friend* people3 = nil;
     Friend* people4 = nil;
@@ -136,7 +141,6 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
     [people3 setValue: @"Bob" forKey :@"userNickName"];
     [people3 setValue: imageData forKey :@"userPic"];
     [people3 setValue: @"6" forKey :@"userID"];
-    [people3 setValue:@"111111" forKey:@"userImageUUID"];
     //NSLog(@"This is debug for people list %@",people.userName);
     people4 = [NSEntityDescription insertNewObjectForEntityForName:@"Friend" inManagedObjectContext:[(AppDelegate*) [[UIApplication sharedApplication]delegate] managedObjectContext]];
     //people.userName =[key obje]
@@ -144,7 +148,6 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
     [people4 setValue: @"David" forKey :@"userNickName"];
     [people4 setValue: imageData forKey :@"userPic"];
     [people4 setValue: @"5" forKey :@"userID"];
-    [people4 setValue:@"111111" forKey:@"userImageUUID"];
 
     people5 = [NSEntityDescription insertNewObjectForEntityForName:@"Friend" inManagedObjectContext:[(AppDelegate*) [[UIApplication sharedApplication]delegate] managedObjectContext]];
     //people.userName =[key obje]
@@ -152,12 +155,12 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
     [people5 setValue: @"Siminnnn" forKey :@"userNickName"];
     [people5 setValue: imageData forKey :@"userPic"];
     [people5 setValue: @"4" forKey :@"userID"];
-    [people5 setValue:@"111111" forKey:@"userImageUUID"];
+    //[people5 setValue:@"111111" forKey:@"userImageUUID"];
     
     [people3 setValue: @"Bobbbb" forKey :@"userNickName"];
     [people3 setValue: imageData forKey :@"userPic"];
     [people3 setValue: @"3" forKey :@"userID"];
-    [people3 setValue:@"111111" forKey:@"userImageUUID"];
+    //[people3 setValue:@"111111" forKey:@"userImageUUID"];
     //NSLog(@"This is debug for people list %@",people.userName);
     people4 = [NSEntityDescription insertNewObjectForEntityForName:@"Friend" inManagedObjectContext:[(AppDelegate*) [[UIApplication sharedApplication]delegate] managedObjectContext]];
     //people.userName =[key obje]
@@ -165,7 +168,7 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
     [people4 setValue: @"Daviddddd" forKey :@"userNickName"];
     [people4 setValue: imageData forKey :@"userPic"];
     [people4 setValue: @"2" forKey :@"userID"];
-    [people4 setValue:@"111111" forKey:@"userImageUUID"];
+    //[people4 setValue:@"111111" forKey:@"userImageUUID"];
     
     people5 = [NSEntityDescription insertNewObjectForEntityForName:@"Friend" inManagedObjectContext:[(AppDelegate*) [[UIApplication sharedApplication]delegate] managedObjectContext]];
     //people.userName =[key obje]
@@ -173,7 +176,7 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
     [people5 setValue: @"Siminooo" forKey :@"userNickName"];
     [people5 setValue: @"1" forKey :@"userID"];
     [people5 setValue: imageData forKey :@"userPic"];
-    [people5 setValue:@"111111" forKey:@"userImageUUID"];
+    //[people5 setValue:@"111111" forKey:@"userImageUUID"];
     
 
 

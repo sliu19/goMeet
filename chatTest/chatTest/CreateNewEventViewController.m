@@ -81,14 +81,14 @@
     _uuid = uuidString;
     NSDate* now = _datePicker.date;
     int unixTime = [_datePicker.date timeIntervalSince1970];
+    NSMutableArray* invitePic =[[NSMutableArray alloc]init];
     NSMutableArray* inviteID =[[NSMutableArray alloc]init];
     if (_inviteList!=nil) {
         for (Friend* friends in _inviteList) {
+            [invitePic addObject:friends.userPic];
             [inviteID addObject:friends.userID];
         }
     }
-    NSLog(@"FriendIDList is %@",inviteID);
-
     
     //Create Room
     if (private) {
@@ -103,8 +103,8 @@
     [event setValue: _EventTitle.text forKey :@"title"];
     
     [event setValue:now forKey:@"time"];
-    [event setValue: inviteID forKey:@"groupMember"];
-    [event setGroupMember:inviteID];
+    [event setValue: invitePic forKey:@"groupMember"];
+    [event setGroupMember:invitePic];
     NSLog(@"GroupMember when set is %@",[[NSString alloc] initWithData:event.groupMember_data encoding:NSUTF8StringEncoding]);
     
     }

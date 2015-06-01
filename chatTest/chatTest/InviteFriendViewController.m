@@ -145,7 +145,6 @@ BOOL isSearching;
     //NSLog(@"Array is %@",self.sortedList);
     FriendCell *cell= [self.friendCollectionView dequeueReusableCellWithReuseIdentifier:@"FriendCell" forIndexPath:indexPath];
     cell.backgroundColor = [UIColor clearColor];
-    NSLog(@"index number is %lu",indexPath.row);
     cell.myFriend = _sortedList[indexPath.row];
     [cell deselect:cell];
     return cell;
@@ -171,7 +170,6 @@ BOOL isSearching;
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 
 {
-    NSLog(@"Select one cell");
     FriendCell *cell = (FriendCell *)[collectionView cellForItemAtIndexPath:indexPath];
     // Set the index once user taps on a cell
     [_selectedList addObject:cell.myFriend];
@@ -183,7 +181,7 @@ BOOL isSearching;
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
 
 {
-    NSLog(@"Diselect one cell");
+    //NSLog(@"Diselect one cell");
     FriendCell *cell = (FriendCell *)[collectionView cellForItemAtIndexPath:indexPath];
     // Set the index once user taps on a cell
     [_selectedList removeObject:cell.myFriend];
@@ -193,7 +191,7 @@ BOOL isSearching;
 }
 
 - (IBAction)confirm:(id)sender {
-    NSLog(@"SELECTED LIST IS %@",_selectedList);
+    //NSLog(@"SELECTED LIST IS %@",_selectedList);
     [self.orginalController setFoo:_selectedList];
     [self dismissViewControllerAnimated:NO completion:nil];
 }

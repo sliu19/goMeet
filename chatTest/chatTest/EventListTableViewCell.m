@@ -7,6 +7,7 @@
 //
 
 #import "EventListTableViewCell.h"
+#import "smallFriendView.h"
 
 
 #define OFF_SET 10
@@ -22,7 +23,9 @@
 @property (weak, nonatomic) IBOutlet UIView *cardView;
 @property (weak, nonatomic) IBOutlet UIView *mainView;
 @property (weak, nonatomic) IBOutlet UILabel *mainViewLabel;
-@property (weak, nonatomic) IBOutlet UIView *displayView;
+@property (weak, nonatomic) IBOutlet UIView* displayView;
+
+@property(strong,nonatomic) smallFriendView* inviteView;
 
 
 @end
@@ -41,37 +44,10 @@
 }
 
 
-- (void)KKKsetSelected:(BOOL)selected animated:(BOOL)animated
-{
-    // Configure the view for the selected state
-    
-    // hear only you can manage your background views, simply i am adding 2 imageviews by setting different colors
-    [super setSelected:selected animated:animated];
-    //self.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:0.7];
-    if(selected)
-    {
-        //self.backgroundColor = [[UIColor blueColor] colorWithAlphaComponent:0.7];
-           }
-    else
-    {
-       ;
-    }
-    
-}
-
--(void)KKKKlayoutSubviews
-{
-    
-    //i am setting the frame for each views that i hav added
-    [super layoutSubviews];
-    //self.label1.frame = CGRectMake(10, 10, 60, 35);
-    //self.label2.frame = CGRectMake(65, 10, 60, 35);
-    
-}
 
 -(void)setup
 {
-    self.backgroundColor = [UIColor whiteColor];
+    //self.backgroundColor = [UIColor whiteColor];
     self.opaque = YES;
     _mainView.frame =CGRectMake(0, 0, self.frame.size.width,174);
     [_mainView addSubview:_cardView];
@@ -94,6 +70,10 @@
 
 - (void)drawRect:(CGRect)rect {
     _Title.text = myEvent.title;
+    _inviteView = [[smallFriendView alloc]initWithFrame:_displayView.frame];
+    _inviteView.inviteList = myEvent.groupMember;
+    _inviteView.backgroundColor = self.backgroundColor;
+    [self addSubview: _inviteView];
     //UIImage *testImage = [UIImage imageNamed:@"testImage.jpeg"];
     //test = UIImageJPEGRepresentation(testImage,testImage.scale);
     
@@ -125,6 +105,7 @@
     NSString *stringFromDate = [formatter stringFromDate:myEvent.time];
 
     _mainViewLabel.text = stringFromDate;
+    _inviteView.hidden = true;
     
 }
 
@@ -132,15 +113,18 @@
 - (IBAction)clickLoaction:(id)sender {
     _contentImageView.image = [UIImage imageNamed:@"Check-in"];
     _mainViewLabel.text = myEvent.location;
+    _inviteView.hidden = true;
 }
 
 - (IBAction)clickDescription:(id)sender {
     _contentImageView.image = [UIImage imageNamed:@"Description"];
     _mainViewLabel.text = myEvent.eventDescription;
+    _inviteView.hidden = true;
 }
 
 - (IBAction)clickPeople:(id)sender {
     _contentImageView.image = [UIImage imageNamed:@"people"];
+    _inviteView.hidden = false;
 }
 
 

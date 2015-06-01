@@ -1071,7 +1071,7 @@
                                                 <action selector="clickLoaction:" destination="0qh-0M-fFK" eventType="touchUpInside" id="xUU-qP-BYX"/>
                                             </connections>
                                         </button>
-                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HRr-zg-G7r">
+                                        <view opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HRr-zg-G7r" customClass="smallFriendView">
                                             <rect key="frame" x="46" y="92" width="229" height="48"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y1r-qm-OVz">

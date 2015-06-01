@@ -1,8 +1,8 @@
 //
 //  Friend.m
-//  chatTest
+//  赢家
 //
-//  Created by Simin Liu on 5/24/15.
+//  Created by Simin Liu on 6/1/15.
 //  Copyright (c) 2015 LPP. All rights reserved.
 //
 
@@ -12,39 +12,10 @@
 @implementation Friend
 
 @dynamic userID;
-@dynamic userImageUUID;
-@dynamic userPic;
 @dynamic userNickName;
-
-+(Friend*)photoWithInfo:(NSDictionary*) FriendDictionary
- inManagedObjectContext:(NSManagedObjectContext* ) context{
-    Friend* people = nil;
-    
-    NSString *unique = FriendDictionary[@"testImage"];
-    NSFetchRequest* request =[NSFetchRequest fetchRequestWithEntityName:@"Friend"];
-    request.predicate = [NSPredicate predicateWithFormat:@"unique = %@",unique];
-    
-    NSError *error;
-    NSArray *matches = [context executeFetchRequest:request error:&error];
-    
-    if(!matches || error || [matches count]>1){
-        //handle error
-        NSLog(@"Error message in Friend.m");
-    }else if([matches count]){
-        people = [matches firstObject];
-    }else{
-        people = [NSEntityDescription insertNewObjectForEntityForName:@"Friend" inManagedObjectContext:context];
-        //people.unique = unique;
-        people.userID = [FriendDictionary valueForKeyPath:@"testUserName"];
-        people.userPic = [FriendDictionary valueForKeyPath:@"testUserPic"];
-        
-    }
-    return people;
-}
-
-+(void)loadPeopleArray:(NSArray*) Friend
-intoManageObjectContext:(NSManagedObjectContext* )context{
-    
-}
+@dynamic userPic;
+@dynamic parseID;
+@dynamic gender;
+@dynamic location;
 
 @end
