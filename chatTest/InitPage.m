@@ -7,6 +7,7 @@
 
 #import "InitPage.h"
 #import "MainTabBarViewController.h"
+#import <Parse/Parse.h>
 
 @interface InitPage ()
 
@@ -189,7 +190,15 @@
                             if(![[userInfo objectForKey:@"location"] isEqual:[NSNull null]]){
                                 [defaults setObject:[userInfo objectForKey:@"location"] forKey:@"location"];}
                             [defaults setObject:[userInfo objectForKey:@"nickname"] forKey:@"nickName"];
+                            [defaults setObject:[userInfo objectForKey:@"parseID"] forKey:@"parseID"];
+                            PFQuery *query = [PFQuery queryWithClassName:@"People"];
+                            [query getObjectInBackgroundWithId:[userInfo objectForKey:@"parseID"] block:^(PFObject *user, NSError *error) {
+                                // Do something with the returned PFObject in the gameScore variable.
+                                NSData* imgData =[user[@"smallPicFile"] getData];
+                                [defaults setObject: imgData forKey:@"userPic"];
+                            }];
                             [defaults setObject:@"F" forKey:@"gender"];
+                            
                             NSNumber* isMale =(NSNumber*)[userInfo objectForKey:@"is_male"];
                             if ([isMale boolValue]==YES) {
                                 [defaults setObject:@"M" forKey:@"gender"];

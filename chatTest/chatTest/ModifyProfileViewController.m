@@ -406,8 +406,16 @@
                                     [query getObjectInBackgroundWithId:[defaults objectForKey:@"parseID"] block:^(PFObject *user, NSError *error) {
                                         // Do something with the returned PFObject in the gameScore variable.
                                         NSLog(@"%@,old image is%@, new image is %@", user.objectId,user[@"small"], imageData);
-                                        user[@"small"] = imageData;
-                                        [user saveInBackground];
+
+                                        PFFile *file = [PFFile fileWithName:@"smallPic" data:imageData];
+                                        [file saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {if(succeeded){
+                                            user[@"smallPicFile"] = file;
+                                            [user saveInBackground];
+                                        }
+                                            
+                                        } progressBlock:^(int percentDone) {
+                                            NSLog(@"Finish percentage is %d",percentDone);
+                                        }];
                                     }];
                                     
                                     // Store the data

@@ -62,15 +62,27 @@
     }
     else{
         if ([_passCodeConfirm.text isEqualToString:_passCode.text]){
-            
+            PFQuery *query = [PFQuery queryWithClassName:@"TestObject"];
+            [query getObjectInBackgroundWithId:@"47DlYDbCAl" block:^(PFObject *user, NSError *error) {
+                // Do something with the returned PFObject in the gameScore variable.
+                user[@"foo"]=@"newBar";
+            }];
             //{"gender":"M","pass_hash":"password","phone_num":6505758649,"nick":"ZhouYi"}
             // [JFBCrypt hashPassword: password withSalt: salt]
             //NSString *salt = [JFBCrypt generateSaltWithNumberOfRounds: 10];
-            NSDictionary* dict = @{@"gender":self.gender,@"pass_hash":_passCode.text,@"phone_num":self.phoneNum.text,@"nick":self.nickName.text};
+            PFObject* user = [PFObject objectWithClassName:@"People"];
+            user[@"small"] =@"smallPic";
+            NSLog(@"What?");
+            [user save];
             
+            
+            NSDictionary* dict = @{@"gender":self.gender,@"pass_hash":_passCode.text,@"phone_num":self.phoneNum.text,@"nick":self.nickName.text,@"parseID":user.objectId};
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            [defaults setObject:user.objectId forKey:@"parseID"];
             
             NSString *response  = [NSString stringWithFormat:@"reg:%@", [Communication parseIntoJson:dict]];
             NSData *data = [[NSData alloc] initWithData:[response dataUsingEncoding:NSUTF8StringEncoding]];
+            
             [Communication send:data];
         }
         else{
@@ -169,7 +181,7 @@
                     len = [inputStream read:buffer maxLength:sizeof(buffer)];
                     if (len > 0) {
                         
-                        NSString *output = [[NSString alloc] initWithBytes:buffer length:len encoding:NSASCIIStringEncoding];
+                        NSString *output = [[NSString alloc] initWithBytes:buffer length:len encoding:NSUTF8StringEncoding];
                         
                         if (nil != output) {
                             switch (output.intValue) {
@@ -192,10 +204,7 @@
                                     //int age = [[ageTextField text] integerValue];
                                     
                                     // Create instances of NSData
-                                    PFObject *user = [PFObject objectWithClassName:@"Friend"];
                                     NSData* smallPic = UIImageJPEGRepresentation([UIImage imageNamed:@"blankUser.jpg"],1);
-                                    user[@"small"] = smallPic;
-                                    [user saveInBackground];
                                     // Store the data
                                     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
                                     
@@ -205,7 +214,6 @@
                                     [defaults setObject:smallPic forKey:@"userPic"];
                                     [defaults setObject:nickName forKey:@"nickName"];
                                     [defaults setObject:_gender forKey:@"gender"];
-                                    [defaults setObject:user.objectId forKey:@"parseID"];
                                     [defaults synchronize];
                                     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
                                     MainTabBarViewController *viewController = (MainTabBarViewController *)[storyboard instantiateViewControllerWithIdentifier:@"GoMeet"];
