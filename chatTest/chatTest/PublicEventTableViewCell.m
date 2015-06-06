@@ -34,6 +34,8 @@
     
     
 - (void)drawRect:(CGRect)rect {
+    _JoinButton.layer.cornerRadius = 5;
+    _JoinButton.clipsToBounds = YES;
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy"];
     

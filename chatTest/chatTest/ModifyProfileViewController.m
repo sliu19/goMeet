@@ -44,6 +44,10 @@
     _intro.text = [prefs objectForKey:@"intro"];
     _email.text = [prefs objectForKey:@"email"];
     _location.text = [prefs objectForKey:@"location"];
+    if([prefs dataForKey:@"userPic"]==nil){
+        NSData *imageData = UIImageJPEGRepresentation([UIImage imageNamed:@"blankUser.jpg"],1);
+        [prefs setObject:imageData forKey:@"userPic"];
+    }
     _userPic.image = [[UIImage alloc]initWithData:[prefs dataForKey:@"userPic"]];
     _userID.text = [prefs objectForKey:@"userID"];
     _gender.text = @"男";
@@ -396,7 +400,7 @@
                                     CGFloat compressionRatio = 1 ;
                                     UIImage *contactImage = _userPic.image;
                                     NSData *imageData = UIImageJPEGRepresentation(contactImage,compressionRatio);
-                                    while ([imageData length]>50000) {
+                                    while ([imageData length]>20000) {
                                         compressionRatio=compressionRatio*0.5;
                                         imageData=UIImageJPEGRepresentation(contactImage,compressionRatio);
                                     }

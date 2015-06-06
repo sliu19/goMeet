@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *genderLabel;
 @property (weak, nonatomic) IBOutlet UILabel *phoneNubmerLabel;
 @property (weak, nonatomic) IBOutlet UILabel *locationLabel;
+@property (weak, nonatomic) IBOutlet UIButton *ModifyInfoButton;
 
 @end
 
@@ -28,6 +29,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    //Send through NSStrem
+    NSData * userPic = [prefs dataForKey:@"userPic"];
+    _PersonalPicImageView.image=[[UIImage alloc]initWithData:userPic];
+    _ModifyInfoButton.layer.cornerRadius = 5;
+    _ModifyInfoButton.clipsToBounds = YES;
+
+    
  // Do any additional setup after loading the view.
 }
 

@@ -17,12 +17,13 @@
 @property (weak, nonatomic) IBOutlet UITextField *passCode;
 @property (weak, nonatomic) IBOutlet UITextField *passCodeConfirm;
 @property (weak, nonatomic) IBOutlet UIButton *signUp;
-@property (weak, nonatomic) IBOutlet UILabel *outPut;
+
 @property (nonatomic, assign) UITextField* currentResponder;
 @property (weak, nonatomic) IBOutlet UIButton *gender_F;
 @property (weak, nonatomic) IBOutlet UIButton *gender_M;
 @property (weak, nonatomic) IBOutlet UITextField *nickName;
 @property (nonatomic,strong)NSString* gender;
+@property (weak, nonatomic) IBOutlet UIButton *switchButton;
 @property (nonatomic,strong)UIColor* onClick;
 @end
 
@@ -47,6 +48,11 @@
     [singleTap setNumberOfTapsRequired:1];
     [singleTap setNumberOfTouchesRequired:1];
     [self.view addGestureRecognizer:singleTap];
+    _signUp.layer.cornerRadius = 5;
+    _signUp.clipsToBounds = YES;
+    _switchButton.layer.cornerRadius = 5;
+    _switchButton.clipsToBounds = YES;
+
 
 }
 
@@ -57,7 +63,7 @@
 
 - (IBAction)SignUp:(UIButton *)sender {
     if (_phoneNum.text == nil || _passCode.text ==nil ||_passCodeConfirm== nil) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"注册失败" message:@"密码必须于验证密码一致" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"信息不全" message:@"电话号码和密码不能为空" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:nil];
         // optional - add more buttons:
         //[alert addButtonWithTitle:@"再试一次"];
         [alert show];
@@ -83,10 +89,12 @@
             [Communication send:data];
         }
         else{
-            
-            _outPut.text = @"Passcode mismatch!";
             NSLog(@"PASS, CONFIRM %@   %@",_passCode.text,_passCodeConfirm.text);
-            _outPut.textColor = [UIColor redColor];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"注册失败" message:@"密码必须于验证密码一致" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:nil];
+            // optional - add more buttons:
+            //[alert addButtonWithTitle:@"再试一次"];
+            [alert show];
+
         }
     }
     

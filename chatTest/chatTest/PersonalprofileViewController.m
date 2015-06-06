@@ -26,6 +26,7 @@
     _userName.text = _friends.userNickName;
     _userPic.layer.cornerRadius = _userPic.frame.size.width / 2;
     _userPic.clipsToBounds = YES;
+    _userPic.image=[UIImage imageWithData:_friends.userPic];
     _phoneNumLabel.text = _friends.userID;
     [super viewDidLoad];
     // Do any additional setup after loading the view.

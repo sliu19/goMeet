@@ -32,6 +32,8 @@
     NSLog(@"name is %@",[_Info objectForKey:@"nick"]);
     _greetingLabel.text = [_Info objectForKey:@"msg"];
     _userNameLabel.text = [_Info objectForKey:@"nick"];
+    _actionButton.layer.cornerRadius = 5;
+    _actionButton.clipsToBounds = YES;
 
 }
 - (IBAction)accpetButton:(id)sender {

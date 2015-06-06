@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *passCode;
 @property (nonatomic, assign) UITextField* currentResponder;
 @property (weak, nonatomic) IBOutlet UIButton *logIn;
+@property (weak, nonatomic) IBOutlet UIButton *switchButton;
 
 
 
@@ -37,7 +38,11 @@
     [self passCode].delegate = self;
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(resignOnTap:)];
     singleTap.numberOfTapsRequired = 1;
-    
+    _logIn.layer.cornerRadius = 5;
+    _logIn.clipsToBounds = YES;
+    _switchButton.layer.cornerRadius = 5;
+    _switchButton.clipsToBounds = YES;
+
     
 
     
