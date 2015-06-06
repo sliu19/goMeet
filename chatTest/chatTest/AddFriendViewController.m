@@ -9,6 +9,7 @@
 #import "AddFriendViewController.h"
 #import "MainTabBarViewController.h"
 #import "Communication.h"
+#import <Parse/Parse.h>
 
 @interface AddFriendViewController ()
 
@@ -97,8 +98,10 @@
 
 - (void) animateTextField: (UITextField *)textField up: (BOOL) up
 {
-    NSLog(@"CurrentResponder origin y is %f",_currentResponder.frame.origin.y);
-    const int movementDistance = _currentResponder.frame.origin.y-80; // tweak as needed
+    CGPoint textFieldCenter = textField.center;
+    CGPoint textPosition = [_currentResponder convertPoint:textFieldCenter fromView:self.view];
+    NSLog(@"POSITION IS %f",textPosition.y);
+    const int movementDistance = -textPosition.y/2; // tweak as needed
     const float movementDuration = 0.3f; // tweak as needed
     
     int movement = (up ? -movementDistance : movementDistance);
@@ -156,6 +159,13 @@
                             _nameLabel.text = [userInfo objectForKey:@"nickname"];
                             _locationLabel.text = [userInfo objectForKey:@"location"];
                             _introLabel.text = [userInfo objectForKey:@"introduction"];
+                            PFQuery *query = [PFQuery queryWithClassName:@"People"];
+                            [query getObjectInBackgroundWithId:[userInfo objectForKey:@"parseID"] block:^(PFObject *user, NSError *error) {
+                                // Do something with the returned PFObject in the gameScore variable.
+                                NSData* imgData =[user[@"smallPicFile"] getData];
+                                _userImage.image = [UIImage imageWithData:imgData];
+                            }];
+
                             _resultView.hidden = false;
                             NSLog(@"server said: %@", output);
                         }

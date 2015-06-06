@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../chatTest/EventNoticeTableViewController.m"
-            timestampString = "454654926.672625"
+            timestampString = "455216272.93496"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "139"
-            endingLineNumber = "139"
+            startingLineNumber = "145"
+            endingLineNumber = "145"
             landmarkName = "-stream:handleEvent:"
             landmarkType = "5">
          </BreakpointContent>

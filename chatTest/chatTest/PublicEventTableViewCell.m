@@ -29,6 +29,11 @@
 -(void)setup{
     self.backgroundColor = [UIColor whiteColor];
     self.opaque = YES;
+        self.contentMode = UIViewContentModeRedraw;
+}
+    
+    
+- (void)drawRect:(CGRect)rect {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy"];
     
@@ -41,12 +46,7 @@
     _TimeLabel.text = stringFromDate;
     _JoinButton.layer.cornerRadius = 5;
     _JoinButton.clipsToBounds = YES;
-    self.contentMode = UIViewContentModeRedraw;
-}
-    
-    
-- (void)drawRect:(CGRect)rect {
-    
+
    
 }
 - (IBAction)joinEvent:(id)sender {

@@ -422,8 +422,8 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
     //
     // If you don't specify a hostPort, then the default (5222) will be used.
     
-    	[xmppStream setHostName:@"54.69.204.42"];
-    	[xmppStream setHostPort:5222];
+    	[xmppStream setHostName:@"ec2-52-69-23-190.ap-northeast-1.compute.amazonaws.com"];
+    	[xmppStream setHostPort:9090];
     
     
     // You may need to alter these settings depending on the server you're connecting to
@@ -499,6 +499,7 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 
 - (BOOL)connect
 {
+    NSLog(@"connect to XMPP");
     if (![xmppStream isDisconnected]) {
         return YES;
     }
@@ -509,8 +510,9 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
     // If you don't want to use the Settings view to set the JID,
     // uncomment the section below to hard code a JID and password.
     //
-     myJID = @"user3@ip-172-31-20-117";
-     myPassword = @"user3";
+    NSUserDefaults* def = [NSUserDefaults standardUserDefaults];
+    myJID = [NSString stringWithFormat:@"%@@ec2-52-69-23-190.ap-northeast-1.compute.amazonaws.com",[def objectForKey:@"userID"]];
+    myPassword = @"1";
     
     if (myJID == nil || myPassword == nil) {
         return NO;

@@ -53,6 +53,7 @@
     
     EventListTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"EventCell"];
     cell.myEvent = event;
+    cell.backgroundColor = [self.view backgroundColor];
     return cell;
 }
 

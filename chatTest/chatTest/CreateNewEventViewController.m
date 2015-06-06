@@ -324,7 +324,9 @@
     invitePicView.inviteList = _inviteList;
     invitePicView.backgroundColor = self.view.backgroundColor;
     [_mainView addSubview:invitePicView];
-    [self moveButton:viewSize.height+30];
+    if(lines!=0){
+        [self moveButton:viewSize.height+30];
+    }
 }
 
 - (IBAction)inviteFriend:(id)sender {

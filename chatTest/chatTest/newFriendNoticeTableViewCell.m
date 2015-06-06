@@ -24,10 +24,15 @@
 
 -(void)setup
 {
+       self.contentMode = UIViewContentModeRedraw;
+    
+}
+
+-(void)drawRect:(CGRect)rect{
+    NSLog(@"name is %@",[_Info objectForKey:@"nick"]);
     _greetingLabel.text = [_Info objectForKey:@"msg"];
     _userNameLabel.text = [_Info objectForKey:@"nick"];
-    self.contentMode = UIViewContentModeRedraw;
-    
+
 }
 - (IBAction)accpetButton:(id)sender {
     _actionButton.backgroundColor = [UIColor grayColor];
@@ -36,6 +41,7 @@
     NSString* request = [NSString stringWithFormat:@"acceptfriend:%@#%@",[prefs objectForKey:@"userID"],[_Info objectForKey:@"phone"]];
     NSData *data = [[NSData alloc] initWithData:[request dataUsingEncoding:NSUTF8StringEncoding]];
     [Communication send:data];
+    
 }
 
 @end

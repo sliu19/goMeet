@@ -57,21 +57,18 @@
 
 - (IBAction)SignUp:(UIButton *)sender {
     if (_phoneNum.text == nil || _passCode.text ==nil ||_passCodeConfirm== nil) {
-        _outPut.text = @"Incomplete Infomation!";
-        _outPut.textColor = [UIColor redColor];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"注册失败" message:@"密码必须于验证密码一致" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:nil];
+        // optional - add more buttons:
+        //[alert addButtonWithTitle:@"再试一次"];
+        [alert show];
     }
     else{
         if ([_passCodeConfirm.text isEqualToString:_passCode.text]){
-            PFQuery *query = [PFQuery queryWithClassName:@"TestObject"];
-            [query getObjectInBackgroundWithId:@"47DlYDbCAl" block:^(PFObject *user, NSError *error) {
-                // Do something with the returned PFObject in the gameScore variable.
-                user[@"foo"]=@"newBar";
-            }];
             //{"gender":"M","pass_hash":"password","phone_num":6505758649,"nick":"ZhouYi"}
             // [JFBCrypt hashPassword: password withSalt: salt]
             //NSString *salt = [JFBCrypt generateSaltWithNumberOfRounds: 10];
             PFObject* user = [PFObject objectWithClassName:@"People"];
-            user[@"small"] =@"smallPic";
+            user[@"id"] =self.phoneNum.text;
             NSLog(@"What?");
             [user save];
             

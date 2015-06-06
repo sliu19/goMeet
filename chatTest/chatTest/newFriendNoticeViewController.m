@@ -40,6 +40,7 @@
         cell = [[newFriendNoticeTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault  reuseIdentifier:MyIdentifier];
     }
     NSDictionary* item= _notificationList[indexPath.row];
+    NSLog(@"one cell with info%@",_notificationList[indexPath.row]);
     cell.Info = item;
     return cell;
 }

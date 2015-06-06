@@ -70,9 +70,10 @@
 
 - (void)drawRect:(CGRect)rect {
     _Title.text = myEvent.title;
+    _contentImageView.image = [UIImage imageNamed:@"people"];
     _inviteView = [[smallFriendView alloc]initWithFrame:_displayView.frame];
     _inviteView.inviteList = myEvent.groupMember;
-    _inviteView.backgroundColor = self.backgroundColor;
+    _inviteView.backgroundColor = self.mainView.backgroundColor;
     [self addSubview: _inviteView];
     //UIImage *testImage = [UIImage imageNamed:@"testImage.jpeg"];
     //test = UIImageJPEGRepresentation(testImage,testImage.scale);

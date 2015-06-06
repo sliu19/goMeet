@@ -14,7 +14,6 @@
 @synthesize publicEventlist;
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [Communication initNetworkCommunication];
     [inputStream setDelegate:self];
     [outputStream setDelegate:self];
     publicEventlist = [[NSMutableArray alloc]init];
@@ -22,6 +21,12 @@
     PublicEvent* testEvent = [[PublicEvent alloc]init:@{@"time":@"testTime",@"title":@"testTitle", @"location":@"testLocation"}];
     [publicEventlist addObject:testEvent];
     NSLog(@"PublicEventTableViewController");
+    //pollnewsfeed:{"amount":10,"user_id":22222222,"start_offset":0}
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    NSDictionary* dict = @{@"amount":@"10",@"user_id":[prefs objectForKey:@"userID"],@"start_offset":@"0"};
+    NSString *response  = [NSString stringWithFormat:@"pollnewsfeed:%@",[Communication parseIntoJson:dict]];    NSData *data = [[NSData alloc] initWithData:[response dataUsingEncoding:NSUTF8StringEncoding]];
+    [Communication send:data];
+
 }
 
 
@@ -52,7 +57,7 @@
 
 #pragma mark - Table view delegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableViewWWWW:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"Row pressed!!");
 }
@@ -90,23 +95,8 @@
                     len = [inputStream read:buffer maxLength:sizeof(buffer)];
                     if (len > 0) {
                         
-                        NSString *output = [[NSString alloc] initWithBytes:buffer length:len encoding:NSASCIIStringEncoding];
-                        
-                        if (nil != output) {
-                            switch (output.intValue) {
-                                case 1:
-                                    NSLog(@"trigger segue");
-                                    [self performSegueWithIdentifier:@"login" sender:nil];
-                                    
-                                    break;
-                                    
-                                default:
-                                    NSLog(@"output int val %@", output.intValue);
-                                    break;
-                            }
+                        NSString *output = [[NSString alloc] initWithBytes:buffer length:len encoding:NSUTF8StringEncoding];
                             NSLog(@"server said: %@", output);
-                            
-                        }
                     }
                 }
             }
