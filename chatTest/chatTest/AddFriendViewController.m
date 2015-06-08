@@ -74,7 +74,7 @@
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     MainTabBarViewController *viewController = (MainTabBarViewController *)[storyboard instantiateViewControllerWithIdentifier:@"GoMeet"];
-    [viewController setSelectedIndex:0];
+    [viewController setSelectedIndex:3];
     [self presentViewController:viewController animated:YES completion:nil];
 }
 

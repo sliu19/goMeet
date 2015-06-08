@@ -284,7 +284,7 @@
                                 //Return to main page
                                 UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
                                 MainTabBarViewController *viewController = (MainTabBarViewController *)[storyboard instantiateViewControllerWithIdentifier:@"GoMeet"];
-                                [viewController setSelectedIndex:1];
+                                [viewController setSelectedIndex:2];
                                 [self presentViewController:viewController animated:YES completion:nil];
 
                             }
