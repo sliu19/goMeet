@@ -7,6 +7,7 @@
 //
 
 #import "PublicEventTableViewCell.h"
+#import "Communication.h"
 @interface PublicEventTableViewCell()
 @property (weak, nonatomic) IBOutlet UILabel *TitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *LocationLabel;
@@ -52,5 +53,13 @@
    
 }
 - (IBAction)joinEvent:(id)sender {
+    //eventaccept:{"event_id":"37aa7291-f8e9-11e4-9fd2-b8e85632007e","user_id":6505758649}
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    NSDictionary* dict = @{@"user_id":[prefs objectForKey:@"userID"],@"event_id":eventItem.jid};
+    NSString *response  = [NSString stringWithFormat:@"eventaccept:%@",[Communication parseIntoJson:dict]];
+    NSData *data = [[NSData alloc] initWithData:[response dataUsingEncoding:NSUTF8StringEncoding]];
+    [Communication send:data];
+
+    
 }
 @end

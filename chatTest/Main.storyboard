@@ -1257,13 +1257,6 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qQF-ne-RSj">
                                 <rect key="frame" x="16" y="87" width="80" height="74"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="people" translatesAutoresizingMaskIntoConstraints="NO" id="34p-bB-x0E">
-                                <rect key="frame" x="16" y="320" width="18" height="18"/>
-                            </imageView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xi5-5Z-bYw">
-                                <rect key="frame" x="42" y="317" width="262" height="49"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3s4-MW-8dI">
                                 <rect key="frame" x="16" y="388" width="141" height="47"/>
                                 <color key="backgroundColor" red="0.93333339689999995" green="0.34509804840000002" blue="0.31764706970000001" alpha="1" colorSpace="deviceRGB"/>
@@ -1280,7 +1273,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="UKe-Gx-XlI"/>
                     <connections>
-                        <outlet property="attandanceView" destination="xi5-5Z-bYw" id="YSm-OK-FYT"/>
                         <outlet property="eventDescriptLabel" destination="kOo-1K-TjX" id="8X7-ov-hVs"/>
                         <outlet property="eventOwnerLabel" destination="pPj-Tx-POR" id="Pkg-JL-ctF"/>
                         <outlet property="goButton" destination="3s4-MW-8dI" id="X3p-3v-nG0"/>

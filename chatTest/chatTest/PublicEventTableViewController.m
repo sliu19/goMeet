@@ -17,7 +17,7 @@
     [inputStream setDelegate:self];
     [outputStream setDelegate:self];
     publicEventlist = [[NSMutableArray alloc]init];
-    
+    self.tableView.allowsSelection = NO;
     PublicEvent* testEvent = [[PublicEvent alloc]init:@{@"time":@"testTime",@"title":@"testTitle", @"location":@"testLocation"}];
     [publicEventlist addObject:testEvent];
     NSLog(@"PublicEventTableViewController");
