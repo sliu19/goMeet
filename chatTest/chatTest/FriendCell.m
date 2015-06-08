@@ -90,6 +90,7 @@ BOOL selected;
     
 }
 
+//选中&未选中绿勾调整
 -(void) select:(FriendCell*)cell{
     selected = true;
     [self.selectedPic setHidden:NO];

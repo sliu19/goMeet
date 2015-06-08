@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Lib.h"
 
 @interface SignUpViewController : UIViewController<NSStreamDelegate,UITextFieldDelegate>
 

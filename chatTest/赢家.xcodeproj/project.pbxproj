@@ -51,7 +51,6 @@
 		F776C9911B12EB0E006D48A9 /* active-state.png in Resources */ = {isa = PBXBuildFile; fileRef = F776C9901B12EB0E006D48A9 /* active-state.png */; };
 		F777D8DA1B1A4BF200BE39D3 /* greenImage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F777D8D91B1A4BF200BE39D3 /* greenImage.jpg */; };
 		F7789EAE1B1965F0007FD7A5 /* ChangePasscodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7789EAD1B1965F0007FD7A5 /* ChangePasscodeViewController.m */; };
-		F77C90101AA3F4A60005EC2F /* Lib.m in Sources */ = {isa = PBXBuildFile; fileRef = F77C900F1AA3F4A60005EC2F /* Lib.m */; };
 		F77EC12D1AE86D9400D790C2 /* GroupChatTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F77EC12C1AE86D9400D790C2 /* GroupChatTableViewCell.m */; };
 		F77EC1321AE8720A00D790C2 /* EventListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F77EC1311AE8720A00D790C2 /* EventListTableViewCell.m */; };
 		F791A6951AAC1A040025365A /* testImage.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F791A6941AAC1A040025365A /* testImage.jpeg */; };
@@ -308,8 +307,6 @@
 		F777D8D91B1A4BF200BE39D3 /* greenImage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = greenImage.jpg; sourceTree = "<group>"; };
 		F7789EAC1B1965F0007FD7A5 /* ChangePasscodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChangePasscodeViewController.h; path = ../ChangePasscodeViewController.h; sourceTree = "<group>"; };
 		F7789EAD1B1965F0007FD7A5 /* ChangePasscodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChangePasscodeViewController.m; path = ../ChangePasscodeViewController.m; sourceTree = "<group>"; };
-		F77C900F1AA3F4A60005EC2F /* Lib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Lib.m; sourceTree = "<group>"; };
-		F77C90111AA3F4B50005EC2F /* Lib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Lib.h; sourceTree = "<group>"; };
 		F77EC12B1AE86D9400D790C2 /* GroupChatTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupChatTableViewCell.h; sourceTree = "<group>"; };
 		F77EC12C1AE86D9400D790C2 /* GroupChatTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupChatTableViewCell.m; sourceTree = "<group>"; };
 		F77EC1301AE8720A00D790C2 /* EventListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventListTableViewCell.h; sourceTree = "<group>"; };
@@ -733,8 +730,6 @@
 				F776C9841B11857B006D48A9 /* JFBCrypt */,
 				F7A11E2F1ABE20D700DF9AEB /* external-support */,
 				F791A6A51AAC1B200025365A /* CoreData */,
-				F77C90111AA3F4B50005EC2F /* Lib.h */,
-				F77C900F1AA3F4A60005EC2F /* Lib.m */,
 				F77C90141AA3FDB20005EC2F /* UserImage */,
 				F7CF9FCE1AF595DE00DAF91A /* Model */,
 				F76F4ABF1AF2FCFD00A0E525 /* Views */,
@@ -2153,7 +2148,6 @@
 				F7FA8BD61AC7A07400F88F94 /* EventTableViewController.m in Sources */,
 				F7FA88B01AC7094600F88F94 /* XMPPIQ+JabberRPC.m in Sources */,
 				F7FA88F21AC7094600F88F94 /* XMPPAutoPing.m in Sources */,
-				F77C90101AA3F4A60005EC2F /* Lib.m in Sources */,
 				F7FA88AA1AC7094600F88F94 /* XMPPUserCoreDataStorageObject.m in Sources */,
 				F7A11E1A1ABD376200DF9AEB /* NSData+XMPP.m in Sources */,
 				F791A6A11AAC1AEA0025365A /* GoMeet.xcdatamodeld in Sources */,
@@ -2356,7 +2350,7 @@
 				INFOPLIST_FILE = chatTestTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "赢家Tests";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/chatTest.app/chatTest";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/赢家.app/赢家";
 			};
 			name = Debug;
 		};
@@ -2371,7 +2365,7 @@
 				INFOPLIST_FILE = chatTestTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "赢家Tests";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/chatTest.app/chatTest";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/赢家.app/赢家";
 			};
 			name = Release;
 		};

@@ -22,6 +22,7 @@
     return self;
 }
 
+//查看信息是否本机发出
 -(BOOL)isSelf
 {
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
@@ -33,7 +34,7 @@
     return false;
 }
 
-
+//encoding
 - (void) encodeWithCoder:(NSCoder *)encoder {
     [encoder encodeObject:_userID forKey:@"userID"];
     [encoder encodeObject:_bodyText forKey:@"bodyText"];

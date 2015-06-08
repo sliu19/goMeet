@@ -4,7 +4,7 @@
 //
 //  Created by Simin Liu on 5/2/15.
 //  Copyright (c) 2015 LPP. All rights reserved.
-//
+// Designed for group chat. Not used for now.
 
 #ifndef chatTest_Message_h
 #define chatTest_Message_h
@@ -13,7 +13,9 @@
 
 @property(strong,nonatomic)NSString* userID;
 @property(strong,nonatomic)NSString* bodyText;
+
 -(Message*)init:(NSString*)body name:(NSString*)userName;
+//查看信息是否本机发出
 -(BOOL)isSelf;
 
 @end

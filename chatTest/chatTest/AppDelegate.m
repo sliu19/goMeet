@@ -109,8 +109,7 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
     }
     else
     {
-        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
-         (UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert)];
+        [[UIApplication sharedApplication] registerForRemoteNotifications];
     }
     
 

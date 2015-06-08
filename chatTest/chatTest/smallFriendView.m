@@ -18,6 +18,7 @@
     CGPoint startPoint;
     startPoint.x = OFFSET;
     startPoint.y=OFFSET;
+    //一个个圆圈画
     for (NSMutableData*friends in inviteList){
         UIImage* faceImage = [UIImage imageWithData:friends];
         CGRect frame = CGRectMake(startPoint.x, startPoint.y, LENGTH, LENGTH);
@@ -44,6 +45,7 @@
     
 }
 
+//调整图片加入superView
 -(void)addOneCircle:(CGRect)frame image:(UIImage*)faceImage{
     UIImageView* faceImageView = [[UIImageView alloc]initWithFrame:frame];
     faceImageView.image = faceImage;

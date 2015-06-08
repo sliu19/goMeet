@@ -21,6 +21,6 @@
 @property (nonatomic, strong, readonly) XMPPStream* xmppStream;
 @property(nonatomic,strong)NSMutableArray* inviteList;
 
-- (void)setFoo:(NSString *)bar;
+- (void)setFoo:(NSMutableArray *)inviteList;
 
 @end

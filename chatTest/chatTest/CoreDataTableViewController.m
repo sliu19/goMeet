@@ -102,6 +102,9 @@
         case NSFetchedResultsChangeDelete:
             [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
             break;
+        default:
+            NSLog(@"fetchcontroller not in desired type");
+            break;
     }
 }
 
