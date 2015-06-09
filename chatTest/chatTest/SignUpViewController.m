@@ -79,7 +79,7 @@
             [user save];
             
             
-            NSDictionary* dict = @{@"gender":self.gender,@"pass_hash":_passCode.text,@"phone_num":self.phoneNum.text,@"parseID":user.objectId};
+            NSDictionary* dict = @{@"gender":self.gender,@"pass_hash":_passCode.text,@"phone_num":self.phoneNum.text,@"parseID":user.objectId,@"nick":self.phoneNum};
             NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
             [defaults setObject:user.objectId forKey:@"parseID"];
             
@@ -205,7 +205,7 @@
                                     // Create strings and integer to store the text info
                                     NSString *userID = [_phoneNum text];
                                     NSString *userPassCode  = [_passCode text];
-                                    NSString* nickName = [_nickName text];
+                                    NSString* nickName = [_phoneNum text];
                                     //int age = [[ageTextField text] integerValue];
                                     
                                     // Create instances of NSData

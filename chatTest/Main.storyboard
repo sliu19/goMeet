@@ -5,7 +5,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--赢家-->
+        <!--Ying+-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="InitPage" sceneMemberID="viewController">
@@ -53,7 +53,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" title="赢家" id="GNg-t8-03D"/>
+                    <navigationItem key="navigationItem" title="Ying+" id="GNg-t8-03D"/>
                     <connections>
                         <outlet property="joinView" destination="LFD-bn-ZjW" id="fCI-QJ-61m"/>
                         <outlet property="logIn" destination="u2N-M9-czY" id="UYU-br-CYF"/>

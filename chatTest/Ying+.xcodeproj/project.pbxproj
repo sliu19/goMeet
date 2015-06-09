@@ -243,7 +243,7 @@
 		EBD0D8AC1A82E1F700B76C79 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		EBD0D8B71A82E1F700B76C79 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		EBD0D8BA1A82E1F700B76C79 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		EBD0D8C01A82E1F700B76C79 /* 赢家Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "赢家Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EBD0D8C01A82E1F700B76C79 /* Ying+Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Ying+Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBD0D8C51A82E1F700B76C79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EBD0D8C61A82E1F700B76C79 /* chatTestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = chatTestTests.m; sourceTree = "<group>"; };
 		EBD0D8D61A82E30500B76C79 /* InitPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InitPage.h; path = ../InitPage.h; sourceTree = "<group>"; };
@@ -719,7 +719,7 @@
 			isa = PBXGroup;
 			children = (
 				EBD0D8A71A82E1F700B76C79 /* Ying+.app */,
-				EBD0D8C01A82E1F700B76C79 /* 赢家Tests.xctest */,
+				EBD0D8C01A82E1F700B76C79 /* Ying+Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1875,9 +1875,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		EBD0D8A61A82E1F700B76C79 /* 赢家 */ = {
+		EBD0D8A61A82E1F700B76C79 /* Ying+ */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EBD0D8CA1A82E1F700B76C79 /* Build configuration list for PBXNativeTarget "赢家" */;
+			buildConfigurationList = EBD0D8CA1A82E1F700B76C79 /* Build configuration list for PBXNativeTarget "Ying+" */;
 			buildPhases = (
 				EBD0D8A31A82E1F700B76C79 /* Sources */,
 				EBD0D8A41A82E1F700B76C79 /* Frameworks */,
@@ -1887,14 +1887,14 @@
 			);
 			dependencies = (
 			);
-			name = "赢家";
+			name = "Ying+";
 			productName = chatTest;
 			productReference = EBD0D8A71A82E1F700B76C79 /* Ying+.app */;
 			productType = "com.apple.product-type.application";
 		};
-		EBD0D8BF1A82E1F700B76C79 /* 赢家Tests */ = {
+		EBD0D8BF1A82E1F700B76C79 /* Ying+Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EBD0D8CD1A82E1F700B76C79 /* Build configuration list for PBXNativeTarget "赢家Tests" */;
+			buildConfigurationList = EBD0D8CD1A82E1F700B76C79 /* Build configuration list for PBXNativeTarget "Ying+Tests" */;
 			buildPhases = (
 				EBD0D8BC1A82E1F700B76C79 /* Sources */,
 				EBD0D8BD1A82E1F700B76C79 /* Frameworks */,
@@ -1905,9 +1905,9 @@
 			dependencies = (
 				EBD0D8C21A82E1F700B76C79 /* PBXTargetDependency */,
 			);
-			name = "赢家Tests";
+			name = "Ying+Tests";
 			productName = chatTestTests;
-			productReference = EBD0D8C01A82E1F700B76C79 /* 赢家Tests.xctest */;
+			productReference = EBD0D8C01A82E1F700B76C79 /* Ying+Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -1925,7 +1925,6 @@
 					};
 					EBD0D8BF1A82E1F700B76C79 = {
 						CreatedOnToolsVersion = 6.1.1;
-						TestTargetID = EBD0D8A61A82E1F700B76C79;
 					};
 				};
 			};
@@ -1942,8 +1941,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				EBD0D8A61A82E1F700B76C79 /* 赢家 */,
-				EBD0D8BF1A82E1F700B76C79 /* 赢家Tests */,
+				EBD0D8A61A82E1F700B76C79 /* Ying+ */,
+				EBD0D8BF1A82E1F700B76C79 /* Ying+Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -2184,7 +2183,7 @@
 /* Begin PBXTargetDependency section */
 		EBD0D8C21A82E1F700B76C79 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = EBD0D8A61A82E1F700B76C79 /* 赢家 */;
+			target = EBD0D8A61A82E1F700B76C79 /* Ying+ */;
 			targetProxy = EBD0D8C11A82E1F700B76C79 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -2296,6 +2295,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CONFIGURATION_TEMP_DIR = "$(PROJECT_TEMP_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -2338,7 +2338,6 @@
 		EBD0D8CE1A82E1F700B76C79 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -2348,24 +2347,23 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = chatTestTests/Info.plist;
+				LD_MAP_FILE_PATH = "$(TARGET_TEMP_DIR)/$(PRODUCT_NAME)-LinkMap-$(CURRENT_VARIANT)-$(CURRENT_ARCH).txt";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "赢家Tests";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/赢家.app/赢家";
+				PRODUCT_NAME = "Ying+Tests";
 			};
 			name = Debug;
 		};
 		EBD0D8CF1A82E1F700B76C79 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = chatTestTests/Info.plist;
+				LD_MAP_FILE_PATH = "$(TARGET_TEMP_DIR)/$(PRODUCT_NAME)-LinkMap-$(CURRENT_VARIANT)-$(CURRENT_ARCH).txt";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "赢家Tests";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/赢家.app/赢家";
+				PRODUCT_NAME = "Ying+Tests";
 			};
 			name = Release;
 		};
@@ -2381,7 +2379,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EBD0D8CA1A82E1F700B76C79 /* Build configuration list for PBXNativeTarget "赢家" */ = {
+		EBD0D8CA1A82E1F700B76C79 /* Build configuration list for PBXNativeTarget "Ying+" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EBD0D8CB1A82E1F700B76C79 /* Debug */,
@@ -2390,7 +2388,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EBD0D8CD1A82E1F700B76C79 /* Build configuration list for PBXNativeTarget "赢家Tests" */ = {
+		EBD0D8CD1A82E1F700B76C79 /* Build configuration list for PBXNativeTarget "Ying+Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EBD0D8CE1A82E1F700B76C79 /* Debug */,
