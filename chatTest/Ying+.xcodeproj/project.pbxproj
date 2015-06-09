@@ -238,7 +238,7 @@
 /* Begin PBXFileReference section */
 		EB8BD4171A886E3400851D28 /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
 		EB8BD4181A886E3400851D28 /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
-		EBD0D8A71A82E1F700B76C79 /* 赢家.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "赢家.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EBD0D8A71A82E1F700B76C79 /* Ying+.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ying+.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBD0D8AB1A82E1F700B76C79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EBD0D8AC1A82E1F700B76C79 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		EBD0D8B71A82E1F700B76C79 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -718,7 +718,7 @@
 		EBD0D8A81A82E1F700B76C79 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				EBD0D8A71A82E1F700B76C79 /* 赢家.app */,
+				EBD0D8A71A82E1F700B76C79 /* Ying+.app */,
 				EBD0D8C01A82E1F700B76C79 /* 赢家Tests.xctest */,
 			);
 			name = Products;
@@ -1889,7 +1889,7 @@
 			);
 			name = "赢家";
 			productName = chatTest;
-			productReference = EBD0D8A71A82E1F700B76C79 /* 赢家.app */;
+			productReference = EBD0D8A71A82E1F700B76C79 /* Ying+.app */;
 			productType = "com.apple.product-type.application";
 		};
 		EBD0D8BF1A82E1F700B76C79 /* 赢家Tests */ = {
@@ -1929,7 +1929,7 @@
 					};
 				};
 			};
-			buildConfigurationList = EBD0D8A21A82E1F700B76C79 /* Build configuration list for PBXProject "赢家" */;
+			buildConfigurationList = EBD0D8A21A82E1F700B76C79 /* Build configuration list for PBXProject "Ying+" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -2307,7 +2307,7 @@
 					"$(PROJECT_DIR)/chatTest",
 				);
 				New_Setting = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Ying+";
 				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
@@ -2330,7 +2330,7 @@
 					"$(PROJECT_DIR)/chatTest",
 				);
 				New_Setting = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Ying+";
 				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
@@ -2372,7 +2372,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		EBD0D8A21A82E1F700B76C79 /* Build configuration list for PBXProject "赢家" */ = {
+		EBD0D8A21A82E1F700B76C79 /* Build configuration list for PBXProject "Ying+" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EBD0D8C81A82E1F700B76C79 /* Debug */,
