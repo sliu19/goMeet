@@ -79,7 +79,7 @@
             [user save];
             
             
-            NSDictionary* dict = @{@"gender":self.gender,@"pass_hash":_passCode.text,@"phone_num":self.phoneNum.text,@"parseID":user.objectId,@"nick":self.phoneNum};
+            NSDictionary* dict = @{@"gender":self.gender,@"pass_hash":_passCode.text,@"phone_num":self.phoneNum.text,@"parseID":user.objectId,@"nick":self.phoneNum.text};
             NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
             [defaults setObject:user.objectId forKey:@"parseID"];
             
@@ -246,6 +246,7 @@
             // optional - add more buttons:
             //[alert addButtonWithTitle:@"Yes"];
             [alert show];
+            [Communication initNetworkCommunication];
             break;
         }
         case NSStreamEventEndEncountered:

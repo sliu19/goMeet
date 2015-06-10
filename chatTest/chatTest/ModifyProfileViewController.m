@@ -457,6 +457,7 @@
             // optional - add more buttons:
             [alert addButtonWithTitle:@"Yes"];
             [alert show];
+            [Communication initNetworkCommunication];
             break;
         }
         case NSStreamEventEndEncountered:
