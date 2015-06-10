@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "EBD0D8A61A82E1F700B76C79"
-               BuildableName = "&#x8d62;&#x5bb6;.app"
+               BuildableName = "Ying+.app"
                BlueprintName = "Ying+"
                ReferencedContainer = "container:Ying+.xcodeproj">
             </BuildableReference>
@@ -29,7 +29,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "EBD0D8BF1A82E1F700B76C79"
-               BuildableName = "&#x8d62;&#x5bb6;Tests.xctest"
+               BuildableName = "Ying+Tests.xctest"
                BlueprintName = "Ying+Tests"
                ReferencedContainer = "container:Ying+.xcodeproj">
             </BuildableReference>
@@ -47,7 +47,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "EBD0D8BF1A82E1F700B76C79"
-               BuildableName = "&#x8d62;&#x5bb6;Tests.xctest"
+               BuildableName = "Ying+Tests.xctest"
                BlueprintName = "Ying+Tests"
                ReferencedContainer = "container:Ying+.xcodeproj">
             </BuildableReference>
@@ -57,9 +57,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "EBD0D8A61A82E1F700B76C79"
-            BuildableName = "&#x8d62;&#x5bb6;.app"
-            BlueprintName = "&#x8d62;&#x5bb6;"
-            ReferencedContainer = "container:&#x8d62;&#x5bb6;.xcodeproj">
+            BuildableName = "Ying+.app"
+            BlueprintName = "Ying+"
+            ReferencedContainer = "container:Ying+.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -77,9 +77,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "EBD0D8A61A82E1F700B76C79"
-            BuildableName = "&#x8d62;&#x5bb6;.app"
-            BlueprintName = "&#x8d62;&#x5bb6;"
-            ReferencedContainer = "container:&#x8d62;&#x5bb6;.xcodeproj">
+            BuildableName = "Ying+.app"
+            BlueprintName = "Ying+"
+            ReferencedContainer = "container:Ying+.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -96,7 +96,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "EBD0D8A61A82E1F700B76C79"
-            BuildableName = "&#x8d62;&#x5bb6;.app"
+            BuildableName = "Ying+.app"
             BlueprintName = "Ying+"
             ReferencedContainer = "container:Ying+.xcodeproj">
          </BuildableReference>

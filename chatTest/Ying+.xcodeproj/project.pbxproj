@@ -1925,6 +1925,7 @@
 					};
 					EBD0D8BF1A82E1F700B76C79 = {
 						CreatedOnToolsVersion = 6.1.1;
+						TestTargetID = EBD0D8A61A82E1F700B76C79;
 					};
 				};
 			};
@@ -2350,6 +2351,7 @@
 				LD_MAP_FILE_PATH = "$(TARGET_TEMP_DIR)/$(PRODUCT_NAME)-LinkMap-$(CURRENT_VARIANT)-$(CURRENT_ARCH).txt";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "Ying+Tests";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Ying+.app/Ying+";
 			};
 			name = Debug;
 		};
@@ -2364,6 +2366,7 @@
 				LD_MAP_FILE_PATH = "$(TARGET_TEMP_DIR)/$(PRODUCT_NAME)-LinkMap-$(CURRENT_VARIANT)-$(CURRENT_ARCH).txt";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "Ying+Tests";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Ying+.app/Ying+";
 			};
 			name = Release;
 		};
