@@ -74,7 +74,7 @@
 - (void)AddEvent:(id)sender {
     UIButton* clicked = (UIButton*) sender;
     BOOL private = clicked.tag;
-    _PUBLIC = [NSString stringWithFormat:@"%s", (private ? "true" : "false")];
+    _PUBLIC = [NSString stringWithFormat:@"%s", (private ? "false" : "true")];
     CFUUIDRef uuid = CFUUIDCreate(kCFAllocatorDefault);
     NSString* uuidString = (__bridge_transfer NSString *)CFUUIDCreateString(kCFAllocatorDefault, uuid);
     CFRelease(uuid);
@@ -114,8 +114,19 @@
     //Also sent to server
     //newevent:{"description":"my description","title":"my event title4","event_id":"acf6830f-f945-11e4-a2bf-b8e85632007e","invite_list":[68958333],"location":"test event location4","time":1431503837791,"host_id":12341333,"public":false}
     //newPublicEvent:{"description":"my newsfeed event","title":"newfeed event","event_id":"47ec6551-fee1-11e4-b58d-a45e60c40087","start_time":1432120425578,"location":"newsfeed_event","host_id":111111111,"end_time":1432120435578}
-    NSDictionary*dict = @{@"title":_EventTitle.text,@"event_id":uuidString,@"invite_list":inviteID,@"location":_EventLocation.text,@"start_time":[NSString stringWithFormat:@"%d", unixTime ],@"host_id":[prefs objectForKey:@"userID"],@"end_time":@"1432155744",@"description":_EventDescription.text,@"public":_PUBLIC,@"invite_list":inviteID};
-    NSString *response  = [NSString stringWithFormat:@"newPublicEvent:%@",[Communication parseIntoJson:dict]];
+    NSString *response=nil;
+    if(!private){
+         NSDictionary*dict = @{@"title":_EventTitle.text,@"event_id":uuidString,@"invite_list":inviteID,@"location":_EventLocation.text,@"start_time":[NSString stringWithFormat:@"%d", unixTime ],@"host_id":[prefs objectForKey:@"userID"],@"end_time":@"1432155744",@"description":_EventDescription.text,@"public":_PUBLIC,@"invite_list":inviteID};
+        NSLog(@"public event");
+        
+         response  = [NSString stringWithFormat:@"newPublicEvent:%@",[Communication parseIntoJson:dict]];
+    }
+    else{
+        //newevent
+        NSLog(@"private event");
+         NSDictionary*dict = @{@"title":_EventTitle.text,@"event_id":uuidString,@"invite_list":inviteID,@"location":_EventLocation.text,@"time":[NSString stringWithFormat:@"%d", unixTime ],@"host_id":[prefs objectForKey:@"userID"],@"description":_EventDescription.text,@"public":_PUBLIC,@"invite_list":inviteID};
+        response  = [NSString stringWithFormat:@"newevent:%@",[Communication parseIntoJson:dict]];
+    }
     NSData *data = [[NSData alloc] initWithData:[response dataUsingEncoding:NSUTF8StringEncoding]];
     [Communication send:data];
     
