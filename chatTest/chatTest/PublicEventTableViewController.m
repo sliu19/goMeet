@@ -14,22 +14,28 @@
 @synthesize publicEventlist;
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //[Communication initNetworkCommunication];
     [inputStream setDelegate:self];
     [outputStream setDelegate:self];
     publicEventlist = [[NSMutableArray alloc]init];
     self.tableView.allowsSelection = NO;
     NSLog(@"PublicEventTableViewController");
+    [self refreshNews];
+}
+
+- (IBAction)refreshButton:(id)sender {
+    [self refreshNews];
+}
+
+-(void)refreshNews{
     //pollnewsfeed:{"amount":10,"user_id":22222222,"start_offset":0}
+    publicEventlist = [[NSMutableArray alloc]init];
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     NSDictionary* dict = @{@"amount":@"10",@"user_id":[prefs objectForKey:@"userID"],@"start_offset":@"0"};
     NSString *response  = [NSString stringWithFormat:@"pollnewsfeed:%@",[Communication parseIntoJson:dict]];    NSData *data = [[NSData alloc] initWithData:[response dataUsingEncoding:NSUTF8StringEncoding]];
     [Communication send:data];
-
 }
 
-
-
+#pragma tableView editor help
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }

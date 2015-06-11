@@ -38,37 +38,25 @@ BOOL isSearching;
     [_friendCollectionView setDataSource:self];
     [_friendCollectionView setDelegate:self];
     _friendCollectionView.allowsMultipleSelection = YES;
-    //pull add friend request
-    //example:getfriendrequests:68958695
-    // Do any additional setup after loading the view.
 }
-/*
+
 -(void)viewWillAppear:(BOOL)animated{
-    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    //Need more observation of performance
+    //[self setup];
     
-    NSString* request = [NSString stringWithFormat:@"getfriendrequests:%@",[prefs objectForKey:@"userID"]];
-    NSData *data = [[NSData alloc] initWithData:[request dataUsingEncoding:NSUTF8StringEncoding]];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
-*/
 
+
+#pragma searchBar editor help
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
 {
     [searchBar resignFirstResponder];
 }
 
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
+
 -(BOOL)searchBarDidEndEditing:(UISearchBar *)searchBar{
     [searchBar resignFirstResponder];
     [_searchBar resignFirstResponder];
@@ -93,9 +81,10 @@ BOOL isSearching;
     [_searchBar resignFirstResponder];
 }
 
+
+
 -(void)setup
 {
-    // managedObjectContent = [[[UIApplication sharedApplication]delegate] managedObjectContext];
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Friend"];
     request.predicate = nil;
     if(isSearching){
@@ -107,18 +96,12 @@ BOOL isSearching;
     NSError *error;
     NSArray *array = [[NSArray alloc]init];
     array = [[(AppDelegate*) [[UIApplication sharedApplication]delegate] managedObjectContext] executeFetchRequest:request error:&error];
-    
-    
     NSSortDescriptor *descriptor = [[NSSortDescriptor alloc] initWithKey:@"userNickName" ascending:YES];
     _sortedList = [[NSArray alloc]init];
     _sortedList=[array sortedArrayUsingDescriptors:[NSArray arrayWithObjects:descriptor, nil]];
     if (array != nil) {
         NSUInteger count = [array count]; // May be 0 if the object has been deleted.
         NSLog(@"%lu Friends available",(unsigned long)count);
-        //NSMutableArray* newsFeedArray = [[NSMutableArray alloc]init];
-        // for( Friend* friends in sortedList){
-        //CGRect frame = CGRectMake(startPt.x+OFF_SET, startPt.y, buttonWeigth, buttonHeight);
-        //FriendCell* nameCard = [[FriendCell alloc]initWith:frame friendItem:_sortedList[i]];;
     }
     else {
         // Deal with error.
@@ -127,6 +110,7 @@ BOOL isSearching;
     [self.friendCollectionView reloadData];
 }
 
+#pragma collectionView editor help
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     return CGSizeMake(100, 120);
@@ -136,37 +120,21 @@ BOOL isSearching;
     NSLog(@"Numver of cells %lu",[self.sortedList count]);
     return [self.sortedList count];
 }
-// 2
+
 - (NSInteger)numberOfSectionsInCollectionView: (UICollectionView *)collectionView {
     return 1;
 }
-// 3
+
 - (UICollectionViewCell *)collectionView:(UICollectionView *)cv cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     //NSLog(@"Array is %@",self.sortedList);
-    FriendCell *cell= [self.friendCollectionView dequeueReusableCellWithReuseIdentifier:@"FriendCell" forIndexPath:indexPath];
+    FriendCell*cell = [[FriendCell alloc]init];
+    cell= [self.friendCollectionView dequeueReusableCellWithReuseIdentifier:@"FriendCell" forIndexPath:indexPath];
     cell.backgroundColor = [UIColor clearColor];
     cell.myFriend = _sortedList[indexPath.row];
     [cell deselect:cell];
     return cell;
 }
 
--(void)buttonClicked:(FriendCell*)sender
-{
-    NSLog(@"buttonClick detacted");
-    if ([sender isKindOfClass:[FriendCell class]]) {
-        NSLog(@"This is a PersonalUIBUtton");
-        //[sender.view setFrame:CGRectMake(0, 0, self.view.frame.size.width, 80)];
-        NSLog(@"UserName is %@",sender.myFriend.userID);
-        if (sender.backgroundColor == [UIColor grayColor]){
-            [orginalController.inviteList delete:sender.myFriend.userID];
-            sender.backgroundColor = [UIColor clearColor];
-        }
-        else{
-            [orginalController.inviteList addObject:sender.myFriend.userID];
-            sender.backgroundColor = [UIColor grayColor];
-        }
-    }
-}
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 
 {
@@ -189,6 +157,7 @@ BOOL isSearching;
     [cell deselect:cell];
     [cell setNeedsDisplay];
 }
+
 
 - (IBAction)confirm:(id)sender {
     //NSLog(@"SELECTED LIST IS %@",_selectedList);

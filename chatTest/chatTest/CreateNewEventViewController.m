@@ -60,10 +60,7 @@
     [_mainView setDelegate:self];
     CGSize contectSize  = _mainView.frame.size;
     _mainView.contentSize = contectSize;
-    if(_inviteList==nil){_inviteList = [[NSMutableArray alloc]init];}
-    _EventDescription.text = @"";
-    _EventTitle.text = @"";
-    _EventLocation.text = @"";
+    [self clearTextField];
     _private.tag = true;
     _public.tag = false;
     [_private addTarget:self action:@selector(AddEvent:) forControlEvents:UIControlEventTouchUpInside];
@@ -71,6 +68,14 @@
     
 }
 
+-(void)clearTextField{
+    if(_inviteList==nil){_inviteList = [[NSMutableArray alloc]init];}
+    _EventDescription.text = @"";
+    _EventTitle.text = @"";
+    _EventLocation.text = @"";
+}
+
+#pragma Send event request
 - (void)AddEvent:(id)sender {
     UIButton* clicked = (UIButton*) sender;
     BOOL private = clicked.tag;
@@ -94,18 +99,17 @@
     if (private) {
         xmppStream = [self appDelegate].xmppStream;
         [self initxmpproom:uuidString];
-        
-    EventList* event = nil;
-    event = [NSEntityDescription insertNewObjectForEntityForName:@"EventList" inManagedObjectContext:[(AppDelegate*) [[UIApplication sharedApplication]delegate] managedObjectContext]];
-    [event setValue: _EventDescription.text forKey :@"eventDescription"];
-    [event setValue: uuidString forKey :@"jid"];
-    [event setValue: _EventLocation.text forKey :@"location"];
-    [event setValue: _EventTitle.text forKey :@"title"];
-    
-    [event setValue:now forKey:@"time"];
-    [event setValue: invitePic forKey:@"groupMember"];
-    [event setGroupMember:invitePic];
-    NSLog(@"GroupMember when set is %@",[[NSString alloc] initWithData:event.groupMember_data encoding:NSUTF8StringEncoding]);
+        //Setup local database
+        EventList* event = nil;
+        event = [NSEntityDescription insertNewObjectForEntityForName:@"EventList" inManagedObjectContext:[(AppDelegate*) [[UIApplication sharedApplication]delegate] managedObjectContext]];
+        [event setValue: _EventDescription.text forKey :@"eventDescription"];
+        [event setValue: uuidString forKey :@"jid"];
+        [event setValue: _EventLocation.text forKey :@"location"];
+        [event setValue: _EventTitle.text forKey :@"title"];
+        [event setValue:now forKey:@"time"];
+        [event setValue: invitePic forKey:@"groupMember"];
+        [event setGroupMember:invitePic];
+        NSLog(@"GroupMember when set is %@",[[NSString alloc] initWithData:event.groupMember_data encoding:NSUTF8StringEncoding]);
     
     }
     
@@ -117,80 +121,26 @@
     NSString *response=nil;
     if(!private){
          NSDictionary*dict = @{@"title":_EventTitle.text,@"event_id":uuidString,@"invite_list":inviteID,@"location":_EventLocation.text,@"start_time":[NSString stringWithFormat:@"%d", unixTime ],@"host_id":[prefs objectForKey:@"userID"],@"end_time":@"1432155744",@"description":_EventDescription.text,@"public":_PUBLIC,@"invite_list":inviteID};
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"确认发布实时活动" message:@"实时活动邀请的好友会在公告中看见您的活动" delegate:self cancelButtonTitle:@"确认" otherButtonTitles:nil];
+        [alert show];
+
         NSLog(@"public event");
         
-         response  = [NSString stringWithFormat:@"newPublicEvent:%@",[Communication parseIntoJson:dict]];
+        response  = [NSString stringWithFormat:@"newPublicEvent:%@",[Communication parseIntoJson:dict]];
     }
     else{
         //newevent
         NSLog(@"private event");
-         NSDictionary*dict = @{@"title":_EventTitle.text,@"event_id":uuidString,@"invite_list":inviteID,@"location":_EventLocation.text,@"time":[NSString stringWithFormat:@"%d", unixTime ],@"host_id":[prefs objectForKey:@"userID"],@"description":_EventDescription.text,@"public":_PUBLIC,@"invite_list":inviteID};
+        NSDictionary*dict = @{@"title":_EventTitle.text,@"event_id":uuidString,@"invite_list":inviteID,@"location":_EventLocation.text,@"time":[NSString stringWithFormat:@"%d", unixTime ],@"host_id":[prefs objectForKey:@"userID"],@"description":_EventDescription.text,@"public":_PUBLIC,@"invite_list":inviteID};
         response  = [NSString stringWithFormat:@"newevent:%@",[Communication parseIntoJson:dict]];
     }
     NSData *data = [[NSData alloc] initWithData:[response dataUsingEncoding:NSUTF8StringEncoding]];
+    [self clearTextField];
     [Communication send:data];
-    
-    _EventDescription.text = @"";
-    _EventTitle.text = @"";
-    _EventLocation.text = @"";
     NSError *error = nil;
     NSManagedObjectContext* selfManage = [(AppDelegate*) [[UIApplication sharedApplication]delegate] managedObjectContext];
     [selfManage save:&error];
 }
-
-
-- (IBAction)publicEventCreation:(id)sender {
-}
-
--(BOOL) textFieldShouldReturn: (UITextField *) textField {
-    [textField resignFirstResponder];
-    return YES;
-}
-
-- (void)textFieldDidBeginEditing:(UITextField *)textField {
-    self.currentResponder = textField;
-    [self animateTextField: textField up: YES];
-}
--(void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    [self.currentResponder resignFirstResponder];
-}
-
-- (void)textFieldDidEndEditing:(UITextField *)textField
-{
-    [self animateTextField: textField up: NO];
-    
-}
-
-- (void) animateTextField: (UITextField *)textField up: (BOOL) up
-{
-    CGPoint textFieldCenter = textField.center;
-    CGPoint textPosition = [_currentResponder convertPoint:textFieldCenter fromView:self.mainView];
-    NSLog(@"POSITION IS %f",textPosition.y);
-    const int movementDistance = -textPosition.y;; // tweak as needed
-    const float movementDuration = 0.3f; // tweak as needed
-    
-    int movement = (up ? -movementDistance : movementDistance);
-    
-    [UIView beginAnimations: @"anim" context: nil];
-    [UIView setAnimationBeginsFromCurrentState: YES];
-    [UIView setAnimationDuration: movementDuration];
-    self.view.frame = CGRectOffset(self.view.frame, 0, movement);
-    [UIView commitAnimations];
-}
-
-- (void)resignOnTap:(id)iSender {
-    [self.currentResponder resignFirstResponder];
-    // self.becomeFirstResponder();
-}
-- (IBAction)cancelButton:(UIButton *)sender {
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    MainTabBarViewController *viewController = (MainTabBarViewController *)[storyboard instantiateViewControllerWithIdentifier:@"GoMeet"];
-    [viewController setSelectedIndex:2];
-    [self presentViewController:viewController animated:YES completion:nil];
-
-}
-
-
 
 -(void)initxmpproom:(NSString*)uuid{
     xmppRoomStorage  = [XMPPRoomCoreDataStorage sharedInstance];
@@ -259,87 +209,6 @@
 }
 
 
-- (void)stream:(NSStream *)theStream handleEvent:(NSStreamEvent)streamEvent {
-    
-    typedef enum {
-        NSStreamEventNone = 0,
-        NSStreamEventOpenCompleted = 1 << 0,
-        NSStreamEventHasBytesAvailable = 1 << 1,
-        NSStreamEventHasSpaceAvailable = 1 << 2,
-        NSStreamEventErrorOccurred = 1 << 3,
-        NSStreamEventEndEncountered = 1 << 4
-    }NSStringEvent;
-    
-    switch (streamEvent) {
-            
-        case NSStreamEventOpenCompleted:
-            NSLog(@"Stream opened");
-            break;
-            
-        case NSStreamEventHasBytesAvailable:
-            
-            if (theStream == inputStream) {
-                
-                uint8_t buffer[1024];
-                int len;
-                
-                while ([inputStream hasBytesAvailable]) {
-                    len = (int)[inputStream read:buffer maxLength:sizeof(buffer)];
-                    if (len > 0) {
-                        
-                        NSString *output = [[NSString alloc] initWithBytes:buffer length:len encoding:NSUTF8StringEncoding];
-                        
-                        if (nil != output) {
-                            NSLog(@"server said: \"%@\", our uuid \"%@\"", [output uppercaseString],_uuid);
-                            if ([[output uppercaseString] containsString:_uuid]) {
-                                //Return to main page
-                                UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-                                MainTabBarViewController *viewController = (MainTabBarViewController *)[storyboard instantiateViewControllerWithIdentifier:@"GoMeet"];
-                                [viewController setSelectedIndex:2];
-                                [self presentViewController:viewController animated:YES completion:nil];
-
-                            }
-                            
-                        }
-                    }
-                }
-            }
-            break;
-            
-        case NSStreamEventErrorOccurred:
-        {
-            NSLog(@"Can not connect to the host!");
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"链接不上服务器" message:@"稍微晚些时候试试吧？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:nil];
-            // optional - add more buttons:
-            [alert addButtonWithTitle:@"Yes"];
-            [alert show];
-            break;
-        }
-            
-        case NSStreamEventEndEncountered:
-            break;
-            
-        default:
-            NSLog(@"Unknown event");
-    }
-    
-}
--(void)setFoo:(NSMutableArray *)inviteList{
-    NSLog(@"Desplay %@",inviteList);
-    _inviteList = [[NSMutableArray alloc]initWithArray:inviteList];
-    //integer round up
-    int lines =1 + (int)([_inviteList count]-1)/5;
-    CGSize viewSize = CGSizeMake(_mainView.frame.size.width, lines*inviteViewHeight);
-    CGFloat viewOrigin = _datePicker.frame.origin.y + 180;
-    invitePicView = [[inviteFriendView alloc]initWithFrame:CGRectMake(0, viewOrigin, viewSize.width, viewSize.height)];
-    invitePicView.inviteList = _inviteList;
-    invitePicView.backgroundColor = self.view.backgroundColor;
-    [_mainView addSubview:invitePicView];
-    if(lines!=0){
-        [self moveButton:viewSize.height+30];
-    }
-}
-
 - (IBAction)inviteFriend:(id)sender {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     InviteFriendViewController *vc = (InviteFriendViewController *)[storyboard instantiateViewControllerWithIdentifier:@"InviteFriend"];
@@ -350,12 +219,30 @@
     [invitePicView removeFromSuperview];
 }
 
+
+#pragma call back from invitefriend view
+-(void)setFoo:(NSMutableArray *)inviteList{
+    //NSLog(@"Desplay %@",inviteList);
+    _inviteList = [[NSMutableArray alloc]initWithArray:inviteList];
+    //integer round up
+    int lines =1 + (int)([_inviteList count]-1)/5;
+    CGSize viewSize = CGSizeMake(_mainView.frame.size.width, lines*inviteViewHeight);
+    CGFloat viewOrigin = _datePicker.frame.origin.y + 180;
+    invitePicView = [[inviteFriendView alloc]initWithFrame:CGRectMake(0, viewOrigin, viewSize.width, viewSize.height)];
+    invitePicView.inviteList = _inviteList;
+    invitePicView.backgroundColor = self.view.backgroundColor;
+    [_mainView addSubview:invitePicView];
+    if([_inviteList count]!=0){
+        [self moveButton:viewSize.height+30];
+    }
+}
+
 -(void)moveButton:(CGFloat)moveDistance{
     NSLog(@"ADDing scrolling view");
     CGRect publicFrame = _public.frame;
     CGRect privateFrame = _private.frame;
     CGSize mainFrameSize = _mainView.contentSize;
-    NSLog(@"contectSize is %f,publivButton position is %f",mainFrameSize.height,publicFrame.origin.y);
+    //NSLog(@"contectSize is %f,publivButton position is %f",mainFrameSize.height,publicFrame.origin.y);
     publicFrame.origin.y += moveDistance;
     privateFrame.origin.y += moveDistance;
     privateButton = [self buttonDeepCopy: _private];
@@ -391,5 +278,115 @@
     button.titleLabel.textColor = originalButton.titleLabel.textColor;
     return button;
 }
+
+#pragma outputstream handler
+- (void)stream:(NSStream *)theStream handleEvent:(NSStreamEvent)streamEvent {
+    
+    typedef enum {
+        NSStreamEventNone = 0,
+        NSStreamEventOpenCompleted = 1 << 0,
+        NSStreamEventHasBytesAvailable = 1 << 1,
+        NSStreamEventHasSpaceAvailable = 1 << 2,
+        NSStreamEventErrorOccurred = 1 << 3,
+        NSStreamEventEndEncountered = 1 << 4
+    }NSStringEvent;
+    
+    switch (streamEvent) {
+            
+        case NSStreamEventOpenCompleted:
+            NSLog(@"Stream opened");
+            break;
+            
+        case NSStreamEventHasBytesAvailable:
+            
+            if (theStream == inputStream) {
+                
+                uint8_t buffer[1024];
+                int len;
+                
+                while ([inputStream hasBytesAvailable]) {
+                    len = (int)[inputStream read:buffer maxLength:sizeof(buffer)];
+                    if (len > 0) {
+                        
+                        NSString *output = [[NSString alloc] initWithBytes:buffer length:len encoding:NSUTF8StringEncoding];
+                        
+                        if (nil != output) {
+                            NSLog(@"server said: \"%@\", our uuid \"%@\"", [output uppercaseString],_uuid);
+                            if ([[output uppercaseString] containsString:_uuid]) {
+                                //Return to main page
+                                
+                                UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                                MainTabBarViewController *viewController = (MainTabBarViewController *)[storyboard instantiateViewControllerWithIdentifier:@"GoMeet"];
+                                [viewController setSelectedIndex:2];
+                                [self presentViewController:viewController animated:YES completion:nil];
+                                
+                            }
+                            
+                        }
+                    }
+                }
+            }
+            break;
+            
+        case NSStreamEventErrorOccurred:
+        {
+            NSLog(@"Can not connect to the host!");
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"链接不上服务器" message:@"稍微晚些时候试试吧？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:nil];
+            [alert show];
+            [Communication initNetworkCommunication];
+            break;
+        }
+            
+        case NSStreamEventEndEncountered:
+            break;
+            
+        default:
+            NSLog(@"Unknown event");
+    }
+    
+}
+
+#pragma textField editor help
+
+-(BOOL) textFieldShouldReturn: (UITextField *) textField {
+    [textField resignFirstResponder];
+    return YES;
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    self.currentResponder = textField;
+    [self animateTextField: textField up: YES];
+}
+-(void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    [self.currentResponder resignFirstResponder];
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    [self animateTextField: textField up: NO];
+    
+}
+
+- (void) animateTextField: (UITextField *)textField up: (BOOL) up
+{
+    CGPoint textFieldCenter = textField.center;
+    CGPoint textPosition = [_currentResponder convertPoint:textFieldCenter fromView:self.mainView];
+    //NSLog(@"POSITION IS %f",textPosition.y);
+    const int movementDistance = -textPosition.y;; // tweak as needed
+    const float movementDuration = 0.3f; // tweak as needed
+    int movement = (up ? -movementDistance : movementDistance);
+    [UIView beginAnimations: @"anim" context: nil];
+    [UIView setAnimationBeginsFromCurrentState: YES];
+    [UIView setAnimationDuration: movementDuration];
+    self.view.frame = CGRectOffset(self.view.frame, 0, movement);
+    [UIView commitAnimations];
+}
+
+- (void)resignOnTap:(id)iSender {
+    [self.currentResponder resignFirstResponder];
+    // self.becomeFirstResponder();
+}
+
+
 
 @end

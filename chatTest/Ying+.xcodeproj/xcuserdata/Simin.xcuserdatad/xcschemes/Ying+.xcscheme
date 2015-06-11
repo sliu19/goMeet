@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "EBD0D8A61A82E1F700B76C79"
-               BuildableName = "Ying+.app"
+               BuildableName = "Ying.app"
                BlueprintName = "Ying+"
                ReferencedContainer = "container:Ying+.xcodeproj">
             </BuildableReference>
@@ -57,7 +57,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "EBD0D8A61A82E1F700B76C79"
-            BuildableName = "Ying+.app"
+            BuildableName = "Ying.app"
             BlueprintName = "Ying+"
             ReferencedContainer = "container:Ying+.xcodeproj">
          </BuildableReference>
@@ -77,7 +77,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "EBD0D8A61A82E1F700B76C79"
-            BuildableName = "Ying+.app"
+            BuildableName = "Ying.app"
             BlueprintName = "Ying+"
             ReferencedContainer = "container:Ying+.xcodeproj">
          </BuildableReference>
@@ -96,7 +96,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "EBD0D8A61A82E1F700B76C79"
-            BuildableName = "Ying+.app"
+            BuildableName = "Ying.app"
             BlueprintName = "Ying+"
             ReferencedContainer = "container:Ying+.xcodeproj">
          </BuildableReference>

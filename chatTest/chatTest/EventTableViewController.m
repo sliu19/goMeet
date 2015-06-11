@@ -11,6 +11,7 @@
 #import "AppDelegate.h"
 #import "GroupChatVC.h"
 #import "EventListTableViewCell.h"
+#define ROW_HEIGHT 172.0
 
 @interface EventTableViewController ()
 @property (strong, nonatomic) IBOutlet UITableView *EventTableView;
@@ -22,14 +23,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    //Disable grouptalk for now
+    //TO DO:
+    self.tableView.allowsSelection= NO;
     NSLog(@"EventListPage");
-    
     [self setManagedObjectContent:[(AppDelegate*) [[UIApplication sharedApplication]delegate] managedObjectContext]];
     CGFloat topLayoutGuide = self.topLayoutGuide.length;
     _EventTableView.contentInset = UIEdgeInsetsMake(topLayoutGuide, 0, 0, 0);
-    self.tableView.rowHeight = 180;
-    self.tableView.estimatedRowHeight = 180.0;
+    self.tableView.rowHeight = ROW_HEIGHT;
+    self.tableView.estimatedRowHeight = ROW_HEIGHT;
     self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"backGround"]];
     
 }
@@ -45,12 +47,13 @@
     self.fetchedResultsController = [[NSFetchedResultsController alloc]initWithFetchRequest:request managedObjectContext:managedObjectContent sectionNameKeyPath:nil cacheName:nil];
     
 }
+
+#pragma TableCell setup
 -(UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
     NSLog(@"Draw on event");
     EventList *event = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    
     EventListTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"EventCell"];
     cell.myEvent = event;
     cell.backgroundColor = [self.view backgroundColor];

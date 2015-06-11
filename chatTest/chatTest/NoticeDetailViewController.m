@@ -26,8 +26,6 @@
 @synthesize myEvent;
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    // Do any additional setup after loading the view.
     NSLog(@"Event in detail view is %@",myEvent);
     _eventOwnerLabel.text = @"邀请您参加了一个活动";
     _eventDescriptLabel.text = [myEvent objectForKey:@"title"];

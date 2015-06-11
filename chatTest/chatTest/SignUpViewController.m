@@ -90,7 +90,7 @@
         }
         else{
             NSLog(@"PASS, CONFIRM %@   %@",_passCode.text,_passCodeConfirm.text);
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"注册失败" message:@"密码必须于验证密码一致" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:nil];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"注册失败" message:@"密码必须与验证密码一致" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:nil];
             // optional - add more buttons:
             //[alert addButtonWithTitle:@"再试一次"];
             [alert show];
@@ -122,7 +122,7 @@
 {
     CGPoint textFieldCenter = textField.center;
     CGPoint textPosition = [_currentResponder convertPoint:textFieldCenter fromView:self.view];
-    NSLog(@"POSITION IS %f",textPosition.y);
+    //NSLog(@"POSITION IS %f",textPosition.y);
     const int movementDistance = 30+textPosition.y;; // tweak as needed
     const float movementDuration = 0.3f; // tweak as needed
     
@@ -193,7 +193,7 @@
                                 case 0:
                                 {
                                     NSLog(@"Can not create this account!");
-                                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"无法注册" message:@"换个账号试试？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:nil];
+                                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"无法注册此号码" message:@"换个电话号码试试？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:nil];
                                     // optional - add more buttons:
                                     [alert addButtonWithTitle:@"Yes"];
                                     [alert show];
@@ -201,7 +201,7 @@
                                 }
                                 case 1:
                                 {
-                                    NSLog(@"trigger segue");
+                                    NSLog(@"Signing Up");
                                     // Create strings and integer to store the text info
                                     NSString *userID = [_phoneNum text];
                                     NSString *userPassCode  = [_passCode text];
