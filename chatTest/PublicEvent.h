@@ -14,6 +14,8 @@
 @property(strong,nonatomic)NSString*time;
 @property(strong,nonatomic)NSString*title;
 @property(strong,nonatomic)NSString*location;
+@property(strong,nonatomic)NSString*describe;
+@property(strong,nonatomic)NSString*jid;
 -(PublicEvent*)init:(NSDictionary*)dict;
 
 @end

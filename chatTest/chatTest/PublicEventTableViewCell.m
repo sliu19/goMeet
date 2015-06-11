@@ -12,7 +12,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *TitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *LocationLabel;
 @property (weak, nonatomic) IBOutlet UILabel *TimeLabel;
-@property (weak, nonatomic) IBOutlet UIView *AttendanceView;
+@property (weak, nonatomic) IBOutlet UILabel *DescriptionLable;
 @property (weak, nonatomic) IBOutlet UIButton *JoinButton;
 
 
@@ -37,16 +37,10 @@
 - (void)drawRect:(CGRect)rect {
     _JoinButton.layer.cornerRadius = 5;
     _JoinButton.clipsToBounds = YES;
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy"];
-    
-    //Optionally for time zone conversions
-    [formatter setTimeZone:[NSTimeZone defaultTimeZone]];
-    
-    NSString *stringFromDate = [formatter stringFromDate:eventItem.time];
     _TitleLabel.text = eventItem.title;
     _LocationLabel.text = eventItem.location;
-    _TimeLabel.text = stringFromDate;
+    _TimeLabel.text = eventItem.time;
+    _DescriptionLable.text = eventItem.describe;
     _JoinButton.layer.cornerRadius = 5;
     _JoinButton.clipsToBounds = YES;
 

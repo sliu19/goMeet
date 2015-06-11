@@ -30,17 +30,6 @@
     NSData *data = [[NSData alloc] initWithData:[response dataUsingEncoding:NSUTF8StringEncoding]];
     [Communication send:data];
     
-       // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    //后台还没有东西，test data
-    NSString* output = @"{\"events\":[{\"description\":\"my newsfeed event\",\"title\":\"newfeed event\",\"event_id\":\"47ec6551-fee1-11e4-b58d-a45e60c40087\",\"end_time\":1432120435578,\"begin_time\":1432120425578,\"host_id\":111111111,\"location\":\"newsfeed_event\"},{\"description\":\"my newsfeed event\",\"title\":\"newfeed event\",\"event_id\":\"ecde604c-fee3-11e4-bbb1-a45e60c40087\",\"end_time\":1432121571303,\"begin_time\":1432121561303,\"host_id\":111111111,\"location\":\"newsfeed_event\"}],\"new_friends\":[11111111]}";
-    NSLog(@"OUTPUT is %@",output);
-    NSDictionary*result = [Communication parseFromJson:[output dataUsingEncoding:NSUTF8StringEncoding]];
-    NSMutableArray* resultList = [result objectForKey:@"events"];
-    _notificationMessage = resultList;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -139,12 +128,13 @@
                         NSString *output = [[NSString alloc] initWithBytes:buffer length:len encoding:NSUTF8StringEncoding];
                         
                         if (nil != output) {
-                            NSLog(@"have friend invite available");
-                            output = @"{\"events\":[{\"description\":\"my newsfeed event\",\"title\":\"newfeed event\",\"event_id\":\"47ec6551-fee1-11e4-b58d-a45e60c40087\",\"end_time\":1432120435578,\"begin_time\":1432120425578,\"host_id\":111111111,\"location\":\"newsfeed_event\"},{\"description\":\"my newsfeed event\",\"title\":\"newfeed event\",\"event_id\":\"ecde604c-fee3-11e4-bbb1-a45e60c40087\",\"end_time\":1432121571303,\"begin_time\":1432121561303,\"host_id\":111111111,\"location\":\"newsfeed_event\"}],\"new_friends\":[11111111]}";
                             NSLog(@"OUTPUT is %@",output);
                             NSDictionary*result = [Communication parseFromJson:[output dataUsingEncoding:NSUTF8StringEncoding]];
                             NSMutableArray* resultList = [result objectForKey:@"events"];
                             _notificationMessage = resultList;
+                            if(_notificationMessage!=nil){
+                                 NSLog(@"have friend invite available,count %lu",[_notificationMessage count]);
+                            }
                         }
 
                     }

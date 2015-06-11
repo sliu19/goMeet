@@ -14,12 +14,11 @@
 @synthesize publicEventlist;
 - (void)viewDidLoad {
     [super viewDidLoad];
+    //[Communication initNetworkCommunication];
     [inputStream setDelegate:self];
     [outputStream setDelegate:self];
     publicEventlist = [[NSMutableArray alloc]init];
     self.tableView.allowsSelection = NO;
-    PublicEvent* testEvent = [[PublicEvent alloc]init:@{@"time":@"testTime",@"title":@"testTitle", @"location":@"testLocation"}];
-    [publicEventlist addObject:testEvent];
     NSLog(@"PublicEventTableViewController");
     //pollnewsfeed:{"amount":10,"user_id":22222222,"start_offset":0}
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
@@ -49,7 +48,7 @@
     if (cell == nil) {
         cell = [[PublicEventTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault  reuseIdentifier:MyIdentifier];
     }
-    EventList *myevent = publicEventlist[indexPath.row];
+    PublicEvent *myevent = publicEventlist[indexPath.row];
     cell.eventItem = myevent;
     return cell;
 }
@@ -95,9 +94,19 @@
                     len = (int)[inputStream read:buffer maxLength:sizeof(buffer)];
                     if (len > 0) {
                         
-                        NSString *output = [[NSString alloc] initWithBytes:buffer length:len encoding:NSUTF8StringEncoding];
-                            NSLog(@"server said: %@", output);
+                        NSData *output = [[NSData alloc] initWithBytes:buffer length:len];
+                        if (nil != output) {
+                            NSDictionary*result = [Communication parseFromJson:output ];
+                            NSLog(@"OUTPUT is %@",result);
+                            for(NSDictionary* event in [result objectForKey:@"events"]){
+                                NSLog(@"this event is %@",event);
+                                PublicEvent* testEvent = [[PublicEvent alloc]init:event];
+                                [publicEventlist addObject:testEvent];
+                            }
+                            [self.tableView reloadData];
+                        }
                     }
+                        
                 }
             }
             break;

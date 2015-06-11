@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface newFriendNoticeViewController : UITableViewController
+@interface newFriendNoticeViewController : UITableViewController<NSStreamDelegate>
 
 
 @property(strong,nonatomic)NSArray* notificationList;
+@property(strong,nonatomic)NSMutableArray* notificationImageList;
+@property(strong,nonatomic)NSMutableArray* userInfoList;
 @end

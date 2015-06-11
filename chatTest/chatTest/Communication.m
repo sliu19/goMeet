@@ -7,6 +7,8 @@
 //
 
 #import "Communication.h"
+#import "Friend.h"
+#import "AppDelegate.h"
 
 @implementation Communication
 
@@ -121,5 +123,34 @@
     
     return image;
 }
+
++(void)addFriend:(NSDictionary*)info :(NSData*)userPic{
+    NSManagedObjectContext* selfManage = [(AppDelegate*) [[UIApplication sharedApplication]delegate] managedObjectContext];
+    Friend* newFriend = nil;
+    NSLog(@"add NewFriend %@",info);
+    newFriend = [NSEntityDescription insertNewObjectForEntityForName:@"Friend" inManagedObjectContext:selfManage];
+    NSNumber* userid =(NSNumber*)[info objectForKey:@"user_id"];
+    [newFriend setValue:[userid stringValue] forKey :@"userID"];
+    
+    [newFriend setValue:[info objectForKey:@"parseID"] forKey :@"parseID"];
+    
+    [newFriend setValue:[info objectForKey:@"nickname"] forKey:@"userNickName"];
+    [newFriend setValue:userPic forKey:@"userPic"];
+    
+    [newFriend setValue:@"F" forKey:@"gender"];
+    
+    NSNumber* isMale =(NSNumber*)[info objectForKey:@"is_male"];
+    if ([isMale boolValue]==YES) {
+        [newFriend setValue:@"M" forKey:@"gender"];
+    }
+    if ([info objectForKey:@"location"]!=nil) {
+        [newFriend setValue:[info objectForKey:@"location"] forKey:@"location"];
+    }
+    NSLog(@"after getting new friend image");
+    NSError *error = nil;
+    [selfManage save:&error];
+
+}
+
 
 @end

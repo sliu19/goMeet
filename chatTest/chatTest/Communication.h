@@ -22,6 +22,7 @@
 +(NSDictionary*)parseFromJson:(NSData*)json;
 + (UIColor *)colorFromHexString:(NSString *)hexString;
 + (UIImage *)imageWithColor:(UIColor *)color;
++(void)addFriend:(NSDictionary*)info :(NSData*)userPic;
 @end
 NSInputStream* inputStream;
 NSOutputStream* outputStream;

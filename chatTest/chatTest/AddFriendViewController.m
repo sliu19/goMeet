@@ -30,6 +30,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    //[Communication initNetworkCommunication];
     [inputStream setDelegate:self];
     [outputStream setDelegate:self];
     [_MessageTextField setDelegate:self];
@@ -44,14 +45,17 @@
     _userImage.clipsToBounds = YES;
 
 }
+-(void)viewDidAppear:(BOOL)animated{
+    _resultView.hidden = YES;
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 - (IBAction)searchPeople:(id)sender {
-    NSLog(@"searchNumber %@",_searchTextField.text);
     _newfriend = _searchTextField.text;
+    NSLog(@"searchNumber is :%@:",_newfriend);
     //seekuser:6505758649
     NSString* response = [NSString stringWithFormat:@"seekuser:%@",_newfriend];
     NSData *data = [[NSData alloc] initWithData:[response dataUsingEncoding:NSUTF8StringEncoding]];

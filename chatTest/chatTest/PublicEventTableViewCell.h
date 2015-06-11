@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "EventList.h"
+#import "PublicEvent.h"
 @interface PublicEventTableViewCell : UITableViewCell
 
-@property(nonatomic,strong)EventList* eventItem;
+@property(nonatomic,strong)PublicEvent* eventItem;
 @end

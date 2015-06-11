@@ -11,4 +11,7 @@
 @interface newFriendNoticeTableViewCell : UITableViewCell
 //incoming 信息
 @property(strong,nonatomic)NSDictionary* Info;
+@property(strong,nonatomic)NSData* userPic;
+@property(strong,nonatomic)NSDictionary* userInfo;
+-(void)changePicure;
 @end

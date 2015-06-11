@@ -12,6 +12,8 @@
 #import "Communication.h"
 #import "newFriendNoticeViewController.h"
 #import "FriendCell.h"
+#import "Friend.h"
+#import <Parse/Parse.h>
 #define OFF_SET 10.0
 @interface FriendListViewController ()
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
@@ -31,22 +33,28 @@ BOOL isSearching;
     _searchBar.delegate = self;
     isSearching = false;
     _searchBar.showsCancelButton = YES;
-
+    _redDot.hidden = YES;
     _redDot.layer.cornerRadius = _redDot.frame.size.width / 2;
     _redDot.clipsToBounds = YES;
     //show reddot for test purpose
+    [self.friendCollectionView setDelegate:self];
+    [self.friendCollectionView setDataSource:self];
+}
+-(void)viewDidAppear:(BOOL)animated{
     _redDot.hidden = YES;
+    _resultList = [[NSArray alloc]init];
     [inputStream setDelegate:self];
     [outputStream setDelegate:self];
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     NSString* request = [NSString stringWithFormat:@"getfriendrequests:%@",[prefs objectForKey:@"userID"]];
+    NSString* request2 = [NSString stringWithFormat:@"friendAcceptNotification:%@",[prefs objectForKey:@"userID"]];
     NSData *data = [[NSData alloc] initWithData:[request dataUsingEncoding:NSUTF8StringEncoding]];
+    NSData *data2 = [[NSData alloc] initWithData:[request2 dataUsingEncoding:NSUTF8StringEncoding]];
     [Communication send:data];
-    [self.friendCollectionView setDelegate:self];
-    [self.friendCollectionView setDataSource:self];
+    [Communication send:data2];
+    [self setup];
+
 }
-
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -153,10 +161,10 @@ BOOL isSearching;
 }
 // 3
 - (UICollectionViewCell *)collectionView:(UICollectionView *)cv cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"Array is %@",self.sortedList);
+   // NSLog(@"Array is %@",self.sortedList);
     FriendCell *cell= [self.friendCollectionView dequeueReusableCellWithReuseIdentifier:@"FriendCell" forIndexPath:indexPath];
     cell.backgroundColor = [UIColor clearColor];
-    NSLog(@"index number is %lu",indexPath.row);
+    //NSLog(@"index number is %lu",indexPath.row);
     cell.myFriend = _sortedList[indexPath.row];
     [cell deselect:cell];
     return cell;
@@ -191,17 +199,36 @@ BOOL isSearching;
                     if (len > 0) {
                         
                         NSData *output = [[NSData alloc] initWithBytes:buffer length:len];
-                        
                         if (nil != output) {
-                            NSDictionary*result = [Communication parseFromJson:output];
+                            NSDictionary*result = [Communication parseFromJson:output ];
+                            NSLog(@"OUTPUT is %@",result);
                             NSArray* resultList = [result objectForKey:@"requests"];
-                            NSLog(@"RESULT IS %@",resultList);
+                            NSArray* notificationList = [result objectForKey:@"notifications"];
                             if ([resultList count]>=1) {
                                 NSLog(@"have friend request available");
                                 _redDot.hidden = false;
-
+                                _resultList = resultList;
                             }
-                            _resultList = resultList;
+                            else if([notificationList count]>=1){
+                                for(NSString* userId in notificationList){
+                                    NSLog(@"seek userID %@",userId);
+                                    NSString* response = [NSString stringWithFormat:@"seekuser:%@",userId];
+                                    NSData *data = [[NSData alloc] initWithData:[response dataUsingEncoding:NSUTF8StringEncoding]];
+                                    [Communication send:data];
+
+                                }
+                            }
+                            //OUTPUT : {"introduction":"password","email":"myemail","nickname":"mynickname","location":"mylocation","is_male":true,"parseID"}
+                            //Friend:userID,parseID,userPic,gender,location,userNickName
+
+                            else if(result!=nil&&resultList==nil&&notificationList==nil){
+                                PFQuery *query = [PFQuery queryWithClassName:@"People"];
+                                PFObject* user = [query getObjectWithId:[result objectForKey:@"parseID"]];
+                                // Do something with the returned PFObject in the gameScore variable.
+                                NSData* imgData =[user[@"smallPicFile"] getData];
+                                [Communication addFriend:result :imgData];
+                                [self setup];
+                            }
                         }
                     }
                 }
@@ -215,6 +242,7 @@ BOOL isSearching;
             // optional - add more buttons:
             [alert addButtonWithTitle:@"Yes"];
             [alert show];
+            [Communication initNetworkCommunication];
             break;
         }
         case NSStreamEventEndEncountered:
