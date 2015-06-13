@@ -34,8 +34,8 @@
 -(void)drawRect:(CGRect)rect{
     NSLog(@"EVENT inside cell is %@",myEvent);
     self.eventdescriptionLabel.text = [myEvent objectForKey:@"title"];
-    self.eventOwnerLabel.text = @"邀请你参加了一个活动";
-    _userImage.image = [UIImage imageNamed:@"nightLife.jpeg"];
+    self.eventOwnerLabel.text = [NSString stringWithFormat:@"%@ 邀请你参加",[myEvent objectForKey:@"nickName"]];
+    _userImage.image = [UIImage imageWithData:[myEvent objectForKey:@"userPic"]];
     _userImage.layer.cornerRadius = _userImage.frame.size.width / 2;
     _userImage.clipsToBounds = YES;
 }

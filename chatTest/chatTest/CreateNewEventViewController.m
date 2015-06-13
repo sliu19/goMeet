@@ -96,7 +96,7 @@
     }
     
     //Create Room
-    if (private) {
+    //if (private) {
         xmppStream = [self appDelegate].xmppStream;
         [self initxmpproom:uuidString];
         //Setup local database
@@ -111,7 +111,7 @@
         [event setGroupMember:invitePic];
         NSLog(@"GroupMember when set is %@",[[NSString alloc] initWithData:event.groupMember_data encoding:NSUTF8StringEncoding]);
     
-    }
+    //}
     
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     

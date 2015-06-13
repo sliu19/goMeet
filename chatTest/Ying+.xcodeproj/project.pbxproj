@@ -17,6 +17,7 @@
 		F7163FDF1B02914400FB23D4 /* PublicEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = F7163FDE1B02914400FB23D4 /* PublicEvent.m */; };
 		F7163FE21B02A33600FB23D4 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7163FE11B02A33600FB23D4 /* SettingViewController.m */; };
 		F7163FE51B02A34C00FB23D4 /* ModifyProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7163FE41B02A34C00FB23D4 /* ModifyProfileViewController.m */; };
+		F71D64871B2C138B00E9AE4D /* launch.png in Resources */ = {isa = PBXBuildFile; fileRef = F71D64861B2C138B00E9AE4D /* launch.png */; };
 		F73723361B053F4D00BFC8D3 /* EventNoticeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F73723351B053F4D00BFC8D3 /* EventNoticeTableViewCell.m */; };
 		F73723391B05445600BFC8D3 /* NoticeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F73723381B05445600BFC8D3 /* NoticeDetailViewController.m */; };
 		F737233C1B05454E00BFC8D3 /* EventNoticeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F737233B1B05454E00BFC8D3 /* EventNoticeTableViewController.m */; };
@@ -256,6 +257,7 @@
 		F7163FE31B02A34C00FB23D4 /* ModifyProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModifyProfileViewController.h; sourceTree = "<group>"; };
 		F7163FE41B02A34C00FB23D4 /* ModifyProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModifyProfileViewController.m; sourceTree = "<group>"; };
 		F71BBCF11AF5A91F00A87FDD /* Message.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
+		F71D64861B2C138B00E9AE4D /* launch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launch.png; sourceTree = "<group>"; };
 		F73723341B053F4D00BFC8D3 /* EventNoticeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventNoticeTableViewCell.h; sourceTree = "<group>"; };
 		F73723351B053F4D00BFC8D3 /* EventNoticeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventNoticeTableViewCell.m; sourceTree = "<group>"; };
 		F73723371B05445600BFC8D3 /* NoticeDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoticeDetailViewController.h; sourceTree = "<group>"; };
@@ -863,6 +865,7 @@
 		F77C90141AA3FDB20005EC2F /* UserImage */ = {
 			isa = PBXGroup;
 			children = (
+				F71D64861B2C138B00E9AE4D /* launch.png */,
 				F7588B281B1BD3A50077085E /* blankUser.jpg */,
 				F777D8D91B1A4BF200BE39D3 /* greenImage.jpg */,
 				F776C9901B12EB0E006D48A9 /* active-state.png */,
@@ -1961,6 +1964,7 @@
 				F7CF9FC71AF56D2500DAF91A /* beach.jpeg in Resources */,
 				F7588B291B1BD3A50077085E /* blankUser.jpg in Resources */,
 				F776C9911B12EB0E006D48A9 /* active-state.png in Resources */,
+				F71D64871B2C138B00E9AE4D /* launch.png in Resources */,
 				F7B0E5D11AB69D47000C1E82 /* testImageApple.jpeg in Resources */,
 				F702CFA41B16F29900E64374 /* Main.storyboard in Resources */,
 				F7B0E5CF1AB69CE8000C1E82 /* forest.jpeg in Resources */,

@@ -12,10 +12,11 @@
 @interface NoticeDetailViewController ()
 
 @property (weak, nonatomic) IBOutlet UILabel *eventOwnerLabel;
-@property (weak, nonatomic) IBOutlet UILabel *eventDescriptLabel;
+@property (weak, nonatomic) IBOutlet UILabel *eventTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *locationLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet UIView *attandanceView;
+@property (weak, nonatomic) IBOutlet UILabel *eventDescrbeLabel;
 
 @property (weak, nonatomic) IBOutlet UIButton *goButton;
 @property (weak, nonatomic) IBOutlet UIButton *notgoButton;
@@ -27,10 +28,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSLog(@"Event in detail view is %@",myEvent);
-    _eventOwnerLabel.text = @"邀请您参加了一个活动";
-    _eventDescriptLabel.text = [myEvent objectForKey:@"title"];
+    _eventOwnerLabel.text = [NSString stringWithFormat:@"%@ 邀请您参加了一个活动",[myEvent objectForKey:@"nickName"]];
+    _eventTitleLabel.text = [myEvent objectForKey:@"title"];
+    _eventDescrbeLabel.text = [myEvent objectForKey:@"description"];
     _locationLabel.text = [myEvent objectForKey:@"location"];
-    _userImae.image = [UIImage imageNamed:@"testImage.jpeg"];
+    _userImae.image = [UIImage imageWithData:[myEvent objectForKey:@"userPic"]];
     _userImae.layer.cornerRadius = _userImae.frame.size.width / 2;
     _userImae.clipsToBounds = YES;
     double timestampval =  [[myEvent objectForKey:@"begin_time"] doubleValue]/1000;
