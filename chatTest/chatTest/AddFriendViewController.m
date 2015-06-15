@@ -153,6 +153,7 @@
                     len = [inputStream read:buffer maxLength:sizeof(buffer)];
                     if (len > 0) {
                         NSString *output = [[NSString alloc] initWithBytes:buffer length:len encoding:NSUTF8StringEncoding];
+                        NSLog(@"Server said,%@",output);
                         if (nil != output) {
                             if ([output  isEqualToString:@"{}\n"]) {
                                 NSLog(@"Can not find user!");
@@ -164,17 +165,25 @@
                             NSLog(@"userInfo %@",userInfo);
                             //OUTPUT : {"introduction":"password","email":"myemail","nickname":"mynickname","location":"mylocation","is_male":true}
                             _nameLabel.text = [userInfo objectForKey:@"nickname"];
-                            if ([userInfo objectForKey:@"location"]!=nil) {
-                                _locationLabel.text = [userInfo objectForKey:@"location"];
+                            _locationLabel.text=@"";
+                            _introLabel.text=@"";
+                            _userImage.image = [UIImage imageNamed:@"blankUser.jpg"];
+                            if ([userInfo objectForKey:@"location"] !=[NSNull null]) {
+                                //_locationLabel.text = [userInfo objectForKey:@"location"];
                             }
-                            if([userInfo objectForKey:@"introduction"]!=nil){
-                                _introLabel.text = [userInfo objectForKey:@"introduction"];
+                            if([userInfo objectForKey:@"introduction"]!=[NSNull null]){
+                               // _introLabel.text = [userInfo objectForKey:@"introduction"];
                             }
                             PFQuery *query = [PFQuery queryWithClassName:@"People"];
                             PFObject*user = [query getObjectWithId:[userInfo objectForKey:@"parseID"]];                                NSLog(@"return from PARSE");
                                 NSData* imgData =[user[@"smallPicFile"] getData];
+                            if(imgData==nil){
+                                 _userImage.image = [UIImage imageNamed:@"blankUser.jpg"];
+                            }else{
                                 _userImage.image = [UIImage imageWithData:imgData];
-                               // _resultView.hidden = false;
+                            }
+                            
+                            _resultView.hidden = false;
 
                            
                             NSLog(@"server said: %@", output);

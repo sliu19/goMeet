@@ -411,10 +411,7 @@
                                     
                                     PFQuery *query = [PFQuery queryWithClassName:@"People"];
                                     [query getObjectInBackgroundWithId:[defaults objectForKey:@"parseID"] block:^(PFObject *user, NSError *error) {
-                                        // Do something with the returned PFObject in the gameScore variable.
-                                        NSLog(@"%@,old image is%@, new image is %@", user.objectId,user[@"small"], imageData);
-
-                                        PFFile *file = [PFFile fileWithName:@"smallPic" data:imageData];
+                                            PFFile *file = [PFFile fileWithName:@"smallPic" data:imageData];
                                         [file saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {if(succeeded){
                                             user[@"smallPicFile"] = file;
                                             [user saveInBackground];

@@ -78,19 +78,29 @@
             // [JFBCrypt hashPassword: password withSalt: salt]
             //NSString *salt = [JFBCrypt generateSaltWithNumberOfRounds: 10];
             PFObject* user = [PFObject objectWithClassName:@"People"];
-            user[@"id"] =self.phoneNum.text;
-            NSLog(@"What?");
-            [user save];
-            
-            
-            NSDictionary* dict = @{@"gender":self.gender,@"pass_hash":_passCode.text,@"phone_num":self.phoneNum.text,@"parseID":user.objectId,@"nick":self.phoneNum.text};
-            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-            [defaults setObject:user.objectId forKey:@"parseID"];
-            
-            NSString *response  = [NSString stringWithFormat:@"reg:%@", [Communication parseIntoJson:dict]];
-            NSData *data = [[NSData alloc] initWithData:[response dataUsingEncoding:NSUTF8StringEncoding]];
-            
-            [Communication send:data];
+            NSData* imageData=UIImageJPEGRepresentation([UIImage imageNamed:@"blankUser.jpg"],1);
+            PFFile *file = [PFFile fileWithName:@"smallPic" data:imageData];
+            [file saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                if(succeeded){
+                    user[@"smallPicFile"] = file;
+                    user[@"id"] =self.phoneNum.text;
+                    NSLog(@"What?");
+                    
+                    [user save];
+                    NSDictionary* dict = @{@"gender":self.gender,@"pass_hash":_passCode.text,@"phone_num":self.phoneNum.text,@"parseID":user.objectId,@"nick":self.phoneNum.text};
+                    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                    [defaults setObject:user.objectId forKey:@"parseID"];
+                
+                    NSString *response  = [NSString stringWithFormat:@"reg:%@", [Communication parseIntoJson:dict]];
+                    NSData *data = [[NSData alloc] initWithData:[response dataUsingEncoding:NSUTF8StringEncoding]];
+                
+                    [Communication send:data];
+
+                }
+            } progressBlock:^(int percentDone) {
+                    NSLog(@"Finish percentage is %d",percentDone);
+            }];
+           
         }
         else{
             NSLog(@"PASS, CONFIRM %@   %@",_passCode.text,_passCodeConfirm.text);
