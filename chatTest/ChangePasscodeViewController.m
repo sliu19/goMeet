@@ -38,6 +38,10 @@
     // Do any additional setup after loading the view.
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [inputStream setDelegate:self];
+    [outputStream setDelegate:self];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -160,8 +164,9 @@
             NSLog(@"Can not connect to the host!");
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"链接不上服务器" message:@"稍微晚些时候试试吧？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:nil];
             // optional - add more buttons:
-            [alert addButtonWithTitle:@"Yes"];
+            //[alert addButtonWithTitle:@"Yes"];
             [alert show];
+            [Communication initNetworkCommunication];
             break;
         }
         case NSStreamEventEndEncountered:

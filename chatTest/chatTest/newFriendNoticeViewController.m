@@ -26,6 +26,7 @@
 -(void) viewDidAppear:(BOOL)animated{
     [self setUp];
     [_mainTableView reloadData];
+
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;

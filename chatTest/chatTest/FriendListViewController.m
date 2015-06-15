@@ -39,6 +39,7 @@ BOOL isSearching;
     //show reddot for test purpose
     [self.friendCollectionView setDelegate:self];
     [self.friendCollectionView setDataSource:self];
+    [self setup];
 }
 -(void)viewDidAppear:(BOOL)animated{
     _redDot.hidden = YES;
@@ -52,7 +53,6 @@ BOOL isSearching;
     NSData *data2 = [[NSData alloc] initWithData:[request2 dataUsingEncoding:NSUTF8StringEncoding]];
     [Communication send:data];
     [Communication send:data2];
-    [self setup];
 
 }
 - (void)didReceiveMemoryWarning {
@@ -112,18 +112,18 @@ BOOL isSearching;
     NSError *error;
     NSArray *array = [[NSArray alloc]init];
     array = [[(AppDelegate*) [[UIApplication sharedApplication]delegate] managedObjectContext] executeFetchRequest:request error:&error];
-    
-    
-    NSSortDescriptor *descriptor = [[NSSortDescriptor alloc] initWithKey:@"userNickName" ascending:YES];
+   NSSortDescriptor *descriptor = [[NSSortDescriptor alloc] initWithKey:@"userNickName" ascending:YES selector:@selector(caseInsensitiveCompare:)];
     _sortedList = [[NSArray alloc]init];
     _sortedList=[array sortedArrayUsingDescriptors:[NSArray arrayWithObjects:descriptor, nil]];
     if (array != nil) {
         NSUInteger count = [array count]; // May be 0 if the object has been deleted.
         NSLog(@"%lu Friends available",(unsigned long)count);
         //NSMutableArray* newsFeedArray = [[NSMutableArray alloc]init];
-       // for( Friend* friends in sortedList){
+       for( Friend* friends in _sortedList){
+           NSLog(@"Namely %@",friends.userNickName);
             //CGRect frame = CGRectMake(startPt.x+OFF_SET, startPt.y, buttonWeigth, buttonHeight);
             //FriendCell* nameCard = [[FriendCell alloc]initWith:frame friendItem:_sortedList[i]];;
+       }
     }
     else {
         // Deal with error.
@@ -161,11 +161,13 @@ BOOL isSearching;
 }
 // 3
 - (UICollectionViewCell *)collectionView:(UICollectionView *)cv cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"FRIEND at %ld is %@",(long)indexPath.row,_sortedList[indexPath.row]);
    // NSLog(@"Array is %@",self.sortedList);
     FriendCell *cell= [self.friendCollectionView dequeueReusableCellWithReuseIdentifier:@"FriendCell" forIndexPath:indexPath];
     cell.backgroundColor = [UIColor clearColor];
     //NSLog(@"index number is %lu",indexPath.row);
     cell.myFriend = _sortedList[indexPath.row];
+    [cell update];
     [cell deselect:cell];
     return cell;
 }
@@ -240,7 +242,7 @@ BOOL isSearching;
             NSLog(@"Can not connect to the host!");
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"链接不上服务器" message:@"稍微晚些时候试试吧？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:nil];
             // optional - add more buttons:
-            [alert addButtonWithTitle:@"Yes"];
+            //[alert addButtonWithTitle:@"Yes"];
             [alert show];
             [Communication initNetworkCommunication];
             break;

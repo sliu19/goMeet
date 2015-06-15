@@ -18,4 +18,5 @@
 -(FriendCell*)initWith:(Friend*)friends;
 -(void) select:(FriendCell*)cell;
 -(void) deselect:(FriendCell*)cell;
+-(void) update;
 @end

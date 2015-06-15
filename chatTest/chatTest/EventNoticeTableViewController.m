@@ -35,6 +35,8 @@
 }
 
 -(void) viewWillAppear:(BOOL)animated{
+    [inputStream setDelegate:self];
+    [outputStream setDelegate:self];
     _notificationMessage = [[NSMutableArray alloc]init];
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     NSDictionary* dict = @{@"user_id":[prefs objectForKey:@"userID"],@"amount":@"10",@"start_offset":@"0"};
@@ -177,7 +179,6 @@
             NSLog(@"Can not connect to the host!");
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"链接不上服务器" message:@"稍微晚些时候试试吧？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:nil];
             // optional - add more buttons:
-            [alert addButtonWithTitle:@"Yes"];
             [alert show];
             [Communication initNetworkCommunication];
             break;

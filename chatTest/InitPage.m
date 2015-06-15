@@ -64,6 +64,10 @@ int friendTotal;
         [self presentViewController:viewController animated:NO completion:nil];
 
     }
+    friendTotal=0;
+    friendCount=0;
+    [inputStream setDelegate:self];
+    [outputStream setDelegate:self];
 }
 
 
@@ -234,15 +238,15 @@ int friendTotal;
                                         [Communication addFriend:result :imgData];
                                         friendCount+=1;
                                         NSLog(@"friendCOunt is %d",friendCount);
-                                    }];
-                                    if(friendCount==friendTotal){
+                                        NSLog(@"total is %d",friendTotal);
+                                        if(friendCount==friendTotal){
                                         
                                         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
                                         MainTabBarViewController *viewController = (MainTabBarViewController *)[storyboard instantiateViewControllerWithIdentifier:@"GoMeet"];
                                         [viewController setSelectedIndex:0];
                                         [self presentViewController:viewController animated:YES completion:nil];
+                                        }}];
                                         break;
-                                    }
                                 }else{
                                     for (NSString* friendID in [result objectForKey:@"friends"]) {
                                         NSLog(@"FriendID is %@",friendID);

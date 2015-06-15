@@ -31,8 +31,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     //[Communication initNetworkCommunication];
-    [inputStream setDelegate:self];
-    [outputStream setDelegate:self];
     [_MessageTextField setDelegate:self];
     [_searchTextField setDelegate:self];
      NSLog(@"AddFriendPage");
@@ -47,6 +45,9 @@
 }
 -(void)viewDidAppear:(BOOL)animated{
     _resultView.hidden = YES;
+    [inputStream setDelegate:self];
+    [outputStream setDelegate:self];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -75,7 +76,9 @@
     NSString* response = [NSString stringWithFormat:@"addfriend:%@",[Communication parseIntoJson:dict]];
     NSData *data = [[NSData alloc] initWithData:[response dataUsingEncoding:NSUTF8StringEncoding]];
     [Communication send:data];
-    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"已发送申请" message:@"等待对方确认" delegate:self cancelButtonTitle:@"确认" otherButtonTitles:nil];
+    [alert show];
+
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     MainTabBarViewController *viewController = (MainTabBarViewController *)[storyboard instantiateViewControllerWithIdentifier:@"GoMeet"];
     [viewController setSelectedIndex:3];
@@ -161,16 +164,19 @@
                             NSLog(@"userInfo %@",userInfo);
                             //OUTPUT : {"introduction":"password","email":"myemail","nickname":"mynickname","location":"mylocation","is_male":true}
                             _nameLabel.text = [userInfo objectForKey:@"nickname"];
-                            _locationLabel.text = [userInfo objectForKey:@"location"];
-                            _introLabel.text = [userInfo objectForKey:@"introduction"];
+                            if ([userInfo objectForKey:@"location"]!=nil) {
+                                _locationLabel.text = [userInfo objectForKey:@"location"];
+                            }
+                            if([userInfo objectForKey:@"introduction"]!=nil){
+                                _introLabel.text = [userInfo objectForKey:@"introduction"];
+                            }
                             PFQuery *query = [PFQuery queryWithClassName:@"People"];
-                            [query getObjectInBackgroundWithId:[userInfo objectForKey:@"parseID"] block:^(PFObject *user, NSError *error) {
-                                // Do something with the returned PFObject in the gameScore variable.
+                            PFObject*user = [query getObjectWithId:[userInfo objectForKey:@"parseID"]];                                NSLog(@"return from PARSE");
                                 NSData* imgData =[user[@"smallPicFile"] getData];
                                 _userImage.image = [UIImage imageWithData:imgData];
-                            }];
+                               // _resultView.hidden = false;
 
-                            _resultView.hidden = false;
+                           
                             NSLog(@"server said: %@", output);
                         }
                         
@@ -185,7 +191,7 @@
             NSLog(@"Can not connect to the host!");
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"链接不上服务器" message:@"稍微晚些时候试试吧？" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
             // optional - add more buttons:
-            [alert addButtonWithTitle:@"Yes"];
+            //[alert addButtonWithTitle:@"Yes"];
             [alert show];
             [Communication initNetworkCommunication];
             break;

@@ -56,6 +56,10 @@
 
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [inputStream setDelegate:self];
+    [outputStream setDelegate:self];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

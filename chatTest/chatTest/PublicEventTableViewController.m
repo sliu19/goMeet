@@ -22,6 +22,10 @@
     [self refreshNews];
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [inputStream setDelegate:self];
+    [outputStream setDelegate:self];
+}
 - (IBAction)refreshButton:(id)sender {
     [self refreshNews];
 }
@@ -122,7 +126,7 @@
             NSLog(@"Can not connect to the host!");
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"链接不上服务器" message:@"稍微晚些时候试试吧？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:nil];
             // optional - add more buttons:
-            [alert addButtonWithTitle:@"Yes"];
+            //[alert addButtonWithTitle:@"Yes"];
             [alert show];
             [Communication initNetworkCommunication];
             break;

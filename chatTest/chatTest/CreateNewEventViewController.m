@@ -67,7 +67,10 @@
     [_public addTarget:self action:@selector(AddEvent:) forControlEvents:UIControlEventTouchUpInside];
     
 }
-
+-(void)viewWillAppear:(BOOL)animated{
+    [inputStream setDelegate:self];
+    [outputStream setDelegate:self];
+}
 -(void)clearTextField{
     if(_inviteList==nil){_inviteList = [[NSMutableArray alloc]init];}
     _EventDescription.text = @"";

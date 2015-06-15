@@ -24,6 +24,7 @@ BOOL selected;
 */
 - (void)drawRect:(CGRect)rect {
     // Drawing code
+    NSLog(@"Draw once");
     UIImage* Pic = [[UIImage alloc]initWithData:myFriend.userPic];
     profilePic = [[UIImageView alloc] initWithImage:Pic];
     profilePic.frame = CGRectMake(OFF_SET, OFF_SET, self.bounds.size.width-2*OFF_SET, self.bounds.size.width-2*OFF_SET);
@@ -98,5 +99,12 @@ BOOL selected;
 -(void) deselect:(FriendCell*)cell{
     selected = false;
     [self.selectedPic setHidden:YES];
+}
+
+
+//update
+-(void)update{
+    [[self subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    [self setNeedsDisplay];
 }
 @end
