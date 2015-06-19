@@ -37,15 +37,15 @@
     [inputStream setDelegate:self];
     _notificationImageList = [[NSMutableArray alloc]init];
     _userInfoList=[[NSMutableArray alloc]init];
-    for(NSDictionary* user in _notificationList){
-        NSLog(@"seek userID %@",[user objectForKey:@"phone"] );
-        NSString* response = [NSString stringWithFormat:@"seekuser:%@",[user objectForKey:@"phone"]];
-        NSData *data = [[NSData alloc] initWithData:[response dataUsingEncoding:NSUTF8StringEncoding]];
-        [Communication send:data];
-        
+    NSMutableArray* userIDList = [[NSMutableArray alloc]init];
+    for(NSDictionary* oneUser in _notificationList){
+        [userIDList addObject:[oneUser objectForKey:@"phone"]];
     }
-
-    
+    NSDictionary* dict = @{@"seekList":userIDList};
+    NSString *response  = [NSString stringWithFormat:@"multiseekuser:%@",[Communication parseIntoJson:dict]];
+    NSLog(@"Asked multifriend %@",response);
+    NSData *data = [[NSData alloc] initWithData:[response dataUsingEncoding:NSUTF8StringEncoding]];
+    [Communication send:data];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -112,20 +112,20 @@
                         if (nil != output) {
                             NSDictionary*result = [Communication parseFromJson:output];
                             NSLog(@"OUTPUT is %@",result);
-                            //OUTPUT : {"introduction":"password","email":"myemail","nickname":"mynickname","location":"mylocation","is_male":true,"parseID"}
-                            //Friend:userID,parseID,userPic,gender,location,userNickName
-                            if(result!=nil){
-                                NSLog(@"ParseID is %@",[result objectForKey:@"parseID"]);
-#warning assume return user data will be in sequence. Need better algo for this!
-                                PFQuery *query = [PFQuery queryWithClassName:@"People"];
-                                PFObject* user = [query getObjectWithId:[result objectForKey:@"parseID"]];
-                            // Do something with the returned PFObject in the gameScore variable.
-                                NSData* imgData =[user[@"smallPicFile"] getData];
-                                [_notificationImageList addObject:imgData];
-                                [_userInfoList addObject:result];
-                                if ([_notificationImageList count]==[_notificationList count]){
-                                    NSLog(@"reloadData");
-                                    [_mainTableView reloadData];
+                            if([result objectForKey:@"multiSeekDict"]!=nil){
+                                NSDictionary* userInfoList =[result objectForKey:@"multiSeekDict"];
+                                NSLog(@"multisuerlist is %@",userInfoList);
+                                for (NSDictionary* account in [userInfoList allValues]){
+                                    PFQuery *query = [PFQuery queryWithClassName:@"People"];
+                                    [query getObjectInBackgroundWithId:[account objectForKey:@"parseID"] block:^(PFObject *user, NSError *error) {
+                                        // Do something with the returned PFObject in the gameScore variable.
+                                        NSLog(@"FriendInfo is %@",account);
+                                        NSData* imgData =[user[@"smallPicFile"] getData];
+                                        [_notificationImageList addObject:imgData];
+                                        [_userInfoList addObject:account];
+                                        [_mainTableView reloadData];
+                                    }];
+    
                                 }
                             }
                         }

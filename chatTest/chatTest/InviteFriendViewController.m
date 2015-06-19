@@ -117,7 +117,7 @@ BOOL isSearching;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)view numberOfItemsInSection:(NSInteger)section {
-    NSLog(@"Numver of cells %lu",[self.sortedList count]);
+    NSLog(@"Numver of cells %lu",(unsigned long)[self.sortedList count]);
     return [self.sortedList count];
 }
 

@@ -13,7 +13,7 @@
 #import "XMPPMUC.h"
 #import "XMPPFramework.h"
 
-@interface CreateNewEventViewController : UIViewController<UITextFieldDelegate,XMPPMUCDelegate,XMPPRoomDelegate,NSStreamDelegate,UIScrollViewDelegate>
+@interface CreateNewEventViewController : UIViewController<UITextFieldDelegate,XMPPMUCDelegate,XMPPRoomDelegate,NSStreamDelegate,UIScrollViewDelegate,UIAlertViewDelegate>
 
 
 @property (nonatomic, strong, readonly) XMPPRoomCoreDataStorage * xmppRoomStorage;

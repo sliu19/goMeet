@@ -836,7 +836,7 @@ signed char index_64[] = {
 		[hashedPassword appendString: @"0"];
 	}
 	
-	[hashedPassword appendFormat: @"%d", rounds];
+	[hashedPassword appendFormat: @"%d", (int)rounds];
 	[hashedPassword appendString: @"$"];
 	[hashedPassword appendString: [JFBCrypt encodeData: saltData
 											  ofLength: (int)[saltData length]]];
@@ -867,7 +867,7 @@ signed char index_64[] = {
 		[salt appendString: @"0"];
 	}
 	
-	[salt appendFormat: @"%d", numberOfRounds];
+	[salt appendFormat: @"%d", (int)numberOfRounds];
 	[salt appendString: @"$"];
 	[salt appendString: [JFBCrypt encodeData: randomData
 									ofLength: (int)[randomData length]]];

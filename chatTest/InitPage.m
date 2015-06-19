@@ -19,15 +19,14 @@
 @property (nonatomic, assign) UITextField* currentResponder;
 @property (weak, nonatomic) IBOutlet UIButton *logIn;
 @property (weak, nonatomic) IBOutlet UIButton *switchButton;
-
+@property (strong,nonatomic) NSArray* friendList;
 
 
 
 @end
 
 @implementation InitPage
-int friendCount;
-int friendTotal;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     //Send through NSStrem
@@ -45,10 +44,7 @@ int friendTotal;
     _logIn.clipsToBounds = YES;
     _switchButton.layer.cornerRadius = 5;
     _switchButton.clipsToBounds = YES;
-
-    
-
-    
+    _friendList = [[NSArray alloc]init];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -64,8 +60,6 @@ int friendTotal;
         [self presentViewController:viewController animated:NO completion:nil];
 
     }
-    friendTotal=0;
-    friendCount=0;
     [inputStream setDelegate:self];
     [outputStream setDelegate:self];
 }
@@ -160,7 +154,6 @@ int friendTotal;
                         
                         NSString *output = [[NSString alloc] initWithBytes:buffer length:len encoding:NSUTF8StringEncoding];
                         NSData* pullFriend = [[NSData alloc]initWithBytes:buffer length:len];
-                        
                         if (nil!= output) {
                             NSLog(@"server said: !%@!", output);
                             if ([output isEqualToString:@"0\n"]) {
@@ -180,31 +173,32 @@ int friendTotal;
                                 break;
 
                             }
-                            NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-                            NSString* userId = [prefs stringForKey:@"userID"];
-
-                            //INPUT :seekuser:6505758649
-                            //OUTPUT : {"introduction":"password","email":"myemail","nickname":"mynickname","location":"mylocation","is_male":true}
-                            if(userId==nil){
+                            else{
+                                NSDictionary*result = [Communication parseFromJson:pullFriend ];
+                                NSLog(@"OUTPUT is %@",result);
+                                
+                                NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+                                NSString* userId = [prefs stringForKey:@"userID"];
+                                
+                                //INPUT :seekuser:6505758649
+                                //OUTPUT : {"introduction":"password","email":"myemail","nickname":"mynickname","location":"mylocation","is_male":true}
+                                if(userId==nil){
                                     NSLog(@"successful Login");
                                     NSString *response2  = [NSString stringWithFormat:@"getfriends:%@",_phoneNum.text];
                                     NSData *data2 = [[NSData alloc] initWithData:[response2 dataUsingEncoding:NSUTF8StringEncoding]];
                                     [Communication send:data2];
-
+                                    
                                     NSString *userID = [_phoneNum text];
                                     NSString *userPassCode  = [_passCode text];
-                                // Create instances of NSData
-                                // UIImage *contactImage = [UIImage imageNamed:@"testImage.jpeg"];
-                                //NSData *imageData = UIImageJPEGRepresentation(contactImage, 100);
                                     NSDictionary * userInfo = [Communication parseFromJson:[output dataUsingEncoding:NSUTF8StringEncoding]];
                                     NSLog(@"userInfo %@",userInfo);
-                                // Store the data
+                                    // Store the data
                                     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-                                
+                                    
                                     [defaults setObject:userID forKey:@"userID"];
                                     [defaults setObject:userPassCode forKey:@"passCode"];
                                     if(![[userInfo objectForKey:@"introduction"] isEqual:[NSNull null]]){
-                                    [defaults setObject:[userInfo objectForKey:@"introduction"] forKey:@"intro"];}
+                                        [defaults setObject:[userInfo objectForKey:@"introduction"] forKey:@"intro"];}
                                     if(![[userInfo objectForKey:@"email"]isEqual:[NSNull null]]){
                                         [defaults setObject:[userInfo objectForKey:@"email"] forKey:@"email"];}
                                     if(![[userInfo objectForKey:@"location"] isEqual:[NSNull null]]){
@@ -213,56 +207,51 @@ int friendTotal;
                                     [defaults setObject:[userInfo objectForKey:@"parseID"] forKey:@"parseID"];
                                     PFQuery *query = [PFQuery queryWithClassName:@"People"];
                                     [query getObjectInBackgroundWithId:[userInfo objectForKey:@"parseID"] block:^(PFObject *user, NSError *error) {
-                                    // Do something with the returned PFObject in the gameScore variable.
+                                        // Do something with the returned PFObject in the gameScore variable.
                                         NSData* imgData =[user[@"smallPicFile"] getData];
                                         [defaults setObject: imgData forKey:@"userPic"];
                                     }];
                                     [defaults setObject:@"F" forKey:@"gender"];
-                                
+                                    
                                     NSNumber* isMale =(NSNumber*)[userInfo objectForKey:@"is_male"];
                                     if ([isMale boolValue]==YES) {
                                         [defaults setObject:@"M" forKey:@"gender"];
                                     }
-                                [defaults synchronize];
-                                
-
-                            }else{
-                                NSDictionary*result = [Communication parseFromJson:pullFriend ];
-                                NSLog(@"OUTPUT is %@",result);
-                                if([result objectForKey:@"friends"]==nil){
-                                    //OUTPUT : {"introduction":"password","email":"myemail","nickname":"mynickname","location":"mylocation","is_male":true,"user_id":}
-                                    PFQuery *query = [PFQuery queryWithClassName:@"People"];
-                                    [query getObjectInBackgroundWithId:[result objectForKey:@"parseID"] block:^(PFObject *user, NSError *error) {
-                                        // Do something with the returned PFObject in the gameScore variable.
-                                        NSData* imgData =[user[@"smallPicFile"] getData];
-                                        [Communication addFriend:result :imgData];
-                                        friendCount+=1;
-                                        NSLog(@"friendCOunt is %d",friendCount);
-                                        NSLog(@"total is %d",friendTotal);
-                                        if(friendCount==friendTotal){
-                                        
-                                        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-                                        MainTabBarViewController *viewController = (MainTabBarViewController *)[storyboard instantiateViewControllerWithIdentifier:@"GoMeet"];
-                                        [viewController setSelectedIndex:0];
-                                        [self presentViewController:viewController animated:YES completion:nil];
-                                        }}];
-                                        break;
-                                }else{
-                                    for (NSString* friendID in [result objectForKey:@"friends"]) {
-                                        NSLog(@"FriendID is %@",friendID);
-                                        NSString *response  = [NSString stringWithFormat:@"seekuser:%@",friendID];
-                                        NSData *data = [[NSData alloc] initWithData:[response dataUsingEncoding:NSUTF8StringEncoding]];
-                                        [Communication send:data];
-                                        friendTotal+=1;
-                                        NSLog(@"friendTotal is %d",friendTotal);
-                                    }
+                                    [defaults synchronize];
                                     break;
+                                }
+                                else if ([result objectForKey:@"friends"]!=nil) {
+                                    NSDictionary* dict = @{@"seekList":[result objectForKey:@"friends"]};
+                                    _friendList =[result objectForKey:@"friends"];
+                                    NSString *response  = [NSString stringWithFormat:@"multiseekuser:%@",[Communication parseIntoJson:dict]];
+                                    NSLog(@"Asked multifriend %@",response);
+                                    NSData *data = [[NSData alloc] initWithData:[response dataUsingEncoding:NSUTF8StringEncoding]];
+                                    [Communication send:data];
+                                }
+                                else if([result objectForKey:@"multiSeekDict"]!=nil){
+                                    NSDictionary* userInfoList =[result objectForKey:@"multiSeekDict"];
+                                    NSLog(@"multisuerlist is %@",userInfoList);
+                                    for (NSDictionary* account in[userInfoList allValues]){
+                                        PFQuery *query = [PFQuery queryWithClassName:@"People"];
+                                        [query getObjectInBackgroundWithId:[account objectForKey:@"parseID"] block:^(PFObject *user, NSError *error) {
+                                            // Do something with the returned PFObject in the gameScore variable.
+                                            NSLog(@"FriendInfo is %@",account);
+                                            NSData* imgData =[user[@"smallPicFile"] getData];
+                                            [Communication addFriend:account :imgData];
+                                        }];
+                                    }
+                                    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                                    MainTabBarViewController *viewController = (MainTabBarViewController *)[storyboard instantiateViewControllerWithIdentifier:@"GoMeet"];
+                                    [viewController setSelectedIndex:0];
+                                    [self presentViewController:viewController animated:YES completion:nil];
+                                    break;
+
+                                    
                                 }
                                 break;
                             }
                             break;
                         }
-                        NSLog(@"server said: %@", output);
                     }
                 }
             }

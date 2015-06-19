@@ -146,7 +146,7 @@
                             NSDictionary*result = [Communication parseFromJson:[output dataUsingEncoding:NSUTF8StringEncoding]];
                             NSMutableArray* resultList = [[result objectForKey:@"events"] mutableCopy];
                             if(resultList!=nil){
-                                 NSLog(@"have friend invite available,count %lu",[resultList count]);
+                                 NSLog(@"have friend invite available,count %lu",(unsigned long)[resultList count]);
                                 for (int i=0;i<[resultList count]; i++) {
                                     NSMutableDictionary* temp_info = [[NSMutableDictionary alloc]initWithDictionary:resultList[i]];
                                     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Friend" inManagedObjectContext:[(AppDelegate*) [[UIApplication sharedApplication]delegate] managedObjectContext] ];

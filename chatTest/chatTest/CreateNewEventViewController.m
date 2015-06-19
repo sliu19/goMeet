@@ -41,7 +41,7 @@
 @synthesize publicButton;
 @synthesize privateButton;
 @synthesize invitePicView;
-
+bool quitcreate;
 - (AppDelegate *)appDelegate
 {
     return (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -77,6 +77,7 @@
     _EventTitle.text = @"";
     _EventLocation.text = @"";
 }
+
 
 #pragma Send event request
 - (void)AddEvent:(id)sender {
@@ -125,6 +126,7 @@
     if(!private){
          NSDictionary*dict = @{@"title":_EventTitle.text,@"event_id":uuidString,@"invite_list":inviteID,@"location":_EventLocation.text,@"start_time":[NSString stringWithFormat:@"%d", unixTime ],@"host_id":[prefs objectForKey:@"userID"],@"end_time":@"1432155744",@"description":_EventDescription.text,@"public":_PUBLIC,@"invite_list":inviteID};
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"确认发布实时活动" message:@"实时活动邀请的好友会在公告中看见您的活动" delegate:self cancelButtonTitle:@"确认" otherButtonTitles:nil];
+        [alert addButtonWithTitle:@"继续编辑"];
         [alert show];
 
         NSLog(@"public event");
@@ -234,9 +236,12 @@
     invitePicView = [[inviteFriendView alloc]initWithFrame:CGRectMake(0, viewOrigin, viewSize.width, viewSize.height)];
     invitePicView.inviteList = _inviteList;
     invitePicView.backgroundColor = self.view.backgroundColor;
-    [_mainView addSubview:invitePicView];
     if([_inviteList count]!=0){
+        [_mainView addSubview:invitePicView];
         [self moveButton:viewSize.height+30];
+    }else{
+        _public.hidden = false;
+        _private.hidden = false;
     }
 }
 
@@ -320,7 +325,7 @@
                                 
                                 UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
                                 MainTabBarViewController *viewController = (MainTabBarViewController *)[storyboard instantiateViewControllerWithIdentifier:@"GoMeet"];
-                                [viewController setSelectedIndex:2];
+                                [viewController setSelectedIndex:1];
                                 [self presentViewController:viewController animated:YES completion:nil];
                                 
                             }

@@ -53,6 +53,7 @@ BOOL isSearching;
     NSData *data2 = [[NSData alloc] initWithData:[request2 dataUsingEncoding:NSUTF8StringEncoding]];
     [Communication send:data];
     [Communication send:data2];
+    [self setup];
 
 }
 - (void)didReceiveMemoryWarning {
@@ -152,7 +153,7 @@ BOOL isSearching;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)view numberOfItemsInSection:(NSInteger)section {
-    NSLog(@"Numver of cells %lu",[self.sortedList count]);
+    NSLog(@"Numver of cells %lu",(unsigned long)[self.sortedList count]);
     return [self.sortedList count];
 }
 // 2
@@ -206,30 +207,32 @@ BOOL isSearching;
                             NSLog(@"OUTPUT is %@",result);
                             NSArray* resultList = [result objectForKey:@"requests"];
                             NSArray* notificationList = [result objectForKey:@"notifications"];
-                            if ([resultList count]>=1) {
+                            if([result objectForKey:@"multiSeekDict"]!=nil){
+                                NSDictionary* userInfoList =[result objectForKey:@"multiSeekDict"];
+                                NSLog(@"multisuerlist is %@",userInfoList);
+                                for (NSDictionary* account in [userInfoList allValues]){
+                                    NSLog(@"FriendAccount is %@",account);
+                                    PFQuery *query = [PFQuery queryWithClassName:@"People"];
+                                    [query getObjectInBackgroundWithId:[account objectForKey:@"parseID"] block:^(PFObject *user, NSError *error) {
+                                        // Do something with the returned PFObject in the gameScore variable.
+                                        NSData* imgData =[user[@"smallPicFile"] getData];
+                                        [Communication addFriend:account :imgData];
+                                        [self setup];
+                                    }];
+                                }
+                            }
+
+                            else if ([resultList count]>=1) {
                                 NSLog(@"have friend request available");
                                 _redDot.hidden = false;
                                 _resultList = resultList;
                             }
                             else if([notificationList count]>=1){
-                                for(NSString* userId in notificationList){
-                                    NSLog(@"seek userID %@",userId);
-                                    NSString* response = [NSString stringWithFormat:@"seekuser:%@",userId];
-                                    NSData *data = [[NSData alloc] initWithData:[response dataUsingEncoding:NSUTF8StringEncoding]];
-                                    [Communication send:data];
-
-                                }
-                            }
-                            //OUTPUT : {"introduction":"password","email":"myemail","nickname":"mynickname","location":"mylocation","is_male":true,"parseID"}
-                            //Friend:userID,parseID,userPic,gender,location,userNickName
-
-                            else if(result!=nil&&resultList==nil&&notificationList==nil){
-                                PFQuery *query = [PFQuery queryWithClassName:@"People"];
-                                PFObject* user = [query getObjectWithId:[result objectForKey:@"parseID"]];
-                                // Do something with the returned PFObject in the gameScore variable.
-                                NSData* imgData =[user[@"smallPicFile"] getData];
-                                [Communication addFriend:result :imgData];
-                                [self setup];
+                                NSDictionary* dict = @{@"seekList":notificationList};
+                                NSString *response  = [NSString stringWithFormat:@"multiseekuser:%@",[Communication parseIntoJson:dict]];
+                                NSLog(@"Asked multifriend %@",response);
+                                NSData *data = [[NSData alloc] initWithData:[response dataUsingEncoding:NSUTF8StringEncoding]];
+                                [Communication send:data];
                             }
                         }
                     }

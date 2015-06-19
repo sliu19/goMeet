@@ -19,10 +19,12 @@
     CFStreamCreatePairWithSocketToHost(NULL, (CFStringRef)@"ec2-52-69-23-190.ap-northeast-1.compute.amazonaws.com", 80, &readStream, &writeStream);
     inputStream = (__bridge NSInputStream *)readStream;
     outputStream = (__bridge NSOutputStream *)writeStream;
-    [inputStream scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
-    [outputStream scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
-    [inputStream open];
-    [outputStream open];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [inputStream scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+        [outputStream scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+        [inputStream open];
+        [outputStream open];
+    });
 }
 
 + (void)send:(NSData *)myData{
@@ -127,6 +129,16 @@
 +(void)addFriend:(NSDictionary*)info :(NSData*)userPic{
     NSManagedObjectContext* selfManage = [(AppDelegate*) [[UIApplication sharedApplication]delegate] managedObjectContext];
     Friend* newFriend = nil;
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    
+    request.entity = [NSEntityDescription entityForName:@"Friend" inManagedObjectContext:selfManage];
+    request.predicate = [NSPredicate predicateWithFormat:@"userID = %@", [info objectForKey:@"user_id"]];
+    NSError *executeFetchError = nil;
+    newFriend = [[selfManage executeFetchRequest:request error:&executeFetchError] lastObject];
+    
+    if (executeFetchError) {
+        NSLog(@"fetch with error:%@",executeFetchError);
+    }else if(!newFriend){
     NSLog(@"add NewFriend %@",info);
     newFriend = [NSEntityDescription insertNewObjectForEntityForName:@"Friend" inManagedObjectContext:selfManage];
     NSNumber* userid =(NSNumber*)[info objectForKey:@"user_id"];
@@ -149,6 +161,8 @@
     NSLog(@"after getting new friend image");
     NSError *error = nil;
     [selfManage save:&error];
+    }
+    
 
 }
 

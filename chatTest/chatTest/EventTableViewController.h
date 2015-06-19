@@ -8,7 +8,7 @@
 
 #import "CoreDataTableViewController.h"
 
-@interface EventTableViewController : CoreDataTableViewController
+@interface EventTableViewController : CoreDataTableViewController<UIGestureRecognizerDelegate>
 
 
 @property(nonatomic,strong) NSManagedObjectContext *managedObjectContent;

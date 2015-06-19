@@ -41,6 +41,11 @@
     
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"EventList"];
     request.predicate = nil;
+    NSDate *mydate = [NSDate date];
+    NSTimeInterval secondsInHours =  -60 * 60 * 24;
+    NSDate *dateHoursAhead = [mydate dateByAddingTimeInterval:secondsInHours];
+    NSPredicate *predicate =[NSPredicate predicateWithFormat:@"time >= %@",dateHoursAhead];
+    [request setPredicate:predicate];
     request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"time"
                                                               ascending:YES]];
     
@@ -60,6 +65,20 @@
     return cell;
 }
 
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // Return YES - we will be able to delete all rows
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // Perform the real delete action here. Note: you may need to check editing style
+    //   if you do not perform delete only.
+    NSLog(@"Deleted row.");
+    [_managedObjectContent deleteObject:[self.fetchedResultsController objectAtIndexPath:indexPath]];
+    [self.tableView reloadData];
+}
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if([[segue identifier] isEqualToString:@"EventChat"])
