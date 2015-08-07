@@ -711,7 +711,7 @@
 			children = (
 				F7588B2A1B1CAA5A0077085E /* Framework */,
 				F702CFA31B16F29900E64374 /* Main.storyboard */,
-				EBD0D8A91A82E1F700B76C79 /* chatTest */,
+				EBD0D8A91A82E1F700B76C79 /* Ying+ */,
 				EBD0D8C31A82E1F700B76C79 /* chatTestTests */,
 				EBD0D8A81A82E1F700B76C79 /* Products */,
 			);
@@ -726,7 +726,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		EBD0D8A91A82E1F700B76C79 /* chatTest */ = {
+		EBD0D8A91A82E1F700B76C79 /* Ying+ */ = {
 			isa = PBXGroup;
 			children = (
 				F776C9841B11857B006D48A9 /* JFBCrypt */,
@@ -743,6 +743,7 @@
 				EBD0D8B91A82E1F700B76C79 /* LaunchScreen.xib */,
 				EBD0D8AA1A82E1F700B76C79 /* Supporting Files */,
 			);
+			name = "Ying+";
 			path = chatTest;
 			sourceTree = "<group>";
 		};

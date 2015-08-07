@@ -31,6 +31,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     //[Communication initNetworkCommunication];
+//    self.searchTextField.attributedPlaceholder =  [[NSAttributedString alloc] initWithString:@"请输入手机号" attributes:@{NSForegroundColorAttributeName: [UIColor ]}];
     [_MessageTextField setDelegate:self];
     [_searchTextField setDelegate:self];
      NSLog(@"AddFriendPage");
