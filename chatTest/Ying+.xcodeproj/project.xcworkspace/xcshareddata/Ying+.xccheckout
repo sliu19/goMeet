@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>CFDD35BB-D06B-40E6-9DBA-E7111CB10B58</string>
 	<key>IDESourceControlProjectName</key>
-	<string>Ying+</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>4E38D719597463E5FDB9ED3C0137ED28455981AB</key>
 		<string>https://github.com/sliu19/goMeet.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>chatTest/Ying+.xcodeproj</string>
+	<string>chatTest/Ying+.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>4E38D719597463E5FDB9ED3C0137ED28455981AB</key>
